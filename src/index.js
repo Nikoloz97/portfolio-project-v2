@@ -8,6 +8,8 @@ import Home from "./Home/Home";
 import ErrorPage from "./Error-page";
 import About from "./About/About";
 import Contact from "./Contact/Contact";
+import Projects from "./Projects/Projects";
+import Calculator from "./Projects/Calculator";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,24 @@ const router = createBrowserRouter([
   {
     path: "contact",
     element: <Contact />,
+    errorElement: <ErrorPage />,
+  },
+  // Child route not working...
+  {
+    path: "projects",
+    element: <Projects />,
+    errorElement: <ErrorPage />,
+    // children: [
+    //   {
+    //     path: "projects/calculator",
+    //     element: <Calculator />,
+    //     errorElement: <ErrorPage />,
+    //   },
+    // ],
+  },
+  {
+    path: "projects/calculator",
+    element: <Calculator />,
     errorElement: <ErrorPage />,
   },
 ]);
