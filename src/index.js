@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     element: <Contact />,
     errorElement: <ErrorPage />,
   },
-  // Child route not working...
+  // TODO: Child route not working (see comment below)
   {
     path: "projects",
     element: <Projects />,
