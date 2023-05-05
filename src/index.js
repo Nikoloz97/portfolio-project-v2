@@ -10,6 +10,7 @@ import About from "./About/About";
 import Contact from "./Contact/Contact";
 import Projects from "./Projects/Projects";
 import Calculator from "./Projects/Calculator";
+import Clocks from "./Projects/Clocks/Clocks";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
   {
     path: "projects/calculator",
     element: <Calculator />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "projects/clocks",
+    element: <Clocks />,
     errorElement: <ErrorPage />,
   },
 ]);

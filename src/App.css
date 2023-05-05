@@ -20,7 +20,14 @@
 
 /* Projects -> Calculator */
 
-.Display-Screen {
+.Display {
+  background-color: white;
+  color: black;
+}
+
+/* Projects -> Clocks -> CountDown */
+
+.SW > .Display {
   background-color: white;
   color: black;
 }

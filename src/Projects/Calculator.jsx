@@ -6,7 +6,6 @@ function Calculator() {
 
   const handleClick = (event) => {
     setResult(result.concat(event.target.name));
-    console.log(event);
   };
 
   const clear = () => {
@@ -20,8 +19,8 @@ function Calculator() {
 
   const calculate = () => {
     try {
+      // TODO: Replace eval function
       setResult(eval(result).toString());
-      console.log(result);
     } catch (error) {
       setResult("Error");
     }
@@ -30,7 +29,7 @@ function Calculator() {
   return (
     <div className="Default-Page">
       <h1>Calculator Project</h1>
-      <div className="Display-Screen">{result}</div>
+      <div className="Calc-Display">{result}</div>
       <div className="Keys">
         <button className="Clear" onClick={clear}>
           Clear
