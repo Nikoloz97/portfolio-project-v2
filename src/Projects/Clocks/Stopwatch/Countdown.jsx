@@ -19,7 +19,6 @@ function Stopwatch() {
   return (
     <div>
       <div className="SW">
-        <h2>Stopwatch</h2>
         <div className="Display">{input}</div>
         {numberButtons.map((item) => (
           <button key={item} name={item} onClick={handleClick}>

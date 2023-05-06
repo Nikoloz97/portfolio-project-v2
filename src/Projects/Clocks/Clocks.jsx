@@ -1,5 +1,5 @@
 import React from "react";
-import Stopwatch from "./Stopwatch";
+import Stopwatch from "./Stopwatch/Stopwatch";
 
 function Clocks() {
   return (
