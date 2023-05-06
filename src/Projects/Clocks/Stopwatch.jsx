@@ -3,6 +3,8 @@ import React, { useState } from "react";
 function Stopwatch() {
   const [input, setInput] = useState("");
 
+  const numberButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
   const handleClick = (event) => {
     setInput(input.concat(event.target.name));
   };
@@ -10,44 +12,21 @@ function Stopwatch() {
   const backspace = () => {
     setInput(input.slice(0, -1));
   };
+
   const clear = () => {
     setInput("");
   };
   return (
     <div>
       <div className="SW">
-        <h2>Countdown</h2>
+        <h2>Stopwatch</h2>
         <div className="Display">{input}</div>
-        <button name="1" onClick={handleClick}>
-          1
-        </button>
-        <button name="2" onClick={handleClick}>
-          2
-        </button>
-        <button name="3" onClick={handleClick}>
-          3
-        </button>
-        <button name="4" onClick={handleClick}>
-          4
-        </button>
-        <button name="5" onClick={handleClick}>
-          5
-        </button>
-        <button name="6" onClick={handleClick}>
-          6
-        </button>
-        <button name="7" onClick={handleClick}>
-          7
-        </button>
-        <button name="8" onClick={handleClick}>
-          8
-        </button>
-        <button name="9" onClick={handleClick}>
-          9
-        </button>
-        <button name="0" onClick={handleClick}>
-          0
-        </button>
+        {numberButtons.map((item) => (
+          <button key={item} name={item} onClick={handleClick}>
+            {item}
+          </button>
+        ))}
+
         <button onClick={backspace}>C</button>
         <button onClick={clear}>Clear</button>
         <button name="submit">Start</button>
