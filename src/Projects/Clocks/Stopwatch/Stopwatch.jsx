@@ -21,7 +21,8 @@ function Stopwatch() {
     <div className="stopwatch">
       <h1>Stopwatch</h1>
 
-      {!useCountUp && <CountDown />}
+      {/* TODO: fix countdown component */}
+      {/* {!useCountUp && <CountDown />} */}
 
       {useCountUp && <CountUp />}
 
