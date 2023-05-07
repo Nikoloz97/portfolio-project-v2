@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Stopwatch() {
+function CountDown() {
   const [input, setInput] = useState("");
 
   const numberButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
@@ -36,4 +36,4 @@ function Stopwatch() {
   );
 }
 
-export default Stopwatch;
+export default CountDown;

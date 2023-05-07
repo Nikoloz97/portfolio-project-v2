@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import CountUp from "./CountUp";
-import CountDown from "./Countdown";
+import CountDown from "./CountDown";
 
 function Stopwatch() {
   const [useCountUp, setUseCountUp] = useState(false);
 
+  const [buttonDisplay, setButtonDisplay] = useState("Count Up");
+
   const toggleCountDirection = () => {
     if (!useCountUp) {
       setUseCountUp(true);
+      setButtonDisplay("Count Down");
     } else {
       setUseCountUp(false);
+      setButtonDisplay("Count Up");
     }
   };
 
@@ -17,12 +21,11 @@ function Stopwatch() {
     <div className="stopwatch">
       <h1>Stopwatch</h1>
 
-      {!useCountUp && (
-          <button onClick={toggleCountDirection}>Count Up</button>
-        ) && <CountDown />}
-      {useCountUp && (
-          <button onClick={toggleCountDirection}>Count Down</button>
-        ) && <CountUp />}
+      {!useCountUp && <CountDown />}
+
+      {useCountUp && <CountUp />}
+
+      <button onClick={toggleCountDirection}>{buttonDisplay}</button>
     </div>
   );
 }
