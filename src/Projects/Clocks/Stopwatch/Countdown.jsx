@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 function CountDown() {
-  // TODO: Start button = should activate useEffect (therefore, make separate input and time arrays)
-  const [inputArray, setInputArray] = useState([0, 0, 0, 0, 0]);
+  // TODO: Create a sum variable (keeps track when useEffect stops)
+  // TODO: Whenever minute decreases, seconds = go up to 59 (same for hours-minutes)
 
   const [timeArray, setTimeArray] = useState([0, 0, 0, 0, 0, 0]);
 
@@ -12,11 +12,19 @@ function CountDown() {
 
   let updatedTimeArray = [...timeArray];
 
-  const handleClick = (event) => {
-    // clickCounter = 1/2 = hours, 3/4 = minutes, 5/6 = seconds
-    setClickCounter(clickCounter + 1);
+  let updatedClickCounter = clickCounter;
 
-    switch (clickCounter) {
+  const [isStartClicked, setIsStartClicked] = useState(false);
+
+  const handleNumberButtonClick = (event) => {
+    // clickCounter = 1/2 = hours, 3/4 = minutes, 5/6 = seconds
+
+    updatedClickCounter++;
+
+    setClickCounter(updatedClickCounter);
+
+    // TODO: figure out why ClickCounter cannot be placed in this switch statement
+    switch (updatedClickCounter) {
       case 1:
         updatedTimeArray[0] = event.target.name;
         setTimeArray(updatedTimeArray);
@@ -28,29 +36,35 @@ function CountDown() {
         break;
 
       case 3:
-        updatedTimeArray[2] = event.target.name;
-        setTimeArray(updatedTimeArray);
+        // Cannot have greater than 59 minutes
+        if (event.target.name < 6) {
+          updatedTimeArray[2] = event.target.name;
+          setTimeArray(updatedTimeArray);
+        } else {
+          setClickCounter(updatedClickCounter - 1);
+        }
+        console.log("Oops try again: put in a number lower than 6");
         break;
 
       case 4:
-        // Cannot have greater than 59 minutes
-        if (event.target.name < 6) {
-          updatedTimeArray[3] = event.target.name;
-          setTimeArray(updatedTimeArray);
-        }
-        break;
-
-      case 5:
-        updatedTimeArray[4] = event.target.name;
+        updatedTimeArray[3] = event.target.name;
         setTimeArray(updatedTimeArray);
         break;
 
-      case 6:
-        // Cannot have greater than 59 seconds
+      case 5:
+        // Cannot have greater than 59 minutes
         if (event.target.name < 6) {
-          updatedTimeArray[5] = event.target.name;
+          updatedTimeArray[4] = event.target.name;
           setTimeArray(updatedTimeArray);
+        } else {
+          setClickCounter(updatedClickCounter - 1);
         }
+        console.log("Oops try again: put in a number lower than 6");
+        break;
+
+      case 6:
+        updatedTimeArray[5] = event.target.name;
+        setTimeArray(updatedTimeArray);
         break;
 
       default:
@@ -60,9 +74,17 @@ function CountDown() {
 
   const reset = () => {
     setTimeArray([0, 0, 0, 0, 0, 0]);
+    setClickCounter(0);
+    setIsStartClicked(false);
   };
 
-  const start = () => {};
+  const start = () => {
+    setIsStartClicked(true);
+  };
+
+  const stop = () => {
+    setIsStartClicked(false);
+  };
 
   const displayTime = () => {
     return `${timeArray[0]}:
@@ -74,44 +96,47 @@ function CountDown() {
   };
 
   useEffect(() => {
-    let countdownInterval;
+    if (isStartClicked) {
+      let countdownInterval;
 
-    let updatedArray2 = [...timeArray];
+      let updatedArray2 = [...timeArray];
 
-    if (!timeArray.includes(0)) {
-      countdownInterval = setInterval(() => {
-        if (timeArray[0] > 0) {
-          updatedArray2[0] = timeArray[0] - 1;
-        } else if (timeArray[1] > 0) {
-          updatedArray2[1] = timeArray[1] - 1;
-        } else if (timeArray[2] > 0) {
-          updatedArray2[2] = timeArray[2] - 1;
-        } else if (timeArray[3] > 0) {
-          updatedArray2[3] = timeArray[3] - 1;
-        } else if (timeArray[4] > 0) {
-          updatedArray2[4] = timeArray[4] - 1;
-        } else if (timeArray[5] > 0) {
-          updatedArray2[5] = timeArray[5] - 1;
-        }
+      if (!timeArray.includes(0)) {
+        countdownInterval = setInterval(() => {
+          if (timeArray[5] > 0) {
+            updatedArray2[5] = timeArray[5] - 1;
+          } else if (timeArray[4] > 0) {
+            updatedArray2[4] = timeArray[4] - 1;
+          } else if (timeArray[3] > 0) {
+            updatedArray2[3] = timeArray[3] - 1;
+          } else if (timeArray[2] > 0) {
+            updatedArray2[2] = timeArray[2] - 1;
+          } else if (timeArray[1] > 0) {
+            updatedArray2[1] = timeArray[1] - 1;
+          } else if (timeArray[0] > 0) {
+            updatedArray2[0] = timeArray[0] - 1;
+          }
 
-        setTimeArray(updatedArray2);
-      }, 1000);
+          setTimeArray(updatedArray2);
+        }, 1000);
+      }
+      return () => clearInterval(countdownInterval);
     }
-    return () => clearInterval(countdownInterval);
-  }, [timeArray]);
+  }, [timeArray, isStartClicked]);
 
   return (
     <div>
       <div className="SW">
-        <div className="Display"> {displayTime}</div>
+        <div> {displayTime} </div>
 
         {numberButtons.map((item) => (
-          <button key={item} name={item} onClick={handleClick}>
+          <button key={item} name={item} onClick={handleNumberButtonClick}>
             {item}
           </button>
         ))}
         <button onClick={reset}>Reset</button>
         <button onClick={start}>Start</button>
+        <button onClick={stop}>Stop</button>
       </div>
 
       <div className="Alarm"></div>
