@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 function CountDown() {
-  // TODO: Create a sum variable (keeps track when useEffect stops)
   // TODO: Whenever minute decreases, seconds = go up to 59 (same for hours-minutes)
+  // TODO: Fix sum problem (NaN)
 
   const [timeArray, setTimeArray] = useState([0, 0, 0, 0, 0, 0]);
 
   const numberButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
   const [clickCounter, setClickCounter] = useState(0);
+
+  const [sum, setSum] = useState(0);
 
   let updatedTimeArray = [...timeArray];
 
@@ -26,19 +28,19 @@ function CountDown() {
     // TODO: figure out why ClickCounter cannot be placed in this switch statement
     switch (updatedClickCounter) {
       case 1:
-        updatedTimeArray[0] = event.target.name;
+        updatedTimeArray[0] = Number(event.target.name);
         setTimeArray(updatedTimeArray);
         break;
 
       case 2:
-        updatedTimeArray[1] = event.target.name;
+        updatedTimeArray[1] = Number(event.target.name);
         setTimeArray(updatedTimeArray);
         break;
 
       case 3:
         // Cannot have greater than 59 minutes
         if (event.target.name < 6) {
-          updatedTimeArray[2] = event.target.name;
+          updatedTimeArray[2] = Number(event.target.name);
           setTimeArray(updatedTimeArray);
         } else {
           setClickCounter(updatedClickCounter - 1);
@@ -47,14 +49,14 @@ function CountDown() {
         break;
 
       case 4:
-        updatedTimeArray[3] = event.target.name;
+        updatedTimeArray[3] = Number(event.target.name);
         setTimeArray(updatedTimeArray);
         break;
 
       case 5:
         // Cannot have greater than 59 minutes
         if (event.target.name < 6) {
-          updatedTimeArray[4] = event.target.name;
+          updatedTimeArray[4] = Number(event.target.name);
           setTimeArray(updatedTimeArray);
         } else {
           setClickCounter(updatedClickCounter - 1);
@@ -63,7 +65,7 @@ function CountDown() {
         break;
 
       case 6:
-        updatedTimeArray[5] = event.target.name;
+        updatedTimeArray[5] = Number(event.target.name);
         setTimeArray(updatedTimeArray);
         break;
 
@@ -76,10 +78,19 @@ function CountDown() {
     setTimeArray([0, 0, 0, 0, 0, 0]);
     setClickCounter(0);
     setIsStartClicked(false);
+    setSum(0);
   };
 
   const start = () => {
     setIsStartClicked(true);
+
+    let sumVal;
+
+    timeArray.forEach((number) => {
+      sumVal += number;
+    });
+
+    setSum(sumVal);
   };
 
   const stop = () => {
@@ -101,7 +112,9 @@ function CountDown() {
 
       let updatedArray2 = [...timeArray];
 
-      if (!timeArray.includes(0)) {
+      if (sum != 0) {
+        let newSum = sum - 1;
+        setSum(newSum);
         countdownInterval = setInterval(() => {
           if (timeArray[5] > 0) {
             updatedArray2[5] = timeArray[5] - 1;
@@ -122,7 +135,7 @@ function CountDown() {
       }
       return () => clearInterval(countdownInterval);
     }
-  }, [timeArray, isStartClicked]);
+  }, [isStartClicked]);
 
   return (
     <div>
