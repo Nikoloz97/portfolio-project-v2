@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 function CountDown() {
+  // TODO: Fix countdown (not working)
   // TODO: Whenever minute decreases, seconds = go up to 59 (same for hours-minutes)
-  // TODO: Fix sum problem (NaN)
 
   const [timeArray, setTimeArray] = useState([0, 0, 0, 0, 0, 0]);
 
@@ -84,7 +84,7 @@ function CountDown() {
   const start = () => {
     setIsStartClicked(true);
 
-    let sumVal;
+    let sumVal = 0;
 
     timeArray.forEach((number) => {
       sumVal += number;
@@ -97,14 +97,7 @@ function CountDown() {
     setIsStartClicked(false);
   };
 
-  const displayTime = () => {
-    return `${timeArray[0]}:
-            ${timeArray[1]}:
-            ${timeArray[2]}:
-            ${timeArray[3]}:
-            ${timeArray[4]}:
-            ${timeArray[5]}`;
-  };
+  let displayTime = `${timeArray[0]}${timeArray[1]}:${timeArray[2]}${timeArray[3]}:${timeArray[4]}${timeArray[5]}`;
 
   useEffect(() => {
     if (isStartClicked) {
@@ -112,35 +105,38 @@ function CountDown() {
 
       let updatedArray2 = [...timeArray];
 
-      if (sum != 0) {
+      if (sum !== 0) {
         let newSum = sum - 1;
         setSum(newSum);
         countdownInterval = setInterval(() => {
-          if (timeArray[5] > 0) {
-            updatedArray2[5] = timeArray[5] - 1;
-          } else if (timeArray[4] > 0) {
-            updatedArray2[4] = timeArray[4] - 1;
-          } else if (timeArray[3] > 0) {
-            updatedArray2[3] = timeArray[3] - 1;
-          } else if (timeArray[2] > 0) {
-            updatedArray2[2] = timeArray[2] - 1;
-          } else if (timeArray[1] > 0) {
-            updatedArray2[1] = timeArray[1] - 1;
-          } else if (timeArray[0] > 0) {
-            updatedArray2[0] = timeArray[0] - 1;
-          }
+          if (timeArray[5] === 0 && timeArray[4] === 0)
+            if (timeArray[5] > 0) {
+              updatedArray2[5] = timeArray[5] - 1;
+            } else if (timeArray[4] > 0) {
+              updatedArray2[4] = timeArray[4] - 1;
+            } else if (timeArray[3] > 0) {
+              updatedArray2[3] = timeArray[3] - 1;
+            } else if (timeArray[2] > 0) {
+              updatedArray2[2] = timeArray[2] - 1;
+            } else if (timeArray[1] > 0) {
+              updatedArray2[1] = timeArray[1] - 1;
+            } else if (timeArray[0] > 0) {
+              updatedArray2[0] = timeArray[0] - 1;
+            }
 
           setTimeArray(updatedArray2);
         }, 1000);
       }
       return () => clearInterval(countdownInterval);
     }
-  }, [isStartClicked]);
+  }, [isStartClicked, sum, timeArray]);
 
   return (
     <div>
       <div className="SW">
-        <div> {displayTime} </div>
+        <div className="Container">
+          <div className="Display">{displayTime}</div>
+        </div>
 
         {numberButtons.map((item) => (
           <button key={item} name={item} onClick={handleNumberButtonClick}>
@@ -151,8 +147,6 @@ function CountDown() {
         <button onClick={start}>Start</button>
         <button onClick={stop}>Stop</button>
       </div>
-
-      <div className="Alarm"></div>
     </div>
   );
 }

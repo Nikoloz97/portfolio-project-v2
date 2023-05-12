@@ -27,7 +27,15 @@
 
 /* Projects -> Clocks -> CountDown */
 
-.SW > .Display {
-  background-color: white;
-  color: black;
+.SW > .Container {
+  display: flex;
+  background-color: #383c43;
+  color: white;
+  justify-content: center;
+  border: solid white 1px;
+}
+
+.SW > .Container > .Display {
+  background-color: #383c43;
+  color: white;
 }
