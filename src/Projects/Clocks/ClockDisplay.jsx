@@ -34,14 +34,13 @@ function ClockDisplay() {
     hour12: true,
   };
 
-  // TODO: Figure out why first curly-bracket = updating even though second
+  // TODO: Figure out why first div's curly = updating even though second
   // startTracking isn't changed yet (see useEffect's 2nd param)
   return (
     <div>
       <h1>Clock</h1>
+      <div>{time.toLocaleTimeString("en-US", options)}</div>
       <div>
-        {time.toLocaleTimeString("en-US", options)}
-
         {startTracking ? time.toLocaleTimeString("en-US", options) : null}
       </div>
       <button onClick={handleClick}>{ButtonDisplay}</button>

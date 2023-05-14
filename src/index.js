@@ -11,6 +11,7 @@ import Contact from "./Contact/Contact";
 import Projects from "./Projects/Projects";
 import Calculator from "./Projects/Calculator";
 import Clocks from "./Projects/Clocks/Clocks";
+import Forum from "./Forum/Forum";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
   {
     path: "projects/clocks",
     element: <Clocks />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "forum",
+    element: <Forum />,
     errorElement: <ErrorPage />,
   },
 ]);

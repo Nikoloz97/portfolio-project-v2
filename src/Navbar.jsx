@@ -23,6 +23,9 @@ const Navbar = () => {
           <MenuItem as={Link} to="/projects">
             <Button>Projects</Button>
           </MenuItem>
+          <MenuItem as={Link} to="/forum">
+            <Button>Forum</Button>
+          </MenuItem>
           <MenuItem as={Link} to="/contact">
             <Button>Contact</Button>
           </MenuItem>
