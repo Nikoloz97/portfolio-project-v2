@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "semantic-ui-css/semantic.min.css";
 import Navbar from "./Navbar";
 import Home from "./Home/Home";
 import ErrorPage from "./Error-page";

@@ -1,15 +1,14 @@
 .Navbar {
-  display: flex;
   justify-content: space-around;
   align-items: center;
-  min-height: 10vh;
-  background-color: #383c43;
+  background-color: #383c43 !important;
   color: white;
+  /* margin-bottom: 10px !important; */
 }
 
 .Default-Page {
   background-color: #282c34;
-  min-height: 90vh;
+  min-height: 94.1vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,4 +37,11 @@
 .SW > .Container > .Display {
   background-color: #383c43;
   color: white;
+}
+
+/* Forum */
+
+.Forum-Page {
+  background-color: #282c34;
+  min-height: 94.1vh;
 }
