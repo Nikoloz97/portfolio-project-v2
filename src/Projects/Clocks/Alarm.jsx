@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function Alarm() {
   const [inputTime, setInputTime] = useState("");
-  const [beginCoutndown, setBeginCountdown] = useState(false);
+  const [beginCountdown, setBeginCountdown] = useState(false);
   const [isRinging, setIsRinging] = useState(false);
   const [remainingTime, setRemainingTime] = useState(inputTime - new Date());
 
@@ -53,7 +53,7 @@ function Alarm() {
   return (
     <div>
       <h1>Alarm</h1>
-      {beginCoutndown ? <p>{formatTime(remainingTime)}</p> : null}
+      {beginCountdown ? <p>{formatTime(remainingTime)}</p> : null}
       <input type="time" value={inputTime} onChange={handleTimeChange} />
       {isRinging ? <p>Alarm is ringing!</p> : null}
       <button onClick={startAlarm}>Start</button>

@@ -1,9 +1,20 @@
-import React from "react";
+import { React, useState } from "react";
 import { Button, Card, Image } from "semantic-ui-react";
+import axios from "axios";
 
 function Forum() {
+  const [data, setData] = useState([]);
+  const getProfileCards = () => {
+    axios.get("https://localhost:7047/api/forum").then((response) => {
+      setData(response.data);
+    });
+    console.log(data);
+  };
+
   return (
     <div className="Forum-Page">
+      <Button onClick={getProfileCards}>Get ProfileCards</Button>
+
       <Card.Group>
         <Card>
           <Card.Content>
