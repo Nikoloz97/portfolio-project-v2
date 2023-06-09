@@ -19,7 +19,7 @@
 
 /* Projects -> Calculator */
 
-.Display {
+.Calc-Display {
   background-color: white;
   color: black;
 }
@@ -44,4 +44,13 @@
 .Forum-Page {
   background-color: #282c34;
   min-height: 95.5vh;
+}
+
+.Forum-Page > .Container {
+  background-color: #282c34;
+  min-height: 95.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
