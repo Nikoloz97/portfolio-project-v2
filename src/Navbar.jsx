@@ -4,12 +4,6 @@ import "./App.css";
 import { Link, BrowserRouter } from "react-router-dom";
 
 const Navbar = () => {
-  // const navLinksStyle = {
-  //   color: "black",
-  //   padding: "10px",
-  //   textDecoration: "none",
-  // };
-
   return (
     <div>
       <BrowserRouter>

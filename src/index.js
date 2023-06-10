@@ -4,7 +4,6 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
-import Navbar from "./Navbar";
 import Home from "./Home/Home";
 import ErrorPage from "./Error-page";
 import About from "./About/About";
@@ -13,6 +12,8 @@ import Projects from "./Projects/Projects";
 import Calculator from "./Projects/Calculator";
 import Clocks from "./Projects/Clocks/Clocks";
 import Forum from "./Forum/Forum";
+import Login from "./Login";
+import Navbar from "./Navbar";
 
 const router = createBrowserRouter([
   {
@@ -35,19 +36,19 @@ const router = createBrowserRouter([
     path: "projects",
     element: <Projects />,
     errorElement: <ErrorPage />,
-    // children: [
-    //   {
-    //     path: "projects/calculator",
-    //     element: <Calculator />,
-    //     errorElement: <ErrorPage />,
-    //   },
-    // ],
+    children: [
+      {
+        path: "projects/calculator",
+        element: <Calculator />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
-  {
-    path: "projects/calculator",
-    element: <Calculator />,
-    errorElement: <ErrorPage />,
-  },
+  // {
+  //   path: "projects/calculator",
+  //   element: <Calculator />,
+  //   errorElement: <ErrorPage />,
+  // },
   {
     path: "projects/clocks",
     element: <Clocks />,
@@ -58,11 +59,14 @@ const router = createBrowserRouter([
     element: <Forum />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "login",
+    element: <Login />,
+    errorElement: <ErrorPage />,
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Navbar />
     <RouterProvider router={router} />

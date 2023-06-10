@@ -1,13 +1,13 @@
 import React from "react";
 
-const Home = () => {
+const Login = () => {
   return (
     <>
       <header className="Default-Page">
-        <p>Welcome to my porfolio page</p>
+        <p>Welcome to the login page</p>
       </header>
     </>
   );
 };
 
-export default Home;
+export default Login;
