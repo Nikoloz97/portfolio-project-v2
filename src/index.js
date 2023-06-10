@@ -1,77 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
-import Home from "./Home/Home";
-import ErrorPage from "./Error-page";
-import About from "./About/About";
-import Contact from "./Contact/Contact";
-import Projects from "./Projects/Projects";
-import Calculator from "./Projects/Calculator";
-import Clocks from "./Projects/Clocks/Clocks";
-import Forum from "./Forum/Forum";
-import Login from "./Login";
-import Navbar from "./Navbar";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "about",
-    element: <About />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "contact",
-    element: <Contact />,
-    errorElement: <ErrorPage />,
-  },
-  // TODO: Child route not working (see comment below)
-  {
-    path: "projects",
-    element: <Projects />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "projects/calculator",
-        element: <Calculator />,
-        errorElement: <ErrorPage />,
-      },
-    ],
-  },
-  // {
-  //   path: "projects/calculator",
-  //   element: <Calculator />,
-  //   errorElement: <ErrorPage />,
-  // },
-  {
-    path: "projects/clocks",
-    element: <Clocks />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "forum",
-    element: <Forum />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-    errorElement: <ErrorPage />,
-  },
-]);
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Navbar />
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
