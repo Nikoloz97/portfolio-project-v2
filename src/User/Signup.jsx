@@ -24,8 +24,8 @@ const SignUp = () => {
           Log in
         </Button>
 
-        <Form>
-          <Form.Group widths="equal">
+        <Form className="Default-Form">
+          <Form.Group widths="equal" style={{ marginTop: "10px" }}>
             <Form.Input fluid label="First name" placeholder="First name" />
             <Form.Input fluid label="Last name" placeholder="Last name" />
             <Form.Select
@@ -34,9 +34,11 @@ const SignUp = () => {
               options={options}
               placeholder="Gender"
             />
+            <Form.Input fluid label="Age" placeholder="Age" />
           </Form.Group>
-          <Form.Group inline>
-            <label>Size</label>
+
+          <Form.Group inline style={{ marginTop: "10px" }}>
+            <label>Size: </label>
             <Form.Radio
               label="Small"
               value="sm"
@@ -55,12 +57,19 @@ const SignUp = () => {
               checked={value === "Large"}
               onChange={handleChange}
             />
+
+            <Form.Group widths="equal" style={{ marginTop: "10px" }}>
+              <label style={{ fontWeight: "bold" }}>Interests: </label>
+              <Form.Input placeholder="Interest one..." />
+              <Form.Input placeholder="Interest two..." />
+              <Form.Input placeholder="Interest three..." />
+            </Form.Group>
           </Form.Group>
+
           <Form.TextArea
-            label="About"
-            placeholder="Tell us more about you..."
+            label="Bio"
+            placeholder="Write a couple sentences about yourself..."
           />
-          <Form.Checkbox label="I agree to the Terms and Conditions" />
           <Form.Button>Submit</Form.Button>
         </Form>
       </header>
