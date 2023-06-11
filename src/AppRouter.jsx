@@ -8,7 +8,8 @@ import Projects from "./Projects/Projects";
 import Calculator from "./Projects/Calculator";
 import Clocks from "./Projects/Clocks/Clocks";
 import Forum from "./Forum/Forum";
-import Login from "./Login";
+import Login from "./User/Login";
+import SignUp from "./User/Signup";
 
 function AppRouter() {
   return (
@@ -23,6 +24,7 @@ function AppRouter() {
         <Route path="/projects/clocks" element={<Clocks />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );

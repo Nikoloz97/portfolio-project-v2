@@ -3,7 +3,13 @@
   align-items: center;
   background-color: #383c43 !important;
   color: white;
-  /* margin-bottom: 10px !important; */
+}
+
+.Avatar {
+  background-color: #383c43 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Default-Page {
