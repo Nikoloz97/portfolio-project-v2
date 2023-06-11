@@ -10,6 +10,7 @@ import Clocks from "./Projects/Clocks/Clocks";
 import Forum from "./Forum/Forum";
 import Login from "./User/Login";
 import SignUp from "./User/Signup";
+import FantasyAnalyzer from "./Projects/Basketball/FantasyAnalyzer";
 
 function AppRouter() {
   return (
@@ -25,6 +26,10 @@ function AppRouter() {
         <Route path="/forum" element={<Forum />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/projects/basketball/fantasyAnalyzer"
+          element={<FantasyAnalyzer />}
+        />
       </Routes>
     </BrowserRouter>
   );

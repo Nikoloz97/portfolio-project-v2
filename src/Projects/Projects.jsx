@@ -16,8 +16,8 @@ const Projects = () => {
           <MenuItem as={Link} to="/projects/places-travelled">
             <Button>Places Travelled</Button>
           </MenuItem>
-          <MenuItem as={Link} to="/projects/pdf-converted">
-            <Button>PDF Converter</Button>
+          <MenuItem as={Link} to="/projects/basketball/fantasyAnalyzer">
+            <Button>Basketball fantasy analyzer</Button>
           </MenuItem>
           <MenuItem as={Link} to="/projects/clocks">
             <Button>Clocks</Button>
