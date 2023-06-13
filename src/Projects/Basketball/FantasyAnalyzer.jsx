@@ -13,19 +13,24 @@ import {
 import axios from "axios";
 
 function FantasyAnalyzer() {
-  const seasons = {
+  const [playerInput, setPlayerInput] = useState("");
+  const playerObj = {
     method: "GET",
-    url: "https://api-nba-v1.p.rapidapi.com/seasons",
+    url: "https://tank01-fantasy-stats.p.rapidapi.com/getNBAPlayerInfo",
+    params: {
+      playerName: playerInput,
+      statsToGet: "averages",
+    },
     headers: {
       "X-RapidAPI-Key": "2a68275cbamsha4332cacc57200cp19e3b9jsn35ead262c58d",
-      "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com",
+      "X-RapidAPI-Host": "tank01-fantasy-stats.p.rapidapi.com",
     },
   };
 
-  async function fetchSeasons() {
+  async function fetchPlayerObj() {
     try {
-      const response = await axios.request(seasons);
-      console.log(response.data);
+      const response = await axios.request(playerObj);
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -84,21 +89,27 @@ function FantasyAnalyzer() {
   ]);
 
   const dummyPlayerOptions = [
-    { key: 1, text: "Lebron James", value: "LBJ" },
-    { key: 2, text: "James Harden", value: "JH" },
-    { key: 3, text: "Jimmy Butler", value: "JB" },
+    { key: 1, text: "Lebron James", value: "Lebron James" },
+    { key: 2, text: "James Harden", value: "James Harden" },
+    { key: 3, text: "Jimmy Butler", value: "Jimmy Butler" },
   ];
 
   const fetchPlayerOptions = () => {
     return null;
   };
 
-  const handleDropdownChange = (index, event) => {
+  // Why is it not setting the state?
+  const handleDropdownSelection = (index, event) => {
     const value = event.target.innerText;
     const updatedSelectedPlayers = [...selectedPlayers];
     updatedSelectedPlayers[index].playerName = value;
     updatedSelectedPlayers[index].isModified = true;
     setSelectedPlayers(updatedSelectedPlayers);
+
+    console.log(value);
+    setPlayerInput(value);
+    console.log(playerInput);
+    fetchPlayerObj();
   };
 
   const playerDropdowns = [
@@ -256,15 +267,13 @@ function FantasyAnalyzer() {
               label={x.label}
               placeholder={x.placeholder}
               options={dummyPlayerOptions}
-              onChange={(event) => handleDropdownChange(index, event)}
+              onChange={(event) => handleDropdownSelection(index, event)}
             />
-            {selectedPlayers[index].isModified ? "tacos" : "notacos"}
+            {selectedPlayers[index].isModified ? "Hello there" : null}
           </div>
         ))}
         <Form.Button>Submit</Form.Button>
       </Form>
-
-      <Button onClick={fetchSeasons}>Fetch Seasons Test</Button>
 
       <Modal
         onClose={() => setOpen(false)}
