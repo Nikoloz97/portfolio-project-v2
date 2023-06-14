@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Form,
   Button,
@@ -8,13 +8,29 @@ import {
   Segment,
   Grid,
   Header,
+  Card,
+  Image,
 } from "semantic-ui-react";
 
 import axios from "axios";
 
 function FantasyAnalyzer() {
-  const [playerInput, setPlayerInput] = useState("");
-  const playerObj = {
+  const [playerInput, setPlayerInput] = useState(undefined);
+
+  useEffect(() => {
+    async function fetchPlayerObj() {
+      try {
+        const response = await axios.request(playerReq);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchPlayerObj();
+  }, [playerInput]);
+
+  const playerReq = {
     method: "GET",
     url: "https://tank01-fantasy-stats.p.rapidapi.com/getNBAPlayerInfo",
     params: {
@@ -27,64 +43,212 @@ function FantasyAnalyzer() {
     },
   };
 
-  async function fetchPlayerObj() {
-    try {
-      const response = await axios.request(playerObj);
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   const [playerOptions, setPlayerOptions] = useState([]);
   const [selectedPlayers, setSelectedPlayers] = useState([
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      // TODO: need stats.name, stats.value
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
     {
       playerName: "",
+      teamName: "",
+      playerURL: "",
       isModified: false,
+      stats: {
+        points: "",
+        fieldGoalPerc: 0,
+        freeThrowPerc: 0,
+        threePointers: 0,
+        reb: 0,
+        assists: 0,
+        steals: 0,
+        blocks: 0,
+        Turnovers: 0,
+      },
     },
   ]);
 
@@ -98,7 +262,6 @@ function FantasyAnalyzer() {
     return null;
   };
 
-  // Why is it not setting the state?
   const handleDropdownSelection = (index, event) => {
     const value = event.target.innerText;
     const updatedSelectedPlayers = [...selectedPlayers];
@@ -106,10 +269,7 @@ function FantasyAnalyzer() {
     updatedSelectedPlayers[index].isModified = true;
     setSelectedPlayers(updatedSelectedPlayers);
 
-    console.log(value);
     setPlayerInput(value);
-    console.log(playerInput);
-    fetchPlayerObj();
   };
 
   const playerDropdowns = [
@@ -175,6 +335,7 @@ function FantasyAnalyzer() {
     },
   ];
 
+  // TODO: Separate modal stuff out in separate component
   //Modal stuff... (own component?)
   const [open, setOpen] = useState(false);
   const [userCats, setUserCats] = useState([
@@ -269,66 +430,99 @@ function FantasyAnalyzer() {
               options={dummyPlayerOptions}
               onChange={(event) => handleDropdownSelection(index, event)}
             />
-            {selectedPlayers[index].isModified ? "Hello there" : null}
+            {selectedPlayers[index].isModified
+              ? selectedPlayers[index].map((player) => (
+                  <Card>
+                    <Card.Content>
+                      <Image
+                        floated="right"
+                        size="mini"
+                        src={player.playerURL}
+                      />
+                      <Card.Header>{player.playerName}</Card.Header>
+                      <Card.Meta>{player.teamName}</Card.Meta>
+                      <Card.Description>
+                        {player.stats.map((stat) => (
+                          <div>
+                            <header>stat.name</header>
+                            <p>stat.value</p>
+                          </div>
+                        ))}
+                      </Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                      <div className="ui two buttons">
+                        <Button basic color="green">
+                          Approve
+                        </Button>
+                        <Button basic color="red">
+                          Decline
+                        </Button>
+                      </div>
+                    </Card.Content>
+                  </Card>
+                ))
+              : null}
           </div>
         ))}
-        <Form.Button>Submit</Form.Button>
+
+        {/* TODO: Turn modal = separate component (child?) */}
+
+        <Modal
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
+          trigger={<Form.Button>Show Results</Form.Button>}
+        >
+          <Modal.Header>Results</Modal.Header>
+
+          <Modal.Content>
+            <Segment>
+              <Grid columns={2} relaxed="very">
+                <Grid.Column>
+                  <Header>Your team</Header>
+
+                  <List selection verticalAlign="middle">
+                    {userCats.map((x) => (
+                      <List.Item>
+                        <List.Content>
+                          <List.Header>{x.category}</List.Header>
+                          <List>{x.value}</List>
+                        </List.Content>
+                      </List.Item>
+                    ))}
+                  </List>
+                </Grid.Column>
+                <Grid.Column>
+                  <Header>Top-150 Average</Header>
+                  <List selection verticalAlign="middle">
+                    {topCats.map((x) => (
+                      <List.Item>
+                        <List.Content>
+                          <List.Header>{x.category}</List.Header>
+                          <List>{x.value}</List>
+                        </List.Content>
+                      </List.Item>
+                    ))}
+                  </List>
+                </Grid.Column>
+              </Grid>
+
+              <Divider vertical>VS</Divider>
+            </Segment>
+          </Modal.Content>
+
+          <Modal.Actions>
+            <Button
+              content="Return"
+              labelPosition="left"
+              icon="checkmark"
+              onClick={() => setOpen(false)}
+              positive
+            />
+          </Modal.Actions>
+        </Modal>
       </Form>
-
-      <Modal
-        onClose={() => setOpen(false)}
-        onOpen={() => setOpen(true)}
-        open={open}
-        trigger={<Button>Show Results</Button>}
-      >
-        <Modal.Header>Results</Modal.Header>
-
-        <Modal.Content>
-          <Segment>
-            <Grid columns={2} relaxed="very">
-              <Grid.Column>
-                <Header>Your team</Header>
-
-                <List selection verticalAlign="middle">
-                  {userCats.map((x) => (
-                    <List.Item>
-                      <List.Content>
-                        <List.Header>{x.category}</List.Header>
-                        <List>{x.value}</List>
-                      </List.Content>
-                    </List.Item>
-                  ))}
-                </List>
-              </Grid.Column>
-              <Grid.Column>
-                <Header>Top-150 Average</Header>
-                <List selection verticalAlign="middle">
-                  {topCats.map((x) => (
-                    <List.Item>
-                      <List.Content>
-                        <List.Header>{x.category}</List.Header>
-                        <List>{x.value}</List>
-                      </List.Content>
-                    </List.Item>
-                  ))}
-                </List>
-              </Grid.Column>
-            </Grid>
-
-            <Divider vertical>VS</Divider>
-          </Segment>
-        </Modal.Content>
-
-        <Modal.Actions>
-          <Button
-            content="Return"
-            labelPosition="left"
-            icon="checkmark"
-            onClick={() => setOpen(false)}
-            positive
-          />
-        </Modal.Actions>
-      </Modal>
     </div>
   );
 }
