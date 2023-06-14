@@ -50,205 +50,432 @@ function FantasyAnalyzer() {
       teamName: "",
       playerURL: "",
       isModified: false,
-      // TODO: need stats.name, stats.value
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
     {
       playerName: "",
       teamName: "",
       playerURL: "",
       isModified: false,
-      stats: {
-        points: "",
-        fieldGoalPerc: 0,
-        freeThrowPerc: 0,
-        threePointers: 0,
-        reb: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        Turnovers: 0,
-      },
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+      ],
     },
   ]);
 
