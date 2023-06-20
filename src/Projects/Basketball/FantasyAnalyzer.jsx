@@ -15,26 +15,99 @@ import {
 import axios from "axios";
 
 function FantasyAnalyzer() {
-  const [playerInput, setPlayerInput] = useState(undefined);
+  const [playerNameInput, setPlayerNameInput] = useState(undefined);
+
+  // const [playerToUpdateModified, setPlayerToUpdateModified] =
+  //   useState(undefined);
+
+  const [latestDropdownModifiedIndex, setLatestDropdownModifiedIndex] =
+    useState(0);
 
   useEffect(() => {
-    async function fetchPlayerObj() {
+    // TODO: Fix - useEffect runs on render
+    // TODO: Fix -
+    const fetchSelectedPlayer = async () => {
       try {
         const response = await axios.request(playerReq);
+
+        const updatedSelectedPlayers = [...selectedPlayers];
+
         console.log(response);
+
+        const currentPlayer =
+          updatedSelectedPlayers[latestDropdownModifiedIndex];
+
+        const fetchedData = response.data.body[0];
+
+        populateCurrentPlayer(currentPlayer, fetchedData);
+
+        setPlayerToUpdateModified(currentPlayer);
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
-    fetchPlayerObj();
-  }, [playerInput]);
+    const populateCurrentPlayer = (currentPlayer, fetchedData) => {
+      console.log(currentPlayer);
+
+      currentPlayer.teamName = fetchedData.team;
+
+      currentPlayer.playerURL = fetchedData.espnHeadshot;
+
+      currentPlayer.stats[0].value = fetchedData.stats.pts;
+
+      currentPlayer.stats[1].value = fetchedData.stats.fgp;
+
+      currentPlayer.stats[2].value = fetchedData.stats.ftp;
+
+      currentPlayer.stats[3].value = fetchedData.stats.tptfgm;
+
+      currentPlayer.stats[4].value = fetchedData.stats.reb;
+
+      currentPlayer.stats[5].value = fetchedData.stats.blk;
+
+      currentPlayer.stats[6].value = fetchedData.stats.TOV;
+
+      currentPlayer.stats[7].value = fetchedData.stats.ast;
+
+      currentPlayer.stats[8].value = fetchedData.stats.stl;
+
+      currentPlayer.isModified = true;
+    };
+
+    fetchSelectedPlayer();
+  }, [playerNameInput]);
+
+  // useEffect(() => {
+  //   const updatedSelectedPlayers = [...selectedPlayers];
+  //   const currentPlayer = updatedSelectedPlayers[latestDropdownModifiedIndex];
+
+  //   currentPlayer.isModified = true;
+  // }, [playerToUpdateModified]);
+
+  const fetchPlayerOptions = () => {
+    return null;
+  };
+
+  const [playerOptions, setPlayerOptions] = useState([]);
+
+  const handleDropdownSelection = (index, event) => {
+    const value = event.target.innerText;
+    const updatedSelectedPlayers = [...selectedPlayers];
+    updatedSelectedPlayers[index].playerName = value;
+
+    setSelectedPlayers(updatedSelectedPlayers);
+
+    setLatestDropdownModifiedIndex(index);
+
+    setPlayerNameInput(value);
+  };
 
   const playerReq = {
     method: "GET",
     url: "https://tank01-fantasy-stats.p.rapidapi.com/getNBAPlayerInfo",
     params: {
-      playerName: playerInput,
+      playerName: playerNameInput,
       statsToGet: "averages",
     },
     headers: {
@@ -43,7 +116,6 @@ function FantasyAnalyzer() {
     },
   };
 
-  const [playerOptions, setPlayerOptions] = useState([]);
   const [selectedPlayers, setSelectedPlayers] = useState([
     {
       playerName: "",
@@ -79,40 +151,12 @@ function FantasyAnalyzer() {
           name: "Turnovers",
           value: 0,
         },
-      ],
-    },
-    {
-      playerName: "",
-      teamName: "",
-      playerURL: "",
-      isModified: false,
-      stats: [
         {
-          name: "PTS",
+          name: "Assists",
           value: 0,
         },
         {
-          name: "FG%",
-          value: 0,
-        },
-        {
-          name: "FT%",
-          value: 0,
-        },
-        {
-          name: "3PM",
-          value: 0,
-        },
-        {
-          name: "Rebounds",
-          value: 0,
-        },
-        {
-          name: "Blocks",
-          value: 0,
-        },
-        {
-          name: "Turnovers",
+          name: "Steals",
           value: 0,
         },
       ],
@@ -151,40 +195,12 @@ function FantasyAnalyzer() {
           name: "Turnovers",
           value: 0,
         },
-      ],
-    },
-    {
-      playerName: "",
-      teamName: "",
-      playerURL: "",
-      isModified: false,
-      stats: [
         {
-          name: "PTS",
+          name: "Assists",
           value: 0,
         },
         {
-          name: "FG%",
-          value: 0,
-        },
-        {
-          name: "FT%",
-          value: 0,
-        },
-        {
-          name: "3PM",
-          value: 0,
-        },
-        {
-          name: "Rebounds",
-          value: 0,
-        },
-        {
-          name: "Blocks",
-          value: 0,
-        },
-        {
-          name: "Turnovers",
+          name: "Steals",
           value: 0,
         },
       ],
@@ -223,40 +239,12 @@ function FantasyAnalyzer() {
           name: "Turnovers",
           value: 0,
         },
-      ],
-    },
-    {
-      playerName: "",
-      teamName: "",
-      playerURL: "",
-      isModified: false,
-      stats: [
         {
-          name: "PTS",
+          name: "Assists",
           value: 0,
         },
         {
-          name: "FG%",
-          value: 0,
-        },
-        {
-          name: "FT%",
-          value: 0,
-        },
-        {
-          name: "3PM",
-          value: 0,
-        },
-        {
-          name: "Rebounds",
-          value: 0,
-        },
-        {
-          name: "Blocks",
-          value: 0,
-        },
-        {
-          name: "Turnovers",
+          name: "Steals",
           value: 0,
         },
       ],
@@ -295,40 +283,12 @@ function FantasyAnalyzer() {
           name: "Turnovers",
           value: 0,
         },
-      ],
-    },
-    {
-      playerName: "",
-      teamName: "",
-      playerURL: "",
-      isModified: false,
-      stats: [
         {
-          name: "PTS",
+          name: "Assists",
           value: 0,
         },
         {
-          name: "FG%",
-          value: 0,
-        },
-        {
-          name: "FT%",
-          value: 0,
-        },
-        {
-          name: "3PM",
-          value: 0,
-        },
-        {
-          name: "Rebounds",
-          value: 0,
-        },
-        {
-          name: "Blocks",
-          value: 0,
-        },
-        {
-          name: "Turnovers",
+          name: "Steals",
           value: 0,
         },
       ],
@@ -367,40 +327,12 @@ function FantasyAnalyzer() {
           name: "Turnovers",
           value: 0,
         },
-      ],
-    },
-    {
-      playerName: "",
-      teamName: "",
-      playerURL: "",
-      isModified: false,
-      stats: [
         {
-          name: "PTS",
+          name: "Assists",
           value: 0,
         },
         {
-          name: "FG%",
-          value: 0,
-        },
-        {
-          name: "FT%",
-          value: 0,
-        },
-        {
-          name: "3PM",
-          value: 0,
-        },
-        {
-          name: "Rebounds",
-          value: 0,
-        },
-        {
-          name: "Blocks",
-          value: 0,
-        },
-        {
-          name: "Turnovers",
+          name: "Steals",
           value: 0,
         },
       ],
@@ -439,6 +371,14 @@ function FantasyAnalyzer() {
           name: "Turnovers",
           value: 0,
         },
+        {
+          name: "Assists",
+          value: 0,
+        },
+        {
+          name: "Steals",
+          value: 0,
+        },
       ],
     },
     {
@@ -473,6 +413,234 @@ function FantasyAnalyzer() {
         },
         {
           name: "Turnovers",
+          value: 0,
+        },
+        {
+          name: "Assists",
+          value: 0,
+        },
+        {
+          name: "Steals",
+          value: 0,
+        },
+      ],
+    },
+    {
+      playerName: "",
+      teamName: "",
+      playerURL: "",
+      isModified: false,
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+        {
+          name: "Assists",
+          value: 0,
+        },
+        {
+          name: "Steals",
+          value: 0,
+        },
+      ],
+    },
+    {
+      playerName: "",
+      teamName: "",
+      playerURL: "",
+      isModified: false,
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+        {
+          name: "Assists",
+          value: 0,
+        },
+        {
+          name: "Steals",
+          value: 0,
+        },
+      ],
+    },
+    {
+      playerName: "",
+      teamName: "",
+      playerURL: "",
+      isModified: false,
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+        {
+          name: "Assists",
+          value: 0,
+        },
+        {
+          name: "Steals",
+          value: 0,
+        },
+      ],
+    },
+    {
+      playerName: "",
+      teamName: "",
+      playerURL: "",
+      isModified: false,
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+        {
+          name: "Assists",
+          value: 0,
+        },
+        {
+          name: "Steals",
+          value: 0,
+        },
+      ],
+    },
+    {
+      playerName: "",
+      teamName: "",
+      playerURL: "",
+      isModified: false,
+      stats: [
+        {
+          name: "PTS",
+          value: 0,
+        },
+        {
+          name: "FG%",
+          value: 0,
+        },
+        {
+          name: "FT%",
+          value: 0,
+        },
+        {
+          name: "3PM",
+          value: 0,
+        },
+        {
+          name: "Rebounds",
+          value: 0,
+        },
+        {
+          name: "Blocks",
+          value: 0,
+        },
+        {
+          name: "Turnovers",
+          value: 0,
+        },
+        {
+          name: "Assists",
+          value: 0,
+        },
+        {
+          name: "Steals",
           value: 0,
         },
       ],
@@ -484,20 +652,6 @@ function FantasyAnalyzer() {
     { key: 2, text: "James Harden", value: "James Harden" },
     { key: 3, text: "Jimmy Butler", value: "Jimmy Butler" },
   ];
-
-  const fetchPlayerOptions = () => {
-    return null;
-  };
-
-  const handleDropdownSelection = (index, event) => {
-    const value = event.target.innerText;
-    const updatedSelectedPlayers = [...selectedPlayers];
-    updatedSelectedPlayers[index].playerName = value;
-    updatedSelectedPlayers[index].isModified = true;
-    setSelectedPlayers(updatedSelectedPlayers);
-
-    setPlayerInput(value);
-  };
 
   const playerDropdowns = [
     {
@@ -563,7 +717,6 @@ function FantasyAnalyzer() {
   ];
 
   // TODO: Separate modal stuff out in separate component
-  //Modal stuff... (own component?)
   const [open, setOpen] = useState(false);
   const [userCats, setUserCats] = useState([
     {
@@ -657,43 +810,43 @@ function FantasyAnalyzer() {
               options={dummyPlayerOptions}
               onChange={(event) => handleDropdownSelection(index, event)}
             />
-            {selectedPlayers[index].isModified
-              ? selectedPlayers[index].map((player) => (
-                  <Card>
-                    <Card.Content>
-                      <Image
-                        floated="right"
-                        size="mini"
-                        src={player.playerURL}
-                      />
-                      <Card.Header>{player.playerName}</Card.Header>
-                      <Card.Meta>{player.teamName}</Card.Meta>
-                      <Card.Description>
-                        {player.stats.map((stat) => (
-                          <div>
-                            <header>stat.name</header>
-                            <p>stat.value</p>
-                          </div>
-                        ))}
-                      </Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                      <div className="ui two buttons">
-                        <Button basic color="green">
-                          Approve
-                        </Button>
-                        <Button basic color="red">
-                          Decline
-                        </Button>
+
+            {selectedPlayers[index].isModified ? (
+              <Card>
+                <Card.Content>
+                  <Image
+                    floated="right"
+                    size="mini"
+                    src={selectedPlayers[index].playerURL}
+                  />
+                  <Card.Header>{selectedPlayers[index].playerName}</Card.Header>
+                  <Card.Meta>{selectedPlayers[index].teamName}</Card.Meta>
+
+                  <Card.Description>
+                    {selectedPlayers[index].stats.map((stat) => (
+                      <div key={index}>
+                        <header>{stat.name}</header>
+                        <p>{stat.value}</p>
                       </div>
-                    </Card.Content>
-                  </Card>
-                ))
-              : null}
+                    ))}
+                  </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                  <div className="ui two buttons">
+                    <Button basic color="green">
+                      Approve
+                    </Button>
+                    <Button basic color="red">
+                      Decline
+                    </Button>
+                  </div>
+                </Card.Content>
+              </Card>
+            ) : null}
           </div>
         ))}
 
-        {/* TODO: Turn modal = separate component (child?) */}
+        {/* TODO: Modal stuff (JSX version) */}
 
         <Modal
           onClose={() => setOpen(false)}
@@ -710,8 +863,8 @@ function FantasyAnalyzer() {
                   <Header>Your team</Header>
 
                   <List selection verticalAlign="middle">
-                    {userCats.map((x) => (
-                      <List.Item>
+                    {userCats.map((x, index) => (
+                      <List.Item key={index}>
                         <List.Content>
                           <List.Header>{x.category}</List.Header>
                           <List>{x.value}</List>
@@ -723,8 +876,8 @@ function FantasyAnalyzer() {
                 <Grid.Column>
                   <Header>Top-150 Average</Header>
                   <List selection verticalAlign="middle">
-                    {topCats.map((x) => (
-                      <List.Item>
+                    {topCats.map((x, index) => (
+                      <List.Item key={index}>
                         <List.Content>
                           <List.Header>{x.category}</List.Header>
                           <List>{x.value}</List>
