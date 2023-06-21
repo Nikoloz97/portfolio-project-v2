@@ -1,21 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  Form,
-  Button,
-  Modal,
-  List,
-  Divider,
-  Segment,
-  Grid,
-  Header,
-  Card,
-  Image,
-} from "semantic-ui-react";
-
+import { Form, Button, Card, Image } from "semantic-ui-react";
 import axios from "axios";
+import ResultsModal from "./ResultsModal";
 
 function FantasyAnalyzer() {
-  const [playerNameInput, setPlayerNameInput] = useState(undefined);
+  const [playerNameInput, setPlayerNameInput] = useState("");
 
   // const [playerToUpdateModified, setPlayerToUpdateModified] =
   //   useState(undefined);
@@ -24,11 +13,10 @@ function FantasyAnalyzer() {
     useState(0);
 
   useEffect(() => {
-    // TODO: Fix - useEffect runs on render
-    // TODO: Fix -
+    // TODO: Fix - currentPlayer.isModified = not evaluated on time
     const fetchSelectedPlayer = async () => {
       try {
-        const response = await axios.request(playerReq);
+        const response = await axios.request(getPlayer);
 
         const updatedSelectedPlayers = [...selectedPlayers];
 
@@ -41,7 +29,7 @@ function FantasyAnalyzer() {
 
         populateCurrentPlayer(currentPlayer, fetchedData);
 
-        setPlayerToUpdateModified(currentPlayer);
+        // setPlayerToUpdateModified(currentPlayer);
       } catch (error) {
         console.error(error);
       }
@@ -75,19 +63,22 @@ function FantasyAnalyzer() {
       currentPlayer.isModified = true;
     };
 
-    fetchSelectedPlayer();
+    if (playerNameInput !== "") {
+      fetchSelectedPlayer();
+    }
   }, [playerNameInput]);
 
-  // useEffect(() => {
-  //   const updatedSelectedPlayers = [...selectedPlayers];
-  //   const currentPlayer = updatedSelectedPlayers[latestDropdownModifiedIndex];
+  // TODO: Don't uncomment below here
+  // // useEffect(() => {
+  // //   const updatedSelectedPlayers = [...selectedPlayers];
+  // //   const currentPlayer = updatedSelectedPlayers[latestDropdownModifiedIndex];
 
-  //   currentPlayer.isModified = true;
-  // }, [playerToUpdateModified]);
+  // //   currentPlayer.isModified = true;
+  // // }, [playerToUpdateModified]);
 
-  const fetchPlayerOptions = () => {
-    return null;
-  };
+  // const fetchPlayerOptions = () => {
+  //   return null;
+  // };
 
   const [playerOptions, setPlayerOptions] = useState([]);
 
@@ -103,7 +94,7 @@ function FantasyAnalyzer() {
     setPlayerNameInput(value);
   };
 
-  const playerReq = {
+  const getPlayer = {
     method: "GET",
     url: "https://tank01-fantasy-stats.p.rapidapi.com/getNBAPlayerInfo",
     params: {
@@ -655,61 +646,73 @@ function FantasyAnalyzer() {
 
   const playerDropdowns = [
     {
+      key: 1,
       label: "Player one",
       placeholder: "Choose player one",
       options: dummyPlayerOptions,
     },
     {
+      key: 2,
       label: "Player two",
       placeholder: "Choose player two",
       options: dummyPlayerOptions,
     },
     {
+      key: 3,
       label: "Player three",
       placeholder: "Choose player three",
       options: dummyPlayerOptions,
     },
     {
+      key: 4,
       label: "Player four",
       placeholder: "Choose player four",
       options: dummyPlayerOptions,
     },
     {
+      key: 5,
       label: "Player five",
       placeholder: "Choose player five",
       options: dummyPlayerOptions,
     },
     {
+      key: 6,
       label: "Player six",
       placeholder: "Choose player six",
       options: dummyPlayerOptions,
     },
     {
+      key: 7,
       label: "Player seven",
       placeholder: "Choose player seven",
       options: dummyPlayerOptions,
     },
     {
+      key: 8,
       label: "Player eight",
       placeholder: "Choose player eight",
       options: dummyPlayerOptions,
     },
     {
+      key: 9,
       label: "Player nine",
       placeholder: "Choose player nine",
       options: dummyPlayerOptions,
     },
     {
+      key: 10,
       label: "Player ten",
       placeholder: "Choose player ten",
       options: dummyPlayerOptions,
     },
     {
+      key: 11,
       label: "Player eleven",
       placeholder: "Choose player eleven",
       options: dummyPlayerOptions,
     },
     {
+      key: 12,
       label: "Player twelve",
       placeholder: "Choose player twelve",
       options: dummyPlayerOptions,
@@ -717,84 +720,6 @@ function FantasyAnalyzer() {
   ];
 
   // TODO: Separate modal stuff out in separate component
-  const [open, setOpen] = useState(false);
-  const [userCats, setUserCats] = useState([
-    {
-      category: "PTS",
-      value: 16.5,
-    },
-    {
-      category: "FG%",
-      value: 48.5,
-    },
-    {
-      category: "FT%",
-      value: 78,
-    },
-    {
-      category: "3PM",
-      value: 2.5,
-    },
-    {
-      category: "REB",
-      value: 10,
-    },
-    {
-      category: "AST",
-      value: 6,
-    },
-    {
-      category: "STL",
-      value: 1.2,
-    },
-    {
-      category: "BLK",
-      value: 1.4,
-    },
-    {
-      category: "TO",
-      value: 2.2,
-    },
-  ]);
-
-  const [topCats, setTopCats] = useState([
-    {
-      category: "PTS",
-      value: 16.5,
-    },
-    {
-      category: "FG%",
-      value: 48.5,
-    },
-    {
-      category: "FT%",
-      value: 78,
-    },
-    {
-      category: "3PM",
-      value: 2.5,
-    },
-    {
-      category: "REB",
-      value: 10,
-    },
-    {
-      category: "AST",
-      value: 6,
-    },
-    {
-      category: "STL",
-      value: 1.2,
-    },
-    {
-      category: "BLK",
-      value: 1.4,
-    },
-    {
-      category: "TO",
-      value: 2.2,
-    },
-  ]);
 
   return (
     <div className="Default-Page">
@@ -804,13 +729,14 @@ function FantasyAnalyzer() {
           <div>
             <Form.Select
               fluid
-              key={index}
+              key={x.key}
               label={x.label}
               placeholder={x.placeholder}
               options={dummyPlayerOptions}
               onChange={(event) => handleDropdownSelection(index, event)}
             />
 
+            {/* TODO: This area is being evaluated too quickly. Possible solution = create a useEffect that renders this after the first useEffect */}
             {selectedPlayers[index].isModified ? (
               <Card>
                 <Card.Content>
@@ -824,7 +750,7 @@ function FantasyAnalyzer() {
 
                   <Card.Description>
                     {selectedPlayers[index].stats.map((stat) => (
-                      <div key={index}>
+                      <div key={stat.name}>
                         <header>{stat.name}</header>
                         <p>{stat.value}</p>
                       </div>
@@ -846,62 +772,7 @@ function FantasyAnalyzer() {
           </div>
         ))}
 
-        {/* TODO: Modal stuff (JSX version) */}
-
-        <Modal
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          open={open}
-          trigger={<Form.Button>Show Results</Form.Button>}
-        >
-          <Modal.Header>Results</Modal.Header>
-
-          <Modal.Content>
-            <Segment>
-              <Grid columns={2} relaxed="very">
-                <Grid.Column>
-                  <Header>Your team</Header>
-
-                  <List selection verticalAlign="middle">
-                    {userCats.map((x, index) => (
-                      <List.Item key={index}>
-                        <List.Content>
-                          <List.Header>{x.category}</List.Header>
-                          <List>{x.value}</List>
-                        </List.Content>
-                      </List.Item>
-                    ))}
-                  </List>
-                </Grid.Column>
-                <Grid.Column>
-                  <Header>Top-150 Average</Header>
-                  <List selection verticalAlign="middle">
-                    {topCats.map((x, index) => (
-                      <List.Item key={index}>
-                        <List.Content>
-                          <List.Header>{x.category}</List.Header>
-                          <List>{x.value}</List>
-                        </List.Content>
-                      </List.Item>
-                    ))}
-                  </List>
-                </Grid.Column>
-              </Grid>
-
-              <Divider vertical>VS</Divider>
-            </Segment>
-          </Modal.Content>
-
-          <Modal.Actions>
-            <Button
-              content="Return"
-              labelPosition="left"
-              icon="checkmark"
-              onClick={() => setOpen(false)}
-              positive
-            />
-          </Modal.Actions>
-        </Modal>
+        <ResultsModal />
       </Form>
     </div>
   );
