@@ -6,21 +6,15 @@ import ResultsModal from "./ResultsModal";
 function FantasyAnalyzer() {
   const [playerNameInput, setPlayerNameInput] = useState("");
 
-  // const [playerToUpdateModified, setPlayerToUpdateModified] =
-  //   useState(undefined);
-
   const [latestDropdownModifiedIndex, setLatestDropdownModifiedIndex] =
     useState(0);
 
   useEffect(() => {
-    // TODO: Fix - currentPlayer.isModified = not evaluated on time
     const fetchSelectedPlayer = async () => {
       try {
         const response = await axios.request(getPlayer);
 
         const updatedSelectedPlayers = [...selectedPlayers];
-
-        console.log(response);
 
         const currentPlayer =
           updatedSelectedPlayers[latestDropdownModifiedIndex];
@@ -32,8 +26,6 @@ function FantasyAnalyzer() {
           currentPlayer,
           fetchedData
         );
-
-        // setPlayerToUpdateModified(currentPlayer);
       } catch (error) {
         console.error(error);
       }
@@ -44,8 +36,6 @@ function FantasyAnalyzer() {
       currentPlayer,
       fetchedData
     ) => {
-      console.log(currentPlayer);
-
       currentPlayer.teamName = fetchedData.team;
 
       currentPlayer.playerURL = fetchedData.espnHeadshot;
@@ -79,18 +69,6 @@ function FantasyAnalyzer() {
       fetchSelectedPlayer();
     }
   }, [playerNameInput]);
-
-  // TODO: Don't uncomment below here
-  // // useEffect(() => {
-  // //   const updatedSelectedPlayers = [...selectedPlayers];
-  // //   const currentPlayer = updatedSelectedPlayers[latestDropdownModifiedIndex];
-
-  // //   currentPlayer.isModified = true;
-  // // }, [playerToUpdateModified]);
-
-  // const fetchPlayerOptions = () => {
-  //   return null;
-  // };
 
   const [playerOptions, setPlayerOptions] = useState([]);
 
@@ -731,8 +709,6 @@ function FantasyAnalyzer() {
     },
   ];
 
-  // TODO: Separate modal stuff out in separate component
-
   return (
     <div className="Default-Page">
       <header>Welcome to the fantasy analyzer</header>
@@ -748,7 +724,6 @@ function FantasyAnalyzer() {
               onChange={(event) => handleDropdownSelection(index, event)}
             />
 
-            {/* TODO: This area is being evaluated too quickly. Possible solution = create a useEffect that renders this after the first useEffect */}
             {selectedPlayers[index].isModified ? (
               <Card>
                 <Card.Content>
