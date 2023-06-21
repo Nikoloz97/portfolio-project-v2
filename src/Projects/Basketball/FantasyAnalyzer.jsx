@@ -27,7 +27,11 @@ function FantasyAnalyzer() {
 
         const fetchedData = response.data.body[0];
 
-        populateCurrentPlayer(currentPlayer, fetchedData);
+        populateCurrentPlayer(
+          updatedSelectedPlayers,
+          currentPlayer,
+          fetchedData
+        );
 
         // setPlayerToUpdateModified(currentPlayer);
       } catch (error) {
@@ -35,7 +39,11 @@ function FantasyAnalyzer() {
       }
     };
 
-    const populateCurrentPlayer = (currentPlayer, fetchedData) => {
+    const populateCurrentPlayer = (
+      updatedSelectedPlayers,
+      currentPlayer,
+      fetchedData
+    ) => {
       console.log(currentPlayer);
 
       currentPlayer.teamName = fetchedData.team;
@@ -61,6 +69,10 @@ function FantasyAnalyzer() {
       currentPlayer.stats[8].value = fetchedData.stats.stl;
 
       currentPlayer.isModified = true;
+
+      updatedSelectedPlayers[latestDropdownModifiedIndex] = currentPlayer;
+
+      setSelectedPlayers(updatedSelectedPlayers);
     };
 
     if (playerNameInput !== "") {
