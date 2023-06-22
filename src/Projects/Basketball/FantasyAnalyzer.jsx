@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Card, Image } from "semantic-ui-react";
+import { Form, Dropdown, Button, Card, Image } from "semantic-ui-react";
 import axios from "axios";
 import ResultsModal from "./ResultsModal";
 
@@ -70,7 +70,39 @@ function FantasyAnalyzer() {
     }
   }, [playerNameInput]);
 
+  useEffect(() => {
+    const getPlayerOptions = {
+      method: "GET",
+      url: "https://tank01-fantasy-stats.p.rapidapi.com/getNBAPlayerList",
+      headers: {
+        "X-RapidAPI-Key": "2a68275cbamsha4332cacc57200cp19e3b9jsn35ead262c58d",
+        "X-RapidAPI-Host": "tank01-fantasy-stats.p.rapidapi.com",
+      },
+    };
+
+    const fetchPlayerOptions = async () => {
+      try {
+        const response = await axios.request(getPlayerOptions);
+        populatePlayerOptions(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+
+      const populatePlayerOptions = (playerOptionsData) => {
+        // Create copy of playerOptions state
+        // populate copy
+        // setPlayerOptions(copy)
+      };
+    };
+  }, []);
+
   const [playerOptions, setPlayerOptions] = useState([]);
+
+  const dummyPlayerOptions = [
+    { key: 1, text: "Lebron James", value: "Lebron James" },
+    { key: 2, text: "James Harden", value: "James Harden" },
+    { key: 3, text: "Jimmy Butler", value: "Jimmy Butler" },
+  ];
 
   const handleDropdownSelection = (index, event) => {
     const value = event.target.innerText;
@@ -628,12 +660,6 @@ function FantasyAnalyzer() {
     },
   ]);
 
-  const dummyPlayerOptions = [
-    { key: 1, text: "Lebron James", value: "Lebron James" },
-    { key: 2, text: "James Harden", value: "James Harden" },
-    { key: 3, text: "Jimmy Butler", value: "Jimmy Butler" },
-  ];
-
   const playerDropdowns = [
     {
       key: 1,
@@ -715,11 +741,13 @@ function FantasyAnalyzer() {
       <Form className="Default-Form">
         {playerDropdowns.map((x, index) => (
           <div>
-            <Form.Select
-              fluid
+            {/* TODO: Fix dropdown (finicky) */}
+            <Dropdown
               key={x.key}
-              label={x.label}
               placeholder={x.placeholder}
+              fluid
+              search
+              selection
               options={dummyPlayerOptions}
               onChange={(event) => handleDropdownSelection(index, event)}
             />
@@ -743,16 +771,6 @@ function FantasyAnalyzer() {
                       </div>
                     ))}
                   </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <div className="ui two buttons">
-                    <Button basic color="green">
-                      Approve
-                    </Button>
-                    <Button basic color="red">
-                      Decline
-                    </Button>
-                  </div>
                 </Card.Content>
               </Card>
             ) : null}
