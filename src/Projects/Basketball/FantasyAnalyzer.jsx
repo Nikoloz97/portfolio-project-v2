@@ -9,6 +9,53 @@ function FantasyAnalyzer() {
   const [latestDropdownModifiedIndex, setLatestDropdownModifiedIndex] =
     useState(0);
 
+  const [playerOptions, setPlayerOptions] = useState([]);
+
+  const populatePlayerOptions = (playerOptionsData) => {
+    const playerOptionsList = [
+      playerOptionsData.map((playerObj) => ({
+        key: playerObj.playerID,
+        text: playerObj.longName,
+        value: playerObj.longName,
+      })),
+    ];
+    setPlayerOptions(playerOptionsList[0]);
+  };
+
+  const populateCurrentPlayer = (
+    updatedSelectedPlayers,
+    currentPlayer,
+    fetchedData
+  ) => {
+    currentPlayer.teamName = fetchedData.team;
+
+    currentPlayer.playerURL = fetchedData.espnHeadshot;
+
+    currentPlayer.stats[0].value = fetchedData.stats.pts;
+
+    currentPlayer.stats[1].value = fetchedData.stats.fgp;
+
+    currentPlayer.stats[2].value = fetchedData.stats.ftp;
+
+    currentPlayer.stats[3].value = fetchedData.stats.tptfgm;
+
+    currentPlayer.stats[4].value = fetchedData.stats.reb;
+
+    currentPlayer.stats[5].value = fetchedData.stats.blk;
+
+    currentPlayer.stats[6].value = fetchedData.stats.TOV;
+
+    currentPlayer.stats[7].value = fetchedData.stats.ast;
+
+    currentPlayer.stats[8].value = fetchedData.stats.stl;
+
+    currentPlayer.isModified = true;
+
+    updatedSelectedPlayers[latestDropdownModifiedIndex] = currentPlayer;
+
+    setSelectedPlayers(updatedSelectedPlayers);
+  };
+
   useEffect(() => {
     const fetchSelectedPlayer = async () => {
       try {
@@ -31,72 +78,22 @@ function FantasyAnalyzer() {
       }
     };
 
-    const populateCurrentPlayer = (
-      updatedSelectedPlayers,
-      currentPlayer,
-      fetchedData
-    ) => {
-      currentPlayer.teamName = fetchedData.team;
-
-      currentPlayer.playerURL = fetchedData.espnHeadshot;
-
-      currentPlayer.stats[0].value = fetchedData.stats.pts;
-
-      currentPlayer.stats[1].value = fetchedData.stats.fgp;
-
-      currentPlayer.stats[2].value = fetchedData.stats.ftp;
-
-      currentPlayer.stats[3].value = fetchedData.stats.tptfgm;
-
-      currentPlayer.stats[4].value = fetchedData.stats.reb;
-
-      currentPlayer.stats[5].value = fetchedData.stats.blk;
-
-      currentPlayer.stats[6].value = fetchedData.stats.TOV;
-
-      currentPlayer.stats[7].value = fetchedData.stats.ast;
-
-      currentPlayer.stats[8].value = fetchedData.stats.stl;
-
-      currentPlayer.isModified = true;
-
-      updatedSelectedPlayers[latestDropdownModifiedIndex] = currentPlayer;
-
-      setSelectedPlayers(updatedSelectedPlayers);
-    };
-
     if (playerNameInput !== "") {
       fetchSelectedPlayer();
     }
   }, [playerNameInput]);
 
   useEffect(() => {
-    const getPlayerOptions = {
-      method: "GET",
-      url: "https://tank01-fantasy-stats.p.rapidapi.com/getNBAPlayerList",
-      headers: {
-        "X-RapidAPI-Key": "2a68275cbamsha4332cacc57200cp19e3b9jsn35ead262c58d",
-        "X-RapidAPI-Host": "tank01-fantasy-stats.p.rapidapi.com",
-      },
-    };
-
     const fetchPlayerOptions = async () => {
       try {
         const response = await axios.request(getPlayerOptions);
-        populatePlayerOptions(response.data);
+        populatePlayerOptions(response.data.body);
       } catch (error) {
         console.error(error);
       }
-
-      const populatePlayerOptions = (playerOptionsData) => {
-        // Create copy of playerOptions state
-        // populate copy
-        // setPlayerOptions(copy)
-      };
     };
+    fetchPlayerOptions();
   }, []);
-
-  const [playerOptions, setPlayerOptions] = useState([]);
 
   const dummyPlayerOptions = [
     { key: 1, text: "Lebron James", value: "Lebron James" },
@@ -116,6 +113,14 @@ function FantasyAnalyzer() {
     setPlayerNameInput(value);
   };
 
+  const getPlayerOptions = {
+    method: "GET",
+    url: "https://tank01-fantasy-stats.p.rapidapi.com/getNBAPlayerList",
+    headers: {
+      "X-RapidAPI-Key": "2a68275cbamsha4332cacc57200cp19e3b9jsn35ead262c58d",
+      "X-RapidAPI-Host": "tank01-fantasy-stats.p.rapidapi.com",
+    },
+  };
   const getPlayer = {
     method: "GET",
     url: "https://tank01-fantasy-stats.p.rapidapi.com/getNBAPlayerInfo",
@@ -665,73 +670,73 @@ function FantasyAnalyzer() {
       key: 1,
       label: "Player one",
       placeholder: "Choose player one",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 2,
       label: "Player two",
       placeholder: "Choose player two",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 3,
       label: "Player three",
       placeholder: "Choose player three",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 4,
       label: "Player four",
       placeholder: "Choose player four",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 5,
       label: "Player five",
       placeholder: "Choose player five",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 6,
       label: "Player six",
       placeholder: "Choose player six",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 7,
       label: "Player seven",
       placeholder: "Choose player seven",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 8,
       label: "Player eight",
       placeholder: "Choose player eight",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 9,
       label: "Player nine",
       placeholder: "Choose player nine",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 10,
       label: "Player ten",
       placeholder: "Choose player ten",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 11,
       label: "Player eleven",
       placeholder: "Choose player eleven",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
     {
       key: 12,
       label: "Player twelve",
       placeholder: "Choose player twelve",
-      options: dummyPlayerOptions,
+      options: playerOptions,
     },
   ];
 
@@ -748,7 +753,7 @@ function FantasyAnalyzer() {
               fluid
               search
               selection
-              options={dummyPlayerOptions}
+              options={playerOptions}
               onChange={(event) => handleDropdownSelection(index, event)}
             />
 
