@@ -95,12 +95,6 @@ function FantasyAnalyzer() {
     fetchPlayerOptions();
   }, []);
 
-  const dummyPlayerOptions = [
-    { key: 1, text: "Lebron James", value: "Lebron James" },
-    { key: 2, text: "James Harden", value: "James Harden" },
-    { key: 3, text: "Jimmy Butler", value: "Jimmy Butler" },
-  ];
-
   const handleDropdownSelection = (index, event) => {
     const value = event.target.innerText;
     const updatedSelectedPlayers = [...selectedPlayers];
@@ -782,7 +776,7 @@ function FantasyAnalyzer() {
           </div>
         ))}
 
-        <ResultsModal />
+        <ResultsModal dropdownSelectedPlayers={selectedPlayers} />
       </Form>
     </div>
   );
