@@ -16,51 +16,60 @@ export default function ResultsModal(props) {
   const calculateUserStats = () => {
     const selectedPlayers = props.dropdownSelectedPlayers;
 
-    const avgPoints =
+    const avgPoints = (
       selectedPlayers.reduce(
-        (acc, player) => acc + parseInt(player.stats[0].value, 10),
+        (acc, player) => acc + parseFloat(player.stats[0].value),
         0
-      ) / 12;
-    const avgFieldGoals =
+      ) / 12
+    ).toFixed(2);
+    const avgFieldGoals = (
       selectedPlayers.reduce(
-        (acc, player) => acc + parseInt(player.stats[1].value, 10),
+        (acc, player) => acc + parseFloat(player.stats[1].value),
         0
-      ) / 12;
-    const avgFreeThrows =
+      ) / 12
+    ).toFixed(2);
+    const avgFreeThrows = (
       selectedPlayers.reduce(
-        (acc, player) => acc + parseInt(player.stats[2].value, 10),
+        (acc, player) => acc + parseFloat(player.stats[2].value),
         0
-      ) / 12;
-    const avgThreePointers =
+      ) / 12
+    ).toFixed(2);
+    const avgThreePointers = (
       selectedPlayers.reduce(
-        (acc, player) => acc + parseInt(player.stats[3].value, 10),
+        (acc, player) => acc + parseFloat(player.stats[3].value),
         0
-      ) / 12;
-    const avgRebounds =
+      ) / 12
+    ).toFixed(2);
+    const avgRebounds = (
       selectedPlayers.reduce(
-        (acc, player) => acc + parseInt(player.stats[4].value, 10),
+        (acc, player) => acc + parseFloat(player.stats[4].value),
         0
-      ) / 12;
-    const avgAssists =
+      ) / 12
+    ).toFixed(2);
+    const avgAssists = (
       selectedPlayers.reduce(
-        (acc, player) => acc + parseInt(player.stats[7].value, 10),
+        (acc, player) => acc + parseFloat(player.stats[7].value),
         0
-      ) / 12;
-    const avgSteals =
+      ) / 12
+    ).toFixed(2);
+    const avgSteals = (
       selectedPlayers.reduce(
-        (acc, player) => acc + parseInt(player.stats[8].value, 10),
+        (acc, player) => acc + parseFloat(player.stats[8].value),
         0
-      ) / 12;
-    const avgBlocks =
+      ) / 12
+    ).toFixed(2);
+    const avgBlocks = (
       selectedPlayers.reduce(
-        (acc, player) => acc + parseInt(player.stats[5].value, 10),
+        (acc, player) => acc + parseFloat(player.stats[5].value),
         0
-      ) / 12;
-    const avgTurnovers =
+      ) / 12
+    ).toFixed(2);
+    const avgTurnovers = (
       selectedPlayers.reduce(
-        (acc, player) => acc + parseInt(player.stats[6].value, 10),
+        (acc, player) => acc + parseFloat(player.stats[6].value),
         0
-      ) / 12;
+      ) / 12
+    ).toFixed(2);
 
     const tempUserCats = [
       {
@@ -104,81 +113,44 @@ export default function ResultsModal(props) {
     setUserCats(tempUserCats);
   };
 
-  const [userCats, setUserCats] = useState([
-    {
-      category: "PTS",
-      value: 16.5,
-    },
-    {
-      category: "FG%",
-      value: 48.5,
-    },
-    {
-      category: "FT%",
-      value: 78,
-    },
-    {
-      category: "3PM",
-      value: 2.5,
-    },
-    {
-      category: "REB",
-      value: 10,
-    },
-    {
-      category: "AST",
-      value: 6,
-    },
-    {
-      category: "STL",
-      value: 1.2,
-    },
-    {
-      category: "BLK",
-      value: 1.4,
-    },
-    {
-      category: "TO",
-      value: 2.2,
-    },
-  ]);
+  const [userCats, setUserCats] = useState([]);
 
   const [topCats, setTopCats] = useState([
     {
       category: "PTS",
-      value: 16.5,
+      value: 17.86,
     },
     {
       category: "FG%",
-      value: 48.5,
+      value: 0.5,
     },
     {
       category: "FT%",
-      value: 78,
+      value: 78.95,
     },
     {
       category: "3PM",
-      value: 2.5,
+      value: 1.72,
     },
     {
       category: "REB",
-      value: 10,
+      value: 5.95,
     },
     {
       category: "AST",
-      value: 6,
+      value: 4.08,
     },
     {
       category: "STL",
-      value: 1.2,
+      value: 1.01,
     },
     {
       category: "BLK",
-      value: 1.4,
+      value: 0.66,
     },
     {
       category: "TO",
-      value: 2.2,
+      value: 1.97,
     },
   ]);
 

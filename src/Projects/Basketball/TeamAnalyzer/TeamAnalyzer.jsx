@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Form, Dropdown, Button, Card, Image } from "semantic-ui-react";
+import { Form, Dropdown, Card, Image } from "semantic-ui-react";
 import axios from "axios";
 import ResultsModal from "./ResultsModal";
 
-function FantasyAnalyzer() {
+function TeamAnalyzer() {
   const [playerNameInput, setPlayerNameInput] = useState("");
 
   const [latestDropdownModifiedIndex, setLatestDropdownModifiedIndex] =
@@ -736,11 +736,11 @@ function FantasyAnalyzer() {
 
   return (
     <div className="Default-Page">
-      <header>Welcome to the fantasy analyzer</header>
+      <header>Welcome to the Team Analyzer</header>
       <Form className="Default-Form">
         {playerDropdowns.map((x, index) => (
           <div>
-            {/* TODO: Fix dropdown (finicky) */}
+            {/* TODO: Fix dropdown (enter = not registering) */}
             <Dropdown
               key={x.key}
               placeholder={x.placeholder}
@@ -782,4 +782,4 @@ function FantasyAnalyzer() {
   );
 }
 
-export default FantasyAnalyzer;
+export default TeamAnalyzer;
