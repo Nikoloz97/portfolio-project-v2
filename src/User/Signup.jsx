@@ -3,6 +3,7 @@ import { Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
+  // TODO: Make bio, interest optional fields
   const [value, setValue] = useState({});
 
   const options = [
@@ -37,33 +38,13 @@ const SignUp = () => {
             <Form.Input fluid label="Age" placeholder="Age" />
           </Form.Group>
 
-          <Form.Group inline style={{ marginTop: "10px" }}>
-            <label>Size: </label>
-            <Form.Radio
-              label="Small"
-              value="sm"
-              checked={value === "Small"}
-              onChange={handleChange}
-            />
-            <Form.Radio
-              label="Medium"
-              value="md"
-              checked={value === "Medium"}
-              onChange={handleChange}
-            />
-            <Form.Radio
-              label="Large"
-              value="lg"
-              checked={value === "Large"}
-              onChange={handleChange}
-            />
+          <Form.Input fluid label="Email" placeholder="Your email" />
 
-            <Form.Group widths="equal" style={{ marginTop: "10px" }}>
-              <label style={{ fontWeight: "bold" }}>Interests: </label>
-              <Form.Input placeholder="Interest one..." />
-              <Form.Input placeholder="Interest two..." />
-              <Form.Input placeholder="Interest three..." />
-            </Form.Group>
+          <label style={{ fontWeight: "bold" }}>Interests </label>
+          <Form.Group inline style={{ marginTop: "10px" }}>
+            <Form.Input placeholder="Interest one..." />
+            <Form.Input placeholder="Interest two..." />
+            <Form.Input placeholder="Interest three..." />
           </Form.Group>
 
           <Form.TextArea
