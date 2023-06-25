@@ -67,3 +67,12 @@
   align-items: center;
   gap: 10px;
 }
+
+/* Geography Game */
+
+.GeoGame {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+}
