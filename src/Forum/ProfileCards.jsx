@@ -27,26 +27,30 @@ function ProfileCards() {
 
   return (
     <div className="Forum-Page">
-      <Card.Group>
+      <Card.Group centered itemsPerRow={2}>
         {data.map((user) => (
-          <Card>
+          <Card className="Forum-Card">
             <Card.Content>
               <Image floated="right" size="mini" src={user.profileURL} />
-              <Card.Header>
+              <Card.Header style={{ color: "white" }}>
                 {user.firstName} {user.lastName}
               </Card.Header>
-              <Card.Meta>{user.age} years old</Card.Meta>
+              <Card.Meta style={{ color: "white" }}>
+                {user.age} years old
+              </Card.Meta>
 
               {user.interests.map((interest) => (
-                <Card.Description>{interest.description}</Card.Description>
+                <Card.Description style={{ color: "white" }}>
+                  {interest.description}
+                </Card.Description>
               ))}
             </Card.Content>
 
             <Card.Content>
-              <Card.Meta>Followers: {}</Card.Meta>
-              <Card.Meta>Total Views: {}</Card.Meta>
-              <Card.Meta>Total Likes: {}</Card.Meta>
-              <Card.Meta>Latest Post: {}</Card.Meta>
+              <Card.Meta style={{ color: "white" }}>Followers: {}</Card.Meta>
+              <Card.Meta style={{ color: "white" }}>Total Views: {}</Card.Meta>
+              <Card.Meta style={{ color: "white" }}>Total Likes: {}</Card.Meta>
+              <Card.Meta style={{ color: "white" }}>Latest Post: {}</Card.Meta>
             </Card.Content>
 
             <Card.Content extra>
@@ -54,7 +58,7 @@ function ProfileCards() {
                 <Button basic color="green" onClick={followUser}>
                   Follow
                 </Button>
-                <Button basi color="blue" onClick={goToProfile}>
+                <Button basic color="blue" onClick={goToProfile}>
                   Read More
                 </Button>
               </div>

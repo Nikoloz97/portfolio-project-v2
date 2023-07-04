@@ -107,3 +107,9 @@
   align-self: center;
   justify-self: center;
 }
+
+/*  */
+.Forum-Card {
+  background-color: #5a5c5f !important;
+  box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2) !important;
+}

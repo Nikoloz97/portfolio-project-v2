@@ -1,32 +1,18 @@
 import { React } from "react";
 import Display from "./Display";
 import ProfileCards from "./ProfileCards";
+import { Grid } from "semantic-ui-react";
 
 function Forum() {
   return (
-    <div
-      className="Forum-Page"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flexStart",
-        gap: "10px",
-      }}
-    >
-      <div className="Container">
-        <div
-          style={{
-            color: "white",
-            width: "100%",
-            alignSelf: "center",
-          }}
-        >
-          <Display />
-        </div>
-        <div style={{ height: "50%" }}>
+    <div className="Forum-Page">
+      <Display />
+
+      <Grid centered style={{ marginTop: "2rem" }}>
+        <Grid.Row>
           <ProfileCards />
-        </div>
-      </div>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 }
