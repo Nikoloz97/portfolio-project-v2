@@ -3,43 +3,48 @@ import { Button, Card, Image } from "semantic-ui-react";
 import axios from "axios";
 
 function ProfileCards() {
-  const [data, setData] = useState([]);
+  const [forumProfileData, setForumProfileData] = useState([]);
   const [followers, setFollowers] = useState(0);
-  const [isUserFollowed, setIsUserFollowed] = useState(false);
+  const [isProfileFollowed, setIsProfileFollowed] = useState(false);
 
   useEffect(() => {
-    const getProfileCards = () => {
+    const getForumProfiles = () => {
       axios.get("https://localhost:7047/api/forum").then((response) => {
-        setData(response.data);
+        console.log(response.data);
+        setForumProfileData(response.data);
       });
     };
 
-    getProfileCards();
+    getForumProfiles();
   }, []);
 
-  const followUser = () => {
-    setIsUserFollowed(true);
+  const followProfile = () => {
+    setIsProfileFollowed(true);
   };
 
   const goToProfile = () => {
-    setIsUserFollowed(true);
+    setIsProfileFollowed(true);
   };
 
   return (
     <div className="Forum-Page">
       <Card.Group centered itemsPerRow={2}>
-        {data.map((user) => (
+        {forumProfileData.map((forumProfile) => (
           <Card className="Forum-Card">
             <Card.Content>
-              <Image floated="right" size="mini" src={user.profileURL} />
+              <Image
+                floated="left"
+                size="small"
+                circular
+                src={forumProfile.profileURL}
+              />
               <Card.Header style={{ color: "white" }}>
-                {user.firstName} {user.lastName}
+                {forumProfile.displayName}
               </Card.Header>
               <Card.Meta style={{ color: "white" }}>
-                {user.age} years old
+                {forumProfile.age} years old
               </Card.Meta>
-
-              {user.interests.map((interest) => (
+              {forumProfile.interests.map((interest) => (
                 <Card.Description style={{ color: "white" }}>
                   {interest.description}
                 </Card.Description>
@@ -47,18 +52,42 @@ function ProfileCards() {
             </Card.Content>
 
             <Card.Content>
-              <Card.Meta style={{ color: "white" }}>Followers: {}</Card.Meta>
+              <Card.Header> Statistics</Card.Header>
+              <Card.Meta style={{ color: "white" }}>
+                Followers: {forumProfile.followerCount}
+              </Card.Meta>
+              <Card.Meta style={{ color: "white" }}>
+                Following: {forumProfile.followingCount}
+              </Card.Meta>
               <Card.Meta style={{ color: "white" }}>Total Views: {}</Card.Meta>
               <Card.Meta style={{ color: "white" }}>Total Likes: {}</Card.Meta>
-              <Card.Meta style={{ color: "white" }}>Latest Post: {}</Card.Meta>
+            </Card.Content>
+
+            {/* TODO: Create slideshow of latest 3 posts */}
+
+            <Card.Content>
+              <Card.Header> Latest Posts</Card.Header>
+              {forumProfile.posts.map((post) => (
+                <Card>
+                  <Card.Header style={{}}>{post.title}</Card.Header>
+                  <Card.Content style={{}}>
+                    {post.text}
+                    <Image
+                      style={{ display: "block" }}
+                      size="small"
+                      src={post.photoURL}
+                    />
+                  </Card.Content>
+                </Card>
+              ))}
             </Card.Content>
 
             <Card.Content extra>
               <div className="ui two buttons">
-                <Button basic color="green" onClick={followUser}>
+                <Button color="green" onClick={followProfile}>
                   Follow
                 </Button>
-                <Button basic color="blue" onClick={goToProfile}>
+                <Button color="blue" onClick={goToProfile}>
                   Read More
                 </Button>
               </div>
