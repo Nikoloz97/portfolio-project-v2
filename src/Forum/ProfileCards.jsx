@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
-import { Button, Card, Image } from "semantic-ui-react";
+import { Button, Card, Image, Grid } from "semantic-ui-react";
+import { postDateFormatter } from "../Helpers";
 import axios from "axios";
 
 function ProfileCards() {
@@ -53,16 +54,37 @@ function ProfileCards() {
 
             <Card.Content>
               <Card.Header> Statistics</Card.Header>
-              <Card.Meta style={{ color: "white" }}>
-                Followers: {forumProfile.followerCount}
-              </Card.Meta>
-              <Card.Meta style={{ color: "white" }}>
-                Following: {forumProfile.followingCount}
-              </Card.Meta>
-              <Card.Meta style={{ color: "white" }}>Total Views: {}</Card.Meta>
-              <Card.Meta style={{ color: "white" }}>Total Likes: {}</Card.Meta>
+
+              <Grid columns={2}>
+                <Grid.Row>
+                  <Grid.Column></Grid.Column>
+                  <Grid.Column>
+                    <Card.Meta style={{ color: "white" }}>
+                      Followers: {forumProfile.followerCount}
+                    </Card.Meta>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Card.Meta style={{ color: "white" }}>
+                      Following: {forumProfile.followingCount}
+                    </Card.Meta>
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column>
+                    <Card.Meta style={{ color: "white" }}>
+                      Total Views: {}
+                    </Card.Meta>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Card.Meta style={{ color: "white" }}>
+                      Total Likes: {}
+                    </Card.Meta>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
             </Card.Content>
 
+            {/* TODO: Each post should contain: posted date, comments, and like button (that shows number of total likes as well) */}
             {/* TODO: Create slideshow of latest 3 posts */}
 
             <Card.Content>
@@ -70,6 +92,14 @@ function ProfileCards() {
               {forumProfile.posts.map((post) => (
                 <Card>
                   <Card.Header style={{}}>{post.title}</Card.Header>
+                  <Card.Content>
+                    <Grid>
+                      <Grid.Row>
+                        {postDateFormatter(post.postedDate.toLocaleString())}
+                      </Grid.Row>
+                      <Grid.Row>{post.text}</Grid.Row>
+                    </Grid>
+                  </Card.Content>
                   <Card.Content style={{}}>
                     {post.text}
                     <Image
