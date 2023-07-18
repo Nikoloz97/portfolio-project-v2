@@ -95,6 +95,7 @@ function ProfileCards() {
                   <Card.Content>
                     <Grid>
                       <Grid.Row>
+                        Posted Date:{" "}
                         {postDateFormatter(post.postedDate.toLocaleString())}
                       </Grid.Row>
                       <Grid.Row>{post.text}</Grid.Row>

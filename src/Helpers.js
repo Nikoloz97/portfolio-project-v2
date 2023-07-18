@@ -2,10 +2,31 @@ import React from "react";
 
 export const postDateFormatter = (stringDate) => {
   let splitDateArray = stringDate.split("-");
-  const formattedMonth = monthConverter(splitDateArray[1]);
-  const formattedDay = dayTimeConverter(splitDateArray[2])[0];
-  const formattedTime = dayTimeConverter(splitDateArray[2])[1];
-  return `${formattedMonth}-${formattedDay}-${splitDateArray[0]} (${formattedTime})`;
+  const year = splitDateArray[0];
+  const month = splitDateArray[1];
+  const dayTime = splitDateArray[2];
+  const formattedMonth = monthConverter(month);
+  const formattedDay = dayTimeConverter(dayTime)[0];
+  const formattedTime = dayTimeConverter(dayTime)[1];
+  let currentDate = new Date();
+  let currentYear = currentDate.getFullYear();
+  let currentMonth = currentDate.getMonth();
+  let currentDay = currentDate.getDate();
+
+  if (year == currentYear) {
+    // On the same month
+    if (month == currentMonth) {
+      // On the same day
+      if (formattedDay == currentDay) {
+        // ... Then indicate time
+        return `$ Today (${formattedTime})`;
+      }
+    }
+    // Same year = don't indicate year
+    return `${formattedMonth}-${formattedDay}`;
+  }
+  // Different year = indicate year
+  return `${formattedMonth}-${formattedDay}-${year}`;
 };
 
 export const commentDateFormatter = (stringDate) => {};
