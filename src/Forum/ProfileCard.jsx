@@ -4,7 +4,14 @@ import Post from "./Post";
 
 const ProfileCard = (props) => {
   const [currentPostIndex, setCurrentPostIndex] = useState(0);
-  const [currentPost, setCurrentPost] = useState(0);
+
+  useEffect(() => {
+    setCurrentPost(props.forumProfile.posts[currentPostIndex]);
+  }, [currentPostIndex]);
+
+  const [currentPost, setCurrentPost] = useState(
+    props.forumProfile.posts[currentPostIndex]
+  );
 
   const handleNextPost = () => {
     const currentIndex = currentPostIndex;
@@ -68,14 +75,33 @@ const ProfileCard = (props) => {
             </Grid.Row>
           </Grid>
         </Card.Content>
-        {/* TODO: Create slideshow of 3 latest posts */}
         <Card.Content>
           <Card.Header> Latest Posts</Card.Header>
           <Grid>
             <Grid.Row centered style={{ paddingTop: "2rem" }}>
-              {props.forumProfile.posts.map((eachPost) => (
-                <Post post={eachPost} />
-              ))}
+              <Post post={currentPost} />
+            </Grid.Row>
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <Button
+                  disabled={currentPostIndex == 0 ? true : false}
+                  onClick={handlePreviousPost}
+                >
+                  Previous
+                </Button>
+              </Grid.Column>
+              <Grid.Column>
+                <Button
+                  disabled={
+                    currentPostIndex == props.forumProfile.posts.length - 1
+                      ? true
+                      : false
+                  }
+                  onClick={handleNextPost}
+                >
+                  Next
+                </Button>
+              </Grid.Column>
             </Grid.Row>
           </Grid>
         </Card.Content>
