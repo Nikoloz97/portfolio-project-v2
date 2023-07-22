@@ -5,9 +5,14 @@ import Comment from "./Comment";
 
 const Post = (props) => {
   const [isPostLiked, setIsPostLiked] = useState(false);
+  const [areCommentsShown, setAreCommentsShown] = useState(false);
 
   const handlePostLike = () => {
     setIsPostLiked(!isPostLiked);
+  };
+
+  const handleCommentDisplay = () => {
+    setAreCommentsShown(!areCommentsShown);
   };
   return (
     <div>
@@ -40,24 +45,30 @@ const Post = (props) => {
               />
               {props.post.likes} Likes
             </Grid.Column>
-            <Grid.Column>{props.post.commentCount} Comments</Grid.Column>
+            <Grid.Column>
+              <Button onClick={handleCommentDisplay}>
+                {props.post.commentCount} Comments
+              </Button>
+            </Grid.Column>
           </Grid>
         </Card.Content>
-        <Card.Content>
-          {props.post.comments.map((eachComment) => (
-            <Comment comment={eachComment} />
-          ))}
 
-          <Form reply>
-            <Form.TextArea />
-            <Button
-              content="Add Reply"
-              labelPosition="left"
-              icon="edit"
-              primary
-            />
-          </Form>
-        </Card.Content>
+        {areCommentsShown ? (
+          <>
+            {props.post.comments.map((eachComment) => (
+              <Comment comment={eachComment} key={eachComment.commentId} />
+            ))}
+            <Form reply>
+              <Form.TextArea />
+              <Button
+                content="Add Reply"
+                labelPosition="left"
+                icon="edit"
+                primary
+              />
+            </Form>
+          </>
+        ) : null}
       </Card>
     </div>
   );

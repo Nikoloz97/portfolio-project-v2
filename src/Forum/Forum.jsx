@@ -21,16 +21,18 @@ function Forum() {
   return (
     <div className="Forum-Page">
       <Display />
-
       <Grid centered style={{ marginTop: "2rem" }}>
         <Grid.Row>
-          <div className="Forum-Page">
-            <Card.Group centered itemsPerRow={2}>
-              {forumProfileData.map((eachForumProfile) => (
-                <ProfileCard forumProfile={eachForumProfile} />
-              ))}
-            </Card.Group>
-          </div>
+          <Card.Group>
+            {forumProfileData.map((eachForumProfile) => (
+              <div>
+                <ProfileCard
+                  forumProfile={eachForumProfile}
+                  key={eachForumProfile.forumProfileId}
+                />
+              </div>
+            ))}
+          </Card.Group>
         </Grid.Row>
       </Grid>
     </div>
