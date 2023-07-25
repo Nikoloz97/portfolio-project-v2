@@ -12,7 +12,7 @@ function Display() {
           centered
           fluid
         />
-        <div className="Text">Welcome to the Forum</div>
+        <div className="Text">Welcome to the Forum! Test</div>
         <div className="Subtext">Express and Discuss</div>
       </div>
     </>
