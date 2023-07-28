@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <header className="Default-Page">
-        <p>Welcome to my porfolio page</p>
+        <p>Welcome to my portfolio page</p>
         <div>
           <Button as={Link} to="/login">
             Log in
