@@ -7,6 +7,7 @@ const Home = () => {
     <>
       <header className="Default-Page">
         <p>Welcome to my portfolio page</p>
+        <p>Test 5</p>
         <div>
           <Button as={Link} to="/login">
             Log in
