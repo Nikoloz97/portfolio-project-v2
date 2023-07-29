@@ -1,15 +1,6 @@
 .Navbar {
-  justify-content: space-around;
-  align-items: center;
   background-color: #383c43 !important;
-  color: white;
-}
-
-.Avatar {
-  background-color: #383c43 !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 0 !important;
 }
 
 .Default-Page {

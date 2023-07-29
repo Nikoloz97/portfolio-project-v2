@@ -7,7 +7,7 @@ import {
   Form,
   Message,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
@@ -17,20 +17,33 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isErrorShowing, setIsErrorShowing] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fetchedUser, setFetchedUser] = useState({});
+
+  const [avatarUrl, setAvatarUrl] = useState("tacos");
+  const [navbarMessage, setNavbarMessage] = useState("tacos");
+
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     axios
       .get(apiUserRoot + `/${username}/${password}`)
       .then((response) => {
+        setFetchedUser(response.data);
+
         console.log(response.data);
+
+        setAvatarUrl(response.data.profileURL);
+        console.log(avatarUrl);
+        // setNavbarMessage(`Welcome, ${response.data.firstName}`);
+
+        // This navigates us to the homepage, and pass avatarUrl as a state
+        // navigate.push("/", { avatarUrl });
       })
       .catch((error) => {
         const errorResponse = error.response.data.error.message;
 
         setIsErrorShowing(true);
         setErrorMessage(errorResponse);
-
-        console.error("Error:", error.response.data.error.message);
       });
   };
 

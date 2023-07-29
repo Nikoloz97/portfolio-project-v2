@@ -1,42 +1,49 @@
 import React from "react";
-import { Menu, MenuItem, Button, Grid, Image } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Menu, MenuItem, Button, Image, Header } from "semantic-ui-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+  const { avatarUrl } = location.state || {};
+  const { navbarMessage } = location.state || {};
   return (
     <div>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column width={15}>
-            <Menu className="Navbar">
-              <MenuItem as={Link} to="/">
-                <Button>Home</Button>
-              </MenuItem>
-              <MenuItem as={Link} to="/about">
-                <Button>About</Button>
-              </MenuItem>
-              <MenuItem as={Link} to="/projects">
-                <Button>Projects</Button>
-              </MenuItem>
-              <MenuItem as={Link} to="/forum">
-                <Button>Forum</Button>
-              </MenuItem>
-              <MenuItem as={Link} to="/contact">
-                <Button>Contact</Button>
-              </MenuItem>
-            </Menu>
-          </Grid.Column>
-
-          <Grid.Column width={1} className="Avatar">
+      <Menu className="Navbar">
+        <MenuItem as={Link} to="/" position="right">
+          <Button>Home</Button>
+        </MenuItem>
+        <MenuItem as={Link} to="/about" position="right">
+          <Button>About</Button>
+        </MenuItem>
+        <MenuItem as={Link} to="/projects" position="right">
+          <Button>Projects</Button>
+        </MenuItem>
+        <MenuItem as={Link} to="/forum" position="right">
+          <Button>Forum</Button>
+        </MenuItem>
+        <MenuItem as={Link} to="/contact" position="right">
+          <Button>Contact</Button>
+        </MenuItem>
+        <Menu.Menu position="right">
+          <MenuItem as={Link} to="/login">
+            <Header style={{ color: "white" }} as="h5">
+              {}
+            </Header>
+          </MenuItem>
+          <MenuItem>
             <Image
-              src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+              src={
+                avatarUrl !== undefined
+                  ? avatarUrl
+                  : "https://react.semantic-ui.com/images/wireframe/square-image.png"
+              }
               as={Link}
               to="/login"
               avatar
             />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+          </MenuItem>
+        </Menu.Menu>
+      </Menu>
     </div>
   );
 };
