@@ -7,9 +7,11 @@ import axios from "axios";
 function Forum() {
   const [forumProfileData, setForumProfileData] = useState([]);
 
+  const apiForumRoot = "https://localhost:7047/api/forum";
+
   useEffect(() => {
     const getForumProfiles = () => {
-      axios.get("https://localhost:7047/api/forum").then((response) => {
+      axios.get(apiForumRoot).then((response) => {
         console.log(response.data);
         setForumProfileData(response.data);
       });

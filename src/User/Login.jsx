@@ -1,8 +1,39 @@
-import React from "react";
-import { Button, Divider, Grid, Segment, Form } from "semantic-ui-react";
+import React, { useState } from "react";
+import {
+  Button,
+  Divider,
+  Grid,
+  Segment,
+  Form,
+  Message,
+} from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
+  const apiUserRoot = "https://localhost:7047/api/user";
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isErrorShowing, setIsErrorShowing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleLogin = () => {
+    axios
+      .get(apiUserRoot + `/${username}/${password}`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        const errorResponse = error.response.data.error.message;
+
+        setIsErrorShowing(true);
+        setErrorMessage(errorResponse);
+
+        console.error("Error:", error.response.data.error.message);
+      });
+  };
+
   return (
     <>
       <header className="Default-Page">
@@ -16,15 +47,17 @@ const Login = () => {
                   iconPosition="left"
                   label="Username"
                   placeholder="Username"
+                  onChange={(e) => setUsername(e.target.value)}
                 />
                 <Form.Input
                   icon="lock"
                   iconPosition="left"
                   label="Password"
                   type="password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <Button content="Login" primary />
+                <Button content="Login" primary onClick={handleLogin} />
               </Form>
             </Grid.Column>
 
@@ -41,6 +74,13 @@ const Login = () => {
 
           <Divider vertical>Or</Divider>
         </Segment>
+
+        {isErrorShowing && (
+          <Message negative>
+            <Message.Header>Invalid Credentials</Message.Header>
+            <p>{errorMessage}</p>
+          </Message>
+        )}
       </header>
     </>
   );
