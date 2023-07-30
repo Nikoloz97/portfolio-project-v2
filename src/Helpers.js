@@ -13,11 +13,11 @@ export const postDateFormatter = (stringDate) => {
   let currentMonth = currentDate.getMonth();
   let currentDay = currentDate.getDate();
 
-  if (year == currentYear) {
+  if (year === currentYear) {
     // On the same month
-    if (month == currentMonth) {
+    if (month === currentMonth) {
       // On the same day
-      if (formattedDay == currentDay) {
+      if (formattedDay === currentDay) {
         // ... Then indicate time
         return `$ Today (${formattedTime})`;
       }

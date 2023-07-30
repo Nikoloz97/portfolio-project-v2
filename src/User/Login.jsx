@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import {
   Button,
   Divider,
@@ -8,37 +9,30 @@ import {
   Message,
 } from "semantic-ui-react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useUserContext } from "../UserContext";
 
 const Login = () => {
   const apiUserRoot = "https://localhost:7047/api/user";
+
+  const { setUser } = useUserContext();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isErrorShowing, setIsErrorShowing] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [fetchedUser, setFetchedUser] = useState(undefined);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (fetchedUser !== undefined) {
-      // Go back to homepage
-      // pass avatarUrl state to Navbar
-      navigate("/", { state: { user: fetchedUser } });
-    }
-  }, [fetchedUser]);
 
   const handleLogin = () => {
     axios
       .get(apiUserRoot + `/${username}/${password}`)
       .then((response) => {
         console.log(response.data);
-        setFetchedUser(response.data);
+        setUser(response.data);
+        navigate("/");
       })
       .catch((error) => {
         const errorResponse = error.response.data.error.message;
-
         setIsErrorShowing(true);
         setErrorMessage(errorResponse);
       });

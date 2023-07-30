@@ -1,10 +1,10 @@
 import React from "react";
 import { Menu, MenuItem, Button, Image, Header } from "semantic-ui-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useUserContext } from "./UserContext";
 
 const Navbar = () => {
-  const location = useLocation();
-  const { user } = location.state || {};
+  const { user } = useUserContext();
 
   return (
     <div>
@@ -27,15 +27,15 @@ const Navbar = () => {
         <Menu.Menu position="right">
           <MenuItem as={Link} to="/login">
             <Header style={{ color: "white" }} as="h5">
-              {user !== undefined
-                ? `Welcome, ${user.firstName}`
+              {user !== undefined && user !== null
+                ? console.log(user)
                 : "You are not logged in"}
             </Header>
           </MenuItem>
           <MenuItem>
             <Image
               src={
-                user !== undefined
+                user !== undefined && user !== null
                   ? user.profileURL
                   : "https://react.semantic-ui.com/images/wireframe/square-image.png"
               }
