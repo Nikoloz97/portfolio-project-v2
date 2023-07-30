@@ -4,8 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
-  const { avatarUrl } = location.state || {};
-  const { navbarMessage } = location.state || {};
+  const { user } = location.state || {};
+
   return (
     <div>
       <Menu className="Navbar">
@@ -27,14 +27,16 @@ const Navbar = () => {
         <Menu.Menu position="right">
           <MenuItem as={Link} to="/login">
             <Header style={{ color: "white" }} as="h5">
-              {}
+              {user !== undefined
+                ? `Welcome, ${user.firstName}`
+                : "You are not logged in"}
             </Header>
           </MenuItem>
           <MenuItem>
             <Image
               src={
-                avatarUrl !== undefined
-                  ? avatarUrl
+                user !== undefined
+                  ? user.profileURL
                   : "https://react.semantic-ui.com/images/wireframe/square-image.png"
               }
               as={Link}

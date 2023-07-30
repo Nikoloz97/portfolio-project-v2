@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Divider,
@@ -17,27 +17,24 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isErrorShowing, setIsErrorShowing] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [fetchedUser, setFetchedUser] = useState({});
-
-  const [avatarUrl, setAvatarUrl] = useState("tacos");
-  const [navbarMessage, setNavbarMessage] = useState("tacos");
+  const [fetchedUser, setFetchedUser] = useState(undefined);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (fetchedUser !== undefined) {
+      // Go back to homepage
+      // pass avatarUrl state to Navbar
+      navigate("/", { state: { user: fetchedUser } });
+    }
+  }, [fetchedUser]);
 
   const handleLogin = () => {
     axios
       .get(apiUserRoot + `/${username}/${password}`)
       .then((response) => {
-        setFetchedUser(response.data);
-
         console.log(response.data);
-
-        setAvatarUrl(response.data.profileURL);
-        console.log(avatarUrl);
-        // setNavbarMessage(`Welcome, ${response.data.firstName}`);
-
-        // This navigates us to the homepage, and pass avatarUrl as a state
-        // navigate.push("/", { avatarUrl });
+        setFetchedUser(response.data);
       })
       .catch((error) => {
         const errorResponse = error.response.data.error.message;
