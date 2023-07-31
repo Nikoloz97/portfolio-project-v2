@@ -1,5 +1,7 @@
 import { createContext, useState, useContext } from "react";
 
+// UserContext = allows state to persist/change among various routes
+
 const UserContext = createContext();
 
 export const useUserContext = () => useContext(UserContext);

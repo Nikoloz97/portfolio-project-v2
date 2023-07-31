@@ -1,19 +1,31 @@
 import React, { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { apiUserRoute } from "../Helpers";
 
 const SignUp = () => {
-  // TODO: Make bio, interest optional fields
-  const [value, setValue] = useState({});
-
-  const options = [
+  const genderDropdownOptions = [
     { key: "m", text: "Male", value: "male" },
     { key: "f", text: "Female", value: "female" },
     { key: "o", text: "Other", value: "other" },
   ];
 
-  const handleChange = (event) => {
-    setValue(event.target.innerText);
+  const [SignUpInfo, setSignUpInfo] = useState({
+    firstName: "",
+    lastName: "",
+    gender: "",
+    age: 0,
+    email: "",
+    interests: {
+      first: "",
+      second: "",
+      third: "",
+    },
+    bio: "",
+  });
+
+  const handleSignUp = () => {
+    console.log(SignUpInfo);
   };
 
   return (
@@ -27,31 +39,85 @@ const SignUp = () => {
 
         <Form className="Default-Form">
           <Form.Group widths="equal" style={{ marginTop: "10px" }}>
-            <Form.Input fluid label="First name" placeholder="First name" />
-            <Form.Input fluid label="Last name" placeholder="Last name" />
+            <Form.Input
+              fluid
+              label="First name"
+              placeholder="First name"
+              onChange={(e) =>
+                setSignUpInfo({ ...SignUpInfo, firstName: e.target.value })
+              }
+            />
+            <Form.Input
+              fluid
+              label="Last name"
+              placeholder="Last name"
+              onChange={(e) =>
+                setSignUpInfo({ ...SignUpInfo, lastName: e.target.value })
+              }
+            />
             <Form.Select
               fluid
               label="Gender"
-              options={options}
+              options={genderDropdownOptions}
               placeholder="Gender"
+              onChange={(e, data) =>
+                setSignUpInfo({ ...SignUpInfo, gender: data.value })
+              }
             />
-            <Form.Input fluid label="Age" placeholder="Age" />
+            <Form.Input
+              fluid
+              label="Age"
+              placeholder="Age"
+              onChange={(e) =>
+                setSignUpInfo({ ...SignUpInfo, age: e.target.value })
+              }
+            />
           </Form.Group>
 
           <Form.Input fluid label="Email" placeholder="Your email" />
 
           <label style={{ fontWeight: "bold" }}>Interests </label>
           <Form.Group inline style={{ marginTop: "10px" }}>
-            <Form.Input placeholder="Interest one..." />
-            <Form.Input placeholder="Interest two..." />
-            <Form.Input placeholder="Interest three..." />
+            <Form.Input
+              placeholder="Interest one..."
+              onChange={(e) =>
+                setSignUpInfo({
+                  ...SignUpInfo,
+                  interests: { ...SignUpInfo.interests, first: e.target.value },
+                })
+              }
+            />
+            <Form.Input
+              placeholder="Interest two..."
+              onChange={(e) =>
+                setSignUpInfo({
+                  ...SignUpInfo,
+                  interests: {
+                    ...SignUpInfo.interests,
+                    second: e.target.value,
+                  },
+                })
+              }
+            />
+            <Form.Input
+              placeholder="Interest three..."
+              onChange={(e) =>
+                setSignUpInfo({
+                  ...SignUpInfo,
+                  interests: { ...SignUpInfo.interests, third: e.target.value },
+                })
+              }
+            />
           </Form.Group>
 
           <Form.TextArea
             label="Bio"
             placeholder="Write a couple sentences about yourself..."
+            onChange={(e) =>
+              setSignUpInfo({ ...SignUpInfo, bio: e.target.value })
+            }
           />
-          <Form.Button>Submit</Form.Button>
+          <Form.Button onClick={handleSignUp}>Submit</Form.Button>
         </Form>
       </header>
     </>

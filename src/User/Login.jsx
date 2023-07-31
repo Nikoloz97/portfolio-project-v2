@@ -10,10 +10,9 @@ import {
 } from "semantic-ui-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../UserContext";
+import { apiUserRoot } from "../Helpers";
 
 const Login = () => {
-  const apiUserRoot = "https://localhost:7047/api/user";
-
   const { setUser } = useUserContext();
 
   const [username, setUsername] = useState("");
