@@ -28,7 +28,7 @@ const Navbar = () => {
           <MenuItem as={Link} to="/login">
             <Header style={{ color: "white" }} as="h5">
               {user !== undefined && user !== null
-                ? console.log(user)
+                ? `Welcome, ${user.firstName}`
                 : "You are not logged in"}
             </Header>
           </MenuItem>

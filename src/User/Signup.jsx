@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { apiUserRoute } from "../Helpers";
+import { apiUserRoot } from "../Helpers";
 
 const SignUp = () => {
   const genderDropdownOptions = [
@@ -11,21 +12,24 @@ const SignUp = () => {
   ];
 
   const [SignUpInfo, setSignUpInfo] = useState({
-    firstName: "",
-    lastName: "",
-    gender: "",
-    age: 0,
-    email: "",
-    interests: {
-      first: "",
-      second: "",
-      third: "",
-    },
-    bio: "",
+    Username: "test42",
+    Password: "test42",
+    Email: "test",
+    FirstName: "test",
+    LastName: "test",
+    ProfileURL: "test",
+    Bio: "test",
   });
 
   const handleSignUp = () => {
-    console.log(SignUpInfo);
+    axios
+      .post(apiUserRoot, SignUpInfo)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error.message);
+      });
   };
 
   return (
@@ -60,53 +64,60 @@ const SignUp = () => {
               label="Gender"
               options={genderDropdownOptions}
               placeholder="Gender"
-              onChange={(e, data) =>
-                setSignUpInfo({ ...SignUpInfo, gender: data.value })
-              }
+              // onChange={(e, data) =>
+              //   setSignUpInfo({ ...SignUpInfo, gender: data.value })
+              // }
             />
             <Form.Input
               fluid
               label="Age"
               placeholder="Age"
-              onChange={(e) =>
-                setSignUpInfo({ ...SignUpInfo, age: e.target.value })
-              }
+              // onChange={(e) =>
+              //   setSignUpInfo({ ...SignUpInfo, age: e.target.value })
+              // }
             />
           </Form.Group>
 
-          <Form.Input fluid label="Email" placeholder="Your email" />
+          <Form.Input
+            fluid
+            label="Email"
+            placeholder="Your email"
+            onChange={(e) =>
+              setSignUpInfo({ ...SignUpInfo, email: e.target.value })
+            }
+          />
 
           <label style={{ fontWeight: "bold" }}>Interests </label>
           <Form.Group inline style={{ marginTop: "10px" }}>
             <Form.Input
               placeholder="Interest one..."
-              onChange={(e) =>
-                setSignUpInfo({
-                  ...SignUpInfo,
-                  interests: { ...SignUpInfo.interests, first: e.target.value },
-                })
-              }
+              // onChange={(e) =>
+              //   setSignUpInfo({
+              //     ...SignUpInfo,
+              //     interests: { ...SignUpInfo.interests, first: e.target.value },
+              //   })
+              // }
             />
             <Form.Input
               placeholder="Interest two..."
-              onChange={(e) =>
-                setSignUpInfo({
-                  ...SignUpInfo,
-                  interests: {
-                    ...SignUpInfo.interests,
-                    second: e.target.value,
-                  },
-                })
-              }
+              // onChange={(e) =>
+              //   setSignUpInfo({
+              //     ...SignUpInfo,
+              //     interests: {
+              //       ...SignUpInfo.interests,
+              //       second: e.target.value,
+              //     },
+              //   })
+              // }
             />
             <Form.Input
               placeholder="Interest three..."
-              onChange={(e) =>
-                setSignUpInfo({
-                  ...SignUpInfo,
-                  interests: { ...SignUpInfo.interests, third: e.target.value },
-                })
-              }
+              // onChange={(e) =>
+              //   setSignUpInfo({
+              //     ...SignUpInfo,
+              //     interests: { ...SignUpInfo.interests, third: e.target.value },
+              //   })
+              // }
             />
           </Form.Group>
 
