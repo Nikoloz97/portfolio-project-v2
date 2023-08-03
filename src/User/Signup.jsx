@@ -5,20 +5,14 @@ import { Link } from "react-router-dom";
 import { apiUserRoot } from "../Helpers";
 
 const SignUp = () => {
-  const genderDropdownOptions = [
-    { key: "m", text: "Male", value: "male" },
-    { key: "f", text: "Female", value: "female" },
-    { key: "o", text: "Other", value: "other" },
-  ];
-
   const [SignUpInfo, setSignUpInfo] = useState({
-    Username: "test42",
-    Password: "test42",
-    Email: "test",
-    FirstName: "test",
-    LastName: "test",
-    ProfileURL: "test",
-    Bio: "test",
+    Username: "",
+    Password: "",
+    Email: "",
+    FirstName: "",
+    LastName: "",
+    ProfileURL: "",
+    Bio: "",
   });
 
   const handleSignUp = () => {
@@ -45,6 +39,22 @@ const SignUp = () => {
           <Form.Group widths="equal" style={{ marginTop: "10px" }}>
             <Form.Input
               fluid
+              label="Username"
+              placeholder="Username"
+              onChange={(e) =>
+                setSignUpInfo({ ...SignUpInfo, Username: e.target.value })
+              }
+            />
+            <Form.Input
+              fluid
+              label="Password"
+              placeholder="Password"
+              onChange={(e) =>
+                setSignUpInfo({ ...SignUpInfo, Password: e.target.value })
+              }
+            />
+            <Form.Input
+              fluid
               label="First name"
               placeholder="First name"
               onChange={(e) =>
@@ -59,23 +69,6 @@ const SignUp = () => {
                 setSignUpInfo({ ...SignUpInfo, lastName: e.target.value })
               }
             />
-            <Form.Select
-              fluid
-              label="Gender"
-              options={genderDropdownOptions}
-              placeholder="Gender"
-              // onChange={(e, data) =>
-              //   setSignUpInfo({ ...SignUpInfo, gender: data.value })
-              // }
-            />
-            <Form.Input
-              fluid
-              label="Age"
-              placeholder="Age"
-              // onChange={(e) =>
-              //   setSignUpInfo({ ...SignUpInfo, age: e.target.value })
-              // }
-            />
           </Form.Group>
 
           <Form.Input
@@ -86,40 +79,6 @@ const SignUp = () => {
               setSignUpInfo({ ...SignUpInfo, email: e.target.value })
             }
           />
-
-          <label style={{ fontWeight: "bold" }}>Interests </label>
-          <Form.Group inline style={{ marginTop: "10px" }}>
-            <Form.Input
-              placeholder="Interest one..."
-              // onChange={(e) =>
-              //   setSignUpInfo({
-              //     ...SignUpInfo,
-              //     interests: { ...SignUpInfo.interests, first: e.target.value },
-              //   })
-              // }
-            />
-            <Form.Input
-              placeholder="Interest two..."
-              // onChange={(e) =>
-              //   setSignUpInfo({
-              //     ...SignUpInfo,
-              //     interests: {
-              //       ...SignUpInfo.interests,
-              //       second: e.target.value,
-              //     },
-              //   })
-              // }
-            />
-            <Form.Input
-              placeholder="Interest three..."
-              // onChange={(e) =>
-              //   setSignUpInfo({
-              //     ...SignUpInfo,
-              //     interests: { ...SignUpInfo.interests, third: e.target.value },
-              //   })
-              // }
-            />
-          </Form.Group>
 
           <Form.TextArea
             label="Bio"
