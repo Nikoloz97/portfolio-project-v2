@@ -56,6 +56,7 @@ const Login = () => {
                   icon="lock"
                   iconPosition="left"
                   label="Password"
+                  placeholder="Password"
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />

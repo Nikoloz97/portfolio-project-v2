@@ -1,35 +1,42 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { apiUserRoot } from "../Helpers";
 
 const SignUp = () => {
+  // const [selectedFile, setSelectedFile] = useState(null);
+
+  // const handleFileChange = (event) => {
+  //   setSelectedFile(event.target.files[0]);
+  // };
+
   const [SignUpInfo, setSignUpInfo] = useState({
-    Username: "",
-    Password: "",
-    Email: "",
-    FirstName: "",
-    LastName: "",
-    ProfileURL: "",
-    Bio: "",
+    Username: null,
+    Password: null,
+    Email: null,
+    FirstName: null,
+    LastName: null,
+    ProfileURL: null,
+    Bio: null,
   });
 
   const handleSignUp = () => {
-    axios
-      .post(apiUserRoot, SignUpInfo)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error.message);
-      });
+    console.log(SignUpInfo);
+
+    // axios
+    //   .post(apiUserRoot, SignUpInfo)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error.message);
+    //   });
   };
 
   return (
     <>
       <header className="Default-Page">
-        <p>Welcome to the sign-up page</p>
         <p>Already a user?</p>
         <Button as={Link} to="/login">
           Log in
@@ -53,12 +60,15 @@ const SignUp = () => {
                 setSignUpInfo({ ...SignUpInfo, Password: e.target.value })
               }
             />
+          </Form.Group>
+
+          <Form.Group widths="equal" style={{ marginTop: "10px" }}>
             <Form.Input
               fluid
               label="First name"
               placeholder="First name"
               onChange={(e) =>
-                setSignUpInfo({ ...SignUpInfo, firstName: e.target.value })
+                setSignUpInfo({ ...SignUpInfo, FirstName: e.target.value })
               }
             />
             <Form.Input
@@ -66,7 +76,7 @@ const SignUp = () => {
               label="Last name"
               placeholder="Last name"
               onChange={(e) =>
-                setSignUpInfo({ ...SignUpInfo, lastName: e.target.value })
+                setSignUpInfo({ ...SignUpInfo, LastName: e.target.value })
               }
             />
           </Form.Group>
@@ -76,19 +86,43 @@ const SignUp = () => {
             label="Email"
             placeholder="Your email"
             onChange={(e) =>
-              setSignUpInfo({ ...SignUpInfo, email: e.target.value })
+              setSignUpInfo({ ...SignUpInfo, Email: e.target.value })
             }
           />
+
+          <Form.Field>
+            <label>Profile Photo</label>
+            <input
+              type="file"
+              onChange={(e) =>
+                setSignUpInfo({
+                  ...SignUpInfo,
+                  ProfileURL: URL.createObjectURL(e.target.files[0]),
+                })
+              }
+            />
+          </Form.Field>
 
           <Form.TextArea
             label="Bio"
             placeholder="Write a couple sentences about yourself..."
             onChange={(e) =>
-              setSignUpInfo({ ...SignUpInfo, bio: e.target.value })
+              setSignUpInfo({ ...SignUpInfo, Bio: e.target.value })
             }
           />
           <Form.Button onClick={handleSignUp}>Submit</Form.Button>
         </Form>
+
+        <p>Preview</p>
+        <Image
+          src={
+            SignUpInfo.ProfileURL
+              ? SignUpInfo.ProfileURL
+              : "https://react.semantic-ui.com/images/wireframe/square-image.png"
+          }
+          size="medium"
+          circular
+        />
       </header>
     </>
   );
