@@ -5,12 +5,6 @@ import { Link } from "react-router-dom";
 import { apiUserRoot } from "../Helpers";
 
 const SignUp = () => {
-  // const [selectedFile, setSelectedFile] = useState(null);
-
-  // const handleFileChange = (event) => {
-  //   setSelectedFile(event.target.files[0]);
-  // };
-
   const [SignUpInfo, setSignUpInfo] = useState({
     Username: null,
     Password: null,
@@ -22,16 +16,28 @@ const SignUp = () => {
   });
 
   const handleSignUp = () => {
-    console.log(SignUpInfo);
+    // Formdata = needed to save profileImage on backend
+    let formData = new FormData();
+    formData.append("Username", SignUpInfo.Username);
+    formData.append("Password", SignUpInfo.Password);
+    formData.append("FirstName", SignUpInfo.Email);
+    formData.append("LastName", SignUpInfo.Email);
+    formData.append("ProfileURL", SignUpInfo.ProfileURL);
+    formData.append("Email", SignUpInfo.Email);
+    formData.append("Bio", SignUpInfo.Bio);
 
-    // axios
-    //   .post(apiUserRoot, SignUpInfo)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error.message);
-    //   });
+    axios
+      .post(apiUserRoot, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error.message);
+      });
   };
 
   return (
@@ -97,7 +103,7 @@ const SignUp = () => {
               onChange={(e) =>
                 setSignUpInfo({
                   ...SignUpInfo,
-                  ProfileURL: URL.createObjectURL(e.target.files[0]),
+                  ProfileURL: e.target.files[0],
                 })
               }
             />
@@ -117,7 +123,7 @@ const SignUp = () => {
         <Image
           src={
             SignUpInfo.ProfileURL
-              ? SignUpInfo.ProfileURL
+              ? URL.createObjectURL(SignUpInfo.ProfileURL)
               : "https://react.semantic-ui.com/images/wireframe/square-image.png"
           }
           size="medium"
