@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button, Form, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { apiUserRoot, apiImagesRoot } from "../Helpers";
+import { apiUserRoot } from "../Helpers";
 
 const SignUp = () => {
   const [SignUpInfo, setSignUpInfo] = useState({
@@ -11,44 +11,36 @@ const SignUp = () => {
     Email: null,
     FirstName: null,
     LastName: null,
-    ProfileURL: null,
+    ProfileImageFile: null,
     Bio: null,
   });
+
+  const [profileImageUrl, setProfileImageUrl] = useState(null);
 
   const handleSignUp = () => {
     // Formdata = needed to save profileImage on backend
     let formData = new FormData();
-    // formData.append("Username", SignUpInfo.Username);
-    // formData.append("Password", SignUpInfo.Password);
-    // formData.append("FirstName", SignUpInfo.Email);
-    // formData.append("LastName", SignUpInfo.Email);
-    formData.append("imageFile", SignUpInfo.ProfileURL);
-    // formData.append("Email", SignUpInfo.Email);
-    // formData.append("Bio", SignUpInfo.Bio);
+    formData.append("Username", SignUpInfo.Username);
+    formData.append("Password", SignUpInfo.Password);
+    formData.append("Email", SignUpInfo.Email);
+    formData.append("FirstName", SignUpInfo.FirstName);
+    formData.append("LastName", SignUpInfo.LastName);
+    formData.append("ProfileImageFile", SignUpInfo.ProfileImageFile);
+    formData.append("Bio", SignUpInfo.Bio);
 
     axios
-      .post(apiImagesRoot + "/upload", formData, {
+      .post(apiUserRoot, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
       .then((response) => {
-        console.log("Image uploaded:", response.data);
+        console.log(response.data);
+        setProfileImageUrl(response.data.profileImageUrl);
+      })
+      .catch((error) => {
+        console.error("Error:", error.message);
       });
-
-    // axios
-    //   .post(apiUserRoot, formData, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //   })
-    //   .then((response) => {
-    //     setSignUpInfo({ ...SignUpInfo, ProfileURL: response.data.profileURL });
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error.message);
-    //   });
   };
 
   return (
@@ -114,7 +106,7 @@ const SignUp = () => {
               onChange={(e) =>
                 setSignUpInfo({
                   ...SignUpInfo,
-                  ProfileURL: e.target.files[0],
+                  ProfileImageFile: e.target.files[0],
                 })
               }
             />
@@ -133,8 +125,8 @@ const SignUp = () => {
         <p>Preview</p>
         <Image
           src={
-            SignUpInfo.ProfileURL
-              ? SignUpInfo.ProfileURL
+            profileImageUrl
+              ? profileImageUrl
               : "https://react.semantic-ui.com/images/wireframe/square-image.png"
           }
           size="medium"
@@ -145,5 +137,4 @@ const SignUp = () => {
   );
 };
 
-// "https://react.semantic-ui.com/images/wireframe/square-image.png"
 export default SignUp;
