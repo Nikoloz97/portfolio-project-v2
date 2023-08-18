@@ -36,7 +36,7 @@ const SignUp = () => {
       })
       .then((response) => {
         console.log(response.data);
-        setProfileImageUrl(response.data.profileImageUrl);
+        setProfileImageUrl(response.data.profileURL);
       })
       .catch((error) => {
         console.error("Error:", error.message);
@@ -125,7 +125,7 @@ const SignUp = () => {
         <p>Preview</p>
         <Image
           src={
-            profileImageUrl
+            profileImageUrl !== null
               ? profileImageUrl
               : "https://react.semantic-ui.com/images/wireframe/square-image.png"
           }
