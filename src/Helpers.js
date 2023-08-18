@@ -4,8 +4,6 @@ export const apiUserRoot = "https://localhost:7047/api/user";
 
 export const apiForumRoot = "https://localhost:7047/api/forum";
 
-export const apiImagesRoot = "https://localhost:7047/api/images";
-
 export const postDateFormatter = (stringDate) => {
   let splitDateArray = stringDate.split("-");
   const year = splitDateArray[0];
