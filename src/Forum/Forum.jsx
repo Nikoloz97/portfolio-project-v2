@@ -3,11 +3,10 @@ import Display from "./Display";
 import ProfileCard from "./ProfileCard";
 import { Card, Grid } from "semantic-ui-react";
 import axios from "axios";
+import { apiForumRoot } from "../Helpers";
 
 function Forum() {
   const [forumProfileData, setForumProfileData] = useState(null);
-
-  const apiForumRoot = "https://localhost:7047/api/forum";
 
   useEffect(() => {
     const getForumProfiles = () => {

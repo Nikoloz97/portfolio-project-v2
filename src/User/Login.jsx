@@ -51,6 +51,7 @@ const Login = () => {
                   label="Username"
                   placeholder="Username"
                   onChange={(e) => setUsername(e.target.value)}
+                  onFocus={(e) => setIsErrorShowing(false)}
                 />
                 <Form.Input
                   icon="lock"
@@ -59,6 +60,7 @@ const Login = () => {
                   placeholder="Password"
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
+                  onFocus={(e) => setIsErrorShowing(false)}
                 />
 
                 <Button content="Login" primary onClick={handleLogin} />
