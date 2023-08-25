@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../App.css";
 
 function Calculator() {
   const [result, setResult] = useState("");

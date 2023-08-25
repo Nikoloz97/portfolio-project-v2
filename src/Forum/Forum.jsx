@@ -2,8 +2,8 @@ import { React, useState, useEffect } from "react";
 import Display from "./Display";
 import ProfileCard from "./ProfileCard";
 import { Card, Grid } from "semantic-ui-react";
-import axios from "axios";
 import { apiForumRoot } from "../Helpers";
+import axios from "axios";
 
 function Forum() {
   const [forumProfileData, setForumProfileData] = useState(null);

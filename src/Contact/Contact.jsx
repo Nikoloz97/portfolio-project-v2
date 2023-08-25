@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Form } from "semantic-ui-react";
-import "../App.css";
+import { Form } from "semantic-ui-react";
 
 const Contact = () => {
   const categoryOptions = [
