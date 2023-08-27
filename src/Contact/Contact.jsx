@@ -1,9 +1,11 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
+// import { Form } from "semantic-ui-react";
 import { useUserContext } from "../UserContext";
+import { useForm, ValidationError } from "@formspree/react";
 
 const Contact = () => {
   const { isUserSignedIn } = useUserContext();
+  const [state, handleSubmit] = useForm("myyqwvpa");
 
   const categoryOptions = [
     { key: 1, text: "Job Offer", value: "jobOffer" },
@@ -15,7 +17,27 @@ const Contact = () => {
   return (
     <div className="Default-Page">
       <header>Welcome to the contact page</header>
-      <Form className="Default-Form" style={{ width: "40%" }}>
+
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email Address</label>
+        <input id="email" type="email" name="email" />
+        <ValidationError prefix="Email" field="email" errors={state.errors} />
+        <textarea id="message" name="message" />
+        <ValidationError
+          prefix="Message"
+          field="message"
+          errors={state.errors}
+        />
+        <button type="submit" disabled={state.submitting}>
+          Submit
+        </button>
+      </form>
+
+      {/* <Form
+        onSubmit={handleSubmit}
+        className="Default-Form"
+        style={{ width: "40%" }}
+      >
         {isUserSignedIn ? null : (
           <div>
             <Form.Group widths="equal" style={{ marginTop: "10px" }}>
@@ -37,8 +59,8 @@ const Contact = () => {
           placeholder="A few sentences would be appreciated..."
         />
 
-        <Form.Button>Submit</Form.Button>
-      </Form>
+        <Form.Button disabled={state.submitting}>Submit</Form.Button>
+      </Form> */}
     </div>
   );
 };

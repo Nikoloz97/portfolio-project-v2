@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../UserContext";
 
 const Home = () => {
-  const { user, setUser } = useUserContext();
+  const { user, setUser, setIsUserSignedIn } = useUserContext();
 
   const handleSignOut = () => {
     setUser(null);
+    setIsUserSignedIn(false);
   };
 
   return (
