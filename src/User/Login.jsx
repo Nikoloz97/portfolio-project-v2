@@ -13,7 +13,7 @@ import { useUserContext } from "../UserContext";
 import { apiUserRoot } from "../Helpers";
 
 const Login = () => {
-  const { setUser } = useUserContext();
+  const { setUser, setIsUserSignedIn } = useUserContext();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -28,6 +28,9 @@ const Login = () => {
       .then((response) => {
         console.log(response.data);
         setUser(response.data);
+        setIsUserSignedIn(true);
+
+        // Upon login, navigate to homescreen
         navigate("/");
       })
       .catch((error) => {
