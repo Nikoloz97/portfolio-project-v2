@@ -13,7 +13,7 @@ import SignUp from "./User/Signup";
 import FantasyBasketball from "./Projects/Basketball/FantasyBasketball";
 import GeographyGame from "./Projects/GeographyGame/GeographyGame";
 import TeamAnalyzer from "./Projects/Basketball/TeamAnalyzer/TeamAnalyzer";
-import ScheduleAnalyzer from "./Projects/Basketball/ScheduleAnalyzer";
+import ScheduleAnalyzer from "./Projects/Basketball/ScheduleAnalyzer/ScheduleAnalyzer";
 
 function AppRouter() {
   return (
