@@ -1,12 +1,36 @@
 import React, { useState, useEffect } from "react";
-import Card from "./Card";
+import GeoCard from "./GeoCard";
 import Timer from "./Timer";
 import WorldMap from "./WorldMap";
-import { Grid } from "semantic-ui-react";
+import { Grid, Button } from "semantic-ui-react";
 import "./Geography.css";
+import { apiGeoGameRoot } from "../../Helpers";
+import axios from "axios";
 
 const GeographyGame = (props) => {
   const [fadeIn, setFadeIn] = useState(false);
+  const [isSessionStarted, setIsSessionStarted] = useState(false);
+  const [cardsContent, setCardsContent] = useState(null);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+
+  const handleCardSubmit = () => {
+    setCurrentCardIndex((prevIndex) => prevIndex + 1);
+  };
+
+  useEffect(() => {
+    if (isSessionStarted) {
+      // TODO: axios fetch from GeoGame database
+      axios
+        .get(apiGeoGameRoot)
+        .then((response) => {
+          console.log(response.data);
+          setCardsContent(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+  }, [isSessionStarted]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,11 +61,15 @@ const GeographyGame = (props) => {
               justifyContent: "center",
             }}
           >
-            <Card />
+            <GeoCard
+              content={cardsContent[currentCardIndex]}
+              onSubmit={handleCardSubmit}
+            />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Timer />
+          <Button onClick={setIsSessionStarted(true)}>Start</Button>
         </Grid.Row>
       </Grid>
     </div>

@@ -1,62 +1,73 @@
 import React, { useState } from "react";
-import { Card, Form, Button } from "semantic-ui-react";
+import { Card, Image, Form, Button } from "semantic-ui-react";
 
 const GeoCard = (props) => {
-
-  const [content, setContent] = useState ({
+  const [content, setContent] = useState({
+    questionType: props.QuestionType,
+    title: props.Title,
     prompt: props.Prompt,
     imageUrl: props.ImageUrl,
     answerOptions: props.AnswerOptions,
-    questionType: props.QuestionType
+    correctOption: props.CorrectOption,
+    correctInput: props.CorrectInput,
   });
 
   // Either MC or input
   const [questionType, setQuestionType] = useState("");
   const [questionNumber, setQuestionNumber] = useState(1);
+
+  // TODO: Put these in parent component (GeoGame)?
   const [totalQuestions, setTotalQuestions] = useState(3);
   const [totalCorrect, setTotalCorrect] = useState(0);
-  
-  const [correctOption, setCorrectOption] = useState("");
-  const [guess, setGuess] = useState("");
 
-  const handleGuess = (e) => {
-    setGuess(e.target.value);
+  const [userInput, setUserInput] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleOptionSelection = (e) => {
+    setSelectedOption(e.target.value);
   };
-  
+
+  const handleUserInput = (e) => {
+    setUserInput(e.target.value);
+  };
+
   const handleCardSubmit = (guessedCountry) => {
-    if (guessedCountry === correctOption) {
-      let incrementedCorrect = totalCorrect + 1
-      setTotalCorrect(incrementedCorrect)
+    if (guessedCountry === props.correctOption) {
+      let incrementedCorrect = totalCorrect + 1;
+      setTotalCorrect(incrementedCorrect);
     }
   };
 
   const handleFormSubmit = (guessedCountry) => {
-    if (guessedCountry === correctOption) {
-      let incrementedCorrect = totalCorrect + 1
-      setTotalCorrect(incrementedCorrect)
+    if (guessedCountry === props.correctOption) {
+      let incrementedCorrect = totalCorrect + 1;
+      setTotalCorrect(incrementedCorrect);
     }
 
     //TODO: axios push for GeoGameSession (UserDb)
   };
-  
+
   return (
     <Card>
       <Card.Content>
-        <Card.Header>Title Here</Card.Header>
+        <Card.Header>{content.title}</Card.Header>
 
-        <Card.Meta>Display Here</Card.Meta>
+        <Card.Meta>{content.prompt}</Card.Meta>
+        {content.imageUrl === null ? (
+          <Card.Meta>
+            <Image src={content.imageUrl} />
+          </Card.Meta>
+        ) : null}
       </Card.Content>
 
       <Card.Content>
-        {questionNumber === totalQuestions ? (<Form onSubmit={handleFormSubmit}>
-) : (<Form onSubmit={handleCardSubmit}>
-)}
+        <Form>
           {questionType === "MultipleChoice" ? (
             <Form.Field>
               <Button.Group>
                 <Button
                   color="blue"
-                  onClick={() => handleOptionSelect("Option 1")}
+                  onClick={() => handleOptionSelection}
                   active={selectedOption === "Option 1"}
                 >
                   Option 1
@@ -64,7 +75,7 @@ const GeoCard = (props) => {
 
                 <Button
                   color="blue"
-                  onClick={() => handleOptionSelect("Option 2")}
+                  onClick={() => handleOptionSelection}
                   active={selectedOption === "Option 2"}
                 >
                   Option 2
@@ -72,7 +83,7 @@ const GeoCard = (props) => {
 
                 <Button
                   color="blue"
-                  onClick={() => handleOptionSelect("Option 3")}
+                  onClick={() => handleOptionSelection}
                   active={selectedOption === "Option 3"}
                 >
                   Option 3
@@ -80,7 +91,7 @@ const GeoCard = (props) => {
 
                 <Button
                   color="blue"
-                  onClick={() => handleOptionSelect("Option 4")}
+                  onClick={() => handleOptionSelection}
                   active={selectedOption === "Option 4"}
                 >
                   Option 4
@@ -89,26 +100,27 @@ const GeoCard = (props) => {
             </Form.Field>
           ) : (
             <Form.Field>
-              <label>User Input</label>
               <input
-                placeholder="Enter something..."
-                value={inputValue}
-                onChange={handleInputChange}
+                placeholder="Enter your answer..."
+                value={userInput}
+                onChange={handleUserInput}
               />
             </Form.Field>
-
           )}
 
           {questionNumber === totalQuestions ? (
-            <Button type="submit">Submit Guess</Button>
+            <Button type="submit" onClick={handleFormSubmit}>
+              Submit Form
+            </Button>
           ) : (
-          <Button type="submit">Submit Form</Button>
+            <Button type="submit" onClick={handleCardSubmit}>
+              Submit Guess
+            </Button>
           )}
-
         </Form>
       </Card.Content>
     </Card>
   );
 };
 
-export default Card;
+export default GeoCard;
