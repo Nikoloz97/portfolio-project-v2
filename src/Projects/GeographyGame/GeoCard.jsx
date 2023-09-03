@@ -3,22 +3,19 @@ import { Card, Image, Form, Button } from "semantic-ui-react";
 
 const GeoCard = (props) => {
   const [content, setContent] = useState({
-    questionType: props.QuestionType,
-    title: props.Title,
-    prompt: props.Prompt,
-    imageUrl: props.ImageUrl,
-    answerOptions: props.AnswerOptions,
-    correctOption: props.CorrectOption,
-    correctInput: props.CorrectInput,
+    questionType: props.content.QuestionType,
+    title: props.content.Title,
+    prompt: props.content.Prompt,
+    imageUrl: props.content.ImageUrl,
+    answerOptions: props.content.AnswerOptions,
+    correctOption: props.content.CorrectOption,
+    correctInput: props.content.CorrectInput,
+    totalQuestions: props.content.TotalQuestions,
   });
 
   // Either MC or input
   const [questionType, setQuestionType] = useState("");
   const [questionNumber, setQuestionNumber] = useState(1);
-
-  // TODO: Put these in parent component (GeoGame)?
-  const [totalQuestions, setTotalQuestions] = useState(3);
-  const [totalCorrect, setTotalCorrect] = useState(0);
 
   const [userInput, setUserInput] = useState("");
   const [selectedOption, setSelectedOption] = useState("");

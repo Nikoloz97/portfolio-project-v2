@@ -7,11 +7,19 @@ import "./Geography.css";
 import { apiGeoGameRoot } from "../../Helpers";
 import axios from "axios";
 
-const GeographyGame = (props) => {
+const GeographyGame = () => {
   const [fadeIn, setFadeIn] = useState(false);
   const [isSessionStarted, setIsSessionStarted] = useState(false);
   const [cardsContent, setCardsContent] = useState(null);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
+
+  // TODO: make number of questions modifyable by user
+  const [totalQuestions, setTotalQuestions] = useState(10);
+  const [totalCorrect, setTotalCorrect] = useState(0);
+
+  const handleIncTotalCorrect = () => {
+    setTotalCorrect((value) => value + 1);
+  };
 
   const handleCardSubmit = () => {
     setCurrentCardIndex((prevIndex) => prevIndex + 1);
@@ -19,7 +27,6 @@ const GeographyGame = (props) => {
 
   useEffect(() => {
     if (isSessionStarted) {
-      // TODO: axios fetch from GeoGame database
       axios
         .get(apiGeoGameRoot)
         .then((response) => {
@@ -63,7 +70,9 @@ const GeographyGame = (props) => {
           >
             <GeoCard
               content={cardsContent[currentCardIndex]}
+              totalQuestions={totalQuestions}
               onSubmit={handleCardSubmit}
+              incTotalCorrect={handleIncTotalCorrect}
             />
           </Grid.Column>
         </Grid.Row>
