@@ -13,16 +13,11 @@ const GeographyGame = () => {
   const [cardsContent, setCardsContent] = useState(null);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
-  // TODO: make number of questions modifyable by user
   const [totalQuestions, setTotalQuestions] = useState(10);
   const [totalCorrect, setTotalCorrect] = useState(0);
 
   const handleIncTotalCorrect = () => {
     setTotalCorrect((value) => value + 1);
-  };
-
-  const handleCardSubmit = () => {
-    setCurrentCardIndex((prevIndex) => prevIndex + 1);
   };
 
   useEffect(() => {
@@ -68,17 +63,23 @@ const GeographyGame = () => {
               justifyContent: "center",
             }}
           >
-            <GeoCard
-              content={cardsContent[currentCardIndex]}
-              totalQuestions={totalQuestions}
-              onSubmit={handleCardSubmit}
-              incTotalCorrect={handleIncTotalCorrect}
-            />
+            <Button onClick={() => setIsSessionStarted(true)}>Start</Button>
+
+            {cardsContent ? (
+              <GeoCard
+                content={cardsContent[currentCardIndex]}
+                totalQuestions={totalQuestions}
+                totalCorrect={totalCorrect}
+                setTotalCorrect={setTotalCorrect}
+                incTotalCorrect={handleIncTotalCorrect}
+                currentCardIndex={currentCardIndex}
+                setCurrentCardIndex={setCurrentCardIndex}
+              />
+            ) : null}
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Timer />
-          <Button onClick={setIsSessionStarted(true)}>Start</Button>
         </Grid.Row>
       </Grid>
     </div>

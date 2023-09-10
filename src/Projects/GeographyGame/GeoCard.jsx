@@ -1,56 +1,79 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Image, Form, Button } from "semantic-ui-react";
 
 const GeoCard = (props) => {
-  const [content, setContent] = useState({
-    questionType: props.content.QuestionType,
-    title: props.content.Title,
-    prompt: props.content.Prompt,
-    imageUrl: props.content.ImageUrl,
-    answerOptions: props.content.AnswerOptions,
-    correctOption: props.content.CorrectOption,
-    correctInput: props.content.CorrectInput,
-    totalQuestions: props.content.TotalQuestions,
-  });
-
-  // Either MC or input
-  const [questionType, setQuestionType] = useState("");
-  const [questionNumber, setQuestionNumber] = useState(1);
-
+  const [content, setContent] = useState({});
   const [userInput, setUserInput] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [chosenOption, setChosenOption] = useState("");
+  const [isCorrectScreenShowing, setIsCorrectScreenShowing] = useState(false);
+  const [isIncorrectScreenShowing, setIsIncorrectScreenShowing] =
+    useState(false);
 
-  const handleOptionSelection = (e) => {
-    setSelectedOption(e.target.value);
+  const handleCardSubmit = () => {
+    if (chosenOption === content.correctOption) {
+      setIsCorrectScreenShowing(true);
+      props.setTotalCorrect((value) => value + 1);
+    } else {
+      setIsIncorrectScreenShowing(true);
+    }
+    props.setCurrentCardIndex((value) => value + 1);
   };
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
   };
 
-  const handleCardSubmit = (guessedCountry) => {
-    if (guessedCountry === props.correctOption) {
-      let incrementedCorrect = totalCorrect + 1;
-      setTotalCorrect(incrementedCorrect);
-    }
-  };
+  useEffect(() => {
+    setContent({
+      correctOption: props.content.answer,
+      countryName: props.content.countryName,
+      imageUrl: props.content.imageUrl,
 
-  const handleFormSubmit = (guessedCountry) => {
-    if (guessedCountry === props.correctOption) {
-      let incrementedCorrect = totalCorrect + 1;
-      setTotalCorrect(incrementedCorrect);
-    }
+      // If MC...
+      optionOne: props.content.optionOne,
+      optionTwo: props.content.optionTwo,
+      optionThree: props.content.optionThree,
+      optionFour: props.content.optionFour,
 
-    //TODO: axios push for GeoGameSession (UserDb)
-  };
+      prompt: props.content.prompt,
+      questionType: props.content.questionType,
+      region: props.content.region,
+
+      // If FR...
+      correctInput: props.content.correctInput,
+
+      totalQuestions: props.totalQuestions,
+      questionNumber: props.currentCardIndex + 1,
+    });
+  }, [props.content]);
+
+  useEffect(() => {
+    if (chosenOption !== "") {
+      console.log("Current chosen option: " + chosenOption);
+    }
+  }, [chosenOption]);
+
+  useEffect(() => {
+    console.log("totalCorrect: " + props.totalCorrect);
+  }, [props.totalCorrect]);
+
+  useEffect(() => {
+    console.log("Correct Screen Showing? ... " + isCorrectScreenShowing);
+  }, [isCorrectScreenShowing]);
+
+  useEffect(() => {
+    console.log("Incorrect Screen Showing? ... " + isIncorrectScreenShowing);
+  }, [isIncorrectScreenShowing]);
+
+  //TODO: axios push for GeoGameSession (UserDb)
 
   return (
     <Card>
       <Card.Content>
-        <Card.Header>{content.title}</Card.Header>
+        <Card.Header>{content.region}</Card.Header>
 
         <Card.Meta>{content.prompt}</Card.Meta>
-        {content.imageUrl === null ? (
+        {props.content.imageUrl !== null ? (
           <Card.Meta>
             <Image src={content.imageUrl} />
           </Card.Meta>
@@ -59,39 +82,39 @@ const GeoCard = (props) => {
 
       <Card.Content>
         <Form>
-          {questionType === "MultipleChoice" ? (
+          {props.content.questionType === "Multiple Choice" ? (
             <Form.Field>
               <Button.Group>
                 <Button
                   color="blue"
-                  onClick={() => handleOptionSelection}
-                  active={selectedOption === "Option 1"}
+                  active={chosenOption === content.optionOne}
+                  onClick={() => setChosenOption(content.optionOne)}
                 >
-                  Option 1
+                  {content.optionOne}
                 </Button>
 
                 <Button
                   color="blue"
-                  onClick={() => handleOptionSelection}
-                  active={selectedOption === "Option 2"}
+                  active={chosenOption === content.optionTwo}
+                  onClick={() => setChosenOption(content.optionTwo)}
                 >
-                  Option 2
+                  {content.optionTwo}
                 </Button>
 
                 <Button
                   color="blue"
-                  onClick={() => handleOptionSelection}
-                  active={selectedOption === "Option 3"}
+                  active={chosenOption === content.optionThree}
+                  onClick={() => setChosenOption(content.optionThree)}
                 >
-                  Option 3
+                  {content.optionThree}
                 </Button>
 
                 <Button
                   color="blue"
-                  onClick={() => handleOptionSelection}
-                  active={selectedOption === "Option 4"}
+                  active={chosenOption === content.optionFour}
+                  onClick={() => setChosenOption(content.optionFour)}
                 >
-                  Option 4
+                  {content.optionFour}
                 </Button>
               </Button.Group>
             </Form.Field>
@@ -104,20 +127,12 @@ const GeoCard = (props) => {
               />
             </Form.Field>
           )}
-
-          {questionNumber === totalQuestions ? (
-            <Button type="submit" onClick={handleFormSubmit}>
-              Submit Form
-            </Button>
-          ) : (
-            <Button type="submit" onClick={handleCardSubmit}>
-              Submit Guess
-            </Button>
-          )}
+          <Button type="submit" onClick={handleCardSubmit}>
+            Submit
+          </Button>
         </Form>
       </Card.Content>
     </Card>
   );
 };
-
 export default GeoCard;
