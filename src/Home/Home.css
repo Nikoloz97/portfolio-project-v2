@@ -1,3 +1,16 @@
+.custom-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.welcome-buttons-container {
+  height: 6rem;
+}
+
 .typewriter-animation {
   display: inline-block;
   border-right: 2px solid white; /* Simulate cursor blinking */
@@ -12,19 +25,20 @@
   animation: fade-in-buttons 1s forwards;
 }
 
+.arrow-container {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: fade-in-arrow 1s forwards;
+}
+
 @keyframes fade-in-buttons {
   to {
     opacity: 1;
   }
 }
 
-.fade-in-button {
-  opacity: 0;
-  animation: fade-in-button 0.5s forwards;
-  margin-bottom: 10px;
-}
-
-@keyframes fade-in-button {
+@keyframes fade-in-arrow {
   to {
     opacity: 1;
   }
