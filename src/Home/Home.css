@@ -1,0 +1,31 @@
+.typewriter-animation {
+  display: inline-block;
+  border-right: 2px solid white; /* Simulate cursor blinking */
+  white-space: nowrap;
+  color: white;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: fade-in-buttons 1s forwards;
+}
+
+@keyframes fade-in-buttons {
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-button {
+  opacity: 0;
+  animation: fade-in-button 0.5s forwards;
+  margin-bottom: 10px;
+}
+
+@keyframes fade-in-button {
+  to {
+    opacity: 1;
+  }
+}

@@ -1,13 +1,13 @@
 import React from "react";
 
-const About = () => {
+const Blog = () => {
   return (
     <div>
       <header className="Default-Page">
-        <p>Welcome to my about page</p>
+        <p>Welcome to my blog page</p>
       </header>
     </div>
   );
 };
 
-export default About;
+export default Blog;
