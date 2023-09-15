@@ -27,9 +27,27 @@
 
 .arrow-container {
   display: flex;
-  flex-direction: column;
-  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: rgba(57, 58, 69, 0.6);
+  opacity: 0.5;
   animation: fade-in-arrow 1s forwards;
+}
+
+.arrow-container .arrow-icon {
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.arrow-container:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  animation: fade-in-glow 1s forwards;
 }
 
 @keyframes fade-in-buttons {
@@ -39,6 +57,12 @@
 }
 
 @keyframes fade-in-arrow {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-glow {
   to {
     opacity: 1;
   }

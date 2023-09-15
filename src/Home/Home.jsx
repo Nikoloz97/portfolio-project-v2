@@ -11,7 +11,9 @@ const Home = () => {
   const [isTyping, setIsTyping] = useState(true);
 
   const [showButtons, setShowButtons] = useState(false);
-  const [showArrow, setShowArrow] = useState(false);
+
+  const [isArrowHovered, setIsArrowHovered] = useState(false);
+  const [isArrowVisible, setIsArrowVisible] = useState(false);
 
   const handleSignOut = () => {
     setUser(null);
@@ -31,10 +33,6 @@ const Home = () => {
         setIsTyping(false);
         setShowButtons(true);
       }
-
-      setTimeout(() => {
-        setShowArrow(true);
-      }, 1500);
     }, 100); // Typing speed (100ms per character)
     return () => {
       clearInterval(typingInterval);
@@ -47,10 +45,16 @@ const Home = () => {
       setShowButtons(true);
     }, 1500);
 
+    if (showButtons) {
+      setTimeout(() => {
+        setIsArrowVisible(true);
+      }, 500); // Adjust the delay time as needed
+    }
+
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [showButtons]);
 
   return (
     <>
@@ -90,12 +94,19 @@ const Home = () => {
               ) : null}
             </Grid.Row>
 
-            {showArrow ? (
+            {isArrowVisible ? (
               <Grid.Row>
-                <div className="arrow-container">
+                <div
+                  className={`arrow-container ${
+                    isArrowHovered ? "active" : ""
+                  }`}
+                  onMouseEnter={() => setIsArrowHovered(true)}
+                  onMouseLeave={() => setIsArrowHovered(false)}
+                >
                   <Icon
                     name="arrow down"
                     size="small"
+                    className="arrow-icon"
                     onClick={() => {
                       // Handle arrow click event
                     }}
