@@ -48,7 +48,7 @@ const Home = () => {
     if (showButtons) {
       setTimeout(() => {
         setIsArrowVisible(true);
-      }, 500); // Adjust the delay time as needed
+      }, 500); // Adjust the delay time
     }
 
     return () => {
@@ -111,6 +111,7 @@ const Home = () => {
                       // Handle arrow click event
                     }}
                   />
+                  <span className="about-me-text">About Me</span>{" "}
                 </div>
               </Grid.Row>
             ) : null}
