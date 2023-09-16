@@ -106,12 +106,11 @@ const Home = () => {
                   <Icon
                     name="arrow down"
                     size="small"
-                    className="arrow-icon"
+                    className={`arrow-icon ${isArrowHovered ? "grow" : ""}`}
                     onClick={() => {
                       // Handle arrow click event
                     }}
                   />
-                  <span className="about-me-text">About Me</span>{" "}
                 </div>
               </Grid.Row>
             ) : null}

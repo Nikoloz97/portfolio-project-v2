@@ -1,12 +1,3 @@
-.custom-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-}
-
 .welcome-buttons-container {
   height: 6rem;
 }
@@ -35,25 +26,34 @@
   right: 0;
   padding: 10px;
   background-color: rgba(57, 58, 69, 0.6);
-  opacity: 0.5;
-  animation: fade-in-arrow 1s forwards;
-}
-
-.arrow-container:hover {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-  animation: fade-in-glow 1s forwards;
-}
-
-/* Add a new CSS class for the "About Me" text */
-.about-me-text {
   opacity: 0;
-  margin-left: 10px; /* Adjust the margin as needed */
-  transition: opacity 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  animation: fade-in-arrow 1s forwards, box-shadow-fade 1.2s infinite alternate;
 }
 
-/* Animate the "About Me" text when the arrow container is hovered */
-.arrow-container:hover .about-me-text {
+.active {
   opacity: 1;
+  animation: arrow-size 1s forwards;
+}
+
+.grow {
+  transition: transform 0.5s ease; /* Adjust the duration as needed */
+  transform: scale(1); /* Initial size */
+}
+
+@keyframes arrow-size {
+  to {
+    transform: scale(1.5); /* Adjust the scale factor as needed */
+  }
+}
+
+@keyframes box-shadow-fade {
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
 }
 
 @keyframes fade-in-buttons {
@@ -63,12 +63,6 @@
 }
 
 @keyframes fade-in-arrow {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in-glow {
   to {
     opacity: 1;
   }
