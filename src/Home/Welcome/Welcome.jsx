@@ -16,6 +16,7 @@ const Welcome = () => {
   const [isArrowHovered, setIsArrowHovered] = useState(false);
   const [isArrowDehovered, setIsArrowDehovered] = useState(false);
   const [isArrowVisible, setIsArrowVisible] = useState(false);
+  const [isArrowAbove, setIsArrowAbove] = useState(false);
 
   const handleSignOut = () => {
     setUser(null);
@@ -34,8 +35,15 @@ const Welcome = () => {
 
   // Scroll downscreen
   const aboutMeRef = useRef(null);
+
   const handleArrowClick = () => {
-    aboutMeRef.current.scrollIntoView({ behavior: "smooth" });
+    if (isArrowAbove === false) {
+      aboutMeRef.current.scrollIntoView({ behavior: "smooth" });
+      setIsArrowAbove(true);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setIsArrowAbove(false);
+    }
   };
 
   // Welcome typewriting animation
@@ -115,9 +123,11 @@ const Welcome = () => {
             {isArrowVisible ? (
               <Grid.Row>
                 <div
-                  className={`arrow-container ${
-                    isArrowHovered ? "hovered-ac" : ""
-                  } ${
+                  className={`${
+                    isArrowAbove
+                      ? "arrow-container-above"
+                      : "arrow-container-bottom"
+                  } ${isArrowHovered ? "hovered-ac" : ""} ${
                     isArrowDehovered
                       ? "subsequent-ac-opacity"
                       : "on-render-ac-opacity"
@@ -126,11 +136,9 @@ const Welcome = () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <Icon
-                    name="arrow down"
+                    name={`${isArrowAbove ? "arrow up" : "arrow down"}`}
                     size="small"
-                    className={`arrow-icon ${
-                      isArrowHovered ? "arrow-grow" : ""
-                    }`}
+                    className="arrow-icon"
                     onClick={handleArrowClick}
                   />
                 </div>
