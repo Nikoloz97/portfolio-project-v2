@@ -36,6 +36,8 @@ const Welcome = () => {
   const aboutMeRef = useRef(null);
 
   const handleArrowClick = () => {
+    setIsArrowVisible(false);
+
     if (isArrowAbove === false) {
       aboutMeRef.current.scrollIntoView({ behavior: "smooth" });
       setIsArrowAbove(true);
@@ -43,6 +45,11 @@ const Welcome = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       setIsArrowAbove(false);
     }
+
+    setTimeout(() => {
+      setIsArrowVisible(true);
+      setIsArrowHovered(false);
+    }, 800);
   };
 
   // Welcome typewriting animation
