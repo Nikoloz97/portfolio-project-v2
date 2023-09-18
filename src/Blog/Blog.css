@@ -1,0 +1,19 @@
+.fade-in-header {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in-header.fade-in {
+  opacity: 1;
+}
+
+.card {
+  opacity: 0;
+  transform: scale(0.2);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.card.pop-in {
+  opacity: 1;
+  transform: scale(1);
+}

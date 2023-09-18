@@ -33,7 +33,6 @@ const Welcome = () => {
     setIsArrowDehovered(true);
   };
 
-  // Scroll downscreen
   const aboutMeRef = useRef(null);
 
   const handleArrowClick = () => {
