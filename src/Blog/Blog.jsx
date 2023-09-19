@@ -4,6 +4,7 @@ import "./Blog.css";
 
 const Blog = () => {
   const [isHeaderVisible, setHeaderVisible] = useState(false);
+  const [isSubheaderVisible, setSubheaderVisible] = useState(false);
   const [isFirstCardVisible, setFirstCardVisible] = useState(false);
   const [isSecondCardVisible, setSecondCardVisible] = useState(false);
   const [isThirdCardVisible, setThirdCardVisible] = useState(false);
@@ -14,26 +15,42 @@ const Blog = () => {
       setHeaderVisible(true);
     }, 200);
 
+    // Delay subheader fade-in
+    setTimeout(() => {
+      setSubheaderVisible(true);
+    }, 800);
+
     // Delay  first card fade-in
     setTimeout(() => {
       setFirstCardVisible(true);
-    }, 1200);
+    }, 1800);
 
     setTimeout(() => {
       setSecondCardVisible(true);
-    }, 1500);
+    }, 2000);
 
     setTimeout(() => {
       setThirdCardVisible(true);
-    }, 1800);
+    }, 2200);
   }, []);
 
   return (
     <div className="Default-Page">
-      <header className={`fade-in-header ${isHeaderVisible ? "fade-in" : ""}`}>
-        <h1>Nick's Blog</h1>
-        <p>Below are links to articles involving travel, health, and dance</p>
-      </header>
+      <Grid centered verticalAlign="middle">
+        <Grid.Row
+          className={`fade-in-header ${isHeaderVisible ? "fade-in" : ""}`}
+        >
+          <div className="Default-Header">Nick's Blog</div>
+        </Grid.Row>
+        <Grid.Row
+          className={`fade-in-subheader ${isSubheaderVisible ? "fade-in" : ""}`}
+        >
+          <div className="Default-Subtext">
+            Select from the following links to following my journey in travel,
+            health, and dance
+          </div>
+        </Grid.Row>
+      </Grid>
 
       <Grid columns={3}>
         {/* First Card */}

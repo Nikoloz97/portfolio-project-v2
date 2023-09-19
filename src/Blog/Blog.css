@@ -1,10 +1,19 @@
 .fade-in-header {
   opacity: 0;
-  transition: opacity 1s ease-in-out;
 }
 
 .fade-in-header.fade-in {
   opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in-subheader {
+  opacity: 0;
+}
+
+.fade-in-subheader.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
 .card {
