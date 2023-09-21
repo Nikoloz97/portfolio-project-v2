@@ -23,15 +23,15 @@ const Blog = () => {
     // Delay  first card fade-in
     setTimeout(() => {
       setFirstCardVisible(true);
-    }, 1800);
-
-    setTimeout(() => {
-      setSecondCardVisible(true);
     }, 2000);
 
     setTimeout(() => {
-      setThirdCardVisible(true);
+      setSecondCardVisible(true);
     }, 2200);
+
+    setTimeout(() => {
+      setThirdCardVisible(true);
+    }, 2400);
   }, []);
 
   return (
@@ -46,8 +46,7 @@ const Blog = () => {
           className={`fade-in-subheader ${isSubheaderVisible ? "fade-in" : ""}`}
         >
           <div className="Default-Subtext">
-            Select from the following links to following my journey in travel,
-            health, and dance
+            Choose from my journey in travel, health, and dance
           </div>
         </Grid.Row>
       </Grid>
