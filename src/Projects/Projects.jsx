@@ -6,6 +6,18 @@ const Projects = () => {
 
   const [projectsData, setProjectsData] = useState([
     {
+      introTitle: "Intro",
+      introText: "Welcome to my projects page",
+      introSubtext:
+        "Select arrow to the right to navigate to my various projects, or click on links below to go straight to the project",
+      linkUrls: [
+        { title: "Clocks", url: "/projects/clocks" },
+        { title: "Calculator", url: "/projects/calculator" },
+        { title: "Geography Game", url: "/projects/geography-game" },
+        { title: "Fantasy Basketball", url: "/projects/fantasy-basketball" },
+      ],
+    },
+    {
       title: "Clocks",
       mediaUrl: "",
       mediaCaption: "",
