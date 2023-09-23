@@ -54,7 +54,7 @@ const Blog = () => {
       <Grid columns={3}>
         {/* First Card */}
         <Grid.Column>
-          <Card className={`card ${isFirstCardVisible ? "pop-in" : ""}`}>
+          <Card className={`blog-card ${isFirstCardVisible ? "pop-in" : ""}`}>
             <Image src="/your-image-source.jpg" wrapped />
             <Card.Content>
               <Card.Meta>Date</Card.Meta>
@@ -74,7 +74,7 @@ const Blog = () => {
 
         {/* Second Card */}
         <Grid.Column>
-          <Card className={`card ${isSecondCardVisible ? "pop-in" : ""}`}>
+          <Card className={`blog-card ${isSecondCardVisible ? "pop-in" : ""}`}>
             <Image src="/your-image-source.jpg" wrapped ui={false} />
             <Card.Content>
               <Card.Meta>Date</Card.Meta>
@@ -94,7 +94,7 @@ const Blog = () => {
 
         {/* Third Card */}
         <Grid.Column>
-          <Card className={`card ${isThirdCardVisible ? "pop-in" : ""}`}>
+          <Card className={`blog-card ${isThirdCardVisible ? "pop-in" : ""}`}>
             <Image src="/your-image-source.jpg" wrapped ui={false} />
             <Card.Content>
               <Card.Meta>Date</Card.Meta>

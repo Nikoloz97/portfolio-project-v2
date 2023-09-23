@@ -4,7 +4,7 @@ import Home from "./Home/Home";
 import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
 import Navbar from "./Navbar";
-import Projects from "./Projects/Projects";
+import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
 import Clocks from "./Projects/Clocks/Clocks";
 import Forum from "./Forum/Forum";

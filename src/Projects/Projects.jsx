@@ -1,29 +1,58 @@
-import React from "react";
-import { Menu, MenuItem, Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import ProjectCard from "./ProjectCard/ProjectCard.jsx";
 
 const Projects = () => {
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+
+  const [projectsData, setProjectsData] = useState([
+    {
+      title: "Clocks",
+      mediaUrl: "",
+      mediaCaption: "",
+      linkUrl: "/projects/clocks",
+    },
+    {
+      title: "Calculator",
+      mediaUrl: "",
+      mediaCaption: "",
+      linkUrl: "/projects/calculator",
+    },
+    {
+      title: "Geography Game",
+      mediaUrl: "",
+      mediaCaption: "",
+      linkUrl: "/projects/geography-game",
+    },
+    {
+      title: "Fantasy Basketball",
+      mediaUrl: "",
+      mediaCaption: "",
+      linkUrl: "/projects/fantasy-basketball",
+    },
+  ]);
+
+  const goToNextProject = () => {
+    if (currentProjectIndex < projectsData.length - 1) {
+      setCurrentProjectIndex(currentProjectIndex + 1);
+    }
+  };
+
+  const goToPrevProject = () => {
+    if (currentProjectIndex > 0) {
+      setCurrentProjectIndex(currentProjectIndex - 1);
+    }
+  };
+
   return (
     <div className="Default-Page">
-      <header>
-        <p>Welcome to my projects page</p>
-      </header>
-      <div>
-        <Menu className="Default-Page">
-          <MenuItem as={Link} to="/projects/clocks">
-            <Button>Clocks</Button>
-          </MenuItem>
-          <MenuItem as={Link} to="/projects/calculator">
-            <Button>Calculator</Button>
-          </MenuItem>
-          <MenuItem as={Link} to="/projects/geography-game">
-            <Button>Geography Game</Button>
-          </MenuItem>
-          <MenuItem as={Link} to="/projects/fantasy-basketball">
-            <Button>Fantasy Basketball</Button>
-          </MenuItem>
-        </Menu>
-      </div>
+      <header>Projects</header>
+      <ProjectCard
+        projectData={projectsData[currentProjectIndex]}
+        projectsDataLength={projectsData.length}
+        currentProjectIndex={currentProjectIndex}
+        goToNextProject={goToNextProject}
+        goToPrevProject={goToPrevProject}
+      />
     </div>
   );
 };

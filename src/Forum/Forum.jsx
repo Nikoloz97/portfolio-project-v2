@@ -47,7 +47,7 @@ function Forum() {
         </div>
       ) : (
         <div style={{ color: "white" }}>
-          There was a network error, please try again
+          There was an issue connecting to the network, please try again later
         </div>
       )}
     </div>
