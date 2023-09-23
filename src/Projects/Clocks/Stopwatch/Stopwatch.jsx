@@ -42,6 +42,7 @@ function Stopwatch() {
 
   return (
     <div className="countUp">
+      <h1>Stopwatch</h1>
       <div className="display"> {formatTime(elapsedTime)}</div>
       <div className="controls" style={{ marginTop: "10px" }}>
         {!running && <Button onClick={start}>Start</Button>}
