@@ -1,12 +1,11 @@
 import React from "react";
 import Stopwatch from "./Stopwatch/Stopwatch";
-import Alarm from "./Alarm";
-import ClockDisplay from "./ClockDisplay";
+import Alarm from "./Alarm/Alarm";
+import ClockDisplay from "./Clock/Clock";
 
-function Clocks() {
+function Chronos() {
   return (
     <div className="Default-Page">
-      <h1>Clocks Project</h1>
       <Stopwatch />
       <Alarm />
       <ClockDisplay />
@@ -14,4 +13,4 @@ function Clocks() {
   );
 }
 
-export default Clocks;
+export default Chronos;

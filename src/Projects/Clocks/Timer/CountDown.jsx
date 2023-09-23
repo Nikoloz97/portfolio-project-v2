@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "semantic-ui-react";
 
 function CountDown() {
-  // TODO: Fix countdown (not working)
-  // TODO: Whenever minute decreases, seconds = go up to 59 (same for hours-minutes)
+  // Just use this file as reference in building new timer file (if app.)
+  // Fix countdown (not working)
+  // Whenever minute decreases, seconds = go up to 59 (same for hours-minutes)
 
   const [timeArray, setTimeArray] = useState([0, 0, 0, 0, 0, 0]);
 
@@ -139,13 +141,11 @@ function CountDown() {
         </div>
 
         {numberButtons.map((item) => (
-          <button key={item} name={item} onClick={handleNumberButtonClick}>
-            {item}
-          </button>
+          <Button onClick={handleNumberButtonClick}>{item}</Button>
         ))}
-        <button onClick={reset}>Reset</button>
-        <button onClick={start}>Start</button>
-        <button onClick={stop}>Stop</button>
+        <Button onClick={reset}>Reset</Button>
+        <Button onClick={start}>Start</Button>
+        <Button onClick={stop}>Stop</Button>
       </div>
     </div>
   );

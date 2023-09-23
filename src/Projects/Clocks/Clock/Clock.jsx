@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "semantic-ui-react";
 
 function ClockDisplay() {
   const [time, setTime] = useState(new Date());
@@ -43,7 +44,7 @@ function ClockDisplay() {
       <div>
         {startTracking ? time.toLocaleTimeString("en-US", options) : null}
       </div>
-      <button onClick={handleClick}>{ButtonDisplay}</button>
+      <Button onClick={handleClick}>{ButtonDisplay}</Button>
     </div>
   );
 }

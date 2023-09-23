@@ -11,7 +11,7 @@ const Projects = () => {
       introSubtext:
         "Select arrow to the right to navigate to my various projects, or click on links below to go straight to the project",
       linkUrls: [
-        { title: "Clocks", url: "/projects/clocks" },
+        { title: "Kronos", url: "/projects/kronos" },
         { title: "Calculator", url: "/projects/calculator" },
         { title: "Geography Game", url: "/projects/geography-game" },
         { title: "Fantasy Basketball", url: "/projects/fantasy-basketball" },

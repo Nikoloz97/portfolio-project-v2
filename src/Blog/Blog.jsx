@@ -46,7 +46,7 @@ const Blog = () => {
           className={`fade-in-subheader ${isSubheaderVisible ? "fade-in" : ""}`}
         >
           <div className="Default-Subtext">
-            Choose from my journey in travel, health, and dance
+            Choose from my latest posts in travel, health, and dance
           </div>
         </Grid.Row>
       </Grid>
@@ -57,16 +57,16 @@ const Blog = () => {
           <Card className={`blog-card ${isFirstCardVisible ? "pop-in" : ""}`}>
             <Image src="/your-image-source.jpg" wrapped />
             <Card.Content>
-              <Card.Meta>Date</Card.Meta>
-              <Card.Header>Card Header</Card.Header>
-              <Card.Description>
+              <Card.Meta style={{ color: "white" }}>Date</Card.Meta>
+              <Card.Header style={{ color: "white" }}>Card Header</Card.Header>
+              <Card.Description style={{ color: "white" }}>
                 This is a description of the card's content.
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button color="teal">
+              <Button color="gray">
                 <Icon name="arrow right" style={{ marginRight: "10px" }} />
-                Learn More
+                Expand
               </Button>
             </Card.Content>
           </Card>
@@ -77,16 +77,16 @@ const Blog = () => {
           <Card className={`blog-card ${isSecondCardVisible ? "pop-in" : ""}`}>
             <Image src="/your-image-source.jpg" wrapped ui={false} />
             <Card.Content>
-              <Card.Meta>Date</Card.Meta>
-              <Card.Header>Card Header</Card.Header>
-              <Card.Description>
+              <Card.Meta style={{ color: "white" }}>Date</Card.Meta>
+              <Card.Header style={{ color: "white" }}>Card Header</Card.Header>
+              <Card.Description style={{ color: "white" }}>
                 This is a description of the card's content.
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button color="teal">
+              <Button color="gray">
                 <Icon name="arrow right" style={{ marginRight: "10px" }} />
-                Learn More
+                Expand
               </Button>
             </Card.Content>
           </Card>
@@ -97,16 +97,16 @@ const Blog = () => {
           <Card className={`blog-card ${isThirdCardVisible ? "pop-in" : ""}`}>
             <Image src="/your-image-source.jpg" wrapped ui={false} />
             <Card.Content>
-              <Card.Meta>Date</Card.Meta>
-              <Card.Header>Card Header</Card.Header>
-              <Card.Description>
+              <Card.Meta style={{ color: "white" }}>Date</Card.Meta>
+              <Card.Header style={{ color: "white" }}>Card Header</Card.Header>
+              <Card.Description style={{ color: "white" }}>
                 This is a description of the card's content.
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button color="teal">
+              <Button color="Gray">
                 <Icon name="arrow right" style={{ marginRight: "10px" }} />
-                Learn More
+                Expand
               </Button>
             </Card.Content>
           </Card>

@@ -6,7 +6,7 @@ import Contact from "./Contact/Contact";
 import Navbar from "./Navbar";
 import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
-import Clocks from "./Projects/Clocks/Clocks";
+import Kronos from "./Projects/Clocks/Kronos";
 import Forum from "./Forum/Forum";
 import Login from "./User/Login";
 import SignUp from "./User/Signup";
@@ -26,7 +26,7 @@ function AppRouter() {
 
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/calculator" element={<Calculator />} />
-        <Route path="/projects/clocks" element={<Clocks />} />
+        <Route path="/projects/kronos" element={<Kronos />} />
         <Route
           path="/projects/fantasy-basketball"
           element={<FantasyBasketball />}

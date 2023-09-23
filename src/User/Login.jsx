@@ -43,7 +43,6 @@ const Login = () => {
   return (
     <>
       <header className="Default-Page">
-        <p>Welcome to the login page</p>
         <Segment placeholder>
           <Grid columns={2} relaxed="very" stackable>
             <Grid.Column>
