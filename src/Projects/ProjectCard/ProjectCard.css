@@ -6,4 +6,21 @@
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
   margin-top: 2rem !important;
   background-color: #383c43 !important;
+  position: relative;
+}
+
+.project-left-arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.project-right-arrow {
+  position: absolute;
+  width: 65.52 px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transform: translateX(345%);
 }

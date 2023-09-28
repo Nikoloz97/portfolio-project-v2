@@ -8,11 +8,10 @@ const ProjectCard = (props) => {
     <div>
       {props.currentProjectIndex === 0 ? (
         <Card className="project-card">
-          <Card.Header>{props.projectData.introTitle}</Card.Header>
-          <Card.Description>{props.projectData.introText}</Card.Description>
+          <Card.Header>{props.projectData.introText}</Card.Header>
           <Card.Description>{props.projectData.introSubtext}</Card.Description>
           <Card.Content extra>
-            <Button disabled color="gray">
+            <Button className="project-left-arrow" disabled color="gray">
               <Icon name="arrow left" style={{ marginRight: "10px" }} />
             </Button>
 
@@ -23,6 +22,7 @@ const ProjectCard = (props) => {
             ))}
 
             <Button
+              className="project-right-arrow"
               disabled={
                 props.currentProjectIndex === props.projectsDataLength - 1
                   ? true
@@ -41,13 +41,18 @@ const ProjectCard = (props) => {
           <Image src={props.projectData.mediaUrl} wrapped ui={false} />
           <Card.Description>{props.projectData.mediaCaption}</Card.Description>
           <Card.Content extra>
-            <Button onClick={props.goToPrevProject} color="gray">
+            <Button
+              className="project-left-arrow"
+              onClick={props.goToPrevProject}
+              color="gray"
+            >
               <Icon name="arrow left" style={{ marginRight: "10px" }} />
             </Button>
             <Button as={Link} to={props.projectData.linkUrl} color="gray">
               Go to Project
             </Button>
             <Button
+              className="project-right-arrow"
               disabled={
                 props.currentProjectIndex === props.projectsDataLength - 1
                   ? true
