@@ -56,7 +56,6 @@ const Projects = () => {
 
   return (
     <div className="Default-Page">
-      <header>Projects</header>
       <ProjectCard
         projectData={projectsData[currentProjectIndex]}
         projectsDataLength={projectsData.length}
