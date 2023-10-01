@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'NicksPortfolioReact'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6CAC104566864720985ED9B2B8BEF5D2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F5222F608FC544DD9C2D5230535D0FF0 }}
           package: .
