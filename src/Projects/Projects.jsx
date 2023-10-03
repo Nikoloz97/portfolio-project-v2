@@ -17,27 +17,28 @@ const Projects = () => {
       ],
     },
     {
-      title: "Clocks",
-      mediaUrl: "../Images/Projects/Calc1.jpg",
-      mediaCaption: "",
+      title: "Kronos",
+      mediaUrl: "../../Images/Projects/Calc1.jpg",
+      mediaCaption: "This is a description about the clocks project",
       linkUrl: "/projects/clocks",
     },
     {
       title: "Calculator",
-      mediaUrl: "",
-      mediaCaption: "",
+      mediaUrl: "../../Images/Projects/Calc1.jpg",
+      mediaCaption: "This is a description about the calculator project",
       linkUrl: "/projects/calculator",
     },
     {
       title: "Geography Game",
-      mediaUrl: "",
-      mediaCaption: "",
+      mediaUrl: "../../Images/Projects/Calc1.jpg",
+      mediaCaption: "This is a description about the geography game project",
       linkUrl: "/projects/geography-game",
     },
     {
       title: "Fantasy Basketball",
-      mediaUrl: "",
-      mediaCaption: "",
+      mediaUrl: "../../Images/Projects/Calc1.jpg",
+      mediaCaption:
+        "This is a description about the fantasy basketball project",
       linkUrl: "/projects/fantasy-basketball",
     },
   ]);

@@ -1,5 +1,4 @@
 .project-card {
-  opacity: 1;
   color: white;
   align-items: center;
   padding: 0.5rem !important;
@@ -8,10 +7,23 @@
   background-color: #383c43 !important;
   position: relative;
 
-  width: 20.7rem !important;
-  height: 40rem !important;
+  transition: height 1s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s ease-in !important;
 
-  /* Text padding (not overlap with buttons) */
+  width: 20.7rem !important;
+}
+
+.project-card-preloaded {
+  height: 0 !important;
+  transform: scaleY(0);
+  transform-origin: center top;
+  opacity: 0 !important;
+}
+
+.project-card-loaded {
+  height: 40rem !important;
+  transform: scaleY(1);
+  opacity: 1 !important;
 }
 
 .project-left-arrow-button {

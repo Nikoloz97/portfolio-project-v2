@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Image, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./ProjectCard.css";
-import clock from "../../Images/Projects/Calc1.jpg";
 
 const ProjectCard = (props) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  });
+
   return (
     <div>
       {/* Intro card */}
       {props.currentProjectIndex === 0 ? (
-        <Card className="project-card">
+        <Card
+          className={`project-card ${
+            isLoaded ? "project-card-loaded" : "project-card-preloaded"
+          }`}
+        >
           <Card.Header
             style={{ maxWidth: "70%", marginBottom: "10%", marginTop: "10%" }}
             textAlign="center"
@@ -17,7 +32,11 @@ const ProjectCard = (props) => {
             {props.projectData.introText}
           </Card.Header>
           <Card.Description
-            style={{ maxWidth: "70%", fontSize: "1.2rem" }}
+            style={{
+              maxWidth: "70%",
+              fontSize: "1.2rem",
+              opacity: "0.7",
+            }}
             textAlign="center"
           >
             {props.projectData.introSubtext}
@@ -33,6 +52,7 @@ const ProjectCard = (props) => {
                 to={link.url}
                 key={index}
                 style={{ marginBottom: "10%" }}
+                inverted
               >
                 {link.title}
               </Button>
@@ -61,12 +81,15 @@ const ProjectCard = (props) => {
             {props.projectData.title}
           </Card.Header>
           <Image
-            style={{ maxWidth: "70%" }}
-            src={require(props.projectData.mediaUrl)}
+            style={{ maxWidth: "70%", marginBottom: "5%" }}
+            src={require("../../Images/Projects/Calc1.jpg")}
             wrapped
             ui={false}
           />
-          <Card.Description style={{ maxWidth: "70%" }} textAlign="center">
+          <Card.Description
+            style={{ maxWidth: "70%", fontSize: "1.2rem", opacity: "0.7" }}
+            textAlign="center"
+          >
             {props.projectData.mediaCaption}
           </Card.Description>
           <Card.Content
@@ -85,7 +108,7 @@ const ProjectCard = (props) => {
             >
               <Icon name="arrow left" style={{ marginLeft: "-8px" }} />
             </Button>
-            <Button as={Link} to={props.projectData.linkUrl}>
+            <Button as={Link} to={props.projectData.linkUrl} inverted>
               Go to Project
             </Button>
             <Button
