@@ -18,7 +18,7 @@ const Projects = () => {
     },
     {
       title: "Clocks",
-      mediaUrl: "",
+      mediaUrl: "../Images/Projects/Calc1.jpg",
       mediaCaption: "",
       linkUrl: "/projects/clocks",
     },

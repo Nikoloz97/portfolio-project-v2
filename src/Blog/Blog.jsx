@@ -64,7 +64,7 @@ const Blog = () => {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button color="gray">
+              <Button>
                 <Icon name="arrow right" style={{ marginRight: "10px" }} />
                 Expand
               </Button>
@@ -84,7 +84,7 @@ const Blog = () => {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button color="gray">
+              <Button>
                 <Icon name="arrow right" style={{ marginRight: "10px" }} />
                 Expand
               </Button>
@@ -104,7 +104,7 @@ const Blog = () => {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button color="Gray">
+              <Button>
                 <Icon name="arrow right" style={{ marginRight: "10px" }} />
                 Expand
               </Button>
