@@ -1,3 +1,10 @@
+.GeoGame {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+}
+
 .GG-Container {
   display: flex;
   flex-direction: column;

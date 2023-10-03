@@ -1,19 +1,20 @@
 import { React } from "react";
 import { Image } from "semantic-ui-react";
+import "./Forum.css";
 
 function Display() {
   return (
     <>
-      <div className="Image=Text-Container">
+      <div>
         <Image
           src={require("../Images/ForumDisplay/Travel5.jpg")}
-          className="Image"
+          className="forum-display-image"
           style={{ height: "40rem" }}
           centered
           fluid
         />
-        <div className="Text">Welcome to the Forum</div>
-        <div className="Subtext">Express and Discuss</div>
+        <div className="forum-display-text">Welcome to the Forum</div>
+        <div className="forum-display-subtext">Express and Discuss</div>
       </div>
     </>
   );

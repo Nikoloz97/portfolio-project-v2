@@ -1,0 +1,36 @@
+.Forum-Page {
+  background-color: #282c34;
+  min-height: 95.5vh;
+}
+
+.Forum-Card {
+  background-color: #5a5c5f !important;
+  box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2) !important;
+}
+
+.forum-display-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.forum-display-subtext {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.forum-display-image {
+  display: block;
+  width: "100%";
+}

@@ -3,7 +3,7 @@ import GeoCard from "./GeoCard";
 import Timer from "./Timer";
 import WorldMap from "./WorldMap";
 import { Grid, Button } from "semantic-ui-react";
-import "./Geography.css";
+import "./GeographyGame.css";
 import { apiGeoGameRoot } from "../../Helpers";
 import axios from "axios";
 

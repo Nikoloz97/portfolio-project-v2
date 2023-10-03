@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Calculator.css";
 
 function Calculator() {
   const [result, setResult] = useState("");
@@ -28,14 +29,10 @@ function Calculator() {
   return (
     <div className="Default-Page">
       <h1>Calculator Project</h1>
-      <div className="Calc-Display">{result}</div>
-      <div className="Keys">
-        <button className="Clear" onClick={clear}>
-          Clear
-        </button>
-        <button className="Backspace" onClick={backspace}>
-          C
-        </button>
+      <div>{result}</div>
+      <div>
+        <button onClick={clear}>Clear</button>
+        <button onClick={backspace}>C</button>
 
         {/* name -> event.target.name */}
         <button name="+" onClick={handleClick}>
