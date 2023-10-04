@@ -42,3 +42,15 @@
   bottom: 0;
   transform: translateX(591%);
 }
+
+.slide-out-left {
+  transform: translateX(-200%);
+  opacity: 0;
+  transition: transform 1.5s ease, opacity 0.5s ease;
+}
+
+.slide-in-right {
+  transform: translateX(0%);
+  opacity: 1;
+  transition: transform 1.5s ease, opacity 0.5s ease;
+}

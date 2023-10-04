@@ -5,6 +5,7 @@ import "./ProjectCard.css";
 
 const ProjectCard = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [slideOut, setSlideOut] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -15,6 +16,28 @@ const ProjectCard = (props) => {
       clearTimeout(timer);
     };
   });
+
+  const handleNextProject = () => {
+    if (props.currentProjectIndex < props.projectsDataLength - 1) {
+      setSlideOut(true);
+
+      setTimeout(() => {
+        props.goToNextProject();
+        setSlideOut(false);
+      }, 500);
+    }
+  };
+
+  const handlePrevProject = () => {
+    if (props.currentProjectIndex < props.projectsDataLength - 1) {
+      setSlideOut(true);
+
+      setTimeout(() => {
+        props.goToPrevProject();
+        setSlideOut(false);
+      }, 500);
+    }
+  };
 
   return (
     <div>
@@ -65,7 +88,7 @@ const ProjectCard = (props) => {
                   ? true
                   : false
               }
-              onClick={props.goToNextProject}
+              onClick={handleNextProject}
             >
               <Icon name="arrow right" style={{ marginLeft: "-7px" }} />
             </Button>
@@ -73,7 +96,11 @@ const ProjectCard = (props) => {
         </Card>
       ) : (
         /* Project card */
-        <Card className="project-card">
+        <Card
+          className={`project-card ${
+            slideOut ? "slide-out-left" : "slide-in-right"
+          }`}
+        >
           <Card.Header
             style={{ maxWidth: "70%", marginBottom: "10%", marginTop: "10%" }}
             textAlign="center"
@@ -104,7 +131,7 @@ const ProjectCard = (props) => {
           >
             <Button
               className="project-left-arrow-button"
-              onClick={props.goToPrevProject}
+              onClick={handlePrevProject}
             >
               <Icon name="arrow left" style={{ marginLeft: "-8px" }} />
             </Button>
@@ -118,7 +145,7 @@ const ProjectCard = (props) => {
                   ? true
                   : false
               }
-              onClick={props.goToNextProject}
+              onClick={handleNextProject}
             >
               <Icon name="arrow right" style={{ marginLeft: "-7px" }} />
             </Button>

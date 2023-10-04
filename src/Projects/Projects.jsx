@@ -44,15 +44,11 @@ const Projects = () => {
   ]);
 
   const goToNextProject = () => {
-    if (currentProjectIndex < projectsData.length - 1) {
-      setCurrentProjectIndex(currentProjectIndex + 1);
-    }
+    setCurrentProjectIndex(currentProjectIndex + 1);
   };
 
   const goToPrevProject = () => {
-    if (currentProjectIndex > 0) {
-      setCurrentProjectIndex(currentProjectIndex - 1);
-    }
+    setCurrentProjectIndex(currentProjectIndex - 1);
   };
 
   return (
