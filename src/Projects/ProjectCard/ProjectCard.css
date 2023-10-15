@@ -8,23 +8,26 @@
   position: relative;
 
   transition: height 1s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s ease-in !important;
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease-in !important;
 
   width: 20.7rem !important;
 }
 
+/* On render animation */
 .project-card-preloaded {
-  height: 0 !important;
-  transform: scaleY(0);
-  transform-origin: center top;
-  opacity: 0 !important;
+  height: 5em !important;
+  transform: scaleY(0) !important;
+  transform-origin: center top !important;
+  opacity: 0.1 !important;
 }
 
 .project-card-loaded {
-  height: 40rem !important;
-  transform: scaleY(1);
+  height: 20em !important;
+  transform: scaleY(1) !important;
   opacity: 1 !important;
 }
+
+/* Left-right arrow button positions */
 
 .project-left-arrow-button {
   position: absolute;
@@ -41,16 +44,4 @@
   left: 0;
   bottom: 0;
   transform: translateX(591%);
-}
-
-.slide-out-left {
-  transform: translateX(-200%);
-  opacity: 0;
-  transition: transform 1.5s ease, opacity 0.5s ease;
-}
-
-.slide-in-right {
-  transform: translateX(0%);
-  opacity: 1;
-  transition: transform 1.5s ease, opacity 0.5s ease;
 }

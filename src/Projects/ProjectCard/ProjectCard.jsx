@@ -5,7 +5,6 @@ import "./ProjectCard.css";
 
 const ProjectCard = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [slideOut, setSlideOut] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,23 +18,23 @@ const ProjectCard = (props) => {
 
   const handleNextProject = () => {
     if (props.currentProjectIndex < props.projectsDataLength - 1) {
-      setSlideOut(true);
+      setIsLoaded(false);
 
       setTimeout(() => {
         props.goToNextProject();
-        setSlideOut(false);
-      }, 500);
+        setIsLoaded(true);
+      }, 200);
     }
   };
 
   const handlePrevProject = () => {
-    if (props.currentProjectIndex < props.projectsDataLength - 1) {
-      setSlideOut(true);
+    if (props.currentProjectIndex <= props.projectsDataLength - 1) {
+      setIsLoaded(false);
 
       setTimeout(() => {
         props.goToPrevProject();
-        setSlideOut(false);
-      }, 500);
+        setIsLoaded(true);
+      }, 200);
     }
   };
 
@@ -44,8 +43,10 @@ const ProjectCard = (props) => {
       {/* Intro card */}
       {props.currentProjectIndex === 0 ? (
         <Card
-          className={`project-card ${
-            isLoaded ? "project-card-loaded" : "project-card-preloaded"
+          className={`${
+            isLoaded
+              ? "project-card project-card-loaded"
+              : "project-card-preloaded"
           }`}
         >
           <Card.Header
@@ -97,8 +98,10 @@ const ProjectCard = (props) => {
       ) : (
         /* Project card */
         <Card
-          className={`project-card ${
-            slideOut ? "slide-out-left" : "slide-in-right"
+          className={`${
+            isLoaded
+              ? "project-card project-card-loaded"
+              : "project-card-preloaded"
           }`}
         >
           <Card.Header
