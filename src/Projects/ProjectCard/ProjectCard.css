@@ -7,8 +7,8 @@
   background-color: #383c43 !important;
   position: relative;
 
-  transition: height 1s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease-in !important;
+  transition: height 1s cubic-bezier(0.5, 0, 0.2, 1),
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease-in !important;
 
   width: 20.7rem !important;
 }
@@ -17,7 +17,7 @@
 .project-card-preloaded {
   height: 5em !important;
   transform: scaleY(0) !important;
-  transform-origin: center top !important;
+  transform-origin: center !important;
   opacity: 0.1 !important;
 }
 
