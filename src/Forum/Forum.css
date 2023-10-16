@@ -1,6 +1,6 @@
 .Forum-Page {
   background-color: #282c34;
-  min-height: 95.5vh;
+  min-height: 100vh;
 }
 
 .Forum-Card {
@@ -30,7 +30,13 @@
   opacity: 0.7;
 }
 
-.forum-display-image {
-  display: block;
-  width: "100%";
+.forum-display-button {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
 }

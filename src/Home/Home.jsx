@@ -1,7 +1,7 @@
 import React from "react";
 import Welcome from "./Welcome/Welcome";
 
-const Home = (props) => {
+const Home = () => {
   return (
     <div>
       <Welcome />

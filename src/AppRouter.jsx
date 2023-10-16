@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
 import Kronos from "./Projects/Clocks/Kronos";
-import Forum from "./Forum/Forum";
+import ForumDisplay from "./Forum/Display";
 import Login from "./User/Login";
 import SignUp from "./User/Signup";
 import FantasyBasketball from "./Projects/Basketball/FantasyBasketball";
@@ -41,7 +41,7 @@ function AppRouter() {
         />
         <Route path="/projects/geography-game" element={<GeographyGame />} />
 
-        <Route path="/forum" element={<Forum />} />
+        <Route path="/forum" element={<ForumDisplay />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

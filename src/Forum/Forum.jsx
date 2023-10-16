@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
-import Display from "./Display";
 import ProfileCard from "./ProfileCard";
-import { Card, Grid } from "semantic-ui-react";
+import { Card, Grid, Button } from "semantic-ui-react";
 import { apiForumRoot } from "../Helpers";
 import axios from "axios";
 
@@ -24,10 +23,12 @@ function Forum() {
     getForumProfiles();
   }, []);
 
+  const handleReturn = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="Forum-Page">
-      <Display />
-
       {forumProfileData ? (
         <div>
           <Grid centered style={{ marginTop: "2rem" }}>
@@ -50,6 +51,7 @@ function Forum() {
           There was an issue connecting to the network, please try again later
         </div>
       )}
+      <Button onClick={handleReturn}> Back to top</Button>
     </div>
   );
 }
