@@ -3,34 +3,34 @@ import { Grid, Card, Image, Icon, Button } from "semantic-ui-react";
 import "./Blog.css";
 
 const Blog = () => {
-  const [isHeaderVisible, setHeaderVisible] = useState(false);
-  const [isSubheaderVisible, setSubheaderVisible] = useState(false);
-  const [isFirstCardVisible, setFirstCardVisible] = useState(false);
-  const [isSecondCardVisible, setSecondCardVisible] = useState(false);
-  const [isThirdCardVisible, setThirdCardVisible] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+  const [isSubheaderVisible, setIsSubheaderVisible] = useState(false);
+  const [isFirstCardVisible, setIsFirstCardVisible] = useState(false);
+  const [isSecondCardVisible, setIsSecondCardVisible] = useState(false);
+  const [isThirdCardVisible, setIsThirdCardVisible] = useState(false);
 
   useEffect(() => {
     // Delay header fade-in
     setTimeout(() => {
-      setHeaderVisible(true);
+      setIsHeaderVisible(true);
     }, 200);
 
     // Delay subheader fade-in
     setTimeout(() => {
-      setSubheaderVisible(true);
+      setIsSubheaderVisible(true);
     }, 800);
 
     // Delay  first card fade-in
     setTimeout(() => {
-      setFirstCardVisible(true);
+      setIsFirstCardVisible(true);
     }, 2000);
 
     setTimeout(() => {
-      setSecondCardVisible(true);
+      setIsSecondCardVisible(true);
     }, 2200);
 
     setTimeout(() => {
-      setThirdCardVisible(true);
+      setIsThirdCardVisible(true);
     }, 2400);
   }, []);
 

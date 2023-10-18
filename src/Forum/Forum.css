@@ -40,3 +40,12 @@
   font-weight: 400;
   text-align: center;
 }
+
+.fade-in-display {
+  opacity: 0;
+}
+
+.fade-in-display.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
