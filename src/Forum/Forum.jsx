@@ -3,55 +3,72 @@ import ProfileCard from "./ProfileCard";
 import { Card, Grid, Button } from "semantic-ui-react";
 import { apiForumRoot } from "../Helpers";
 import axios from "axios";
+import "./Forum.css";
 
 function Forum() {
   const [forumProfileData, setForumProfileData] = useState(null);
 
   useEffect(() => {
-    const getForumProfiles = () => {
-      axios
-        .get(apiForumRoot)
-        .then((response) => {
-          console.log(response.data);
-          setForumProfileData(response.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    };
-
     getForumProfiles();
   }, []);
+
+  const getForumProfiles = () => {
+    axios
+      .get(apiForumRoot)
+      .then((response) => {
+        console.log(response.data);
+        setForumProfileData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
 
   const handleReturn = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <div className="Forum-Page">
-      {forumProfileData ? (
-        <div>
-          <Grid centered style={{ marginTop: "2rem" }}>
-            <Grid.Row>
-              <Card.Group>
-                {forumProfileData.map((eachForumProfile) => (
-                  <div>
+    <div>
+      <div>
+        {forumProfileData ? (
+          <div className="Forum-Page">
+            <Grid centered>
+              <Grid.Row style={{ marginTop: "2rem" }}>
+                <Card.Group>
+                  {forumProfileData.map((eachForumProfile) => (
                     <ProfileCard
                       forumProfile={eachForumProfile}
                       key={eachForumProfile.forumProfileId}
                     />
-                  </div>
-                ))}
-              </Card.Group>
-            </Grid.Row>
-          </Grid>
-        </div>
-      ) : (
-        <div style={{ color: "white" }}>
-          There was an issue connecting to the network, please try again later
-        </div>
-      )}
-      <Button onClick={handleReturn}> Back to top</Button>
+                  ))}
+                </Card.Group>
+              </Grid.Row>
+              <Grid.Row>
+                <Button onClick={handleReturn}> Back to top</Button>
+              </Grid.Row>
+            </Grid>
+          </div>
+        ) : (
+          // Error screen
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <div className="Forum-Error-Page" style={{ marginBottom: "2rem" }}>
+              There was an issue connecting to the network, please try again
+            </div>
+            <Button style={{ marginBottom: "2rem" }} onClick={getForumProfiles}>
+              Retry
+            </Button>
+          </div>
+        )}
+      </div>
+
+      {/* <Button onClick={handleReturn}> Back to top</Button> */}
     </div>
   );
 }

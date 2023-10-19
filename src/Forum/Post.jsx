@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Icon, Card, Image, Grid, Form, Button } from "semantic-ui-react";
 import { postDateFormatter } from "../Helpers";
 import Comment from "./Comment";
+import "./Post.css";
 
 const Post = (props) => {
   const [isPostLiked, setIsPostLiked] = useState(false);
@@ -14,10 +15,14 @@ const Post = (props) => {
   const handleCommentDisplay = () => {
     setAreCommentsShown(!areCommentsShown);
   };
+
   return (
     <div>
       <Card>
-        <Card.Header textAlign="right" style={{ paddingRight: "1rem" }}>
+        <Card.Header
+          textAlign="right"
+          style={{ paddingRight: "1rem", maxWidth: "70%" }}
+        >
           {postDateFormatter(props.post.postedDate.toLocaleString())}
         </Card.Header>
         <Card.Content>
@@ -25,7 +30,9 @@ const Post = (props) => {
             <Grid.Row centered style={{ fontWeight: "bold" }}>
               {props.post.title}
             </Grid.Row>
-            <Grid.Row>{props.post.text}</Grid.Row>
+            <Grid.Row centered style={{ maxWidth: "65%", marginLeft: "3em" }}>
+              {props.post.text}
+            </Grid.Row>
             <Grid.Row centered>
               <Image
                 style={{ display: "block" }}
@@ -35,23 +42,42 @@ const Post = (props) => {
             </Grid.Row>
           </Grid>
         </Card.Content>
-        <Card.Content style={{}}>
-          <Grid columns={2}>
-            <Grid.Column>
-              <Icon
-                name={isPostLiked ? "heart" : "heart outline"}
-                color={isPostLiked ? "red" : "black"}
-                onClick={handlePostLike}
-              />
-              {props.post.likes} Likes
-            </Grid.Column>
-            <Grid.Column>
-              <Button onClick={handleCommentDisplay}>
-                {props.post.commentCount} Comments
-              </Button>
-            </Grid.Column>
-          </Grid>
-        </Card.Content>
+
+        <div>
+          <Card.Content>
+            <Grid columns={2}>
+              <Grid.Column>
+                <Icon
+                  name={isPostLiked ? "heart" : "heart outline"}
+                  color={isPostLiked ? "red" : "black"}
+                  onClick={handlePostLike}
+                />
+                {props.post.likes} Likes
+              </Grid.Column>
+              <Grid.Column>
+                <Button onClick={handleCommentDisplay}>
+                  {props.post.commentCount} Comments
+                </Button>
+              </Grid.Column>
+            </Grid>
+          </Card.Content>
+          <Button
+            className="post-left-arrow-button"
+            disabled={props.currentPostIndex === 0 ? true : false}
+            onClick={props.handlePreviousPost}
+          >
+            <Icon name="arrow left" style={{ marginLeft: "-8px" }} />
+          </Button>
+          <Button
+            className="post-right-arrow-button"
+            disabled={
+              props.currentPostIndex == props.postsLength ? true : false
+            }
+            onClick={props.handleNextPost}
+          >
+            <Icon name="arrow right" style={{ marginLeft: "-7px" }} />
+          </Button>
+        </div>
 
         {areCommentsShown ? (
           <>

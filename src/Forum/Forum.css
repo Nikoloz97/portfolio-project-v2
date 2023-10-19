@@ -1,3 +1,25 @@
+.Display-Page {
+  background-color: #282c34;
+  min-height: 94.1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Forum-Error-Page {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
 .Forum-Page {
   background-color: #282c34;
   min-height: 100vh;
@@ -48,4 +70,21 @@
 .fade-in-display.fade-in {
   opacity: 1;
   transition: opacity 1s ease-in-out;
+}
+
+.forum-card-left-arrow-button {
+  position: absolute;
+  width: 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.forum-card-right-arrow-button {
+  position: absolute;
+  width: 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transform: translateX(591%);
 }

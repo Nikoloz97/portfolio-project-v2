@@ -24,15 +24,15 @@ function Display() {
   return (
     <>
       <div>
-        {/* Default-Page class = allows loading screen to have normal styling */}
-        <div className="Default-Page">
+        {/* Display-Page class = allows loading screen to have normal styling */}
+        <div className="Display-Page">
           <Image
             src={require("../Images/ForumDisplay/Travel5.jpg")}
-            style={{ width: "100%" }}
             centered
             hidden={loading}
             onLoad={() => setLoading(false)}
             className={`fade-in-display ${isDisplayVisible ? "fade-in" : ""}`}
+            style={{ maxHeight: "100%" }}
           />
           {loading ? (
             <Loader active content="Loading" />
