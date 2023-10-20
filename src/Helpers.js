@@ -6,6 +6,8 @@ export const apiForumRoot = "https://localhost:7047/api/forum";
 
 export const apiGeoGameRoot = "https://localhost:7047/api/geoGame";
 
+export const apiContactRoot = "https://localhost:7047/api/contact";
+
 export const postDateFormatter = (stringDate) => {
   let splitDateArray = stringDate.split("-");
   const year = splitDateArray[0];

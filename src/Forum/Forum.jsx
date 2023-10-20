@@ -68,7 +68,7 @@ function Forum() {
         )}
       </div>
 
-      {/* <Button onClick={handleReturn}> Back to top</Button> */}
+      <Button onClick={handleReturn}> Back to top</Button>
     </div>
   );
 }

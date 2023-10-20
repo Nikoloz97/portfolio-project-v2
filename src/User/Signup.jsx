@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { apiUserRoot } from "../Helpers";
 
 const SignUp = () => {
-  const [SignUpInfo, setSignUpInfo] = useState({
+  const [signUpInfo, setSignUpInfo] = useState({
     Username: null,
     Password: null,
     Email: null,
@@ -20,13 +20,13 @@ const SignUp = () => {
   const handleSignUp = () => {
     // Formdata = needed to save profileImage on backend
     let formData = new FormData();
-    formData.append("Username", SignUpInfo.Username);
-    formData.append("Password", SignUpInfo.Password);
-    formData.append("Email", SignUpInfo.Email);
-    formData.append("FirstName", SignUpInfo.FirstName);
-    formData.append("LastName", SignUpInfo.LastName);
-    formData.append("ProfileImageFile", SignUpInfo.ProfileImageFile);
-    formData.append("Bio", SignUpInfo.Bio);
+    formData.append("Username", signUpInfo.Username);
+    formData.append("Password", signUpInfo.Password);
+    formData.append("Email", signUpInfo.Email);
+    formData.append("FirstName", signUpInfo.FirstName);
+    formData.append("LastName", signUpInfo.LastName);
+    formData.append("ProfileImageFile", signUpInfo.ProfileImageFile);
+    formData.append("Bio", signUpInfo.Bio);
 
     axios
       .post(apiUserRoot, formData, {
@@ -35,7 +35,9 @@ const SignUp = () => {
         },
       })
       .then((response) => {
+        // TODO: Remove console log at a certain point
         console.log(response.data);
+
         setProfileImageUrl(response.data.profileURL);
       })
       .catch((error) => {
@@ -58,7 +60,7 @@ const SignUp = () => {
               label="Username"
               placeholder="Username"
               onChange={(e) =>
-                setSignUpInfo({ ...SignUpInfo, Username: e.target.value })
+                setSignUpInfo({ ...signUpInfo, Username: e.target.value })
               }
             />
             <Form.Input
@@ -66,7 +68,7 @@ const SignUp = () => {
               label="Password"
               placeholder="Password"
               onChange={(e) =>
-                setSignUpInfo({ ...SignUpInfo, Password: e.target.value })
+                setSignUpInfo({ ...signUpInfo, Password: e.target.value })
               }
             />
           </Form.Group>
@@ -77,7 +79,7 @@ const SignUp = () => {
               label="First name"
               placeholder="First name"
               onChange={(e) =>
-                setSignUpInfo({ ...SignUpInfo, FirstName: e.target.value })
+                setSignUpInfo({ ...signUpInfo, FirstName: e.target.value })
               }
             />
             <Form.Input
@@ -85,7 +87,7 @@ const SignUp = () => {
               label="Last name"
               placeholder="Last name"
               onChange={(e) =>
-                setSignUpInfo({ ...SignUpInfo, LastName: e.target.value })
+                setSignUpInfo({ ...signUpInfo, LastName: e.target.value })
               }
             />
           </Form.Group>
@@ -95,7 +97,7 @@ const SignUp = () => {
             label="Email"
             placeholder="Your email"
             onChange={(e) =>
-              setSignUpInfo({ ...SignUpInfo, Email: e.target.value })
+              setSignUpInfo({ ...signUpInfo, Email: e.target.value })
             }
           />
 
@@ -105,7 +107,7 @@ const SignUp = () => {
               type="file"
               onChange={(e) =>
                 setSignUpInfo({
-                  ...SignUpInfo,
+                  ...signUpInfo,
                   ProfileImageFile: e.target.files[0],
                 })
               }
@@ -116,7 +118,7 @@ const SignUp = () => {
             label="Bio"
             placeholder="Write a couple sentences about yourself..."
             onChange={(e) =>
-              setSignUpInfo({ ...SignUpInfo, Bio: e.target.value })
+              setSignUpInfo({ ...signUpInfo, Bio: e.target.value })
             }
           />
           <Form.Button onClick={handleSignUp}>Submit</Form.Button>

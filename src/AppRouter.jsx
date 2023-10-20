@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home/Home";
 import Blog from "./Blog/Blog";
-import Contact from "./Contact/Contact";
+import ContactV2 from "./Contact/ContactV2";
 import Navbar from "./Navbar";
 import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
@@ -22,7 +22,7 @@ function AppRouter() {
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<ContactV2 />} />
 
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/calculator" element={<Calculator />} />
