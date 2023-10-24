@@ -7,7 +7,7 @@ import { apiContactRoot } from "../Helpers";
 const Contact = () => {
   const { isUserSignedIn } = useUserContext();
 
-  const categoryOptions = [
+  const subjectOptions = [
     { key: 1, text: "Job Offer", value: "jobOffer" },
     { key: 2, text: "Project Collaboration", value: "projCollab" },
     { key: 3, text: "Report site issue", value: "siteIssue" },
@@ -18,7 +18,6 @@ const Contact = () => {
     FirstName: null,
     LastName: null,
     EmailAddress: null,
-    Category: null,
     Subject: null,
     Body: null,
   });
@@ -29,7 +28,6 @@ const Contact = () => {
     formData.append("FirstName", emailInfo.FirstName);
     formData.append("LastName", emailInfo.LastName);
     formData.append("EmailAddress", emailInfo.EmailAddress);
-    formData.append("Category", emailInfo.Category);
     formData.append("Subject", emailInfo.Subject);
     formData.append("Body", emailInfo.Body);
 
@@ -94,30 +92,21 @@ const Contact = () => {
           )}
           <Form.Select
             fluid
-            label="Category"
-            options={categoryOptions}
+            label="Subject"
+            options={subjectOptions}
             onChange={(e, { value }) =>
-              setEmailInfo({ ...emailInfo, Category: value })
+              setEmailInfo({ ...emailInfo, Subject: value })
             }
           />
         </Form.Group>
 
-        <Form.Input
-          label="Subject"
-          placeholder="Subject"
-          onChange={(e) =>
-            setEmailInfo({ ...emailInfo, Subject: e.target.value })
-          }
-        />
-
         <Form.TextArea
-          label="Description"
+          label="Body"
           placeholder="A few sentences would be appreciated..."
           onChange={(e) => setEmailInfo({ ...emailInfo, Body: e.target.value })}
         />
 
-        {/* TODO: Fix disabled logic*/}
-        <Form.Button disabled={false}>Submit</Form.Button>
+        <Form.Button>Submit</Form.Button>
       </Form>
     </div>
   );
