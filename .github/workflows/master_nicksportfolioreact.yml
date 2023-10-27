@@ -48,7 +48,7 @@ jobs:
 
       - name: List Contents of Downloaded Artifact
         run: |
-          ls -R $GITHUB_WORKSPACE/node-app
+          ls -R $GITHUB_WORKSPACE
 
       - name: "Deploy to Azure Web App"
         uses: azure/webapps-deploy@v2
