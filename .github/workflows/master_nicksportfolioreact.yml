@@ -27,6 +27,7 @@ jobs:
           npm run build --if-present
           npm run test --if-present -- --passWithNoTests
 
+      # Skips loading the node-modules and stores them in a build folder
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
