@@ -2,7 +2,8 @@ import React from "react";
 
 export const apiUserRoot = "https://localhost:7047/api/user";
 
-export const apiForumRoot = "nicksportfolio.azurewebsites.net/api/forum";
+export const apiForumRoot =
+  "https://nicksportfolio.azurewebsites.net/api/forum";
 
 export const apiGeoGameRoot = "https://localhost:7047/api/geoGame";
 
