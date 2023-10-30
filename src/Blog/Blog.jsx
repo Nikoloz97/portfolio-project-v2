@@ -17,6 +17,7 @@ const Blog = () => {
 
   const cards = [
     {
+      category: "Travel",
       postedDate: "10/26/2023",
       title: "Trip To Barcelona",
       description: "This is a description of the card's content",
@@ -24,6 +25,7 @@ const Blog = () => {
         "https://www.travelandleisure.com/thmb/CpgY6sTcuTzvn3AdMX8QnyaGhJs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-sagrada-familia-TODOBARCELONA0723-327cd11c9bea4f89bc800d648c39a9b3.jpg",
     },
     {
+      category: "Health",
       postedDate: "10/26/2023",
       title: "Protein Bar Review",
       description: "This is a description of the card's content",
@@ -31,6 +33,7 @@ const Blog = () => {
         "https://i0.wp.com/sporked.com/wp-content/uploads/2023/07/RANKING-UPDATE_PROTEIN-BAR_HEADER.jpg?resize=966%2C544&ssl=1",
     },
     {
+      category: "Coding",
       postedDate: "10/26/2023",
       title: "My Journey in Coding",
       description: "This is a description of the card's content",
@@ -38,6 +41,7 @@ const Blog = () => {
         "https://www.zdnet.com/a/img/resize/a0dcec40a8cd8d2e1b3a9e12a05c2819622d20be/2021/07/19/8a337c80-5ed6-43a1-98fb-b981d420890f/programming-languages-shutterstock-1680857539.jpg?auto=webp&fit=crop&height=1200&width=1200",
     },
     {
+      category: "Dance",
       postedDate: "10/26/2023",
       title: "Basics of Georgian Dancing",
       description: "This is a description of the card's content",
@@ -84,8 +88,8 @@ const Blog = () => {
   };
 
   return (
-    // Header + subheader
     <div className="Default-Page">
+      {/* Header/Subheader */}
       <Grid centered>
         <Grid.Row
           className={`fade-in-header ${isHeaderVisible ? "fade-in" : ""}`}
@@ -105,10 +109,25 @@ const Blog = () => {
 
       <Grid columns={4}>
         {cards.map((card, index) => (
+          // TODO:
           <Grid.Column>
+            {/* <div
+              className="Default-Header"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {card.category}
+            </div> */}
+
             <Card
               className={`blog-card ${isCardVisible[index] ? "pop-in" : ""}`}
             >
+              <Card.Content header textAlign="center">
+                {card.category}
+              </Card.Content>
               <Dimmer.Dimmable as={Image} dimmed={isHovered[index]}>
                 <Dimmer
                   active={isHovered[index]}
