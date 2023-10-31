@@ -18,9 +18,9 @@ const Projects = () => {
     },
     {
       title: "Kronos",
-      mediaUrl: "../../Images/Projects/Calc1.jpg",
+      mediaUrl: "../../Images/Projects/Kronos2.jpg",
       mediaCaption: "This is a description about the clocks project",
-      linkUrl: "/projects/clocks",
+      linkUrl: "/projects/kronos",
     },
     {
       title: "Calculator",
@@ -30,13 +30,13 @@ const Projects = () => {
     },
     {
       title: "Geography Game",
-      mediaUrl: "../../Images/Projects/Calc1.jpg",
+      mediaUrl: "../../Images/Projects/Globe1.jpg",
       mediaCaption: "This is a description about the geography game project",
       linkUrl: "/projects/geography-game",
     },
     {
       title: "Fantasy Basketball",
-      mediaUrl: "../../Images/Projects/Calc1.jpg",
+      mediaUrl: "../../Images/Projects/Nba1.jpg",
       mediaCaption:
         "This is a description about the fantasy basketball project",
       linkUrl: "/projects/fantasy-basketball",

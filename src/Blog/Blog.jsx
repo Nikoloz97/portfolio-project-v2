@@ -75,6 +75,23 @@ const Blog = () => {
     }, 1600);
   }, []);
 
+  useEffect(() => {
+    getBlogPosts();
+  }, []);
+
+  const getBlogPosts = () => {
+    // TODO: create blog post fetch
+    // axios
+    //   .get(apiForumRoot)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     setForumProfileData(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching data:", error);
+    //   });
+  };
+
   const handleMouseLeave = (index) => {
     const newHoverState = [...isHovered];
     newHoverState[index] = false;
@@ -100,7 +117,7 @@ const Blog = () => {
           className={`fade-in-subheader ${isSubheaderVisible ? "fade-in" : ""}`}
         >
           <div className="Default-Subtext">
-            Choose from my latest posts in travel, health, coding, and dance
+            Hover over each image for a short article summary
           </div>
         </Grid.Row>
       </Grid>
@@ -125,9 +142,6 @@ const Blog = () => {
             <Card
               className={`blog-card ${isCardVisible[index] ? "pop-in" : ""}`}
             >
-              <Card.Content header textAlign="center">
-                {card.category}
-              </Card.Content>
               <Dimmer.Dimmable as={Image} dimmed={isHovered[index]}>
                 <Dimmer
                   active={isHovered[index]}
@@ -135,7 +149,7 @@ const Blog = () => {
                 >
                   <Card.Content>
                     <Card.Header style={{ color: "white" }}>
-                      {card.title}
+                      {card.description}
                     </Card.Header>
                     <Card.Meta style={{ color: "white" }}>
                       {card.postedDate}
@@ -150,13 +164,13 @@ const Blog = () => {
               </Dimmer.Dimmable>
               <Card.Content>
                 <Card.Description style={{ color: "white" }}>
-                  {card.description}
+                  {card.title}
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>
                 <Button>
                   <Icon name="arrow right" style={{ marginRight: "10px" }} />
-                  Expand
+                  Go to article
                 </Button>
               </Card.Content>
             </Card>
