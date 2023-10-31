@@ -7,7 +7,8 @@ export const apiForumRoot =
 
 export const apiGeoGameRoot = "https://localhost:7047/api/geoGame";
 
-export const apiContactRoot = "https://localhost:7047/api/contact";
+export const apiContactRoot =
+  "https://nicksportfolio.azurewebsites.net/api/contact";
 
 export const postDateFormatter = (stringDate) => {
   let splitDateArray = stringDate.split("-");
