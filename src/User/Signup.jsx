@@ -35,7 +35,6 @@ const SignUp = () => {
         },
       })
       .then((response) => {
-        // TODO: Remove console log at a certain point
         console.log(response.data);
 
         setProfileImageUrl(response.data.profileURL);

@@ -38,7 +38,6 @@ const Contact = () => {
         },
       })
       .then((response) => {
-        // TODO: Remove console log at a certain point
         console.log(response);
       })
       .catch((error) => {

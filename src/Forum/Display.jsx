@@ -9,7 +9,7 @@ function Display() {
   const [loading, setLoading] = useState(true);
   const [isDisplayVisible, setIsDisplayVisible] = useState(false);
 
-  const handleJoinForum = () => {
+  const handleScrollDown = () => {
     forumRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -32,7 +32,6 @@ function Display() {
             hidden={loading}
             onLoad={() => setLoading(false)}
             className={`fade-in-display ${isDisplayVisible ? "fade-in" : ""}`}
-            style={{ maxHeight: "100%" }}
           />
           {loading ? (
             <Loader active content="Loading" />
@@ -43,7 +42,7 @@ function Display() {
               <div className="forum-display-text">Welcome to the Forum</div>
               <div className="forum-display-subtext">Express and Discuss</div>
               <Button
-                onClick={handleJoinForum}
+                onClick={handleScrollDown}
                 className="forum-display-button"
               >
                 Join

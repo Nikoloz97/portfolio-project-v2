@@ -30,45 +30,39 @@ function Forum() {
 
   return (
     <div>
-      <div>
-        {forumProfileData ? (
-          <div className="Forum-Page">
-            <Grid centered>
-              <Grid.Row style={{ marginTop: "2rem" }}>
-                <Card.Group>
-                  {forumProfileData.map((eachForumProfile) => (
-                    <ProfileCard
-                      forumProfile={eachForumProfile}
-                      key={eachForumProfile.forumProfileId}
-                    />
-                  ))}
-                </Card.Group>
-              </Grid.Row>
-              <Grid.Row>
-                <Button onClick={handleReturn}> Back to top</Button>
-              </Grid.Row>
-            </Grid>
+      {/* Profile cards */}
+      {forumProfileData ? (
+        <div className="Forum-Page">
+          <Grid centered>
+            <Grid.Row style={{ marginTop: "3rem" }}>
+              <Card.Group>
+                {forumProfileData.map((eachForumProfile) => (
+                  <ProfileCard
+                    forumProfile={eachForumProfile}
+                    key={eachForumProfile.forumProfileId}
+                  />
+                ))}
+              </Card.Group>
+            </Grid.Row>
+            <Grid.Row>
+              <Button onClick={handleReturn}> Back to top</Button>
+            </Grid.Row>
+          </Grid>
+        </div>
+      ) : (
+        // Error screen
+        <div className="Forum-Error-Page" style={{ marginBottom: "2rem" }}>
+          <div>
+            There was an issue connecting to the network, please try again
           </div>
-        ) : (
-          // Error screen
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <div className="Forum-Error-Page" style={{ marginBottom: "2rem" }}>
-              There was an issue connecting to the network, please try again
-            </div>
-            <Button style={{ marginBottom: "2rem" }} onClick={getForumProfiles}>
-              Retry
-            </Button>
-          </div>
-        )}
-      </div>
-
-      <Button onClick={handleReturn}> Back to top</Button>
+          <Button style={{ marginTop: "2rem" }} onClick={getForumProfiles}>
+            Retry
+          </Button>
+          <Button style={{ marginTop: "2rem" }} onClick={handleReturn}>
+            Return
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

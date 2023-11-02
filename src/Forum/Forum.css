@@ -1,3 +1,4 @@
+/* Some properties = important for loading screen */
 .Display-Page {
   background-color: #282c34;
   min-height: 94.1vh;
@@ -23,6 +24,7 @@
 .Forum-Page {
   background-color: #282c34;
   min-height: 100vh;
+  overflow: auto;
 }
 
 .Forum-Card {
