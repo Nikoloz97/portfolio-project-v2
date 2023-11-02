@@ -25,8 +25,11 @@ const SignUp = () => {
     formData.append("Email", signUpInfo.Email);
     formData.append("FirstName", signUpInfo.FirstName);
     formData.append("LastName", signUpInfo.LastName);
-    formData.append("ProfileImageFile", signUpInfo.ProfileImageFile);
     formData.append("Bio", signUpInfo.Bio);
+
+    if (signUpInfo.ProfileImageFile) {
+      formData.append("ProfileImageFile", signUpInfo.ProfileImageFile);
+    }
 
     axios
       .post(apiUserRoot, formData, {
