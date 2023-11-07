@@ -1,6 +1,6 @@
 import React from "react";
 import { Comment as SemanticComment } from "semantic-ui-react";
-import { postDateFormatter } from "../Helpers";
+import { postDateFormatter } from "../Utils/Formatters";
 
 const Comment = (props) => {
   return (

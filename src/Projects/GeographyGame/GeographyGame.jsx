@@ -4,7 +4,7 @@ import Timer from "./Timer";
 import WorldMap from "./WorldMap";
 import { Grid, Button } from "semantic-ui-react";
 import "./GeographyGame.css";
-import { apiGeoGameRoot } from "../../Helpers";
+import { apiGeoGameRoot } from "../../Utils/ApiRoutes";
 import axios from "axios";
 
 const GeographyGame = () => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form } from "semantic-ui-react";
 import { useUserContext } from "../UserContext";
-import { apiContactRoot } from "../Helpers";
+import { apiContactRoot } from "../Utils/ApiRoutes";
 
 const Contact = () => {
   const { isUserSignedIn } = useUserContext();

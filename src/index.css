@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Get rid of vertical scrolling */
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 code {
