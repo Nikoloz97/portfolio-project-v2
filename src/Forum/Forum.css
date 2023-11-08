@@ -32,6 +32,10 @@
   color: white;
 }
 
+.Hide-Forum {
+  display: none;
+}
+
 /* Overflow = prevents part of display screen from persisting upon scrollDown */
 .Forum-Page {
   background-color: #282c34;

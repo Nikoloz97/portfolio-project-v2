@@ -127,7 +127,7 @@ const Blog = () => {
       <Grid columns={4}>
         {cards.map((card, index) => (
           // TODO:
-          <Grid.Column>
+          <Grid.Column key={index}>
             {/* <div
               className="Default-Header"
               style={{

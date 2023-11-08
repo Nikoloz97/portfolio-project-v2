@@ -6,27 +6,29 @@ import { LoadingMessage } from "../Utils/Messages";
 import axios from "axios";
 import "./Forum.css";
 
-function Forum() {
+function Forum(props) {
   const [forumProfileData, setForumProfileData] = useState(null);
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isForumHidden, setIsForumHidden] = useState(true);
 
   useEffect(() => {
     getForumProfiles();
   }, []);
 
   const getForumProfiles = () => {
-    setIsLoading(true);
+    props.setIsLoading(true);
     axios
       .get(apiForumRoot)
       .then((response) => {
         console.log(response.data);
         setForumProfileData(response.data);
-        setIsLoading(false);
+        props.setIsLoading(false);
+        setIsForumHidden(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        setIsLoading(false);
+        props.setIsLoading(false);
+        setIsForumHidden(false);
       });
   };
 
@@ -35,7 +37,7 @@ function Forum() {
   };
 
   return (
-    <div>
+    <div className={isForumHidden ? "Hide-Forum" : ""}>
       {/* Profile cards */}
       {forumProfileData ? (
         <div className="Forum-Page">
@@ -58,7 +60,7 @@ function Forum() {
       ) : (
         // Error screen
         <div>
-          <Dimmer active={isLoading ? true : false}>
+          <Dimmer active={props.isLoading ? true : false}>
             <Loader />
           </Dimmer>
           <div className="Forum-Error-Page">
