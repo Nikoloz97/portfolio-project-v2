@@ -8,6 +8,7 @@ function Display() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isDisplayVisible, setIsDisplayVisible] = useState(false);
+  const [isRetryingFetch, setIsRetryingFetch] = useState(false);
 
   const handleScrollDown = () => {
     forumRef.current.scrollIntoView({ behavior: "smooth" });
@@ -26,7 +27,7 @@ function Display() {
       <div>
         {/* Display-Page class = allows loading screen to have normal styling */}
         <div className="Display-Page">
-          <Loader active={isLoading} />
+          <Loader content="One second..." active={isLoading} />
 
           <Image
             src={require("../Images/ForumDisplay/Travel5.jpg")}
@@ -34,18 +35,28 @@ function Display() {
             hidden={isLoading}
             className={`fade-in-display ${isDisplayVisible ? "fade-in" : ""}`}
           />
-          <div
-            className={`fade-in-display ${isDisplayVisible ? "fade-in" : ""}`}
-          >
-            <div className="forum-display-text">Welcome to the Forum</div>
-            <div className="forum-display-subtext">Express and Discuss</div>
-            <Button onClick={handleScrollDown} className="forum-display-button">
-              Join
-            </Button>
+          <div className={isRetryingFetch ? "Hide-Display" : ""}>
+            <div
+              className={`fade-in-display ${isDisplayVisible ? "fade-in" : ""}`}
+            >
+              <div className="forum-display-text">Welcome to the Forum</div>
+              <div className="forum-display-subtext">Express and Discuss</div>
+              <Button
+                onClick={handleScrollDown}
+                className="forum-display-button"
+              >
+                Join
+              </Button>
+            </div>
           </div>
 
           <div ref={forumRef}>
-            <Forum setIsLoading={setIsLoading} />
+            <Forum
+              setIsLoading={setIsLoading}
+              setIsDisplayVisible={setIsDisplayVisible}
+              handleScrollDown={handleScrollDown}
+              setIsRetryingFetch={setIsRetryingFetch}
+            />
           </div>
         </div>
       </div>

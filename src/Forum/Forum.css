@@ -32,6 +32,10 @@
   color: white;
 }
 
+.Hide-Display {
+  display: none;
+}
+
 .Hide-Forum {
   display: none;
 }
