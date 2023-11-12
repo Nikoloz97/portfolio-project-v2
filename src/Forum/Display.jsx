@@ -12,10 +12,6 @@ function Display() {
   const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(false);
   const [isRetryingFetch, setIsRetryingFetch] = useState(false);
 
-  const handleScrollDown = () => {
-    forumRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
   useEffect(() => {
     if (!isLoading) {
       setTimeout(() => {
@@ -31,6 +27,16 @@ function Display() {
       }, 200);
     }
   }, [isDisplayVisible]);
+
+  const handleScrollDown = () => {
+    forumRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleRetry = () => {
+    setIsDisplayVisible(false);
+    setIsErrorModalDisplayed(false);
+    setIsRetryingFetch(true);
+  };
 
   return (
     <>
@@ -78,7 +84,7 @@ function Display() {
                   labelPosition="right"
                   icon="checkmark"
                   positive
-                  onClick={() => setIsRetryingFetch(true)}
+                  onClick={handleRetry}
                 />
               </Modal.Actions>
             </Modal>

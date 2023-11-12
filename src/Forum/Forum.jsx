@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import ProfileCard from "./ProfileCard";
-import { Card, Grid, Button, Dimmer, Loader, Message } from "semantic-ui-react";
+import { Card, Grid, Button } from "semantic-ui-react";
 import { apiForumRoot } from "../Utils/ApiRoutes";
 import axios from "axios";
 import "./Forum.css";
@@ -16,7 +16,7 @@ function Forum(props) {
   useEffect(() => {
     if (props.isRetryingFetch) {
       getForumProfiles();
-      props.setIsRetryingFetch(true);
+      props.setIsRetryingFetch(false);
     }
   }, [props.isRetryingFetch]);
 
