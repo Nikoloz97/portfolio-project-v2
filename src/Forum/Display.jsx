@@ -10,7 +10,7 @@ function Display() {
   const [isDisplayVisible, setIsDisplayVisible] = useState(false);
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);
   const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(false);
-  // const [isRetryingFetch, setIsRetryingFetch] = useState(false);
+  const [isRetryingFetch, setIsRetryingFetch] = useState(false);
 
   const handleScrollDown = () => {
     forumRef.current.scrollIntoView({ behavior: "smooth" });
@@ -25,12 +25,12 @@ function Display() {
   }, [isLoading]);
 
   useEffect(() => {
-    if (isFetchSuccessful === false) {
+    if (isDisplayVisible && isFetchSuccessful === false) {
       setTimeout(() => {
         setIsErrorModalDisplayed(true);
       }, 200);
     }
-  }, [isFetchSuccessful]);
+  }, [isDisplayVisible]);
 
   return (
     <>
@@ -45,9 +45,7 @@ function Display() {
             hidden={isLoading}
             className={`fade-in-display ${isDisplayVisible ? "fade-in" : ""}`}
           />
-          <div
-          // className={isRetryingFetch ? "Hide-Display" : ""}
-          >
+          <div>
             <div
               className={`fade-in-display ${isDisplayVisible ? "fade-in" : ""}`}
             >
@@ -62,55 +60,37 @@ function Display() {
               </Button>
             </div>
 
-            {/* TODO: Why isn't error modal being displayed?? */}
-            {isErrorModalDisplayed === true ? (
-              <Modal
-              // onClose={() => setOpen(false)}
-              // onOpen={() => setOpen(true)}
-              // open={}
-              >
-                <Modal.Header>Select a Photo</Modal.Header>
-                <Modal.Content image>
-                  <Image
-                    size="medium"
-                    src="/images/avatar/large/rachel.png"
-                    wrapped
-                  />
-                  <Modal.Description>
-                    <Header>Default Profile Image</Header>
-                    <p>
-                      We've found the following gravatar image associated with
-                      your e-mail address.
-                    </p>
-                    <p>Is it okay to use this photo?</p>
-                  </Modal.Description>
-                </Modal.Content>
-                <Modal.Actions>
-                  <Button
-                    color="black"
-                    //  onClick={}
-                  >
-                    Nope
-                  </Button>
-                  <Button
-                    content="Yep, that's me"
-                    labelPosition="right"
-                    icon="checkmark"
-                    // onClick={() => setOpen(false)}
-                    positive
-                  />
-                </Modal.Actions>
-              </Modal>
-            ) : null}
+            <Modal open={isErrorModalDisplayed}>
+              <Modal.Header>Error Fetching Data</Modal.Header>
+              <Modal.Content>
+                <Modal.Description>
+                  <Header>Would you like to retry?</Header>
+                </Modal.Description>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button
+                  color="black"
+                  content="No"
+                  onClick={() => setIsErrorModalDisplayed(false)}
+                />
+                <Button
+                  content="Yes"
+                  labelPosition="right"
+                  icon="checkmark"
+                  positive
+                  onClick={() => setIsRetryingFetch(true)}
+                />
+              </Modal.Actions>
+            </Modal>
           </div>
 
           <div ref={forumRef}>
             <Forum
               setIsFetchSuccessful={setIsFetchSuccessful}
               setIsLoading={setIsLoading}
-              // setIsDisplayVisible={setIsDisplayVisible}
-              // handleScrollDown={handleScrollDown}
-              // setIsRetryingFetch={setIsRetryingFetch}
+              setIsErrorModalDisplayed={setIsErrorModalDisplayed}
+              isRetryingFetch={isRetryingFetch}
+              setIsRetryingFetch={setIsRetryingFetch}
             />
           </div>
         </div>
