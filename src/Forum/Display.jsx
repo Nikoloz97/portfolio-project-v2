@@ -66,25 +66,29 @@ function Display() {
               </Button>
             </div>
 
-            <Modal open={isErrorModalDisplayed}>
-              <Modal.Header>Error Fetching Data</Modal.Header>
-              <Modal.Content>
-                <Modal.Description>
-                  <Header>Would you like to retry?</Header>
+            <Modal open={isErrorModalDisplayed} centered size="fullscreen">
+              <Modal.Header className="Error-Modal">
+                There was a problem fetching your data
+              </Modal.Header>
+              <Modal.Content className="Error-Modal">
+                <Modal.Description className="Error-Modal">
+                  <Header className="Error-Modal">
+                    Would you like to retry?
+                  </Header>
                 </Modal.Description>
               </Modal.Content>
-              <Modal.Actions>
+              <Modal.Actions className="Error-Modal">
                 <Button
-                  color="black"
                   content="No"
                   onClick={() => setIsErrorModalDisplayed(false)}
+                  className="Error-Modal-Button"
+                  inverted
                 />
                 <Button
                   content="Yes"
-                  labelPosition="right"
-                  icon="checkmark"
-                  positive
                   onClick={handleRetry}
+                  className="Error-Modal-Button"
+                  inverted
                 />
               </Modal.Actions>
             </Modal>

@@ -110,3 +110,13 @@
   bottom: 0;
   transform: translateX(591%);
 }
+
+.Error-Modal {
+  background-color: #383c43 !important;
+  color: white !important;
+  text-align: center !important;
+}
+
+.ui.dimmer {
+  opacity: 0.95 !important;
+}
