@@ -24,11 +24,15 @@ const Login = () => {
 
   const handleLogin = () => {
     axios
-      .get(apiUserRoot + `/${username}/${password}`)
+      .post(apiUserRoot + "/login", { Username: username, Password: password })
       .then((response) => {
         console.log(response.data);
         setUser(response.data);
         setIsUserSignedIn(true);
+
+        const token = response.data.token;
+
+        localStorage.setItem("token", token);
 
         // Upon login, navigate to homescreen
         navigate("/");
