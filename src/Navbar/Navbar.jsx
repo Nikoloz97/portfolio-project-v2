@@ -1,7 +1,8 @@
 import React from "react";
 import { Menu, MenuItem, Button, Image, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { useUserContext } from "./UserContext";
+import { useUserContext } from ".././UserContext";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { user } = useUserContext();
@@ -25,22 +26,19 @@ const Navbar = () => {
           <Button>Contact</Button>
         </MenuItem>
         <Menu.Menu position="right">
-          <MenuItem as={Link} to="/login">
-            <Header style={{ color: "white" }} as="h5">
+          <MenuItem as={Link} to="/profilePage">
+            <Header className="Profile-Message" as="h5">
               {user !== undefined && user !== null
                 ? `Welcome, ${user.firstName}`
                 : "You are not logged in"}
             </Header>
-          </MenuItem>
-          <MenuItem>
+
             <Image
               src={
-                user !== undefined && user !== null
+                user !== undefined && user !== null && user.profileURL !== null
                   ? user.profileURL
                   : "https://react.semantic-ui.com/images/wireframe/square-image.png"
               }
-              as={Link}
-              to="/login"
               avatar
             />
           </MenuItem>

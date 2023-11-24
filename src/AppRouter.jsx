@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home/Home";
 import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar.jsx";
 import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
 import Kronos from "./Projects/Clocks/Kronos";
@@ -14,6 +14,7 @@ import FantasyBasketball from "./Projects/Basketball/FantasyBasketball";
 import GeographyGame from "./Projects/GeographyGame/GeographyGame";
 import TeamAnalyzer from "./Projects/Basketball/TeamAnalyzer/TeamAnalyzer";
 import ScheduleAnalyzer from "./Projects/Basketball/ScheduleAnalyzer/ScheduleAnalyzer";
+import ProfilePage from "./User/ProfilePage.jsx";
 
 function AppRouter() {
   return (
@@ -44,6 +45,7 @@ function AppRouter() {
         <Route path="/forum" element={<ForumDisplay />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/profilePage" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );
