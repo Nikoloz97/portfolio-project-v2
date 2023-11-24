@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, Form, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { apiUserRoot } from "../Utils/ApiRoutes";
+import "./User.css";
 
 const SignUp = () => {
   const [signUpInfo, setSignUpInfo] = useState({

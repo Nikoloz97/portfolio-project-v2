@@ -30,7 +30,7 @@ const Navbar = () => {
             <Header className="Profile-Message" as="h5">
               {user !== undefined && user !== null
                 ? `Welcome, ${user.firstName}`
-                : "You are not logged in"}
+                : "Log In / Sign Up Here"}
             </Header>
 
             <Image
