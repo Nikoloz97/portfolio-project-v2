@@ -3,7 +3,7 @@ import ProfileCard from "./ProfileCard";
 import { Card, Grid, Button } from "semantic-ui-react";
 import { apiForumRoot } from "../Utils/ApiRoutes";
 import axios from "axios";
-import "./Forum.css";
+import "./ForumPage.css";
 
 function Forum(props) {
   const [forumProfileData, setForumProfileData] = useState(null);
@@ -44,6 +44,7 @@ function Forum(props) {
 
   return (
     <div>
+      {/* Why do  we have both of these? */}
       {isForumHidden ? null : (
         <div className={isForumHidden ? "Hide-Forum" : ""}>
           <div className="Forum-Page">

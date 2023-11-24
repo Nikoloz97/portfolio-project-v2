@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Header, Image, Button, Form } from "semantic-ui-react";
+import { Header, Image, Form } from "semantic-ui-react";
 import { apiUserRoot } from "../Utils/ApiRoutes";
 import axios from "axios";
 import "./User.css";

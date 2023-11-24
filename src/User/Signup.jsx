@@ -45,6 +45,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.error("Error:", error.message);
+        // Add ErrorModalHere
       });
   };
 

@@ -19,14 +19,14 @@ const Navbar = () => {
         <MenuItem as={Link} to="/projects" position="right">
           <Button>Projects</Button>
         </MenuItem>
-        <MenuItem as={Link} to="/forum" position="right">
+        <MenuItem as={Link} to="/forumPage" position="right">
           <Button>Forum</Button>
         </MenuItem>
         <MenuItem as={Link} to="/contact" position="right">
           <Button>Contact</Button>
         </MenuItem>
         <Menu.Menu position="right">
-          <MenuItem as={Link} to="/profilePage">
+          <MenuItem as={Link} to={user ? "/profilePage" : "/login"}>
             <Header className="Profile-Message" as="h5">
               {user !== undefined && user !== null
                 ? `Welcome, ${user.firstName}`

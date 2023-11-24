@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { Icon, Card, Image, Grid, Form, Button } from "semantic-ui-react";
 import { postDateFormatter } from "../Utils/Formatters";
 import Comment from "./Comment";
-import "./Post.css";
+import "./ForumPage.css";
 
 const Post = (props) => {
   const [isPostLiked, setIsPostLiked] = useState(false);
