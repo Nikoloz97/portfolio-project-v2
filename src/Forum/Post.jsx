@@ -18,7 +18,7 @@ const Post = (props) => {
 
   return (
     <div>
-      <Card>
+      <Card className="Post-Card">
         <Card.Header
           textAlign="right"
           style={{ paddingRight: "1rem", maxWidth: "70%" }}
@@ -62,14 +62,14 @@ const Post = (props) => {
             </Grid>
           </Card.Content>
           <Button
-            className="post-left-arrow-button"
+            className="Post-Left-Arrow-Button"
             disabled={props.currentPostIndex === 0 ? true : false}
             onClick={props.handlePreviousPost}
           >
             <Icon name="arrow left" style={{ marginLeft: "-8px" }} />
           </Button>
           <Button
-            className="post-right-arrow-button"
+            className="Post-Right-Arrow-Button"
             disabled={
               props.currentPostIndex === props.postsLength ? true : false
             }

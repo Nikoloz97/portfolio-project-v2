@@ -1,5 +1,4 @@
 import { React, useEffect, useRef, useState } from "react";
-import { Image, Button, Loader, Modal, Header } from "semantic-ui-react";
 import Display from "./Display";
 import Forum from "./Forum";
 import "./ForumPage.css";
@@ -41,85 +40,24 @@ function ForumPage() {
 
   return (
     <>
-      <div>
-        {/* Before... */}
+      <Display
+        isLoading={isLoading}
+        isDisplayVisible={isDisplayVisible}
+        isFetchSuccessful={isFetchSuccessful}
+        isErrorModalDisplayed={isErrorModalDisplayed}
+        setIsErrorModalDisplayed={setIsErrorModalDisplayed}
+        handleScrollDown={handleScrollDown}
+        handleRetry={handleRetry}
+      />
 
-        {/* Display-Page class = allows loading screen to have normal styling */}
-        {/* <div className="Display-Page">
-          <Loader content="One second..." active={isLoading} />
-
-          <Image
-            src={require("../Images/ForumDisplay/Travel5.jpg")}
-            centered
-            hidden={isLoading}
-            className={`fade-in-display ${isDisplayVisible ? "fade-in" : ""}`}
-          />
-          <div>
-            <div
-              className={`fade-in-display ${isDisplayVisible ? "fade-in" : ""}`}
-            >
-              <div className="forum-display-text">Welcome to the Forum</div>
-              <div className="forum-display-subtext">Express and Discuss</div>
-              <Button
-                onClick={handleScrollDown}
-                className="forum-display-button"
-                disabled={isFetchSuccessful === false}
-              >
-                Join
-              </Button>
-            </div>
-
-            <Modal open={isErrorModalDisplayed} centered size="fullscreen">
-              <Modal.Header className="Error-Modal">
-                There was a problem fetching your data
-              </Modal.Header>
-              <Modal.Content className="Error-Modal">
-                <Modal.Description className="Error-Modal">
-                  <Header className="Error-Modal">
-                    Would you like to retry?
-                  </Header>
-                </Modal.Description>
-              </Modal.Content>
-              <Modal.Actions className="Error-Modal">
-                <Button
-                  content="No"
-                  onClick={() => setIsErrorModalDisplayed(false)}
-                  className="Error-Modal-Button"
-                  inverted
-                />
-                <Button
-                  content="Yes"
-                  onClick={handleRetry}
-                  className="Error-Modal-Button"
-                  inverted
-                />
-              </Modal.Actions>
-            </Modal>
-          </div> */}
-
-        {/*After... */}
-        <div className="Display-Page">
-          <Display
-            isLoading={isLoading}
-            isDisplayVisible={isDisplayVisible}
-            isFetchSuccessful={isFetchSuccessful}
-            isErrorModalDisplayed={isErrorModalDisplayed}
-            setIsErrorModalDisplayed={setIsErrorModalDisplayed}
-            handleScrollDown={handleScrollDown}
-            handleRetry={handleRetry}
-          />
-
-          <div ref={forumRef}>
-            <Forum
-              setIsFetchSuccessful={setIsFetchSuccessful}
-              setIsLoading={setIsLoading}
-              setIsErrorModalDisplayed={setIsErrorModalDisplayed}
-              isRetryingFetch={isRetryingFetch}
-              setIsRetryingFetch={setIsRetryingFetch}
-            />
-          </div>
-        </div>
-        {/* </div> */}
+      <div ref={forumRef}>
+        <Forum
+          setIsFetchSuccessful={setIsFetchSuccessful}
+          setIsLoading={setIsLoading}
+          setIsErrorModalDisplayed={setIsErrorModalDisplayed}
+          isRetryingFetch={isRetryingFetch}
+          setIsRetryingFetch={setIsRetryingFetch}
+        />
       </div>
     </>
   );

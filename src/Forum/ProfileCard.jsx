@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Button, Card, Image, Grid, Icon } from "semantic-ui-react";
+import { Button, Card, Image } from "semantic-ui-react";
 import Post from "./Post.jsx";
 
 const ProfileCard = (props) => {
@@ -28,7 +28,7 @@ const ProfileCard = (props) => {
       <Card.Content>
         <Image
           floated="left"
-          size="small"
+          size="tiny"
           circular
           src={props.forumProfile.profileURL}
         />
@@ -48,8 +48,8 @@ const ProfileCard = (props) => {
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">
-          <Button color="green">Follow</Button>
-          <Button color="blue">Read More</Button>
+          <Button>Follow</Button>
+          <Button>Read More</Button>
         </div>
       </Card.Content>
     </Card>

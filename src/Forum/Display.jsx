@@ -5,8 +5,9 @@ import "./ForumPage.css";
 const Display = (props) => {
   return (
     <>
-      <div>
-        <Loader content="One second..." active={props.isLoading} />
+      <div className="Display-Page">
+        <Loader content="Loading" active={props.isLoading} />
+
         <Image
           src={require("../Images/ForumDisplay/Travel5.jpg")}
           centered

@@ -29,6 +29,7 @@ function Forum(props) {
         setForumProfileData(response.data);
         props.setIsLoading(false);
         props.setIsFetchSuccessful(true);
+        setIsForumHidden(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -44,26 +45,23 @@ function Forum(props) {
 
   return (
     <div>
-      {/* Why do  we have both of these? */}
       {isForumHidden ? null : (
-        <div className={isForumHidden ? "Hide-Forum" : ""}>
-          <div className="Forum-Page">
-            <Grid centered>
-              <Grid.Row style={{ marginTop: "3rem" }}>
-                <Card.Group>
-                  {forumProfileData.map((eachForumProfile) => (
-                    <ProfileCard
-                      forumProfile={eachForumProfile}
-                      key={eachForumProfile.forumProfileId}
-                    />
-                  ))}
-                </Card.Group>
-              </Grid.Row>
-              <Grid.Row>
-                <Button onClick={handleReturn}> Back to top</Button>
-              </Grid.Row>
-            </Grid>
-          </div>
+        <div className="Forum-Page">
+          <Grid centered>
+            <Grid.Row style={{ marginTop: "3rem" }}>
+              <Card.Group>
+                {forumProfileData.map((eachForumProfile) => (
+                  <ProfileCard
+                    forumProfile={eachForumProfile}
+                    key={eachForumProfile.forumProfileId}
+                  />
+                ))}
+              </Card.Group>
+            </Grid.Row>
+            <Grid.Row>
+              <Button onClick={handleReturn}> Back to top</Button>
+            </Grid.Row>
+          </Grid>
         </div>
       )}
     </div>
