@@ -20,6 +20,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isErrorShowing, setIsErrorShowing] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [errorTopic, setErrorTopic] = useState("");
 
   const navigate = useNavigate();
 
@@ -39,15 +40,26 @@ const Login = () => {
         navigate("/");
       })
       .catch((error) => {
-        const errorResponse = error.response.data.error.message;
-        setIsErrorShowing(true);
+        let errorResponse = "";
+        let errorTopic = "";
+        if (error.response) {
+          // ExceptionMiddleware's error
+          errorResponse = error.response.data.error.message;
+          errorTopic = error.response.data.error.topic;
+        } else {
+          errorResponse = error.message;
+        }
         setErrorMessage(errorResponse);
+        setErrorTopic(errorTopic);
+
+        console.log(error);
+        setIsErrorShowing(true);
       });
   };
 
   return (
     <>
-      <header className="Default-Page">
+      <div className="Default-Page">
         <Segment placeholder>
           <Grid columns={2} relaxed="very" stackable>
             <Grid.Column>
@@ -70,7 +82,7 @@ const Login = () => {
                   onFocus={(e) => setIsErrorShowing(false)}
                 />
 
-                <Button content="Login" primary onClick={handleLogin} />
+                <Button content="Login" onClick={handleLogin} />
               </Form>
             </Grid.Column>
 
@@ -88,13 +100,20 @@ const Login = () => {
           <Divider vertical>Or</Divider>
         </Segment>
 
+        {/* Error message */}
         {isErrorShowing && (
-          <Message negative>
-            <Message.Header>Invalid Credentials</Message.Header>
-            <p>{errorMessage}</p>
+          <Message
+            className={`Login-Error-Message ${
+              isErrorShowing ? "Login-Fade-In-Up" : "Login-Fade-Out-Down"
+            }`}
+            size="tiny"
+            onDismiss={() => setIsErrorShowing(false)}
+          >
+            <Message.Header>{errorTopic}</Message.Header>
+            <Message.Content>{errorMessage}</Message.Content>
           </Message>
         )}
-      </header>
+      </div>
     </>
   );
 };

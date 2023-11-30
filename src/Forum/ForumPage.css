@@ -23,30 +23,6 @@
   color: white;
 }
 
-/* TODO: Remove these? They aren't being used anywhere */
-
-/* .Forum-Error-Page {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
-/* .Forum-Loading-Icon {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
 .ForumPage-Display-Text {
   position: absolute;
   top: 40%;
