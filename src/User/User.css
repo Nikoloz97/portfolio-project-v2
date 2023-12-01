@@ -1,9 +1,39 @@
+/* General */
+.ui.checkbox label {
+  color: white !important;
+}
+
+/* -- Username/Password input fields -- */
+.ui.form input {
+  border-radius: 2rem !important;
+}
+
 /*Profile Page  */
 .Profile-Page-Header {
   color: white !important;
 }
 
 /* Login */
+
+.Login-Container {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.Login-Checkbox-ForgotPassword {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Login-Button {
+  background-color: white !important;
+  width: 66% !important;
+  height: 3rem;
+  border-radius: 2rem !important;
+  color: black !important;
+}
 
 .Login-Error-Message {
   position: fixed !important;

@@ -7,6 +7,9 @@ import {
   Segment,
   Form,
   Message,
+  Checkbox,
+  Header,
+  Container,
 } from "semantic-ui-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../UserContext";
@@ -60,45 +63,46 @@ const Login = () => {
   return (
     <>
       <div className="Default-Page">
-        <Segment placeholder>
-          <Grid columns={2} relaxed="very" stackable>
-            <Grid.Column>
+        <Container fluid className="Login-Container">
+          <Grid style={{ width: "33%" }}>
+            <Grid.Column textAlign="center">
+              <Header style={{ color: "white" }}>Login</Header>
               <Form>
                 <Form.Input
                   icon="user"
-                  iconPosition="left"
-                  label="Username"
                   placeholder="Username"
                   onChange={(e) => setUsername(e.target.value)}
                   onFocus={(e) => setIsErrorShowing(false)}
                 />
                 <Form.Input
+                  className="Login-Inputs"
                   icon="lock"
-                  iconPosition="left"
-                  label="Password"
                   placeholder="Password"
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                   onFocus={(e) => setIsErrorShowing(false)}
                 />
-
-                <Button content="Login" onClick={handleLogin} />
+                <div className="Login-Checkbox-ForgotPassword">
+                  <Checkbox label="Remember Me" />
+                  <div>Forgot Password?</div>
+                </div>
+                <Button
+                  style={{ marginTop: "1rem" }}
+                  className="Login-Button"
+                  content="Login"
+                  onClick={handleLogin}
+                />
               </Form>
-            </Grid.Column>
-
-            <Grid.Column verticalAlign="middle">
-              <Button
-                content="Sign up"
-                icon="signup"
-                size="big"
-                as={Link}
-                to="/signUp"
-              />
+              <Grid.Row style={{ marginTop: "1rem" }}>
+                <div style={{ fontSize: "1rem" }}>
+                  <Link style={{ color: "white" }} to="/signup">
+                    Don't have an account? Sign up here
+                  </Link>
+                </div>
+              </Grid.Row>
             </Grid.Column>
           </Grid>
-
-          <Divider vertical>Or</Divider>
-        </Segment>
+        </Container>
 
         {/* Error message */}
         {isErrorShowing && (
