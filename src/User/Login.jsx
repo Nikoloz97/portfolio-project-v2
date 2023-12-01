@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import {
   Button,
-  Divider,
   Grid,
-  Segment,
   Form,
   Message,
   Checkbox,
   Header,
   Container,
 } from "semantic-ui-react";
+import { UserErrorMessage } from "../Utils/Error/Error";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../UserContext";
 import { apiUserRoot } from "../Utils/ApiRoutes";
@@ -21,9 +20,12 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isErrorShowing, setIsErrorShowing] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [errorTopic, setErrorTopic] = useState("");
+
+  const [error, setError] = useState({
+    isErrorShowing: false,
+    errorMessage: "",
+    errorTopic: "",
+  });
 
   const navigate = useNavigate();
 
@@ -43,69 +45,83 @@ const Login = () => {
         navigate("/");
       })
       .catch((error) => {
-        let errorResponse = "";
-        let errorTopic = "";
         if (error.response) {
           // ExceptionMiddleware's error
-          errorResponse = error.response.data.error.message;
-          errorTopic = error.response.data.error.topic;
+          setError((prevError) => ({
+            ...prevError,
+            isErrorShowing: true,
+            errorTopic: error.response.data.error.topic,
+            errorMessage: error.response.data.error.message,
+          }));
         } else {
-          errorResponse = error.message;
+          setError((prevError) => ({
+            ...prevError,
+            isErrorShowing: true,
+            errorMessage: error.message,
+          }));
         }
-        setErrorMessage(errorResponse);
-        setErrorTopic(errorTopic);
-
-        console.log(error);
-        setIsErrorShowing(true);
       });
   };
 
   return (
-    <>
-      <div className="Default-Page">
-        <Container fluid className="Login-Container">
-          <Grid style={{ width: "33%" }}>
-            <Grid.Column textAlign="center">
-              <Header style={{ color: "white" }}>Login</Header>
-              <Form>
-                <Form.Input
-                  icon="user"
-                  placeholder="Username"
-                  onChange={(e) => setUsername(e.target.value)}
-                  onFocus={(e) => setIsErrorShowing(false)}
-                />
-                <Form.Input
-                  className="Login-Inputs"
-                  icon="lock"
-                  placeholder="Password"
-                  type="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  onFocus={(e) => setIsErrorShowing(false)}
-                />
-                <div className="Login-Checkbox-ForgotPassword">
-                  <Checkbox label="Remember Me" />
-                  <div>Forgot Password?</div>
-                </div>
-                <Button
-                  style={{ marginTop: "1rem" }}
-                  className="Login-Button"
-                  content="Login"
-                  onClick={handleLogin}
-                />
-              </Form>
-              <Grid.Row style={{ marginTop: "1rem" }}>
-                <div style={{ fontSize: "1rem" }}>
-                  <Link style={{ color: "white" }} to="/signup">
-                    Don't have an account? Sign up here
-                  </Link>
-                </div>
-              </Grid.Row>
-            </Grid.Column>
-          </Grid>
-        </Container>
+    <div className="Default-Page">
+      <Container fluid className="Login-Container">
+        <Grid style={{ width: "33%" }}>
+          <Grid.Column textAlign="center">
+            <Header style={{ color: "white" }}>Login</Header>
+            <Form>
+              <Form.Input
+                icon="user"
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
+                onFocus={(prevError) =>
+                  setError(() => ({ ...prevError, isErrorShowing: false }))
+                }
+              />
+              <Form.Input
+                className="Login-Inputs"
+                icon="lock"
+                placeholder="Password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                onFocus={(prevError) =>
+                  setError(() => ({ ...prevError, isErrorShowing: false }))
+                }
+              />
+              <div className="Login-Checkbox-ForgotPassword">
+                <Checkbox label="Remember Me" />
+                <div>Forgot Password?</div>
+              </div>
+              <Button
+                style={{ marginTop: "1rem" }}
+                className="Login-Button"
+                content="Login"
+                onClick={handleLogin}
+              />
+            </Form>
+            <Grid.Row style={{ marginTop: "1rem" }}>
+              <div style={{ fontSize: "1rem" }}>
+                <Link style={{ color: "white" }} to="/signup">
+                  Don't have an account? Sign up here
+                </Link>
+              </div>
+            </Grid.Row>
+          </Grid.Column>
+        </Grid>
+      </Container>
 
-        {/* Error message */}
-        {isErrorShowing && (
+      {/* Error message */}
+      <UserErrorMessage
+        className={`Login-Error-Message ${
+          error.isErrorShowing ? "Login-Fade-In-Up" : "Login-Fade-Out-Down"
+        }`}
+        error={error}
+        onDismiss={(prevError) =>
+          setError(() => ({ ...prevError, isErrorShowing: false }))
+        }
+      />
+
+      {/* {isErrorShowing && (
           <Message
             className={`Login-Error-Message ${
               isErrorShowing ? "Login-Fade-In-Up" : "Login-Fade-Out-Down"
@@ -116,9 +132,8 @@ const Login = () => {
             <Message.Header>{errorTopic}</Message.Header>
             <Message.Content>{errorMessage}</Message.Content>
           </Message>
-        )}
-      </div>
-    </>
+        )} */}
+    </div>
   );
 };
 

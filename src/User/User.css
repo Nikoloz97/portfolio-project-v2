@@ -35,7 +35,9 @@
   color: black !important;
 }
 
-.Login-Error-Message {
+/* Login + Signup */
+
+.User-Error-Message {
   position: fixed !important;
   bottom: 1rem;
   width: 66%;
@@ -43,14 +45,14 @@
   text-align: center;
   background-color: #383c43 !important;
   color: white !important;
-  border: 0.5px solid white;
+  border-radius: 2rem !important;
 }
 
-.Login-Fade-In-Up {
+.User-Fade-In-Up {
   animation-name: fadeInUp;
 }
 
-.Login-Fade-Out-Down {
+.User-Fade-Out-Down {
   animation-name: fadeOutDown;
 }
 
