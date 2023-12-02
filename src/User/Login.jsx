@@ -4,7 +4,6 @@ import {
   Button,
   Grid,
   Form,
-  Message,
   Checkbox,
   Header,
   Container,
@@ -120,19 +119,6 @@ const Login = () => {
           setError(() => ({ ...prevError, isErrorShowing: false }))
         }
       />
-
-      {/* {isErrorShowing && (
-          <Message
-            className={`Login-Error-Message ${
-              isErrorShowing ? "Login-Fade-In-Up" : "Login-Fade-Out-Down"
-            }`}
-            size="tiny"
-            onDismiss={() => setIsErrorShowing(false)}
-          >
-            <Message.Header>{errorTopic}</Message.Header>
-            <Message.Content>{errorMessage}</Message.Content>
-          </Message>
-        )} */}
     </div>
   );
 };

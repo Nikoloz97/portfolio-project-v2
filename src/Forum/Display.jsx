@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, Button, Loader, Modal, Header } from "semantic-ui-react";
+import { ForumErrorModal } from "../Utils/Error/Error";
 import "./ForumPage.css";
 
 const Display = (props) => {
@@ -32,32 +33,12 @@ const Display = (props) => {
               Join
             </Button>
           </div>
-          <Modal open={props.isErrorModalDisplayed} centered size="fullscreen">
-            <Modal.Header className="Error-Modal">
-              There was a problem fetching your data
-            </Modal.Header>
-            <Modal.Content className="Error-Modal">
-              <Modal.Description className="Error-Modal">
-                <Header className="Error-Modal">
-                  Would you like to retry?
-                </Header>
-              </Modal.Description>
-            </Modal.Content>
-            <Modal.Actions className="Error-Modal">
-              <Button
-                content="No"
-                onClick={() => props.setIsErrorModalDisplayed(false)}
-                className="Error-Modal-Button"
-                inverted
-              />
-              <Button
-                content="Yes"
-                onClick={props.handleRetry}
-                className="Error-Modal-Button"
-                inverted
-              />
-            </Modal.Actions>
-          </Modal>
+
+          <ForumErrorModal
+            isErrorModalDisplayed={props.isErrorModalDisplayed}
+            closeErrorModalDisplay={() => props.setIsErrorModalDisplayed(false)}
+            handleRetry={props.handleRetry}
+          />
         </div>
       </div>
     </>
