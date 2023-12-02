@@ -45,7 +45,7 @@ const Login = () => {
       })
       .catch((error) => {
         if (error.response) {
-          // ExceptionMiddleware's error
+          // ExceptionMiddleware-specific error
           setError((prevError) => ({
             ...prevError,
             isErrorShowing: true,
@@ -53,6 +53,7 @@ const Login = () => {
             errorMessage: error.response.data.error.message,
           }));
         } else {
+          // General error
           setError((prevError) => ({
             ...prevError,
             isErrorShowing: true,

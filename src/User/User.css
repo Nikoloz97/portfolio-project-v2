@@ -3,7 +3,12 @@
   color: white !important;
 }
 
-/* -- Username/Password input fields -- */
+.ui.form label {
+  color: white !important;
+  margin-left: 0.5rem !important;
+  text-align: left !important;
+}
+
 .ui.form input {
   border-radius: 2rem !important;
 }
@@ -11,6 +16,16 @@
 /*Profile Page  */
 .Profile-Page-Header {
   color: white !important;
+}
+
+/* Sign Up */
+
+.SignUp-Button {
+  background-color: white !important;
+  width: 25% !important;
+  height: 3rem;
+  border-radius: 2rem !important;
+  color: black !important;
 }
 
 /* Login */
