@@ -19,11 +19,26 @@ const SignUp = () => {
 
   const [profileImageUrl, setProfileImageUrl] = useState(null);
 
+  const [profilePhotoDisplayText, setProfilePhotoDisplayText] = useState(
+    "Click here to choose a file"
+  );
+
   const [error, setError] = useState({
     isErrorShowing: false,
     errorMessage: "",
     errorTopic: "",
   });
+
+  const handleFileInput = (e) => {
+    setSignUpInfo({
+      ...signUpInfo,
+      ProfileImageFile: e.target.files[0],
+    });
+
+    if (e.target.files.length !== 0) {
+      setProfilePhotoDisplayText(`File Chosen: ${e.target.files[0].name}`);
+    }
+  };
 
   const handleSignUp = () => {
     // Formdata = needed to save profileImage on backend
@@ -119,14 +134,26 @@ const SignUp = () => {
                 />
                 <Form.Field>
                   <label>Profile Photo</label>
+
+                  <Button
+                    basic
+                    as="label"
+                    htmlFor="fileInput"
+                    style={{
+                      cursor: "pointer",
+                      color: "white",
+                      display: "flex",
+                      alignItems: "center", // Center vertically
+                    }}
+                  >
+                    {profilePhotoDisplayText}
+                  </Button>
+
                   <input
+                    id="fileInput"
                     type="file"
-                    onChange={(e) =>
-                      setSignUpInfo({
-                        ...signUpInfo,
-                        ProfileImageFile: e.target.files[0],
-                      })
-                    }
+                    onChange={(e) => handleFileInput(e)}
+                    style={{ display: "none" }}
                   />
                 </Form.Field>
               </Form.Group>
