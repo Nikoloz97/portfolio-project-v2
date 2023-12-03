@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Button, Header, Grid, Icon } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Button, Header, Grid } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../UserContext";
-import AboutMe from "../AboutMe/AboutMe";
 import "./Welcome.css";
 
-const Welcome = () => {
+const Welcome = (props) => {
   const { user, setUser, setIsUserSignedIn } = useUserContext();
 
   const [text, setText] = useState("");
@@ -13,43 +12,9 @@ const Welcome = () => {
 
   const [showButtons, setShowButtons] = useState(false);
 
-  const [isArrowHovered, setIsArrowHovered] = useState(false);
-  const [isArrowDehovered, setIsArrowDehovered] = useState(false);
-  const [isArrowVisible, setIsArrowVisible] = useState(false);
-  const [isArrowAbove, setIsArrowAbove] = useState(false);
-
   const handleSignOut = () => {
     setUser(null);
     setIsUserSignedIn(false);
-  };
-
-  const handleMouseEnter = () => {
-    setIsArrowHovered(true);
-    setIsArrowDehovered(false);
-  };
-
-  const handleMouseLeave = () => {
-    setIsArrowHovered(false);
-    setIsArrowDehovered(true);
-  };
-
-  const aboutMeRef = useRef(null);
-
-  const handleArrowClick = () => {
-    setIsArrowVisible(false);
-
-    if (isArrowAbove === false) {
-      aboutMeRef.current.scrollIntoView({ behavior: "smooth" });
-      setIsArrowAbove(true);
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setIsArrowAbove(false);
-    }
-
-    setTimeout(() => {
-      setIsArrowVisible(true);
-      setIsArrowHovered(false);
-    }, 800);
   };
 
   // Welcome typewriting animation
@@ -71,7 +36,7 @@ const Welcome = () => {
     };
   }, []);
 
-  // Button animation
+  // Button fade-in
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowButtons(true);
@@ -79,7 +44,7 @@ const Welcome = () => {
 
     if (showButtons) {
       setTimeout(() => {
-        setIsArrowVisible(true);
+        props.setIsArrowVisible(true);
       }, 500); // Adjust the delay time
     }
 
@@ -90,71 +55,39 @@ const Welcome = () => {
 
   return (
     <>
-      <header className="Default-Page">
-        <div className="welcome-buttons-container">
-          <Grid verticalAlign="middle" centered>
-            <Grid.Row>
-              <Header
-                className="typewriter-animation"
-                style={{ color: "white" }}
-              >
-                {isTyping ? (
-                  <span className="typewriter-animation">{text}</span>
-                ) : (
-                  text
-                )}
-              </Header>
-            </Grid.Row>
-            <Grid.Row>
-              {showButtons ? (
-                <div className="button-container">
-                  {user === undefined || user === null ? (
-                    <div>
-                      <Button as={Link} to="/login">
-                        Log In
-                      </Button>
-                      <Button as={Link} to="/signup">
-                        Sign Up
-                      </Button>
-                    </div>
-                  ) : (
-                    <div>
-                      <Button onClick={handleSignOut}>Sign Out</Button>
-                    </div>
-                  )}
-                </div>
-              ) : null}
-            </Grid.Row>
+      <div className="welcome-buttons-container">
+        <Grid verticalAlign="middle" centered>
+          <Grid.Row>
+            <Header className="typewriter-animation" style={{ color: "white" }}>
+              {isTyping ? (
+                <span className="typewriter-animation">{text}</span>
+              ) : (
+                text
+              )}
+            </Header>
+          </Grid.Row>
 
-            {isArrowVisible ? (
-              <Grid.Row>
-                <div
-                  className={`${
-                    isArrowAbove
-                      ? "arrow-container-above"
-                      : "arrow-container-bottom"
-                  } ${isArrowHovered ? "hovered-ac" : ""} ${
-                    isArrowDehovered
-                      ? "subsequent-ac-opacity"
-                      : "on-render-ac-opacity"
-                  }`}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Icon
-                    name={`${isArrowAbove ? "arrow up" : "arrow down"}`}
-                    size="small"
-                    className="arrow-icon"
-                    onClick={handleArrowClick}
-                  />
-                </div>
-              </Grid.Row>
+          <Grid.Row>
+            {showButtons ? (
+              <div className="button-container">
+                {user === undefined || user === null ? (
+                  <div>
+                    <Button as={Link} to="/login">
+                      Log In
+                    </Button>
+                    <Button as={Link} to="/signup">
+                      Sign Up
+                    </Button>
+                  </div>
+                ) : (
+                  <div>
+                    <Button onClick={handleSignOut}>Sign Out</Button>
+                  </div>
+                )}
+              </div>
             ) : null}
-          </Grid>
-        </div>
-      </header>
-      <div ref={aboutMeRef}>
-        <AboutMe />
+          </Grid.Row>
+        </Grid>
       </div>
     </>
   );

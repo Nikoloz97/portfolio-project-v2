@@ -13,9 +13,24 @@
   border-radius: 2rem !important;
 }
 
+.ui.form textarea {
+  border-radius: 2rem !important;
+  height: 3rem !important;
+  resize: none !important;
+}
+
 /*Profile Page  */
 .Profile-Page-Header {
   color: white !important;
+}
+
+/* Login + Sign Up */
+
+.Login-SignUp-Container {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 /* Sign Up */
@@ -29,13 +44,6 @@
 }
 
 /* Login */
-
-.Login-Container {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 
 .Login-Checkbox-ForgotPassword {
   display: flex;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Button, Loader, Modal, Header } from "semantic-ui-react";
+import { Image, Button, Loader } from "semantic-ui-react";
 import { ForumErrorModal } from "../Utils/Error/Error";
 import "./ForumPage.css";
 

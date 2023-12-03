@@ -65,7 +65,7 @@ const Login = () => {
 
   return (
     <div className="Default-Page">
-      <Container fluid className="Login-Container">
+      <Container fluid className="Login-SignUp-Container">
         <Grid style={{ width: "33%" }}>
           <Grid.Column textAlign="center">
             <Header style={{ color: "white" }}>Login</Header>

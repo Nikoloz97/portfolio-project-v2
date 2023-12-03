@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {
-  Button,
-  Form,
-  Image,
-  Grid,
-  Container,
-  Header,
-} from "semantic-ui-react";
+import { Button, Form, Grid, Container, Header } from "semantic-ui-react";
 import { UserErrorMessage } from "../Utils/Error/Error";
 import { Link } from "react-router-dom";
 import { apiUserRoot } from "../Utils/ApiRoutes";
@@ -79,7 +72,7 @@ const SignUp = () => {
 
   return (
     <div className="Default-Page">
-      <Container fluid className="Login-Container">
+      <Container fluid className="Login-SignUp-Container">
         {/* <Form className="Default-Form"> */}
         <Grid style={{ width: "50%" }}>
           <Grid.Column textAlign="center">
