@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Form, Grid, Container, Header } from "semantic-ui-react";
+import { Button, Form, Grid, Container, Header, Icon } from "semantic-ui-react";
 import { UserErrorMessage } from "../Utils/Error/Error";
 import { Link } from "react-router-dom";
 import { apiUserRoot } from "../Utils/ApiRoutes";
@@ -23,6 +23,9 @@ const SignUp = () => {
     "Click here to choose a file"
   );
 
+  const [isProfilePhotoClearingDisabled, setIsProfilePhotoClearingDisabled] =
+    useState(true);
+
   const [error, setError] = useState({
     isErrorShowing: false,
     errorMessage: "",
@@ -37,7 +40,19 @@ const SignUp = () => {
 
     if (e.target.files.length !== 0) {
       setProfilePhotoDisplayText(`File Chosen: ${e.target.files[0].name}`);
+      setIsProfilePhotoClearingDisabled(false);
     }
+  };
+
+  const handleProfilePhotoClearing = () => {
+    setSignUpInfo({
+      ...signUpInfo,
+      ProfileImageFile: null,
+    });
+
+    setProfilePhotoDisplayText("Click here to choose a file");
+
+    setIsProfilePhotoClearingDisabled(true);
   };
 
   const handleSignUp = () => {
@@ -135,26 +150,35 @@ const SignUp = () => {
                 <Form.Field>
                   <label>Profile Photo</label>
 
-                  <Button
-                    basic
-                    as="label"
-                    htmlFor="fileInput"
-                    style={{
-                      cursor: "pointer",
-                      color: "white",
-                      display: "flex",
-                      alignItems: "center", // Center vertically
-                    }}
-                  >
-                    {profilePhotoDisplayText}
-                  </Button>
-
-                  <input
-                    id="fileInput"
-                    type="file"
-                    onChange={(e) => handleFileInput(e)}
-                    style={{ display: "none" }}
-                  />
+                  <div style={{ display: "flex" }}>
+                    <Button
+                      basic
+                      as="label"
+                      htmlFor="fileInput"
+                      style={{
+                        cursor: "pointer",
+                        color: "white",
+                        display: "flex",
+                        width: "100%",
+                        alignItems: "center", // Center vertically
+                      }}
+                    >
+                      {profilePhotoDisplayText}
+                    </Button>
+                    <input
+                      id="fileInput"
+                      type="file"
+                      onChange={(e) => handleFileInput(e)}
+                      style={{ display: "none" }}
+                    />
+                    <Button
+                      className="Profile-Photo-Cancel-Button"
+                      onClick={handleProfilePhotoClearing}
+                      disabled={isProfilePhotoClearingDisabled}
+                    >
+                      <Icon name="cancel"></Icon>
+                    </Button>
+                  </div>
                 </Form.Field>
               </Form.Group>
 

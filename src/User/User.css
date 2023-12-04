@@ -19,12 +19,23 @@
   resize: none !important;
 }
 
+/* TODO: Figure out why this has a dark hue */
+
+/* .ui.button.disabled {
+  background-color: red !important;
+} */
+
 /* Profile Photo button */
 label.ui.basic.button {
   background-color: white !important;
-  border-radius: 2rem !important;
+  border-radius: 2rem 0 0 2rem !important;
   height: 2.75rem;
   margin: 0 0 0 0 !important;
+}
+
+.Profile-Photo-Cancel-Button {
+  background-color: white !important;
+  border-radius: 0 2rem 2rem 0 !important;
 }
 
 /*Profile Page  */
