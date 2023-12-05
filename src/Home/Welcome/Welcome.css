@@ -1,7 +1,3 @@
-.welcome-buttons-container {
-  height: 6rem;
-}
-
 .typewriter-animation {
   display: inline-block;
   border-right: 2px solid white; /* Simulate cursor blinking */
@@ -10,19 +6,31 @@
 }
 
 .button-container {
-  display: flex;
-  flex-direction: column;
   opacity: 0;
   animation: fade-in-buttons 1s forwards;
 }
 
-@keyframes fade-in-buttons {
-  to {
-    opacity: 1;
-  }
+.semi-circle-buttons {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+  right: -6px;
+  bottom: 40%;
+  align-items: center;
+  text-align: center;
 }
 
-@keyframes fade-in-arrow {
+.semi-circle-button {
+  display: flex !important;
+  align-items: center;
+  background-color: rgba(57, 58, 69, 0.6) !important;
+  color: white !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
+  font-size: 1.5rem !important;
+}
+
+@keyframes fade-in-buttons {
   to {
     opacity: 1;
   }

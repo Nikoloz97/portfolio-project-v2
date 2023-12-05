@@ -54,42 +54,47 @@ const Welcome = (props) => {
   }, [showButtons]);
 
   return (
-    <>
-      <div className="welcome-buttons-container">
-        <Grid verticalAlign="middle" centered>
-          <Grid.Row>
-            <Header className="typewriter-animation" style={{ color: "white" }}>
-              {isTyping ? (
-                <span className="typewriter-animation">{text}</span>
-              ) : (
-                text
-              )}
-            </Header>
-          </Grid.Row>
+    <div>
+      <Grid verticalAlign="middle" centered>
+        <Header className="typewriter-animation" style={{ color: "white" }}>
+          {isTyping ? (
+            <span className="typewriter-animation">{text}</span>
+          ) : (
+            text
+          )}
+        </Header>
+      </Grid>
 
-          <Grid.Row>
-            {showButtons ? (
-              <div className="button-container">
-                {user === undefined || user === null ? (
-                  <div>
-                    <Button as={Link} to="/login">
-                      Log In
-                    </Button>
-                    <Button as={Link} to="/signup">
-                      Sign Up
-                    </Button>
-                  </div>
-                ) : (
-                  <div>
-                    <Button onClick={handleSignOut}>Sign Out</Button>
-                  </div>
-                )}
-              </div>
-            ) : null}
-          </Grid.Row>
-        </Grid>
-      </div>
-    </>
+      {showButtons ? (
+        <div className="button-container">
+          {user === undefined || user === null ? (
+            <div className="semi-circle-buttons">
+              <Button
+                as={Link}
+                to="/login"
+                className="semi-circle-button"
+                style={{ borderRadius: "0 50% 50% 0", height: "20vh" }}
+              >
+                Log In
+              </Button>
+
+              <Button
+                as={Link}
+                to="/signup"
+                className="semi-circle-button"
+                style={{ borderRadius: "50% 0 0 50%", height: "20vh" }}
+              >
+                Sign Up
+              </Button>
+            </div>
+          ) : (
+            <div>
+              <Button onClick={handleSignOut}>Sign Out</Button>
+            </div>
+          )}
+        </div>
+      ) : null}
+    </div>
   );
 };
 
