@@ -1,5 +1,5 @@
 import { React, useState, useRef } from "react";
-import { Icon } from "semantic-ui-react";
+import { Icon, Button } from "semantic-ui-react";
 import Welcome from "./Welcome/Welcome";
 import AboutMe from "./AboutMe/AboutMe";
 import "./Home.css";
@@ -57,13 +57,11 @@ const Home = () => {
         {/* Arrow stuff */}
         {isArrowVisible ? (
           <div
-            className={`${
-              isArrowAbove ? "arrow-container-above" : "arrow-container-bottom"
-            } ${isArrowHovered ? "hovered-ac" : ""} ${
-              isArrowDehovered
-                ? "subsequent-ac-opacity"
-                : "on-render-ac-opacity"
-            }`}
+            className={`arrow-container
+            ${isArrowAbove ? "above" : "below"} 
+            ${isArrowHovered ? "hovered-arrow" : ""} 
+            ${isArrowDehovered ? "dehovered-arrow" : "on-render-arrow-opacity"}
+            `}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >

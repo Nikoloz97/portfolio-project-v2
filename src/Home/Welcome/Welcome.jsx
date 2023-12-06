@@ -10,6 +10,8 @@ const Welcome = (props) => {
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
+  const [isSemiCircleGlowing, setIsSemiCircleGlowing] = useState(false);
+
   const [showButtons, setShowButtons] = useState(false);
 
   const handleSignOut = () => {
@@ -45,7 +47,10 @@ const Welcome = (props) => {
     if (showButtons) {
       setTimeout(() => {
         props.setIsArrowVisible(true);
-      }, 500); // Adjust the delay time
+        setTimeout(() => {
+          setIsSemiCircleGlowing(true);
+        }, 200);
+      }, 1200);
     }
 
     return () => {
@@ -66,25 +71,27 @@ const Welcome = (props) => {
       </Grid>
 
       {showButtons ? (
-        <div className="button-container">
+        <div className="semi-circle-button-container">
           {user === undefined || user === null ? (
             <div className="semi-circle-buttons">
               <Button
                 as={Link}
                 to="/login"
-                className="semi-circle-button"
-                style={{ borderRadius: "0 50% 50% 0", height: "20vh" }}
+                className={`semi-circle-button left ${
+                  isSemiCircleGlowing ? "semi-circle-button-glow" : ""
+                }`}
               >
-                Log In
+                <div style={{ marginRight: "-1.25rem" }}>Log In</div>
               </Button>
 
               <Button
                 as={Link}
                 to="/signup"
-                className="semi-circle-button"
-                style={{ borderRadius: "50% 0 0 50%", height: "20vh" }}
+                className={`semi-circle-button right ${
+                  isSemiCircleGlowing ? "semi-circle-button-glow" : ""
+                }`}
               >
-                Sign Up
+                <div style={{ marginLeft: "-1.5rem" }}>Sign Up</div>
               </Button>
             </div>
           ) : (

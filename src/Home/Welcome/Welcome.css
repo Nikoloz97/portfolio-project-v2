@@ -5,7 +5,7 @@
   color: white;
 }
 
-.button-container {
+.semi-circle-button-container {
   opacity: 0;
   animation: fade-in-buttons 1s forwards;
 }
@@ -14,11 +14,12 @@
   display: flex;
   justify-content: space-between;
   position: absolute;
-  left: 0;
-  right: -6px;
-  bottom: 40%;
+  left: -8rem;
+  right: -8rem;
+  bottom: 31%;
   align-items: center;
   text-align: center;
+  animation: move-in-buttons 2s forwards;
 }
 
 .semi-circle-button {
@@ -26,12 +27,45 @@
   align-items: center;
   background-color: rgba(57, 58, 69, 0.6) !important;
   color: white !important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
-  font-size: 1.5rem !important;
+  font-size: 1.75rem !important;
+}
+
+.semi-circle-button-glow {
+  animation: box-glow 1.2s infinite alternate;
+}
+
+.semi-circle-button.left {
+  justify-content: flex-end;
+  border-radius: 0 50% 50% 0 !important;
+  width: 25vh;
+  height: 30vh;
+}
+
+.semi-circle-button.right {
+  justify-content: flex-start;
+  border-radius: 50% 0 0 50% !important;
+  width: 25vh;
+  height: 30vh;
 }
 
 @keyframes fade-in-buttons {
   to {
     opacity: 1;
+  }
+}
+
+@keyframes move-in-buttons {
+  from {
+    left: -4rem;
+    right: -4rem;
+  }
+}
+
+@keyframes box-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   }
 }
