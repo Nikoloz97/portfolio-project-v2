@@ -31,7 +31,7 @@
 }
 
 .semi-circle-button-glow {
-  animation: box-glow 1.2s infinite alternate;
+  animation: circle-button-glow 1.2s infinite alternate;
 }
 
 .semi-circle-button.left {
@@ -61,11 +61,11 @@
   }
 }
 
-@keyframes box-glow {
+@keyframes circle-button-glow {
   0% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
   }
   100% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   }
 }
