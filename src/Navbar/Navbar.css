@@ -1,3 +1,8 @@
+.Navbar {
+  background-color: #383c43 !important;
+  border-radius: 0 !important;
+}
+
 .Profile-Message {
   color: white !important;
   margin: 0px 10px 0px 0px !important;

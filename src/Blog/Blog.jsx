@@ -126,19 +126,7 @@ const Blog = () => {
 
       <Grid columns={4}>
         {cards.map((card, index) => (
-          // TODO:
           <Grid.Column key={index}>
-            {/* <div
-              className="Default-Header"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {card.category}
-            </div> */}
-
             <Card
               className={`blog-card ${isCardVisible[index] ? "pop-in" : ""}`}
             >

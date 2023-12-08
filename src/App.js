@@ -1,11 +1,11 @@
 import React from "react";
 import AppRouter from "./AppRouter";
-import "./App.css";
 import { UserProvider } from "./UserContext";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <UserProvider>
         <AppRouter />
       </UserProvider>

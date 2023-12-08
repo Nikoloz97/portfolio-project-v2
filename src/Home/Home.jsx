@@ -1,5 +1,5 @@
 import { React, useState, useRef } from "react";
-import { Icon, Button } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 import Welcome from "./Welcome/Welcome";
 import AboutMe from "./AboutMe/AboutMe";
 import "./Home.css";
