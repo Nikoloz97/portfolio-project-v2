@@ -5,11 +5,11 @@ import { useUserContext } from ".././UserContext";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { user } = useUserContext();
+  const { user, isDesktop } = useUserContext();
 
   return (
     <div>
-      <Menu className="Navbar">
+      <Menu vertical={!isDesktop} className="Navbar">
         <MenuItem as={Link} to="/" position="right">
           <Button>Home</Button>
         </MenuItem>

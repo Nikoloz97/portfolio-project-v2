@@ -28,7 +28,7 @@
   animation: arrow-scale-up 1s forwards;
 }
 
-.dehovered-arrow {
+.Unhovered-arrow {
   animation: arrow-scale-down 1s forwards;
 }
 

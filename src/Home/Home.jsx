@@ -8,7 +8,7 @@ const Home = () => {
   const aboutMeRef = useRef(null);
 
   const [isArrowHovered, setIsArrowHovered] = useState(false);
-  const [isArrowDehovered, setIsArrowDehovered] = useState(false);
+  const [isArrowUnhovered, setIsArrowUnhovered] = useState(false);
   const [isArrowVisible, setIsArrowVisible] = useState(false);
   const [isArrowAbove, setIsArrowAbove] = useState(false);
 
@@ -18,12 +18,12 @@ const Home = () => {
 
   const handleMouseEnter = () => {
     setIsArrowHovered(true);
-    setIsArrowDehovered(false);
+    setIsArrowUnhovered(false);
   };
 
   const handleMouseLeave = () => {
     setIsArrowHovered(false);
-    setIsArrowDehovered(true);
+    setIsArrowUnhovered(true);
   };
 
   const handleArrowClick = () => {
@@ -60,7 +60,7 @@ const Home = () => {
             className={`arrow-container
             ${isArrowAbove ? "above" : "below"} 
             ${isArrowHovered ? "hovered-arrow" : ""} 
-            ${isArrowDehovered ? "dehovered-arrow" : "on-render-arrow-opacity"}
+            ${isArrowUnhovered ? "Unhovered-arrow" : "on-render-arrow-opacity"}
             `}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
