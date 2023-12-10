@@ -4,45 +4,50 @@ import { Link } from "react-router-dom";
 import { useUserContext } from ".././UserContext";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { user, isDesktop } = useUserContext();
 
   return (
-    <div>
-      <Menu vertical={!isDesktop} className="Navbar">
+    <div className={isDesktop ? "" : "Navbar-Container"}>
+      <Menu className={isDesktop ? "Navbar-Desktop" : "Navbar-Phone"}>
         <MenuItem as={Link} to="/" position="right">
-          <Button>Home</Button>
+          <Button onClick={props.toggleNavbarVisibility}>Home</Button>
         </MenuItem>
         <MenuItem as={Link} to="/blog" position="right">
-          <Button>Blog</Button>
+          <Button onClick={props.toggleNavbarVisibility}>Blog</Button>
         </MenuItem>
         <MenuItem as={Link} to="/projects" position="right">
-          <Button>Projects</Button>
+          <Button onClick={props.toggleNavbarVisibility}>Projects</Button>
         </MenuItem>
         <MenuItem as={Link} to="/forumPage" position="right">
-          <Button>Forum</Button>
+          <Button onClick={props.toggleNavbarVisibility}>Forum</Button>
         </MenuItem>
         <MenuItem as={Link} to="/contact" position="right">
-          <Button>Contact</Button>
+          <Button onClick={props.toggleNavbarVisibility}>Contact</Button>
         </MenuItem>
-        <Menu.Menu position="right">
-          <MenuItem as={Link} to={user ? "/profilePage" : "/login"}>
-            <Header className="Profile-Message" as="h5">
-              {user !== undefined && user !== null
-                ? `Welcome, ${user.firstName}`
-                : "Log In / Sign Up Here"}
-            </Header>
 
-            <Image
-              src={
-                user !== undefined && user !== null && user.profileURL !== null
-                  ? user.profileURL
-                  : "https://react.semantic-ui.com/images/wireframe/square-image.png"
-              }
-              avatar
-            />
-          </MenuItem>
-        </Menu.Menu>
+        {isDesktop && (
+          <Menu.Menu position="right">
+            <MenuItem as={Link} to={user ? "/profilePage" : "/login"}>
+              <Header className="Profile-Message" as="h5">
+                {user !== undefined && user !== null
+                  ? `Welcome, ${user.firstName}`
+                  : "Log In / Sign Up Here"}
+              </Header>
+
+              <Image
+                src={
+                  user !== undefined &&
+                  user !== null &&
+                  user.profileURL !== null
+                    ? user.profileURL
+                    : "https://react.semantic-ui.com/images/wireframe/square-image.png"
+                }
+                avatar
+              />
+            </MenuItem>
+          </Menu.Menu>
+        )}
       </Menu>
     </div>
   );

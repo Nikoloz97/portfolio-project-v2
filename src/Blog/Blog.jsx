@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Card, Image, Icon, Button, Dimmer } from "semantic-ui-react";
+import { useUserContext } from "../UserContext";
 import "./Blog.css";
 
 const Blog = () => {
+  const { isDesktop } = useUserContext();
+
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const [isSubheaderVisible, setIsSubheaderVisible] = useState(false);
 
@@ -124,7 +127,7 @@ const Blog = () => {
 
       {/* Cards */}
 
-      <Grid columns={4}>
+      <Grid columns={isDesktop ? 4 : 2}>
         {cards.map((card, index) => (
           <Grid.Column key={index}>
             <Card

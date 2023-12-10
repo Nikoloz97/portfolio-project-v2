@@ -1,12 +1,15 @@
 import React from "react";
 import { Image, Button, Loader } from "semantic-ui-react";
 import { ForumErrorModal } from "../Utils/Error/Error";
+import { useUserContext } from ".././UserContext";
 import "./ForumPage.css";
 
 const Display = (props) => {
+  const { isDesktop } = useUserContext();
+
   return (
     <>
-      <div className="Display-Page">
+      <div className={`Display-Page ${isDesktop ? "" : "Phone"}`}>
         <Loader content="Loading" active={props.isLoading} />
 
         <Image

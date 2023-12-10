@@ -23,6 +23,10 @@
   color: white;
 }
 
+.Display-Page.Phone {
+  height: 100vh !important;
+}
+
 .ForumPage-Display-Text {
   position: absolute;
   top: 40%;

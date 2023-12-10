@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Button, Sidebar, Segment } from "semantic-ui-react";
+import { Sidebar, Segment, Button } from "semantic-ui-react";
 import { useUserContext } from "./UserContext.js";
 import Home from "./Home/Home";
 import Blog from "./Blog/Blog";
@@ -17,6 +17,7 @@ import GeographyGame from "./Projects/GeographyGame/GeographyGame";
 import TeamAnalyzer from "./Projects/Basketball/TeamAnalyzer/TeamAnalyzer";
 import ScheduleAnalyzer from "./Projects/Basketball/ScheduleAnalyzer/ScheduleAnalyzer";
 import ProfilePage from "./User/ProfilePage.jsx";
+import "./AppRouter.css";
 
 function AppRouter() {
   const [isNavbarVisible, setIsNavbarVisible] = useState(false);
@@ -63,19 +64,36 @@ function AppRouter() {
         </BrowserRouter>
       ) : (
         <BrowserRouter>
-          <Sidebar
-            as={Segment}
-            animation="push"
-            direction="left"
-            visible={isNavbarVisible}
-          >
-            <Navbar />
-          </Sidebar>
-
-          <Sidebar.Pusher dimmed={isNavbarVisible}>
-            <Button onClick={toggleNavbarVisibility}> Push me</Button>
+          <Sidebar.Pushable as={Segment}>
+            <Sidebar
+              className="Sidebar"
+              as={Segment}
+              animation="push"
+              direction="left"
+              visible={isNavbarVisible}
+            >
+              <Navbar toggleNavbarVisibility={toggleNavbarVisibility} />
+            </Sidebar>
+            {!isDesktop && (
+              <Button
+                className={`Phone-Menu-Button ${
+                  isNavbarVisible ? "Moved" : ""
+                }`}
+                onClick={toggleNavbarVisibility}
+              >
+                Menu
+              </Button>
+            )}
             <Routes>
-              <Route path="" element={<Home />} />
+              <Route
+                path=""
+                element={
+                  <Home
+                    toggleNavbarVisibility={toggleNavbarVisibility}
+                    isNavbarVisible={isNavbarVisible}
+                  />
+                }
+              />
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/projects" element={<Projects />} />
@@ -102,7 +120,7 @@ function AppRouter() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/profilePage" element={<ProfilePage />} />
             </Routes>
-          </Sidebar.Pusher>
+          </Sidebar.Pushable>
         </BrowserRouter>
       )}
     </>

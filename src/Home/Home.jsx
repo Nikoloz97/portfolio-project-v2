@@ -4,7 +4,7 @@ import Welcome from "./Welcome/Welcome";
 import AboutMe from "./AboutMe/AboutMe";
 import "./Home.css";
 
-const Home = () => {
+const Home = (props) => {
   const aboutMeRef = useRef(null);
 
   const [isArrowHovered, setIsArrowHovered] = useState(false);
@@ -52,6 +52,8 @@ const Home = () => {
           handleMouseLeave={handleMouseLeave}
           handleArrowClick={handleArrowClick}
           setIsArrowVisible={setIsArrowVisible}
+          toggleNavbarVisibility={props.toggleNavbarVisibility}
+          isNavbarVisible={props.isNavbarVisible}
         />
 
         {/* Arrow stuff */}

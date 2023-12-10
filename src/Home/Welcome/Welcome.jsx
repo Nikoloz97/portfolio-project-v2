@@ -5,7 +5,7 @@ import { useUserContext } from "../../UserContext";
 import "./Welcome.css";
 
 const Welcome = (props) => {
-  const { user, setUser, setIsUserSignedIn } = useUserContext();
+  const { user, setUser, setIsUserSignedIn, isDesktop } = useUserContext();
 
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);

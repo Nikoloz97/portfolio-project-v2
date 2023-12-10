@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.Sidebar {
+  width: 33% !important;
+  background-color: #383c43 !important;
+  overflow: hidden !important;
+}
+
+.ui.menu {
+  border: none !important;
+}
+
+.Phone-Menu-Button {
+  position: fixed;
+  top: 6.6%;
+  left: 5px;
+  transition: transform 0.35s ease-in-out !important;
+}
+
+.Phone-Menu-Button.Moved {
+  transform: translateX(140px);
+}

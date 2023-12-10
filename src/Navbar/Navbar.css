@@ -1,6 +1,17 @@
-.Navbar {
+.Navbar-Container {
+  height: 100vh !important;
+}
+
+.Navbar-Desktop {
   background-color: #383c43 !important;
   border-radius: 0 !important;
+}
+.Navbar-Phone {
+  background-color: #383c43 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-evenly;
+  height: 100vh !important;
 }
 
 .Profile-Message {
