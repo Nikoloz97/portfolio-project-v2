@@ -64,63 +64,60 @@ function AppRouter() {
         </BrowserRouter>
       ) : (
         <BrowserRouter>
-          <Sidebar.Pushable as={Segment}>
-            <Sidebar
-              className="Sidebar"
-              as={Segment}
-              animation="push"
-              direction="left"
-              visible={isNavbarVisible}
+          <Sidebar
+            className="Sidebar"
+            id="Sidebar-Overflow"
+            as={Segment}
+            animation="push"
+            direction="left"
+            visible={isNavbarVisible}
+          >
+            <Navbar toggleNavbarVisibility={toggleNavbarVisibility} />
+          </Sidebar>
+          {!isDesktop && (
+            <Button
+              className={`Phone-Menu-Button ${isNavbarVisible ? "Moved" : ""}`}
+              onClick={toggleNavbarVisibility}
             >
-              <Navbar toggleNavbarVisibility={toggleNavbarVisibility} />
-            </Sidebar>
-            {!isDesktop && (
-              <Button
-                className={`Phone-Menu-Button ${
-                  isNavbarVisible ? "Moved" : ""
-                }`}
-                onClick={toggleNavbarVisibility}
-              >
-                Menu
-              </Button>
-            )}
-            <Routes>
-              <Route
-                path=""
-                element={
-                  <Home
-                    toggleNavbarVisibility={toggleNavbarVisibility}
-                    isNavbarVisible={isNavbarVisible}
-                  />
-                }
-              />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/calculator" element={<Calculator />} />
-              <Route path="/projects/kronos" element={<Kronos />} />
-              <Route
-                path="/projects/fantasy-basketball"
-                element={<FantasyBasketball />}
-              />
-              <Route
-                path="/projects/fantasy-basketball/team-analyzer"
-                element={<TeamAnalyzer />}
-              />
-              <Route
-                path="/projects/fantasy-basketball/schedule-analyzer"
-                element={<ScheduleAnalyzer />}
-              />
-              <Route
-                path="/projects/geography-game"
-                element={<GeographyGame />}
-              />
-              <Route path="/forumPage" element={<ForumPage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/profilePage" element={<ProfilePage />} />
-            </Routes>
-          </Sidebar.Pushable>
+              Menu
+            </Button>
+          )}
+          <Routes>
+            <Route
+              path=""
+              element={
+                <Home
+                  toggleNavbarVisibility={toggleNavbarVisibility}
+                  isNavbarVisible={isNavbarVisible}
+                />
+              }
+            />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/calculator" element={<Calculator />} />
+            <Route path="/projects/kronos" element={<Kronos />} />
+            <Route
+              path="/projects/fantasy-basketball"
+              element={<FantasyBasketball />}
+            />
+            <Route
+              path="/projects/fantasy-basketball/team-analyzer"
+              element={<TeamAnalyzer />}
+            />
+            <Route
+              path="/projects/fantasy-basketball/schedule-analyzer"
+              element={<ScheduleAnalyzer />}
+            />
+            <Route
+              path="/projects/geography-game"
+              element={<GeographyGame />}
+            />
+            <Route path="/forumPage" element={<ForumPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/profilePage" element={<ProfilePage />} />
+          </Routes>
         </BrowserRouter>
       )}
     </>

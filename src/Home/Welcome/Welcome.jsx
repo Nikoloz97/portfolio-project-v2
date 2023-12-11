@@ -70,7 +70,7 @@ const Welcome = (props) => {
         </Header>
       </Grid>
 
-      {showButtons ? (
+      {showButtons && isDesktop && (
         <div className="semi-circle-button-container">
           {user === undefined || user === null ? (
             <div className="semi-circle-buttons">
@@ -100,7 +100,27 @@ const Welcome = (props) => {
             </div>
           )}
         </div>
-      ) : null}
+      )}
+
+      {showButtons && !isDesktop && (
+        <div style={{ marginTop: "5rem" }}>
+          {user === undefined || user === null ? (
+            <div>
+              <Button as={Link} to="/login">
+                <div>Log In</div>
+              </Button>
+
+              <Button as={Link} to="/signup">
+                <div>Sign Up</div>
+              </Button>
+            </div>
+          ) : (
+            <div>
+              <Button onClick={handleSignOut}>Sign Out</Button>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

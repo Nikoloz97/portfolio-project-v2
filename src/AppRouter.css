@@ -3,10 +3,14 @@ body {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Overrides .ui.sidebar styling from semantic-ui */
+#Sidebar-Overflow {
+  overflow-y: hidden !important;
+}
+
 .Sidebar {
   width: 33% !important;
   background-color: #383c43 !important;
-  overflow: hidden !important;
 }
 
 .ui.menu {
