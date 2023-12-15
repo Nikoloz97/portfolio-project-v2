@@ -4,9 +4,12 @@ import { Button, Form, Grid, Container, Header, Icon } from "semantic-ui-react";
 import { UserErrorMessage } from "../Utils/Error/Error";
 import { Link } from "react-router-dom";
 import { apiUserRoot } from "../Utils/ApiRoutes";
+import { useUserContext } from "../UserContext";
 import "./User.css";
 
 const SignUp = () => {
+  const { isDesktop } = useUserContext();
+
   const [signUpInfo, setSignUpInfo] = useState({
     Username: null,
     Password: null,
@@ -16,7 +19,6 @@ const SignUp = () => {
     ProfileImageFile: null,
     Bio: null,
   });
-
   const [profileImageUrl, setProfileImageUrl] = useState(null);
 
   const [profilePhotoDisplayText, setProfilePhotoDisplayText] = useState(
@@ -103,8 +105,7 @@ const SignUp = () => {
   return (
     <div className="Default-Page">
       <Container fluid className="Login-SignUp-Container">
-        {/* <Form className="Default-Form"> */}
-        <Grid style={{ width: "50%" }}>
+        <Grid className={isDesktop ? "Signup-Width-Desktop" : ""}>
           <Grid.Column textAlign="center">
             <Header style={{ color: "white" }}>Sign Up</Header>
             <Form>
@@ -155,13 +156,7 @@ const SignUp = () => {
                       basic
                       as="label"
                       htmlFor="fileInput"
-                      style={{
-                        cursor: "pointer",
-                        color: "white",
-                        display: "flex",
-                        width: "100%",
-                        alignItems: "center", // Center vertically
-                      }}
+                      className="Signup-File-Input-Button"
                     >
                       {profilePhotoDisplayText}
                     </Button>
@@ -184,13 +179,13 @@ const SignUp = () => {
 
               <Form.TextArea
                 label="Bio"
-                placeholder="Write a couple sentences about yourself..."
+                placeholder="Write a sentence about yourself..."
                 onChange={(e) =>
                   setSignUpInfo({ ...signUpInfo, Bio: e.target.value })
                 }
               />
 
-              <Grid textAlign="center">
+              <Grid textAlign="center" style={{ marginTop: "1rem" }}>
                 <Grid.Row>
                   <Button className="SignUp-Button" content="Preview" />
                   <Button
@@ -202,7 +197,7 @@ const SignUp = () => {
                 </Grid.Row>
               </Grid>
             </Form>
-            <div style={{ fontSize: "1rem", marginTop: "1rem" }}>
+            <div style={{ fontSize: "1rem", marginTop: "2rem" }}>
               <Link style={{ color: "white" }} to="/login">
                 Already a user? Login here
               </Link>

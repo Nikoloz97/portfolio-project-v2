@@ -36,24 +36,12 @@ label.ui.basic.button {
 .Profile-Photo-Cancel-Button {
   background-color: white !important;
   border-radius: 0 2rem 2rem 0 !important;
+  max-width: 20%;
 }
 
 /*Profile Page  */
 .Profile-Page-Header {
   color: white !important;
-}
-
-/* Login + Sign Up */
-
-.Login-SignUp-Container {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.Login-SignUp-Desktop-Width {
-  width: 33%;
 }
 
 /* Sign Up */
@@ -66,6 +54,23 @@ label.ui.basic.button {
   color: black !important;
 }
 
+.Signup-Width-Desktop {
+  width: 50%;
+}
+
+.Signup-File-Input-Button {
+  cursor: pointer;
+  color: white;
+  display: flex !important;
+  width: 100%;
+  align-items: center;
+}
+
+/* Prevents forcing form elements into single row in phone screens  */
+.ui.form .fields {
+  flex-wrap: nowrap !important;
+}
+
 /* Login */
 
 .Login-Button {
@@ -76,7 +81,18 @@ label.ui.basic.button {
   color: black !important;
 }
 
+.Login-Width-Desktop {
+  width: 33%;
+}
+
 /* Login + Signup */
+
+.Login-SignUp-Container {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 .User-Error-Message {
   position: fixed !important;
