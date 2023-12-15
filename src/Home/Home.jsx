@@ -57,23 +57,22 @@ const Home = (props) => {
         />
 
         {/* Arrow stuff */}
-        {isArrowVisible && (
-          <div
-            className={`arrow-container
+        <div
+          className={`arrow-container
+            ${isArrowVisible ? "Fade-in" : ""}
             ${isArrowAbove ? "above" : "below"} 
             ${isArrowHovered ? "hovered-arrow" : ""} 
             ${isArrowUnhovered ? "Unhovered-arrow" : ""}
             `}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <Icon
-              name={`${isArrowAbove ? "arrow up" : "arrow down"}`}
-              size="small"
-              onClick={handleArrowClick}
-            />
-          </div>
-        )}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <Icon
+            name={`${isArrowAbove ? "arrow up" : "arrow down"}`}
+            size="small"
+            onClick={handleArrowClick}
+          />
+        </div>
       </div>
 
       <div ref={aboutMeRef}>

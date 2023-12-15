@@ -49,59 +49,58 @@ const Welcome = (props) => {
       }, 200);
       setTimeout(() => {
         setIsLoginButtonVisible(true);
-      }, 400);
+      }, 800);
       setTimeout(() => {
         setIsSignupButtonVisible(true);
-      }, 600);
+      }, 1000);
       setTimeout(() => {
         props.setIsArrowVisible(true);
-      }, 800);
+      }, 1200);
     }
   }, [isTyping]);
 
   return (
-    <div className={`Welcome-Container ${isDesktop ? "Desktop" : "Phone"} `}>
-      <Grid verticalAlign="middle" centered>
-        <Header className="typewriter-animation" style={{ color: "white" }}>
-          {isTyping ? (
-            <span className="typewriter-animation">{text}</span>
-          ) : (
-            text
-          )}
-        </Header>
-      </Grid>
-
-      {user === undefined || user === null ? (
-        <>
-          {isLoginButtonVisible && (
+    <div>
+      <div
+        className={`Welcome-Container
+                        ${isDesktop ? "Desktop" : "Phone"}
+                        ${isWelcomeContainerVisible ? "Fade-In" : ""}`}
+      >
+        {user === undefined || user === null ? (
+          <>
             <Button
-              className={`Welcome-Button ${
-                isDesktop ? "Desktop" : "Phone"
-              } Welcome-Login ${isDesktop ? "Desktop" : "Phone"}`}
+              className={`Welcome-Button Welcome-Login
+                  ${isDesktop ? "Desktop" : "Phone"}
+                  ${isLoginButtonVisible ? "Fade-In" : ""}`}
               as={Link}
               to="/login"
             >
               Log In
             </Button>
-          )}
-
-          {isSignupButtonVisible && (
             <Button
-              className={`Welcome-Button Welcome-Signup ${
-                isDesktop ? "Desktop" : "Phone"
-              }`}
+              className={`Welcome-Button Welcome-Signup
+                ${isDesktop ? "Desktop" : "Phone"}
+                ${isSignupButtonVisible ? "Fade-In" : ""}`}
               as={Link}
               to="/signup"
             >
               Sign Up
             </Button>
-          )}
-        </>
-      ) : (
-        <div>
-          <Button onClick={handleSignOut}>Sign Out</Button>
-        </div>
-      )}
+          </>
+        ) : (
+          <div>
+            <Button onClick={handleSignOut}>Sign Out</Button>
+          </div>
+        )}
+      </div>
+
+      <Header className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"}`}>
+        {isTyping ? (
+          <span className="Typewriter-Cursor">{text}</span>
+        ) : (
+          <span>{text}</span>
+        )}
+      </Header>
     </div>
   );
 };

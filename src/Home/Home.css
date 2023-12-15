@@ -8,8 +8,12 @@
   padding: 10px;
   background-color: rgba(57, 58, 69, 0.6);
   opacity: 0;
-  animation: fade-in-arrow 1s forwards,
-    arrow-container-glow 1.2s infinite alternate;
+  animation: arrow-container-glow 1.2s infinite alternate;
+}
+
+.arrow-container.Fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
 .arrow-container.below {
@@ -44,12 +48,6 @@
 @keyframes arrow-scale-up {
   to {
     transform: scale(1.5);
-  }
-}
-
-@keyframes fade-in-arrow {
-  to {
-    opacity: 1;
   }
 }
 

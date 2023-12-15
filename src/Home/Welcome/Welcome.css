@@ -1,8 +1,21 @@
-.typewriter-animation {
-  display: inline-block;
+.Typewriter-Cursor {
   border-right: 2px solid white; /* Simulate cursor blinking */
-  white-space: nowrap;
-  color: white;
+  /* white-space: nowrap !important; */
+}
+
+.Welcome-Text {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white !important;
+}
+
+.Welcome-Text.Desktop {
+  bottom: 42%;
+}
+
+.Welcome-Text.Phone {
+  bottom: 48%;
 }
 
 .Welcome-Container {
@@ -13,9 +26,8 @@
   align-items: center;
   justify-content: center;
   margin: 2rem;
-  opacity: 0;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-  animation: fade-in-welcome 1s forwards;
+  opacity: 0.2;
+  bottom: 5%;
 }
 
 .Welcome-Container.Desktop {
@@ -28,10 +40,11 @@
   height: 15rem;
 }
 
-/* .Welcome-Container.Fade-In {
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
-} */
+.Welcome-Container.Fade-In {
+  opacity: 1 !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  transition: opacity 1s ease-in-out, box-shadow 1s ease-in-out !important;
+}
 
 .Welcome-Button {
   position: absolute;
@@ -42,18 +55,19 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
-  animation: fade-in-welcome 1.2s forwards,
-    welcome-buttons-glow 1.2s infinite alternate;
+  animation: welcome-buttons-glow 1.2s infinite alternate;
 }
 
 .Welcome-Button.Desktop {
   width: 8rem;
   height: 8rem;
+  font-size: 1.25rem !important;
 }
 
 .Welcome-Button.Phone {
   width: 7rem;
   height: 7rem;
+  font-size: 1rem !important;
 }
 
 .Welcome-Login.Desktop {
@@ -76,16 +90,11 @@
   right: -20%;
 }
 
-/* .Welcome-Login-Button.Fade-In {
+.Welcome-Login.Fade-In,
+.Welcome-Signup.Fade-In {
   opacity: 1;
-  transition: opacity 2s ease-in-out;
-} */
-
-/* 
-.Welcome-Signup-Button.Fade-In {
-  opacity: 1;
-  transition: opacity 2s ease-in-out;
-} */
+  transition: opacity 1s ease-in-out !important;
+}
 
 .Hovered-Welcome-Button {
   background-color: #e3e6ec !important;
