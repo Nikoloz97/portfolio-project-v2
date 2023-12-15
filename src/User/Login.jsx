@@ -15,7 +15,7 @@ import { apiUserRoot } from "../Utils/ApiRoutes";
 import "./User.css";
 
 const Login = () => {
-  const { setUser, setIsUserSignedIn } = useUserContext();
+  const { setUser, setIsUserSignedIn, isDesktop } = useUserContext();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -66,7 +66,7 @@ const Login = () => {
   return (
     <div className="Default-Page">
       <Container fluid className="Login-SignUp-Container">
-        <Grid style={{ width: "33%" }}>
+        <Grid className={isDesktop ? "Login-SignUp-Desktop-Width" : ""}>
           <Grid.Column textAlign="center">
             <Header style={{ color: "white" }}>Login</Header>
             <Form>
@@ -88,9 +88,18 @@ const Login = () => {
                   setError(() => ({ ...prevError, isErrorShowing: false }))
                 }
               />
-              <div className="Login-Checkbox-ForgotPassword">
-                <Checkbox label="Remember Me" />
-                <div>Forgot Password?</div>
+              <div>
+                <Grid columns={isDesktop ? 2 : 1}>
+                  <Grid.Column
+                    textAlign="left"
+                    style={{ marginBottom: "1rem" }}
+                  >
+                    <Checkbox label="Remember Me" />
+                  </Grid.Column>
+                  <Grid.Column>
+                    <div>Forgot Password?</div>
+                  </Grid.Column>
+                </Grid>
               </div>
               <Button
                 style={{ marginTop: "1rem" }}

@@ -52,6 +52,10 @@ label.ui.basic.button {
   height: 100vh;
 }
 
+.Login-SignUp-Desktop-Width {
+  width: 33%;
+}
+
 /* Sign Up */
 
 .SignUp-Button {
@@ -63,11 +67,6 @@ label.ui.basic.button {
 }
 
 /* Login */
-
-.Login-Checkbox-ForgotPassword {
-  display: flex;
-  justify-content: space-between;
-}
 
 .Login-Button {
   background-color: white !important;
