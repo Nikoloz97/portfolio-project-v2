@@ -7,8 +7,6 @@
 
 .Welcome-Container {
   position: relative;
-  width: 40rem;
-  height: 40rem;
   border-radius: 50%;
   background-color: #31363f;
   display: flex;
@@ -18,6 +16,16 @@
   opacity: 0;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   animation: fade-in-welcome 1s forwards;
+}
+
+.Welcome-Container.Desktop {
+  width: 40rem;
+  height: 40rem;
+}
+
+.Welcome-Container.Phone {
+  width: 20rem;
+  height: 20rem;
 }
 
 /* .Welcome-Container.Fade-In {
@@ -40,14 +48,24 @@
     welcome-buttons-glow 1.2s infinite alternate;
 }
 
-.Welcome-Login {
+.Welcome-Login.Desktop {
   top: 15%;
   left: 20%;
 }
 
-.Welcome-Signup {
+.Welcome-Signup.Desktop {
   bottom: 15%;
   right: 20%;
+}
+
+.Welcome-Login.Phone {
+  top: -40%;
+  left: -10%;
+}
+
+.Welcome-Signup.Phone {
+  bottom: -40%;
+  right: -10%;
 }
 
 /* .Welcome-Login-Button.Fade-In {

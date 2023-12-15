@@ -60,11 +60,7 @@ const Welcome = (props) => {
   }, [isTyping]);
 
   return (
-    <div
-      className={`Welcome-Container ${
-        isWelcomeContainerVisible ? "Fade-In" : ""
-      } `}
-    >
+    <div className={`Welcome-Container ${isDesktop ? "Desktop" : "Phone"} `}>
       <Grid verticalAlign="middle" centered>
         <Header className="typewriter-animation" style={{ color: "white" }}>
           {isTyping ? (
@@ -79,7 +75,9 @@ const Welcome = (props) => {
         <>
           {isLoginButtonVisible && (
             <Button
-              className="Welcome-Button Welcome-Login"
+              className={`Welcome-Button Welcome-Login ${
+                isDesktop ? "Desktop" : "Phone"
+              }`}
               as={Link}
               to="/login"
             >
@@ -89,7 +87,9 @@ const Welcome = (props) => {
 
           {isSignupButtonVisible && (
             <Button
-              className="Welcome-Button Welcome-Signup"
+              className={`Welcome-Button Welcome-Signup ${
+                isDesktop ? "Desktop" : "Phone"
+              }`}
               as={Link}
               to="/signup"
             >
