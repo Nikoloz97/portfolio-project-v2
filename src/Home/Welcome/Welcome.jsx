@@ -75,9 +75,9 @@ const Welcome = (props) => {
         <>
           {isLoginButtonVisible && (
             <Button
-              className={`Welcome-Button Welcome-Login ${
+              className={`Welcome-Button ${
                 isDesktop ? "Desktop" : "Phone"
-              }`}
+              } Welcome-Login ${isDesktop ? "Desktop" : "Phone"}`}
               as={Link}
               to="/login"
             >
