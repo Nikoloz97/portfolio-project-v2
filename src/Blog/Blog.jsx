@@ -112,12 +112,12 @@ const Blog = () => {
       {/* Header/Subheader */}
       <Grid centered>
         <Grid.Row
-          className={`fade-in-header ${isHeaderVisible ? "fade-in" : ""}`}
+          className={`Fade-In-Header ${isHeaderVisible ? "Fade-In" : ""}`}
         >
           <div className="Default-Header">Nick's Blog</div>
         </Grid.Row>
         <Grid.Row
-          className={`fade-in-subheader ${isSubheaderVisible ? "fade-in" : ""}`}
+          className={`Fade-In-Subheader ${isSubheaderVisible ? "Fade-In" : ""}`}
         >
           <div className="Default-Subtext">
             Hover over each image for a short article summary
@@ -131,7 +131,7 @@ const Blog = () => {
         {cards.map((card, index) => (
           <Grid.Column key={index}>
             <Card
-              className={`blog-card ${isCardVisible[index] ? "pop-in" : ""}`}
+              className={`Blog-Card ${isCardVisible[index] ? "Pop-in" : ""}`}
             >
               <Dimmer.Dimmable as={Image} dimmed={isHovered[index]}>
                 <Dimmer

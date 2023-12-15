@@ -57,12 +57,12 @@ const Home = (props) => {
         />
 
         {/* Arrow stuff */}
-        {isArrowVisible ? (
+        {isArrowVisible && (
           <div
             className={`arrow-container
             ${isArrowAbove ? "above" : "below"} 
             ${isArrowHovered ? "hovered-arrow" : ""} 
-            ${isArrowUnhovered ? "Unhovered-arrow" : "on-render-arrow-opacity"}
+            ${isArrowUnhovered ? "Unhovered-arrow" : ""}
             `}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -73,7 +73,7 @@ const Home = (props) => {
               onClick={handleArrowClick}
             />
           </div>
-        ) : null}
+        )}
       </div>
 
       <div ref={aboutMeRef}>

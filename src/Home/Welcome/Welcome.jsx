@@ -10,9 +10,11 @@ const Welcome = (props) => {
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
-  const [isSemiCircleGlowing, setIsSemiCircleGlowing] = useState(false);
+  const [isSignupButtonVisible, setIsSignupButtonVisible] = useState(false);
+  const [isLoginButtonVisible, setIsLoginButtonVisible] = useState(false);
 
-  const [showButtons, setShowButtons] = useState(false);
+  const [isWelcomeContainerVisible, setIsWelcomeContainerVisible] =
+    useState(false);
 
   const handleSignOut = () => {
     setUser(null);
@@ -24,42 +26,45 @@ const Welcome = (props) => {
     const welcomeText = "Welcome.";
 
     let currentIndex = 0;
+
     const typingInterval = setInterval(() => {
       if (currentIndex <= welcomeText.length) {
         setText(welcomeText.substring(0, currentIndex));
         currentIndex++;
       } else {
         setIsTyping(false);
-        setShowButtons(true);
       }
     }, 100); // Typing speed (100ms per character)
+
     return () => {
       clearInterval(typingInterval);
     };
   }, []);
 
-  // Button fade-in
+  // Fade-ins
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowButtons(true);
-    }, 1500);
-
-    if (showButtons) {
+    if (!isTyping) {
+      setTimeout(() => {
+        setIsWelcomeContainerVisible(true);
+      }, 200);
+      setTimeout(() => {
+        setIsLoginButtonVisible(true);
+      }, 400);
+      setTimeout(() => {
+        setIsSignupButtonVisible(true);
+      }, 600);
       setTimeout(() => {
         props.setIsArrowVisible(true);
-        setTimeout(() => {
-          setIsSemiCircleGlowing(true);
-        }, 200);
-      }, 1200);
+      }, 800);
     }
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [showButtons]);
+  }, [isTyping]);
 
   return (
-    <div>
+    <div
+      className={`Welcome-Container ${
+        isWelcomeContainerVisible ? "Fade-In" : ""
+      } `}
+    >
       <Grid verticalAlign="middle" centered>
         <Header className="typewriter-animation" style={{ color: "white" }}>
           {isTyping ? (
@@ -70,55 +75,31 @@ const Welcome = (props) => {
         </Header>
       </Grid>
 
-      {showButtons && isDesktop && (
-        <div className="semi-circle-button-container">
-          {user === undefined || user === null ? (
-            <div className="semi-circle-buttons">
-              <Button
-                as={Link}
-                to="/login"
-                className={`semi-circle-button left ${
-                  isSemiCircleGlowing ? "semi-circle-button-glow" : ""
-                }`}
-              >
-                <div style={{ marginRight: "-1.25rem" }}>Log In</div>
-              </Button>
-
-              <Button
-                as={Link}
-                to="/signup"
-                className={`semi-circle-button right ${
-                  isSemiCircleGlowing ? "semi-circle-button-glow" : ""
-                }`}
-              >
-                <div style={{ marginLeft: "-1.5rem" }}>Sign Up</div>
-              </Button>
-            </div>
-          ) : (
-            <div>
-              <Button onClick={handleSignOut}>Sign Out</Button>
-            </div>
+      {user === undefined || user === null ? (
+        <>
+          {isLoginButtonVisible && (
+            <Button
+              className="Welcome-Button Welcome-Login"
+              as={Link}
+              to="/login"
+            >
+              Log In
+            </Button>
           )}
-        </div>
-      )}
 
-      {showButtons && !isDesktop && (
-        <div style={{ marginTop: "5rem" }}>
-          {user === undefined || user === null ? (
-            <div>
-              <Button as={Link} to="/login">
-                <div>Log In</div>
-              </Button>
-
-              <Button as={Link} to="/signup">
-                <div>Sign Up</div>
-              </Button>
-            </div>
-          ) : (
-            <div>
-              <Button onClick={handleSignOut}>Sign Out</Button>
-            </div>
+          {isSignupButtonVisible && (
+            <Button
+              className="Welcome-Button Welcome-Signup"
+              as={Link}
+              to="/signup"
+            >
+              Sign Up
+            </Button>
           )}
+        </>
+      ) : (
+        <div>
+          <Button onClick={handleSignOut}>Sign Out</Button>
         </div>
       )}
     </div>

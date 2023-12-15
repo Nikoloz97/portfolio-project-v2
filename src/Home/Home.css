@@ -7,8 +7,9 @@
   right: 0;
   padding: 10px;
   background-color: rgba(57, 58, 69, 0.6);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-  animation: fade-in-arrow 1s forwards, box-glow 1.2s infinite alternate;
+  opacity: 0;
+  animation: fade-in-arrow 1s forwards,
+    arrow-container-glow 1.2s infinite alternate;
 }
 
 .arrow-container.below {
@@ -19,17 +20,16 @@
   top: 0;
 }
 
-.on-render-arrow-opacity {
-  opacity: 0;
-}
-
 .hovered-arrow {
   opacity: 1;
-  animation: arrow-scale-up 1s forwards;
+  animation: arrow-scale-up 1s forwards,
+    arrow-container-glow 1.2s infinite alternate;
 }
 
 .Unhovered-arrow {
-  animation: arrow-scale-down 1s forwards;
+  opacity: 1;
+  animation: arrow-scale-down 1s forwards,
+    arrow-container-glow 1.2s infinite alternate;
 }
 
 @keyframes arrow-scale-down {
@@ -53,7 +53,7 @@
   }
 }
 
-@keyframes box-glow {
+@keyframes arrow-container-glow {
   0% {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   }

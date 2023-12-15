@@ -1,22 +1,22 @@
-.fade-in-header {
+.Fade-In-Header {
   opacity: 0;
 }
 
-.fade-in-header.fade-in {
+.Fade-In-Header.Fade-In {
   opacity: 1;
   transition: opacity 1s ease-in-out;
 }
 
-.fade-in-subheader {
+.Fade-In-Subheader {
   opacity: 0;
 }
 
-.fade-in-subheader.fade-in {
+.Fade-In-Subheader.Fade-In {
   opacity: 1;
   transition: opacity 1s ease-in-out;
 }
 
-.blog-card {
+.Blog-Card {
   opacity: 0;
   transform: scale(0.2);
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
@@ -27,7 +27,7 @@
   background-color: #383c43 !important;
 }
 
-.blog-card.pop-in {
+.Blog-Card.Pop-in {
   opacity: 1;
   transform: scale(1);
 }
