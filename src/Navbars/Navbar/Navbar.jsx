@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu, MenuItem, Button, Image, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { useUserContext } from ".././UserContext";
+import { useUserContext } from "../../UserContext";
 import "./Navbar.css";
 
 const Navbar = (props) => {

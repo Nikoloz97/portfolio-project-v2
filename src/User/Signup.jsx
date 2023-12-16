@@ -170,6 +170,7 @@ const SignUp = () => {
                       className="Profile-Photo-Cancel-Button"
                       onClick={handleProfilePhotoClearing}
                       disabled={isProfilePhotoClearingDisabled}
+                      icon
                     >
                       <Icon name="cancel"></Icon>
                     </Button>

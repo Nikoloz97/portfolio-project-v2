@@ -4,18 +4,19 @@
 }
 
 .Welcome-Text {
-  position: absolute;
-  left: 50%;
+  position: relative;
   transform: translate(-50%, -50%);
   color: white !important;
 }
 
 .Welcome-Text.Desktop {
-  bottom: 42%;
+  left: 87%;
+  bottom: 52%;
 }
 
 .Welcome-Text.Phone {
-  bottom: 48%;
+  left: 82%;
+  bottom: 50%;
 }
 
 .Welcome-Container {

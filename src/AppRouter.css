@@ -3,27 +3,33 @@ body {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+.app-container.dimmed {
+  position: relative;
+}
+
+.app-container.dimmed::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998; /* Dimmer above other elements but below Sidebar */
+}
+
 /* Overrides .ui.sidebar styling from semantic-ui */
 #Sidebar-Overflow {
   overflow-y: hidden !important;
+  overflow-x: hidden !important;
 }
 
 .Sidebar {
   width: 33% !important;
   background-color: #383c43 !important;
+  z-index: 999 !important;
 }
 
 .ui.menu {
   border: none !important;
-}
-
-.Phone-Menu-Button {
-  position: fixed;
-  top: 6.6%;
-  left: 5px;
-  transition: transform 0.35s ease-in-out !important;
-}
-
-.Phone-Menu-Button.Moved {
-  transform: translateX(140px);
 }
