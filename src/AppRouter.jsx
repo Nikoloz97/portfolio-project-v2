@@ -20,12 +20,12 @@ import ProfilePage from "./User/ProfilePage.jsx";
 import "./AppRouter.css";
 
 function AppRouter() {
-  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   const { isDesktop } = useUserContext();
 
-  const toggleNavbarVisibility = () => {
-    setIsNavbarVisible(!isNavbarVisible);
+  const toggleSidebarVisibility = () => {
+    setIsSidebarVisible(!isSidebarVisible);
   };
 
   return (
@@ -64,31 +64,34 @@ function AppRouter() {
         </BrowserRouter>
       ) : (
         <BrowserRouter>
+          {/* <Topbar
+            toggleSidebarVisibility={toggleSidebarVisibility}/> */}
+
           <Sidebar
             className="Sidebar"
             id="Sidebar-Overflow"
             as={Segment}
             animation="push"
             direction="left"
-            visible={isNavbarVisible}
+            visible={isSidebarVisible}
           >
-            <Navbar toggleNavbarVisibility={toggleNavbarVisibility} />
+            <Navbar toggleSidebarVisibility={toggleSidebarVisibility} />
           </Sidebar>
-          {!isDesktop && (
-            <Button
-              className={`Phone-Menu-Button ${isNavbarVisible ? "Moved" : ""}`}
-              onClick={toggleNavbarVisibility}
-            >
-              Menu
-            </Button>
-          )}
+
+          <Button
+            className={`Phone-Menu-Button ${isSidebarVisible ? "Moved" : ""}`}
+            onClick={toggleSidebarVisibility}
+          >
+            Menu
+          </Button>
+
           <Routes>
             <Route
               path=""
               element={
                 <Home
-                  toggleNavbarVisibility={toggleNavbarVisibility}
-                  isNavbarVisible={isNavbarVisible}
+                  toggleSidebarVisibility={toggleSidebarVisibility}
+                  isSidebarVisible={isSidebarVisible}
                 />
               }
             />

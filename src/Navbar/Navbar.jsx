@@ -11,19 +11,19 @@ const Navbar = (props) => {
     <div className={isDesktop ? "" : "Navbar-Container"}>
       <Menu className={isDesktop ? "Navbar-Desktop" : "Navbar-Phone"}>
         <MenuItem as={Link} to="/" position="right">
-          <Button onClick={props.toggleNavbarVisibility}>Home</Button>
+          <Button onClick={props.toggleSidebarVisibility}>Home</Button>
         </MenuItem>
         <MenuItem as={Link} to="/blog" position="right">
-          <Button onClick={props.toggleNavbarVisibility}>Blog</Button>
+          <Button onClick={props.toggleSidebarVisibility}>Blog</Button>
         </MenuItem>
         <MenuItem as={Link} to="/projects" position="right">
-          <Button onClick={props.toggleNavbarVisibility}>Projects</Button>
+          <Button onClick={props.toggleSidebarVisibility}>Projects</Button>
         </MenuItem>
         <MenuItem as={Link} to="/forumPage" position="right">
-          <Button onClick={props.toggleNavbarVisibility}>Forum</Button>
+          <Button onClick={props.toggleSidebarVisibility}>Forum</Button>
         </MenuItem>
         <MenuItem as={Link} to="/contact" position="right">
-          <Button onClick={props.toggleNavbarVisibility}>Contact</Button>
+          <Button onClick={props.toggleSidebarVisibility}>Contact</Button>
         </MenuItem>
 
         {isDesktop && (
