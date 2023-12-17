@@ -61,13 +61,24 @@ const Welcome = (props) => {
 
   return (
     <div>
+      <Header
+        className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
+          props.isSidebarVisible ? "Sidebar-Visible" : ""
+        }`}
+      >
+        {isTyping ? (
+          <span className="Typewriter-Cursor">{text}</span>
+        ) : (
+          <span>{text}</span>
+        )}
+      </Header>
       <div
         className={`Welcome-Container
                         ${isDesktop ? "Desktop" : "Phone"}
                         ${isWelcomeContainerVisible ? "Fade-In" : ""}`}
       >
         {user === undefined || user === null ? (
-          <>
+          <div>
             <Button
               className={`Welcome-Button Welcome-Login
                   ${isDesktop ? "Desktop" : "Phone"}
@@ -86,7 +97,7 @@ const Welcome = (props) => {
             >
               Sign Up
             </Button>
-          </>
+          </div>
         ) : (
           <div>
             <Button onClick={handleSignOut}>Sign Out</Button>
@@ -94,13 +105,13 @@ const Welcome = (props) => {
         )}
       </div>
 
-      <Header className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"}`}>
+      {/* <Header className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"}`}>
         {isTyping ? (
           <span className="Typewriter-Cursor">{text}</span>
         ) : (
           <span>{text}</span>
         )}
-      </Header>
+      </Header> */}
     </div>
   );
 };

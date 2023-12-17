@@ -47,13 +47,8 @@ const Home = (props) => {
     <>
       <div className="Default-Page">
         <Welcome
-          handleScrollDown={handleScrollDown}
-          handleMouseEnter={handleMouseEnter}
-          handleMouseLeave={handleMouseLeave}
-          handleArrowClick={handleArrowClick}
           setIsArrowVisible={setIsArrowVisible}
-          toggleNavbarVisibility={props.toggleNavbarVisibility}
-          isNavbarVisible={props.isNavbarVisible}
+          isSidebarVisible={props.isSidebarVisible}
         />
 
         {/* Arrow stuff */}

@@ -4,19 +4,24 @@
 }
 
 .Welcome-Text {
-  position: relative;
-  transform: translate(-50%, -50%);
   color: white !important;
+  opacity: 1 !important;
+  position: absolute;
+  z-index: 1;
 }
 
 .Welcome-Text.Desktop {
-  left: 87%;
-  bottom: 52%;
+  left: 45.5%;
+  bottom: 45%;
 }
 
 .Welcome-Text.Phone {
-  left: 82%;
-  bottom: 50%;
+  left: 38%;
+  bottom: 42%;
+}
+
+.Welcome-Text.Phone.Sidebar-Visible {
+  bottom: 72%;
 }
 
 .Welcome-Container {
