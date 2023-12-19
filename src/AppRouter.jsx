@@ -5,9 +5,9 @@ import { useUserContext } from "./UserContext.js";
 import Home from "./Home/Home";
 import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
-import TopbarDesktop from "./Navbars/TopbarDesktop/TopbarDesktop.jsx";
 import TopbarPhone from "./Navbars/TopbarPhone/TopbarPhone.jsx";
 import SidebarPhone from "./Navbars/SidebarPhone/SidebarPhone.jsx";
+import TopbarDesktopLayover from "./Utils/TopbarDesktopLayover.jsx";
 import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
 import Kronos from "./Projects/Clocks/Kronos";
@@ -57,34 +57,119 @@ function AppRouter() {
     <>
       {isDesktop ? (
         <BrowserRouter>
-          <TopbarDesktop />
           <Routes>
-            <Route path="" element={<Home />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/calculator" element={<Calculator />} />
-            <Route path="/projects/kronos" element={<Kronos />} />
+            <Route
+              path=""
+              element={
+                <TopbarDesktopLayover>
+                  <Home />
+                </TopbarDesktopLayover>
+              }
+            />
+            <Route
+              path="/blog"
+              element={
+                <TopbarDesktopLayover>
+                  <Blog />
+                </TopbarDesktopLayover>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <TopbarDesktopLayover>
+                  <Contact />
+                </TopbarDesktopLayover>
+              }
+            />
+            <Route
+              path="/projects"
+              element={
+                <TopbarDesktopLayover>
+                  <Projects />
+                </TopbarDesktopLayover>
+              }
+            />
+            <Route
+              path="/projects/calculator"
+              element={
+                <TopbarDesktopLayover>
+                  <Calculator />
+                </TopbarDesktopLayover>
+              }
+            />
+            <Route
+              path="/projects/kronos"
+              element={
+                <TopbarDesktopLayover>
+                  <Kronos />
+                </TopbarDesktopLayover>
+              }
+            />
             <Route
               path="/projects/fantasy-basketball"
-              element={<FantasyBasketball />}
+              element={
+                <TopbarDesktopLayover>
+                  <FantasyBasketball />
+                </TopbarDesktopLayover>
+              }
             />
             <Route
               path="/projects/fantasy-basketball/team-analyzer"
-              element={<TeamAnalyzer />}
+              element={
+                <TopbarDesktopLayover>
+                  <TeamAnalyzer />
+                </TopbarDesktopLayover>
+              }
             />
             <Route
               path="/projects/fantasy-basketball/schedule-analyzer"
-              element={<ScheduleAnalyzer />}
+              element={
+                <TopbarDesktopLayover>
+                  <ScheduleAnalyzer />
+                </TopbarDesktopLayover>
+              }
             />
             <Route
               path="/projects/geography-game"
-              element={<GeographyGame />}
+              element={
+                <TopbarDesktopLayover>
+                  <GeographyGame />
+                </TopbarDesktopLayover>
+              }
             />
-            <Route path="/forumPage" element={<ForumPage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/profilePage" element={<ProfilePage />} />
+            <Route
+              path="/forumPage"
+              element={
+                <TopbarDesktopLayover>
+                  <ForumPage />
+                </TopbarDesktopLayover>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <TopbarDesktopLayover>
+                  <Login />
+                </TopbarDesktopLayover>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <TopbarDesktopLayover>
+                  <SignUp />
+                </TopbarDesktopLayover>
+              }
+            />
+            <Route
+              path="/profilePage"
+              element={
+                <TopbarDesktopLayover>
+                  <ProfilePage />
+                </TopbarDesktopLayover>
+              }
+            />
           </Routes>
         </BrowserRouter>
       ) : (

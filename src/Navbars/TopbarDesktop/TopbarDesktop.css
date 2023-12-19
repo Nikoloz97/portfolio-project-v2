@@ -1,6 +1,9 @@
-.Navbar-Desktop {
-  background-color: rgba(56, 60, 67, 1) !important;
-  border-radius: 0 !important;
+.Topbar-Desktop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent !important;
 }
 
 .Profile-Message {

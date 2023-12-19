@@ -9,7 +9,7 @@ const TopbarDesktop = (props) => {
 
   return (
     <div>
-      <Menu className="Navbar-Desktop">
+      <Menu className="Topbar-Desktop">
         <MenuItem as={Link} to="/" position="right">
           <Button onClick={props.toggleSidebarVisibility}>Home</Button>
         </MenuItem>
