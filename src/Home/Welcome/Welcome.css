@@ -1,6 +1,5 @@
 .Typewriter-Cursor {
   border-right: 2px solid white; /* Simulate cursor blinking */
-  /* white-space: nowrap !important; */
 }
 
 .Welcome-Text {
@@ -12,16 +11,16 @@
 
 .Welcome-Text.Desktop {
   left: 45.5%;
-  bottom: 45%;
+  bottom: 43%;
 }
 
 .Welcome-Text.Phone {
   left: 38%;
-  bottom: 42%;
+  bottom: 40.5%;
 }
 
 .Welcome-Text.Phone.Sidebar-Visible {
-  bottom: 72%;
+  bottom: 71.3%;
 }
 
 .Welcome-Container {

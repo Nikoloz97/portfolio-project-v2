@@ -2,9 +2,9 @@ import React from "react";
 import { Menu, MenuItem, Button, Icon, Image, Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
-import "./Topbar.css";
+import "./TopbarPhone.css";
 
-const Topbar = (props) => {
+const TopbarPhone = (props) => {
   const { user } = useUserContext();
 
   return (
@@ -42,4 +42,4 @@ const Topbar = (props) => {
   );
 };
 
-export default Topbar;
+export default TopbarPhone;

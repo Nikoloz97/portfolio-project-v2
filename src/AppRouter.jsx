@@ -5,8 +5,9 @@ import { useUserContext } from "./UserContext.js";
 import Home from "./Home/Home";
 import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
-import Navbar from "./Navbars/Navbar/Navbar.jsx";
-import Topbar from "./Navbars/Topbar/Topbar.jsx";
+import TopbarDesktop from "./Navbars/TopbarDesktop/TopbarDesktop.jsx";
+import TopbarPhone from "./Navbars/TopbarPhone/TopbarPhone.jsx";
+import SidebarPhone from "./Navbars/SidebarPhone/SidebarPhone.jsx";
 import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
 import Kronos from "./Projects/Clocks/Kronos";
@@ -56,7 +57,7 @@ function AppRouter() {
     <>
       {isDesktop ? (
         <BrowserRouter>
-          <Navbar />
+          <TopbarDesktop />
           <Routes>
             <Route path="" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
@@ -89,7 +90,7 @@ function AppRouter() {
       ) : (
         <BrowserRouter>
           <div className={`app-container ${isSidebarVisible ? "dimmed" : ""}`}>
-            <Topbar toggleSidebarVisibility={toggleSidebarVisibility} />
+            <TopbarPhone toggleSidebarVisibility={toggleSidebarVisibility} />
             <Sidebar
               className="Sidebar"
               id="Sidebar-Overflow"
@@ -98,7 +99,7 @@ function AppRouter() {
               direction="left"
               visible={isSidebarVisible}
             >
-              <Navbar toggleSidebarVisibility={toggleSidebarVisibility} />
+              <SidebarPhone toggleSidebarVisibility={toggleSidebarVisibility} />
             </Sidebar>
             <Routes>
               <Route
