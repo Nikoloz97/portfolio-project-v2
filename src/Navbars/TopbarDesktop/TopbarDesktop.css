@@ -1,12 +1,67 @@
+/* Prevents buttons inside menu item from changing background */
+.ui.menu a.item:hover {
+  background-color: initial !important;
+}
+
 .Topbar-Desktop {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   background-color: transparent !important;
+  z-index: 9999 !important;
+  width: 80%;
+  margin-left: 10% !important;
 }
 
-.Profile-Message {
+#Topbar-Bottom-Border {
+  border-bottom: 1px solid #ccc !important;
+}
+
+.Topbar-Desktop-Button {
+  background-color: transparent !important;
   color: white !important;
-  margin: 0px 10px 0px 0px !important;
+  font-size: 1.1rem !important;
+  position: relative;
+}
+
+.Topbar-Desktop-Button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 0.7px;
+  background-color: #ccc;
+  transition: background-color 0.3s;
+}
+
+.Topbar-Desktop-Button.active::after {
+  background-color: red !important; /* Change the color to red when the button is active */
+}
+
+.Topbar-Desktop-User-Buttons {
+  background-color: white !important;
+  height: 2rem;
+  width: 5rem;
+  border-radius: 2rem !important;
+  color: black !important;
+  font-size: 0.75rem !important;
+}
+
+.Topbar-Desktop-User-Buttons::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -13.6px;
+  left: 0;
+  width: 100%;
+  height: 0.6px;
+  background-color: #ccc;
+  transition: background-color 0.3s;
+}
+
+.Topbar-Desktop-User-Buttons.active::after {
+  background-color: red !important; /* Change the color to red when the button is active */
 }
