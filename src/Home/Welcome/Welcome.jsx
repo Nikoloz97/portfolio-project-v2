@@ -1,117 +1,110 @@
 import React, { useState, useEffect } from "react";
-import { Button, Header } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Header, Grid, Image } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import "./Welcome.css";
 
 const Welcome = (props) => {
-  const { user, setUser, setIsUserSignedIn, isDesktop } = useUserContext();
+  const { user, setUser, isUserSignedIn, isDesktop } = useUserContext();
 
-  const [text, setText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
+  const [displayedWelcomeTextLineOne, setDisplayedWelcomeTextLineOne] =
+    useState("");
+  const [displayedWelcomeTextLineTwo, setDisplayedWelcomeTextLineTwo] =
+    useState("");
+  const [isFirstLineComplete, setIsFirstLineComplete] = useState(false);
+  const [isSecondLineComplete, setIsSecondLineComplete] = useState(false);
 
-  const [isSignupButtonVisible, setIsSignupButtonVisible] = useState(false);
-  const [isLoginButtonVisible, setIsLoginButtonVisible] = useState(false);
-
-  const [isWelcomeContainerVisible, setIsWelcomeContainerVisible] =
-    useState(false);
-
-  const handleSignOut = () => {
-    setUser(null);
-    setIsUserSignedIn(false);
-  };
-
-  // Welcome typewriting animation
   useEffect(() => {
-    const welcomeText = "Welcome.";
+    const completeWelcomeTextLineOne = "Welcome,";
 
     let currentIndex = 0;
 
     const typingInterval = setInterval(() => {
-      if (currentIndex <= welcomeText.length) {
-        setText(welcomeText.substring(0, currentIndex));
+      if (currentIndex <= completeWelcomeTextLineOne.length) {
+        setDisplayedWelcomeTextLineOne(
+          completeWelcomeTextLineOne.substring(0, currentIndex)
+        );
         currentIndex++;
       } else {
-        setIsTyping(false);
+        setIsFirstLineComplete(true);
+        clearInterval(typingInterval);
+        return;
       }
-    }, 100); // Typing speed (100ms per character)
-
-    return () => {
-      clearInterval(typingInterval);
-    };
+    }, 120);
   }, []);
 
-  // Fade-ins
   useEffect(() => {
-    if (!isTyping) {
-      setTimeout(() => {
-        setIsWelcomeContainerVisible(true);
-      }, 200);
-      setTimeout(() => {
-        setIsLoginButtonVisible(true);
-      }, 800);
-      setTimeout(() => {
-        setIsSignupButtonVisible(true);
-      }, 1000);
-      setTimeout(() => {
-        props.setIsArrowVisible(true);
-      }, 1200);
+    if (isFirstLineComplete) {
+      const completeWelcomeTextLineTwo = `${
+        isUserSignedIn ? user.firstName + "." : "Guest."
+      }`;
+
+      let currentIndex = 0;
+
+      const typingInterval = setInterval(() => {
+        if (currentIndex <= completeWelcomeTextLineTwo.length) {
+          setDisplayedWelcomeTextLineTwo(
+            completeWelcomeTextLineTwo.substring(0, currentIndex)
+          );
+          currentIndex++;
+        } else {
+          setIsSecondLineComplete(true);
+          clearInterval(typingInterval);
+          return;
+        }
+      }, 120);
     }
-  }, [isTyping]);
+  }, [isFirstLineComplete]);
 
   return (
     <div>
-      <Header
-        className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
-          props.isSidebarVisible ? "Sidebar-Visible" : ""
-        }`}
-      >
-        {isTyping ? (
-          <span className="Typewriter-Cursor">{text}</span>
-        ) : (
-          <span>{text}</span>
-        )}
-      </Header>
-      <div
-        className={`Welcome-Container
-                        ${isDesktop ? "Desktop" : "Phone"}
-                        ${isWelcomeContainerVisible ? "Fade-In" : ""}`}
-      >
-        {user === undefined || user === null ? (
-          <div>
-            <Button
-              className={`Welcome-Button Welcome-Login
-                  ${isDesktop ? "Desktop" : "Phone"}
-                  ${isLoginButtonVisible ? "Fade-In" : ""}`}
-              as={Link}
-              to="/login"
+      {/* <Image
+        src={require("../../Images/Welcome/Welcome_Georgia_City1.webp")}
+        centered
+        // hidden={props.isLoading}
+        // className={`ForumPage-Display ${
+        //   props.isDisplayVisible ? "Fade-In" : ""
+        // }`}
+      /> */}
+      <Grid style={{ width: "100vw" }}>
+        <Grid.Column style={{ marginLeft: "5rem" }}>
+          <Grid.Row>
+            <Header
+              className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
+                props.isSidebarVisible ? "Sidebar-Visible" : ""
+              }`}
             >
-              Log In
-            </Button>
-            <Button
-              className={`Welcome-Button Welcome-Signup
-                ${isDesktop ? "Desktop" : "Phone"}
-                ${isSignupButtonVisible ? "Fade-In" : ""}`}
-              as={Link}
-              to="/signup"
-            >
-              Sign Up
-            </Button>
-          </div>
-        ) : (
-          <div>
-            <Button onClick={handleSignOut}>Sign Out</Button>
-          </div>
-        )}
-      </div>
+              {isFirstLineComplete ? (
+                <span>{displayedWelcomeTextLineOne}</span>
+              ) : (
+                <span className="Typewriter-Cursor">
+                  {displayedWelcomeTextLineOne}
+                </span>
+              )}
+            </Header>
+          </Grid.Row>
 
-      {/* <Header className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"}`}>
-        {isTyping ? (
-          <span className="Typewriter-Cursor">{text}</span>
-        ) : (
-          <span>{text}</span>
-        )}
-      </Header> */}
+          <Grid.Row>
+            <Header
+              className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
+                props.isSidebarVisible ? "Sidebar-Visible" : ""
+              }
+                `}
+            >
+              {isSecondLineComplete ? (
+                <span>{displayedWelcomeTextLineTwo}</span>
+              ) : (
+                <span
+                  className={`${
+                    isFirstLineComplete ? "Typewriter-Cursor" : ""
+                  }`}
+                >
+                  {displayedWelcomeTextLineTwo}
+                </span>
+              )}
+            </Header>
+          </Grid.Row>
+        </Grid.Column>
+      </Grid>
     </div>
   );
 };

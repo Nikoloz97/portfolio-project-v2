@@ -82,22 +82,28 @@ const TopbarDesktop = () => {
         <Menu.Menu position="right">
           {user == undefined && user == null ? (
             <div style={{ display: "flex" }}>
-              <MenuItem as={Link} to="/login">
+              <MenuItem
+                as={Link}
+                to="/login"
+                onClick={() => setRedButtonName("Login")}
+              >
                 <Button
                   className={`Topbar-Desktop-User-Buttons ${
                     redButtonName === "Login" ? "active" : ""
                   }`}
                   content="Login"
-                  onClick={() => setRedButtonName("Login")}
                 />
               </MenuItem>
-              <MenuItem as={Link} to="/signup">
+              <MenuItem
+                as={Link}
+                to="/signup"
+                onClick={() => setRedButtonName("Signup")}
+              >
                 <Button
                   className={`Topbar-Desktop-User-Buttons ${
                     redButtonName === "Signup" ? "active" : ""
                   }`}
                   content="Signup"
-                  onClick={() => setRedButtonName("Signup")}
                 />
               </MenuItem>
             </div>

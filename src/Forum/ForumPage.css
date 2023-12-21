@@ -14,17 +14,13 @@
 /* Some properties on here = important for loading screen */
 .Display-Page {
   background-color: #282c34 !important;
-  min-height: 94.1vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.Display-Page.Phone {
-  height: 100vh !important;
 }
 
 .ForumPage-Display-Text {
@@ -61,11 +57,11 @@
   text-align: center;
 }
 
-.ForumPage-Display-FadeIn {
+.ForumPage-Display {
   opacity: 0 !important;
 }
 
-.ForumPage-Display-FadeIn.activate {
+.ForumPage-Display.Fade-In {
   opacity: 1 !important;
   transition: opacity 1s ease-in-out !important;
 }

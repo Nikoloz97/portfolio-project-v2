@@ -16,14 +16,14 @@ const Display = (props) => {
           src={require("../Images/ForumDisplay/Travel5.jpg")}
           centered
           hidden={props.isLoading}
-          className={`ForumPage-Display-FadeIn ${
-            props.isDisplayVisible ? "activate" : ""
+          className={`ForumPage-Display ${
+            props.isDisplayVisible ? "Fade-In" : ""
           }`}
         />
         <div>
           <div
-            className={`ForumPage-Display-FadeIn ${
-              props.isDisplayVisible ? "activate" : ""
+            className={`ForumPage-Display ${
+              props.isDisplayVisible ? "Fade-In" : ""
             }`}
           >
             <div className="ForumPage-Display-Text">Welcome to the Forum</div>

@@ -4,14 +4,14 @@
 
 .Welcome-Text {
   color: white !important;
-  opacity: 1 !important;
-  position: absolute;
-  z-index: 1;
+  height: 6rem;
 }
 
 .Welcome-Text.Desktop {
-  left: 45.5%;
-  bottom: 43%;
+  left: 5%;
+  bottom: 40%;
+  font-size: 5rem !important;
+  width: 30rem !important;
 }
 
 .Welcome-Text.Phone {
