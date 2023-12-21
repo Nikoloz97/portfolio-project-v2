@@ -2,6 +2,15 @@
   border-right: 2px solid white; /* Simulate cursor blinking */
 }
 
+.Welcome-Text-Container {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
 .Welcome-Text {
   color: white !important;
   height: 6rem;

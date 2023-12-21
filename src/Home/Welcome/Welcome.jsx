@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header, Grid, Image } from "semantic-ui-react";
+import { Header, Grid, Image, Loader } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import "./Welcome.css";
 
@@ -56,16 +56,16 @@ const Welcome = (props) => {
   }, [isFirstLineComplete]);
 
   return (
-    <div>
-      {/* <Image
-        src={require("../../Images/Welcome/Welcome_Georgia_City1.webp")}
+    <div style={{ position: "relative" }}>
+      {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
+      {/* <Loader content="Loading" active={true} /> */}
+
+      <Image
+        src={require("../../Images/Welcome/Welcome_Georgia_Mountains2.jpg")}
         centered
-        // hidden={props.isLoading}
-        // className={`ForumPage-Display ${
-        //   props.isDisplayVisible ? "Fade-In" : ""
-        // }`}
-      /> */}
-      <Grid style={{ width: "100vw" }}>
+        hidden={props.isLoading}
+      />
+      <Grid className="Welcome-Text-Container">
         <Grid.Column style={{ marginLeft: "5rem" }}>
           <Grid.Row>
             <Header
