@@ -4,8 +4,8 @@
 
 .Welcome-Text-Container {
   position: absolute;
-  top: 45%;
-  left: 0;
+  top: 40%;
+  left: 5%;
   width: 100vw;
   height: 100vh;
   z-index: 1;
@@ -13,13 +13,13 @@
 
 .Welcome-Text {
   color: white !important;
-  height: 6rem;
+  height: 7.5rem;
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: 300 !important;
 }
 
 .Welcome-Text.Desktop {
-  left: 5%;
-  bottom: 40%;
-  font-size: 5rem !important;
+  font-size: 7rem !important;
   width: 30rem !important;
 }
 

@@ -1,17 +1,21 @@
-/* Prevents buttons inside menu item from changing background */
+/* Prevents menu buttons from changing background upon hover */
 .ui.menu a.item:hover {
   background-color: initial !important;
+}
+
+/* Removes faint dark line between MenuItem components */
+.ui.menu .item:before {
+  background: none !important;
 }
 
 .Topbar-Desktop {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 15%;
   right: 0;
   background-color: transparent !important;
   z-index: 9999 !important;
-  width: 80%;
-  margin-left: 10% !important;
+  width: 70%;
 }
 
 #Topbar-Bottom-Border {
@@ -23,6 +27,15 @@
   color: white !important;
   font-size: 1.1rem !important;
   position: relative;
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: 200 !important;
+}
+
+.Topbar-Desktop-Logo-Text {
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: 500 !important;
+  color: white !important;
+  margin-left: -1rem !important;
 }
 
 .Topbar-Desktop-Button::after {
@@ -64,4 +77,10 @@
 
 .Topbar-Desktop-User-Buttons.active::after {
   background-color: red !important; /* Change the color to red when the button is active */
+}
+
+.Welcome-Background-Image {
+  height: 100vh !important;
+  width: 100vw !important;
+  filter: brightness(70%) !important;
 }

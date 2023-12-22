@@ -60,11 +60,14 @@ const Welcome = (props) => {
       {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
       {/* <Loader content="Loading" active={true} /> */}
 
-      <Image
-        src={require("../../Images/Welcome/Welcome_Georgia_Mountains2.jpg")}
-        centered
-        hidden={props.isLoading}
-      />
+      <div>
+        <Image
+          src={require("../../Images/Welcome/Welcome_Georgia_Mountains2.jpg")}
+          centered
+          hidden={props.isLoading}
+          className="Welcome-Background-Image"
+        />
+      </div>
       <Grid className="Welcome-Text-Container">
         <Grid.Column style={{ marginLeft: "5rem" }}>
           <Grid.Row>

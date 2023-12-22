@@ -20,13 +20,13 @@ const TopbarDesktop = () => {
             />
           </MenuItem>
           <MenuItem>
-            <Header style={{ color: "white", marginLeft: "-1rem" }}>
+            <Header className="Topbar-Desktop-Logo-Text">
               Nick's Portfolio
             </Header>
           </MenuItem>
         </Menu.Menu>
 
-        <Menu.Menu style={{ marginLeft: "12%" }}>
+        <Menu.Menu>
           <MenuItem as={Link} to="/">
             <Button
               className={`Topbar-Desktop-Button ${
@@ -79,7 +79,7 @@ const TopbarDesktop = () => {
           </MenuItem>
         </Menu.Menu>
 
-        <Menu.Menu position="right">
+        <Menu.Menu>
           {user == undefined && user == null ? (
             <div style={{ display: "flex" }}>
               <MenuItem
