@@ -33,7 +33,7 @@
 
 .Topbar-Desktop-Logo-Text {
   font-family: "Noto Sans JP", sans-serif !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   color: white !important;
   margin-left: -1rem !important;
 }
@@ -77,10 +77,4 @@
 
 .Topbar-Desktop-User-Buttons.active::after {
   background-color: red !important; /* Change the color to red when the button is active */
-}
-
-.Welcome-Background-Image {
-  height: 100vh !important;
-  width: 100vw !important;
-  filter: brightness(70%) !important;
 }

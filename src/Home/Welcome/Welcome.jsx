@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Header, Grid, Image, Loader } from "semantic-ui-react";
+import {
+  Header,
+  Grid,
+  Image,
+  Loader,
+  Card,
+  Divider,
+  Button,
+} from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import "./Welcome.css";
 
@@ -12,6 +20,26 @@ const Welcome = (props) => {
     useState("");
   const [isFirstLineComplete, setIsFirstLineComplete] = useState(false);
   const [isSecondLineComplete, setIsSecondLineComplete] = useState(false);
+
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const carouselPeriods = [
+    "Period 1",
+    "Period 2",
+    "Period 3",
+    "Period 4",
+    "Period 5",
+    "Period 6",
+  ];
+  const handleNext = () => {
+    setCarouselIndex((prevIndex) => (prevIndex + 1) % carouselPeriods.length);
+  };
+
+  const handlePrev = () => {
+    setCarouselIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + carouselPeriods.length) % carouselPeriods.length
+    );
+  };
 
   useEffect(() => {
     const completeWelcomeTextLineOne = "Welcome,";
@@ -56,10 +84,9 @@ const Welcome = (props) => {
   }, [isFirstLineComplete]);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div>
       {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
       {/* <Loader content="Loading" active={true} /> */}
-
       <div>
         <Image
           src={require("../../Images/Welcome/Welcome_Georgia_Mountains2.jpg")}
@@ -68,9 +95,9 @@ const Welcome = (props) => {
           className="Welcome-Background-Image"
         />
       </div>
-      <Grid className="Welcome-Text-Container">
-        <Grid.Column style={{ marginLeft: "5rem" }}>
-          <Grid.Row>
+      <Grid className="Welcome-Text-Grid">
+        <Grid.Column>
+          <Grid.Row style={{ width: "25%" }}>
             <Header
               className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
                 props.isSidebarVisible ? "Sidebar-Visible" : ""
@@ -108,6 +135,38 @@ const Welcome = (props) => {
           </Grid.Row>
         </Grid.Column>
       </Grid>
+      <div className="vertical-carousel-container">
+        <div className="carousel">
+          <div className="previous">
+            {
+              carouselPeriods[
+                (carouselIndex - 2 + carouselPeriods.length) %
+                  carouselPeriods.length
+              ]
+            }
+          </div>
+          <div className="previous">
+            {
+              carouselPeriods[
+                (carouselIndex - 1 + carouselPeriods.length) %
+                  carouselPeriods.length
+              ]
+            }
+          </div>
+          <div className="current">{carouselPeriods[carouselIndex]}</div>
+          <div className="upcoming">
+            {carouselPeriods[(carouselIndex + 1) % carouselPeriods.length]}
+          </div>
+          <div className="upcoming">
+            {carouselPeriods[(carouselIndex + 2) % carouselPeriods.length]}
+          </div>
+        </div>
+        <div className="controls">
+          <Button onClick={handlePrev}>Previous</Button>
+          <Button onClick={handleNext}>Next</Button>
+        </div>
+      </div>
+      <div className="ticker" />
     </div>
   );
 };

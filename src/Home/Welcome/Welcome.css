@@ -2,20 +2,26 @@
   border-right: 2px solid white; /* Simulate cursor blinking */
 }
 
-.Welcome-Text-Container {
-  position: absolute;
+.Welcome-Text-Grid {
+  position: absolute !important;
   top: 40%;
-  left: 5%;
-  width: 100vw;
-  height: 100vh;
+  left: 10%;
+  width: 30%;
+  height: 30%;
   z-index: 1;
+}
+
+.Welcome-Background-Image {
+  height: 100vh !important;
+  width: 100vw !important;
+  filter: brightness(60%) !important;
 }
 
 .Welcome-Text {
   color: white !important;
-  height: 7.5rem;
+  height: 8rem;
   font-family: "Noto Sans JP", sans-serif !important;
-  font-weight: 300 !important;
+  font-weight: 400 !important;
 }
 
 .Welcome-Text.Desktop {
@@ -33,7 +39,6 @@
 }
 
 .Welcome-Container {
-  position: relative;
   border-radius: 50%;
   background-color: #31363f;
   display: flex;
@@ -116,6 +121,47 @@
 
 .Unhovered-Welcome-Button {
   animation: welcome-button-scale-down 1s forwards;
+}
+
+.vertical-carousel-container {
+  position: absolute !important;
+  top: 40%;
+  right: 10%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+
+.carousel {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+
+.previous,
+.upcoming {
+  opacity: 0.5; /* Faded options */
+}
+
+.current {
+}
+
+.ticker {
+  width: 6%; /* Full width */
+  height: 1px; /* Thin line */
+  background-color: gray !important;
+  position: absolute !important;
+  right: 0%; /* Position to the right of the options */
+  top: 46.5%; /* Center vertically */
+  transform: translateY(-50%);
+}
+
+.controls {
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100px;
 }
 
 @keyframes fade-in-welcome {
