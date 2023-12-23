@@ -9,6 +9,7 @@ import {
   Button,
 } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
+import VerticalCarousel from "../../Utils/VerticalCarousel/VerticalCarousel";
 import "./Welcome.css";
 
 const Welcome = (props) => {
@@ -22,7 +23,7 @@ const Welcome = (props) => {
   const [isSecondLineComplete, setIsSecondLineComplete] = useState(false);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const carouselPeriods = [
+  const carouselContent = [
     "Period 1",
     "Period 2",
     "Period 3",
@@ -30,16 +31,6 @@ const Welcome = (props) => {
     "Period 5",
     "Period 6",
   ];
-  const handleNext = () => {
-    setCarouselIndex((prevIndex) => (prevIndex + 1) % carouselPeriods.length);
-  };
-
-  const handlePrev = () => {
-    setCarouselIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + carouselPeriods.length) % carouselPeriods.length
-    );
-  };
 
   useEffect(() => {
     const completeWelcomeTextLineOne = "Welcome,";
@@ -135,38 +126,16 @@ const Welcome = (props) => {
           </Grid.Row>
         </Grid.Column>
       </Grid>
-      <div className="vertical-carousel-container">
-        <div className="carousel">
-          <div className="previous">
-            {
-              carouselPeriods[
-                (carouselIndex - 2 + carouselPeriods.length) %
-                  carouselPeriods.length
-              ]
-            }
-          </div>
-          <div className="previous">
-            {
-              carouselPeriods[
-                (carouselIndex - 1 + carouselPeriods.length) %
-                  carouselPeriods.length
-              ]
-            }
-          </div>
-          <div className="current">{carouselPeriods[carouselIndex]}</div>
-          <div className="upcoming">
-            {carouselPeriods[(carouselIndex + 1) % carouselPeriods.length]}
-          </div>
-          <div className="upcoming">
-            {carouselPeriods[(carouselIndex + 2) % carouselPeriods.length]}
-          </div>
-        </div>
-        <div className="controls">
-          <Button onClick={handlePrev}>Previous</Button>
-          <Button onClick={handleNext}>Next</Button>
-        </div>
+
+      <div className="Welcome-Vertical-Carousel-Position">
+        <VerticalCarousel
+          index={carouselIndex}
+          setIndex={setCarouselIndex}
+          content={carouselContent}
+        />
       </div>
-      <div className="ticker" />
+
+      <div className="Welcome-Vertical-Carousel-Ticker" />
     </div>
   );
 };

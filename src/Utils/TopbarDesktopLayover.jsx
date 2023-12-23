@@ -5,13 +5,9 @@ import TopbarDesktop from "../Navbars/TopbarDesktop/TopbarDesktop";
 
 const TopbarDesktopLayover = ({ children }) => {
   return (
-    <div
-    // style={{ position: "relative" }}
-    >
+    <div>
       <TopbarDesktop />
-      {/* <div> */}
       {children}
-      {/* </div> */}
     </div>
   );
 };

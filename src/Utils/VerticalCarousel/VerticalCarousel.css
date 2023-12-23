@@ -1,0 +1,27 @@
+.Vertical-Carousel-Container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+
+.carousel {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+
+.previous,
+.upcoming {
+  opacity: 0.5; /* Faded options */
+}
+
+.current {
+}
+
+.controls {
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100px;
+}

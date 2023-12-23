@@ -123,32 +123,13 @@
   animation: welcome-button-scale-down 1s forwards;
 }
 
-.vertical-carousel-container {
+.Welcome-Vertical-Carousel-Position {
   position: absolute !important;
   top: 40%;
-  right: 10%;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-direction: column !important;
+  right: 4%;
 }
 
-.carousel {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-direction: column !important;
-}
-
-.previous,
-.upcoming {
-  opacity: 0.5; /* Faded options */
-}
-
-.current {
-}
-
-.ticker {
+.Welcome-Vertical-Carousel-Ticker {
   width: 6%; /* Full width */
   height: 1px; /* Thin line */
   background-color: gray !important;
@@ -156,12 +137,6 @@
   right: 0%; /* Position to the right of the options */
   top: 46.5%; /* Center vertically */
   transform: translateY(-50%);
-}
-
-.controls {
-  display: flex !important;
-  justify-content: space-between !important;
-  width: 100px;
 }
 
 @keyframes fade-in-welcome {
