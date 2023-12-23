@@ -1,47 +1,36 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
+import "../VerticalCarousel/VerticalCarousel.css";
 
 const VerticalCarousel = (props) => {
-  const handleNext = () => {
-    props.setIndex((prevIndex) => (prevIndex + 1) % props.content.length);
-  };
+  const calculateCardPosition = (offset) => {
+    const currentIndex = props.index;
+    const adjustedIndex =
+      (currentIndex + offset + props.content.length) % props.content.length;
+    const distanceFromCenter = Math.abs(currentIndex - adjustedIndex);
+    const scaleFactor = 1 - distanceFromCenter * 0.1; // Adjust the scale factor as needed
 
-  const handlePrev = () => {
-    props.setIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + props.content.length) % props.content.length
-    );
+    return {
+      transform: `translateY(-250%) scale(${scaleFactor})`,
+    };
   };
 
   return (
     <div className="Vertical-Carousel-Container">
-      <div className="carousel">
-        <div className="previous">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Card
+          key={i}
+          className={`Carousel-Card ${i === 2 ? "Current" : "Non-Current"}`}
+          style={calculateCardPosition(i - 2)}
+        >
           {
             props.content[
-              (props.index - 2 + props.content.length) % props.content.length
+              (props.index + i - 2 + props.content.length) %
+                props.content.length
             ]
           }
-        </div>
-        <div className="previous">
-          {
-            props.content[
-              (props.index - 1 + props.content.length) % props.content.length
-            ]
-          }
-        </div>
-        <div className="current">{props.content[props.index]}</div>
-        <div className="upcoming">
-          {props.content[(props.index + 1) % props.content.length]}
-        </div>
-        <div className="upcoming">
-          {props.content[(props.index + 2) % props.content.length]}
-        </div>
-      </div>
-      <div className="controls">
-        <Button onClick={handlePrev}>Previous</Button>
-        <Button onClick={handleNext}>Next</Button>
-      </div>
+        </Card>
+      ))}
     </div>
   );
 };

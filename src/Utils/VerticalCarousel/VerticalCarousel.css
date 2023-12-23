@@ -5,23 +5,36 @@
   flex-direction: column !important;
 }
 
-.carousel {
+.Carousel-Card {
+  height: 3rem;
+  width: 12rem !important;
+  background: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  margin-bottom: 0 !important;
 }
 
-.previous,
-.upcoming {
-  opacity: 0.5; /* Faded options */
+.Carousel-Card.Non-Current {
+  opacity: 0.5 !important;
 }
 
-.current {
+.Carousel-Card.Current {
 }
 
-.controls {
+.Carousel-Buttons {
   display: flex !important;
+  flex-direction: column !important;
   justify-content: space-between !important;
   width: 100px;
+  height: 105px;
+}
+
+.Carousel-Button {
+  background: none !important;
+}
+
+.Carousel-Button-Icon {
+  color: white !important;
+  opacity: 0.5 !important;
 }

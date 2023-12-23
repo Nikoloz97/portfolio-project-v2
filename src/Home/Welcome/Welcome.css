@@ -126,7 +126,13 @@
 .Welcome-Vertical-Carousel-Position {
   position: absolute !important;
   top: 40%;
-  right: 4%;
+  right: 8%;
+}
+
+.Welcome-Vertical-Carousel-Buttons-Position {
+  position: absolute !important;
+  top: 40%;
+  right: 0%;
 }
 
 .Welcome-Vertical-Carousel-Ticker {

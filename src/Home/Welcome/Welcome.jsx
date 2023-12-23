@@ -10,6 +10,7 @@ import {
 } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarousel from "../../Utils/VerticalCarousel/VerticalCarousel";
+import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarouselButtons";
 import "./Welcome.css";
 
 const Welcome = (props) => {
@@ -22,7 +23,7 @@ const Welcome = (props) => {
   const [isFirstLineComplete, setIsFirstLineComplete] = useState(false);
   const [isSecondLineComplete, setIsSecondLineComplete] = useState(false);
 
-  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [carouselIndex, setCarouselIndex] = useState(2);
   const carouselContent = [
     "Period 1",
     "Period 2",
@@ -130,6 +131,13 @@ const Welcome = (props) => {
       <div className="Welcome-Vertical-Carousel-Position">
         <VerticalCarousel
           index={carouselIndex}
+          setIndex={setCarouselIndex}
+          content={carouselContent}
+        />
+      </div>
+
+      <div className="Welcome-Vertical-Carousel-Buttons-Position">
+        <VerticalCarouselButtons
           setIndex={setCarouselIndex}
           content={carouselContent}
         />
