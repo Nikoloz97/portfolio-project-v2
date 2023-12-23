@@ -1,3 +1,7 @@
+.ui.card {
+  margin: 0.5rem !important;
+}
+
 .Vertical-Carousel-Container {
   display: flex !important;
   align-items: center !important;
@@ -12,14 +16,10 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin-bottom: 0 !important;
 }
 
-.Carousel-Card.Non-Current {
-  opacity: 0.5 !important;
-}
-
-.Carousel-Card.Current {
+.Carousel-Card.Hide {
+  opacity: 0 !important;
 }
 
 .Carousel-Buttons {

@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Header,
-  Grid,
-  Image,
-  Loader,
-  Card,
-  Divider,
-  Button,
-} from "semantic-ui-react";
+import { Header, Grid, Image } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarousel from "../../Utils/VerticalCarousel/VerticalCarousel";
 import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarouselButtons";
@@ -23,7 +15,7 @@ const Welcome = (props) => {
   const [isFirstLineComplete, setIsFirstLineComplete] = useState(false);
   const [isSecondLineComplete, setIsSecondLineComplete] = useState(false);
 
-  const [carouselIndex, setCarouselIndex] = useState(2);
+  const [carouselIndex, setCarouselIndex] = useState(0);
   const carouselContent = [
     "Period 1",
     "Period 2",
@@ -129,15 +121,12 @@ const Welcome = (props) => {
       </Grid>
 
       <div className="Welcome-Vertical-Carousel-Position">
-        <VerticalCarousel
-          index={carouselIndex}
-          setIndex={setCarouselIndex}
-          content={carouselContent}
-        />
+        <VerticalCarousel index={carouselIndex} content={carouselContent} />
       </div>
 
       <div className="Welcome-Vertical-Carousel-Buttons-Position">
         <VerticalCarouselButtons
+          index={carouselIndex}
           setIndex={setCarouselIndex}
           content={carouselContent}
         />

@@ -125,24 +125,23 @@
 
 .Welcome-Vertical-Carousel-Position {
   position: absolute !important;
-  top: 40%;
-  right: 8%;
+  top: 33%;
+  right: 7%;
 }
 
 .Welcome-Vertical-Carousel-Buttons-Position {
   position: absolute !important;
-  top: 40%;
+  top: 43.5%;
   right: 0%;
 }
 
 .Welcome-Vertical-Carousel-Ticker {
-  width: 6%; /* Full width */
-  height: 1px; /* Thin line */
-  background-color: gray !important;
-  position: absolute !important;
-  right: 0%; /* Position to the right of the options */
-  top: 46.5%; /* Center vertically */
-  transform: translateY(-50%);
+  width: 6%;
+  height: 1px;
+  background-color: gray;
+  position: absolute;
+  right: 0%;
+  top: 50%;
 }
 
 @keyframes fade-in-welcome {

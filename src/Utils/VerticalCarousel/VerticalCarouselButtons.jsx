@@ -16,11 +16,19 @@ const VerticalCarouselButtons = (props) => {
 
   return (
     <div className="Carousel-Buttons">
-      <Button className="Carousel-Button" onClick={handlePrev}>
+      <Button
+        disabled={props.index === 0}
+        className="Carousel-Button"
+        onClick={handlePrev}
+      >
         <Icon name="angle up" size="big" className="Carousel-Button-Icon" />
       </Button>
 
-      <Button className="Carousel-Button" onClick={handleNext}>
+      <Button
+        disabled={props.index === props.content.length - 1}
+        className="Carousel-Button"
+        onClick={handleNext}
+      >
         <Icon name="angle down" size="big" className="Carousel-Button-Icon" />
       </Button>
     </div>
