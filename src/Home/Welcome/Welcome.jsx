@@ -16,14 +16,7 @@ const Welcome = (props) => {
   const [isSecondLineComplete, setIsSecondLineComplete] = useState(false);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const carouselContent = [
-    "Period 1",
-    "Period 2",
-    "Period 3",
-    "Period 4",
-    "Period 5",
-    "Period 6",
-  ];
+  const carouselContent = ["Coding", "Medicine", "Tutoring"];
 
   useEffect(() => {
     const completeWelcomeTextLineOne = "Welcome,";
@@ -73,7 +66,10 @@ const Welcome = (props) => {
       {/* <Loader content="Loading" active={true} /> */}
       <div>
         <Image
-          src={require("../../Images/Welcome/Welcome_Georgia_Mountains2.jpg")}
+          src={require("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg")}
+          // src={require("../../Images/Home/Coding/Coding10.jpg")}
+          // src={require("../../Images/Home/Medicine/Medicine3.jpg")}
+          // src={require("../../Images/Home/Tutoring/Tutoring3.jpg")}
           centered
           hidden={props.isLoading}
           className="Welcome-Background-Image"

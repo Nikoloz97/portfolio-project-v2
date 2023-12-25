@@ -14,7 +14,7 @@
 .Welcome-Background-Image {
   height: 100vh !important;
   width: 100vw !important;
-  filter: brightness(60%) !important;
+  filter: brightness(60%) blur(0px) grayscale(0%) !important;
 }
 
 .Welcome-Text {
