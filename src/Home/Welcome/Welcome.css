@@ -12,51 +12,73 @@
 }
 
 .Welcome-Page {
-  /* TODO: Make this 400vh */
-  height: 400vh;
-  width: 100vw !important;
-  background-image: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg"),
-    url("../../Images/Home/Coding/Coding10.jpg"),
-    url("../../Images/Home/Medicine/Medicine3.jpg"),
-    url("../../Images/Home/Tutoring/Tutoring3.jpg");
-  background-size: 100% 25%; /* Each image takes up 25% of the height */
-  background-position: center 0%, center 33%, center 66%, center 99%; /* Center each image */
-  background-repeat: no-repeat;
-}
-
-.Home-Page {
-  height: 400vh !important;
-  width: 100vw !important;
-}
-
-.Welcome-Screen {
-  background-image: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
-  background-size: 100vw 100vh; /* Each image takes up 25% of the height */
-  height: 100vh !important;
-}
-
-.Coding-Screen {
-  background-image: url("../../Images/Home/Coding/Coding10.jpg");
-  background-size: 100vw 100vh; /* Each image takes up 25% of the height */
-  height: 100vh !important;
-}
-
-.Medicine-Screen {
-  background-image: url("../../Images/Home/Medicine/Medicine3.jpg");
-  background-size: 100vw 100vh; /* Each image takes up 25% of the height */
-  height: 100vh !important;
-}
-
-.Tutoring-Screen {
-  background-image: url("../../Images/Home/Tutoring/Tutoring3.jpg");
-  background-size: 100vw 100vh; /* Each image takes up 25% of the height */
-  height: 100vh !important;
+  background-color: #282c34;
+  min-height: 94.1vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .Welcome-Background-Image {
-  height: 100vh !important;
-  width: 100vw !important;
-  filter: brightness(60%) blur(0px) grayscale(0%) !important;
+  filter: brightness(100%) blur(0px) grayscale(0%);
+  height: 100vh;
+  width: 100vw;
+}
+
+.Coding-Screen,
+.Medicine-Screen,
+.Tutoring-Screen {
+  position: relative;
+  height: 100vh;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.Coding-Screen::before,
+.Medicine-Screen::before,
+.Tutoring-Screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: 100% 100%;
+  z-index: 0;
+}
+
+.Coding-Screen::before {
+  background-image: url("../../Images/Home/Coding/Coding10.jpg");
+  filter: brightness(90%) blur(0px) grayscale(0%);
+}
+
+.Medicine-Screen::before {
+  background-image: url("../../Images/Home/Medicine/Medicine3.jpg");
+  filter: brightness(100%) blur(2px) grayscale(0%);
+}
+
+.Tutoring-Screen::before {
+  background-image: url("../../Images/Home/Tutoring/Tutoring3.jpg");
+  filter: brightness(100%) blur(2px) grayscale(0%);
+}
+
+.Coding-Content,
+.Medicine-Content,
+.Tutoring-Content {
+  position: relative;
+  z-index: 1;
+}
+
+.Medicine-Background-Image {
+  filter: brightness(100%) blur(0px) grayscale(0%);
+  height: 100vh;
+  width: 100vw;
+}
+
+.Tutoring-Background-Image {
+  filter: brightness(100%) blur(0px) grayscale(0%);
+  height: 100vh;
+  width: 100vw;
 }
 
 .Welcome-Text {

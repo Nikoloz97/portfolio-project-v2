@@ -61,11 +61,16 @@ const Welcome = (props) => {
   }, [isFirstLineComplete]);
 
   return (
-    <div className="Home-Page-2">
+    <div className="Welcome-Page">
       {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
       {/* <Loader content="Loading" active={true} /> */}
-
-      <div className="Welcome-Screen">
+      <div>
+        <Image
+          src={require("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg")}
+          centered
+          hidden={props.isLoading}
+          className="Welcome-Background-Image"
+        />
         <Grid className="Welcome-Text-Grid">
           <Grid.Column>
             <Grid.Row style={{ width: "25%" }}>
@@ -119,15 +124,15 @@ const Welcome = (props) => {
       </div>
 
       <div className="Coding-Screen">
-        <div>Coding Test</div>
+        <div className="Coding-Content">Coding Test</div>
       </div>
 
       <div className="Medicine-Screen">
-        <div>Medicine Test</div>
+        <div className="Medicine-Content">Medicine Test</div>
       </div>
 
       <div className="Tutoring-Screen">
-        <div>Tutoring Test</div>
+        <div className="Tutoring-Content">Tutoring Test</div>
       </div>
     </div>
   );
