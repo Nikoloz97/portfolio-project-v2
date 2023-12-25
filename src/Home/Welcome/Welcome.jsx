@@ -61,74 +61,74 @@ const Welcome = (props) => {
   }, [isFirstLineComplete]);
 
   return (
-    <div>
+    <div className="Home-Page-2">
       {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
       {/* <Loader content="Loading" active={true} /> */}
-      <div>
-        <Image
-          src={require("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg")}
-          // src={require("../../Images/Home/Coding/Coding10.jpg")}
-          // src={require("../../Images/Home/Medicine/Medicine3.jpg")}
-          // src={require("../../Images/Home/Tutoring/Tutoring3.jpg")}
-          centered
-          hidden={props.isLoading}
-          className="Welcome-Background-Image"
-        />
-      </div>
-      <Grid className="Welcome-Text-Grid">
-        <Grid.Column>
-          <Grid.Row style={{ width: "25%" }}>
-            <Header
-              className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
-                props.isSidebarVisible ? "Sidebar-Visible" : ""
-              }`}
-            >
-              {isFirstLineComplete ? (
-                <span>{displayedWelcomeTextLineOne}</span>
-              ) : (
-                <span className="Typewriter-Cursor">
-                  {displayedWelcomeTextLineOne}
-                </span>
-              )}
-            </Header>
-          </Grid.Row>
 
-          <Grid.Row>
-            <Header
-              className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
-                props.isSidebarVisible ? "Sidebar-Visible" : ""
-              }
-                `}
-            >
-              {isSecondLineComplete ? (
-                <span>{displayedWelcomeTextLineTwo}</span>
-              ) : (
-                <span
-                  className={`${
-                    isFirstLineComplete ? "Typewriter-Cursor" : ""
-                  }`}
-                >
-                  {displayedWelcomeTextLineTwo}
-                </span>
-              )}
-            </Header>
-          </Grid.Row>
-        </Grid.Column>
-      </Grid>
-
-      <div className="Welcome-Vertical-Carousel-Position">
-        <VerticalCarousel index={carouselIndex} content={carouselContent} />
+      <div className="Welcome-Screen">
+        <Grid className="Welcome-Text-Grid">
+          <Grid.Column>
+            <Grid.Row style={{ width: "25%" }}>
+              <Header
+                className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
+                  props.isSidebarVisible ? "Sidebar-Visible" : ""
+                }`}
+              >
+                {isFirstLineComplete ? (
+                  <span>{displayedWelcomeTextLineOne}</span>
+                ) : (
+                  <span className="Typewriter-Cursor">
+                    {displayedWelcomeTextLineOne}
+                  </span>
+                )}
+              </Header>
+            </Grid.Row>
+            <Grid.Row>
+              <Header
+                className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
+                  props.isSidebarVisible ? "Sidebar-Visible" : ""
+                }
+                  `}
+              >
+                {isSecondLineComplete ? (
+                  <span>{displayedWelcomeTextLineTwo}</span>
+                ) : (
+                  <span
+                    className={`${
+                      isFirstLineComplete ? "Typewriter-Cursor" : ""
+                    }`}
+                  >
+                    {displayedWelcomeTextLineTwo}
+                  </span>
+                )}
+              </Header>
+            </Grid.Row>
+          </Grid.Column>
+        </Grid>
+        <div className="Welcome-Vertical-Carousel-Position">
+          <VerticalCarousel index={carouselIndex} content={carouselContent} />
+        </div>
+        <div className="Welcome-Vertical-Carousel-Buttons-Position">
+          <VerticalCarouselButtons
+            index={carouselIndex}
+            setIndex={setCarouselIndex}
+            content={carouselContent}
+          />
+        </div>
+        <div className="Welcome-Vertical-Carousel-Ticker" />
       </div>
 
-      <div className="Welcome-Vertical-Carousel-Buttons-Position">
-        <VerticalCarouselButtons
-          index={carouselIndex}
-          setIndex={setCarouselIndex}
-          content={carouselContent}
-        />
+      <div className="Coding-Screen">
+        <div>Coding Test</div>
       </div>
 
-      <div className="Welcome-Vertical-Carousel-Ticker" />
+      <div className="Medicine-Screen">
+        <div>Medicine Test</div>
+      </div>
+
+      <div className="Tutoring-Screen">
+        <div>Tutoring Test</div>
+      </div>
     </div>
   );
 };

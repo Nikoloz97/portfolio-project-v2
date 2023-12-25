@@ -11,6 +11,48 @@
   z-index: 1;
 }
 
+.Welcome-Page {
+  /* TODO: Make this 400vh */
+  height: 400vh;
+  width: 100vw !important;
+  background-image: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg"),
+    url("../../Images/Home/Coding/Coding10.jpg"),
+    url("../../Images/Home/Medicine/Medicine3.jpg"),
+    url("../../Images/Home/Tutoring/Tutoring3.jpg");
+  background-size: 100% 25%; /* Each image takes up 25% of the height */
+  background-position: center 0%, center 33%, center 66%, center 99%; /* Center each image */
+  background-repeat: no-repeat;
+}
+
+.Home-Page {
+  height: 400vh !important;
+  width: 100vw !important;
+}
+
+.Welcome-Screen {
+  background-image: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
+  background-size: 100vw 100vh; /* Each image takes up 25% of the height */
+  height: 100vh !important;
+}
+
+.Coding-Screen {
+  background-image: url("../../Images/Home/Coding/Coding10.jpg");
+  background-size: 100vw 100vh; /* Each image takes up 25% of the height */
+  height: 100vh !important;
+}
+
+.Medicine-Screen {
+  background-image: url("../../Images/Home/Medicine/Medicine3.jpg");
+  background-size: 100vw 100vh; /* Each image takes up 25% of the height */
+  height: 100vh !important;
+}
+
+.Tutoring-Screen {
+  background-image: url("../../Images/Home/Tutoring/Tutoring3.jpg");
+  background-size: 100vw 100vh; /* Each image takes up 25% of the height */
+  height: 100vh !important;
+}
+
 .Welcome-Background-Image {
   height: 100vh !important;
   width: 100vw !important;

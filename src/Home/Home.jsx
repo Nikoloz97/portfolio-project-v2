@@ -45,7 +45,7 @@ const Home = (props) => {
 
   return (
     <>
-      <div className="Default-Page">
+      <div className="Home-Page">
         <Welcome
           setIsArrowVisible={setIsArrowVisible}
           isSidebarVisible={props.isSidebarVisible}
