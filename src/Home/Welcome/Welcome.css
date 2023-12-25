@@ -1,14 +1,6 @@
+/* General */
 .Typewriter-Cursor {
   border-right: 2px solid white; /* Simulate cursor blinking */
-}
-
-.Welcome-Text-Grid {
-  position: absolute !important;
-  top: 40%;
-  left: 10%;
-  width: 30%;
-  height: 30%;
-  z-index: 1;
 }
 
 .Welcome-Page {
@@ -18,12 +10,7 @@
   color: white;
 }
 
-.Welcome-Background-Image {
-  filter: brightness(100%) blur(0px) grayscale(0%);
-  height: 100vh;
-  width: 100vw;
-}
-
+.Welcome-Screen,
 .Coding-Screen,
 .Medicine-Screen,
 .Tutoring-Screen {
@@ -34,6 +21,7 @@
   align-items: center;
 }
 
+.Welcome-Screen::before,
 .Coding-Screen::before,
 .Medicine-Screen::before,
 .Tutoring-Screen::before {
@@ -45,6 +33,10 @@
   height: 100vh;
   background-size: 100% 100%;
   z-index: 0;
+}
+
+.Welcome-Screen::before {
+  background-image: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
 }
 
 .Coding-Screen::before {
@@ -62,6 +54,7 @@
   filter: brightness(100%) blur(2px) grayscale(0%);
 }
 
+.Welcome-Content,
 .Coding-Content,
 .Medicine-Content,
 .Tutoring-Content {
@@ -69,16 +62,8 @@
   z-index: 1;
 }
 
-.Medicine-Background-Image {
-  filter: brightness(100%) blur(0px) grayscale(0%);
-  height: 100vh;
-  width: 100vw;
-}
-
-.Tutoring-Background-Image {
-  filter: brightness(100%) blur(0px) grayscale(0%);
-  height: 100vh;
-  width: 100vw;
+.Welcome-Grid {
+  /* width: 93%; */
 }
 
 .Welcome-Text {
@@ -102,138 +87,17 @@
   bottom: 71.3%;
 }
 
-.Welcome-Container {
-  border-radius: 50%;
-  background-color: #31363f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem;
-  opacity: 0.2;
-  bottom: 5%;
-}
-
-.Welcome-Container.Desktop {
-  width: 40rem;
-  height: 40rem;
-}
-
-.Welcome-Container.Phone {
-  width: 15rem;
-  height: 15rem;
-}
-
-.Welcome-Container.Fade-In {
-  opacity: 1 !important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-  transition: opacity 1s ease-in-out, box-shadow 1s ease-in-out !important;
-}
-
-.Welcome-Button {
-  position: absolute;
-  background-color: rgba(57, 58, 69, 0.6) !important;
-  border-radius: 50% !important;
-  color: white !important;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  animation: welcome-buttons-glow 1.2s infinite alternate;
-}
-
-.Welcome-Button.Desktop {
-  width: 8rem;
-  height: 8rem;
-  font-size: 1.25rem !important;
-}
-
-.Welcome-Button.Phone {
-  width: 7rem;
-  height: 7rem;
-  font-size: 1rem !important;
-}
-
-.Welcome-Login.Desktop {
-  top: 15%;
-  left: 20%;
-}
-
-.Welcome-Signup.Desktop {
-  bottom: 15%;
-  right: 20%;
-}
-
-.Welcome-Login.Phone {
-  top: -50%;
-  left: -20%;
-}
-
-.Welcome-Signup.Phone {
-  bottom: -50%;
-  right: -20%;
-}
-
-.Welcome-Login.Fade-In,
-.Welcome-Signup.Fade-In {
-  opacity: 1;
-  transition: opacity 1s ease-in-out !important;
-}
-
-.Hovered-Welcome-Button {
-  background-color: #e3e6ec !important;
-}
-
-.Unhovered-Welcome-Button {
-  animation: welcome-button-scale-down 1s forwards;
-}
-
-.Welcome-Vertical-Carousel-Position {
-  position: absolute !important;
-  top: 33%;
-  right: 7%;
-}
-
-.Welcome-Vertical-Carousel-Buttons-Position {
-  position: absolute !important;
-  top: 43.5%;
-  right: 0%;
-}
-
 .Welcome-Vertical-Carousel-Ticker {
-  width: 6%;
+  width: 10rem;
   height: 1px;
   background-color: gray;
   position: absolute;
-  right: 0%;
   top: 50%;
+  right: 5%;
 }
 
 @keyframes fade-in-welcome {
   to {
     opacity: 1;
-  }
-}
-
-@keyframes welcome-button-scale-up {
-  to {
-    transform: scale(1.5);
-  }
-}
-
-@keyframes welcome-button-scale-down {
-  from {
-    transform: scale(1.5);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes welcome-buttons-glow {
-  0% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  }
-  100% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   }
 }

@@ -64,62 +64,67 @@ const Welcome = (props) => {
     <div className="Welcome-Page">
       {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
       {/* <Loader content="Loading" active={true} /> */}
-      <div>
-        <Image
-          src={require("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg")}
-          centered
-          hidden={props.isLoading}
-          className="Welcome-Background-Image"
-        />
-        <Grid className="Welcome-Text-Grid">
-          <Grid.Column>
-            <Grid.Row style={{ width: "25%" }}>
-              <Header
-                className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
-                  props.isSidebarVisible ? "Sidebar-Visible" : ""
-                }`}
-              >
-                {isFirstLineComplete ? (
-                  <span>{displayedWelcomeTextLineOne}</span>
-                ) : (
-                  <span className="Typewriter-Cursor">
-                    {displayedWelcomeTextLineOne}
-                  </span>
-                )}
-              </Header>
-            </Grid.Row>
-            <Grid.Row>
-              <Header
-                className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
-                  props.isSidebarVisible ? "Sidebar-Visible" : ""
-                }
-                  `}
-              >
-                {isSecondLineComplete ? (
-                  <span>{displayedWelcomeTextLineTwo}</span>
-                ) : (
-                  <span
-                    className={`${
-                      isFirstLineComplete ? "Typewriter-Cursor" : ""
-                    }`}
-                  >
-                    {displayedWelcomeTextLineTwo}
-                  </span>
-                )}
-              </Header>
-            </Grid.Row>
-          </Grid.Column>
-        </Grid>
-        <div className="Welcome-Vertical-Carousel-Position">
-          <VerticalCarousel index={carouselIndex} content={carouselContent} />
+      <div className="Welcome-Screen">
+        <div className="Welcome-Content">
+          <Grid className="Welcome-Grid">
+            <Grid.Column floated="left">
+              <Grid.Row style={{ width: "25%" }}>
+                <Header
+                  className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
+                    props.isSidebarVisible ? "Sidebar-Visible" : ""
+                  }`}
+                >
+                  {isFirstLineComplete ? (
+                    <span>{displayedWelcomeTextLineOne}</span>
+                  ) : (
+                    <span className="Typewriter-Cursor">
+                      {displayedWelcomeTextLineOne}
+                    </span>
+                  )}
+                </Header>
+              </Grid.Row>
+              <Grid.Row>
+                <Header
+                  className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
+                    props.isSidebarVisible ? "Sidebar-Visible" : ""
+                  }
+                    `}
+                >
+                  {isSecondLineComplete ? (
+                    <span>{displayedWelcomeTextLineTwo}</span>
+                  ) : (
+                    <span
+                      className={`${
+                        isFirstLineComplete ? "Typewriter-Cursor" : ""
+                      }`}
+                    >
+                      {displayedWelcomeTextLineTwo}
+                    </span>
+                  )}
+                </Header>
+              </Grid.Row>
+            </Grid.Column>
+
+            <Grid.Column style={{ width: "60rem" }}></Grid.Column>
+
+            <Grid.Column floated="right" style={{ width: "fit-content" }}>
+              <div>
+                <VerticalCarousel
+                  index={carouselIndex}
+                  content={carouselContent}
+                />
+              </div>
+            </Grid.Column>
+            <Grid.Column verticalAlign="middle">
+              <VerticalCarouselButtons
+                index={carouselIndex}
+                setIndex={setCarouselIndex}
+                content={carouselContent}
+              />
+            </Grid.Column>
+          </Grid>
         </div>
-        <div className="Welcome-Vertical-Carousel-Buttons-Position">
-          <VerticalCarouselButtons
-            index={carouselIndex}
-            setIndex={setCarouselIndex}
-            content={carouselContent}
-          />
-        </div>
+
         <div className="Welcome-Vertical-Carousel-Ticker" />
       </div>
 
