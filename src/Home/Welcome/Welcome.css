@@ -4,11 +4,10 @@
 }
 
 .Welcome-Page {
-  background-color: rgb(49, 50, 51);
+  background-color: rgb(36, 45, 44);
   min-height: 94.1vh;
   font-size: calc(10px + 2vmin);
   color: white;
-  height: 450vh !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -42,7 +41,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  background: linear-gradient(to top, rgb(49, 50, 51) 5%, rgba(0, 0, 0, 0) 50%),
+  background: linear-gradient(to top, rgb(5, 14, 19) 8%, rgba(5, 14, 19, 0) 40%),
     url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
   background-size: cover;
   background-position: center;
@@ -58,12 +57,12 @@
   height: 100vh;
   z-index: 0;
   background: linear-gradient(
-      to top,
-      rgb(49, 50, 51) 5%,
-      rgba(248, 247, 247, 0) 50%
+      to bottom,
+      rgb(5, 14, 19) 5%,
+      rgba(5, 14, 19, 0) 20%
     ),
-    linear-gradient(to bottom, rgb(49, 50, 51) 5%, rgba(248, 247, 247, 0) 50%),
-    url("../../Images/Home/Coding/Coding10.jpg");
+    linear-gradient(to top, rgb(5, 14, 19) 10%, rgba(248, 247, 247, 0) 20%),
+    url("../../Images/Home/Coding/Coding12.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -78,12 +77,12 @@
   height: 100vh;
   z-index: 0;
   background: linear-gradient(
-      to top,
-      rgb(49, 50, 51) 5%,
-      rgba(248, 247, 247, 0) 50%
+      to bottom,
+      rgb(5, 14, 19) 10%,
+      rgba(5, 14, 19, 0) 20%
     ),
-    linear-gradient(to bottom, rgb(49, 50, 51) 5%, rgba(248, 247, 247, 0) 50%),
-    url("../../Images/Home/Medicine/Medicine3.jpg");
+    linear-gradient(to top, rgb(0, 0, 0) 5%, rgba(248, 247, 247, 0) 20%),
+    url("../../Images/Home/Medicine/Medicine22.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -97,8 +96,12 @@
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  background: linear-gradient(rgb(49, 50, 51) 5%, rgba(248, 247, 247, 0) 50%),
-    url("../../Images/Home/Tutoring/Tutoring3.jpg");
+  background: linear-gradient(
+      to bottom,
+      rgb(0, 0, 0) 5%,
+      rgba(248, 247, 247, 0) 10%
+    ),
+    url("../../Images/Home/Tutoring/Tutoring9.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
