@@ -54,7 +54,6 @@
   filter: brightness(100%) blur(2px) grayscale(0%);
 }
 
-.Welcome-Content,
 .Coding-Content,
 .Medicine-Content,
 .Tutoring-Content {
@@ -62,15 +61,19 @@
   z-index: 1;
 }
 
-.Welcome-Grid {
-  /* width: 93%; */
-}
+/* Welcome screen */
 
 .Welcome-Text {
   color: white !important;
   height: 8rem;
   font-family: "Noto Sans JP", sans-serif !important;
   font-weight: 400 !important;
+}
+
+.Welcome-Text-Position {
+  position: absolute !important;
+  left: 5%;
+  top: 40%;
 }
 
 .Welcome-Text.Desktop {
@@ -87,6 +90,18 @@
   bottom: 71.3%;
 }
 
+.Welcome-Vertical-Carousel-Position {
+  position: absolute;
+  right: 15%;
+  top: 35%;
+}
+
+.Welcome-Vertical-Carousel-Buttons-Position {
+  position: absolute;
+  right: 7%;
+  top: 45%;
+}
+
 .Welcome-Vertical-Carousel-Ticker {
   width: 10rem;
   height: 1px;
@@ -94,10 +109,4 @@
   position: absolute;
   top: 50%;
   right: 5%;
-}
-
-@keyframes fade-in-welcome {
-  to {
-    opacity: 1;
-  }
 }
