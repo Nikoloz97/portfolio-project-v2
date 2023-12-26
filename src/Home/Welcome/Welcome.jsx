@@ -6,7 +6,7 @@ import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarous
 import "./Welcome.css";
 
 const Welcome = (props) => {
-  const { user, setUser, isUserSignedIn, isDesktop } = useUserContext();
+  const { user, isUserSignedIn, isDesktop } = useUserContext();
 
   const [displayedWelcomeTextLineOne, setDisplayedWelcomeTextLineOne] =
     useState("");
