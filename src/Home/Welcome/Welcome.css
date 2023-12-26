@@ -4,13 +4,13 @@
 }
 
 .Welcome-Page {
-  background-color: rgb(36, 45, 44);
+  background-color: rgb(26, 24, 24);
   min-height: 94.1vh;
   font-size: calc(10px + 2vmin);
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: auto;
 }
 
 .Welcome-Screen,
@@ -18,8 +18,8 @@
 .Medicine-Screen,
 .Tutoring-Screen {
   position: relative;
-  height: 100vh;
   display: flex !important;
+  height: 99vh; /* Fixes gap due as a result of blurring*/
   justify-content: center;
   align-items: center;
 }
@@ -55,14 +55,15 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
+  z-index: 1; /* Lower z-index compared to .Coding-Blur */
   background: linear-gradient(
       to bottom,
       rgb(5, 14, 19) 5%,
-      rgba(5, 14, 19, 0) 20%
+      rgba(5, 14, 19, 0) 30%
     ),
     linear-gradient(to top, rgb(5, 14, 19) 10%, rgba(248, 247, 247, 0) 20%),
     url("../../Images/Home/Coding/Coding12.jpeg");
+  filter: blur(1px) grayscale(10%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -79,10 +80,11 @@
   background: linear-gradient(
       to bottom,
       rgb(5, 14, 19) 10%,
-      rgba(5, 14, 19, 0) 20%
+      rgba(248, 247, 247, 0) 20%
     ),
     linear-gradient(to top, rgb(0, 0, 0) 5%, rgba(248, 247, 247, 0) 20%),
     url("../../Images/Home/Medicine/Medicine22.jpeg");
+  filter: blur(1px);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
