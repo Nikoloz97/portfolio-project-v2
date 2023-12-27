@@ -19,9 +19,13 @@
 .Tutoring-Screen {
   position: relative;
   display: flex !important;
-  height: 99vh; /* Fixes gap due as a result of blurring*/
+  height: 99vh; /* Fixes gap due as a result of blur filter*/
   justify-content: center;
   align-items: center;
+}
+
+.Tutoring-Screen {
+  height: 100vh;
 }
 
 .Coding-Content,
@@ -41,7 +45,11 @@
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  background: linear-gradient(to top, rgb(5, 14, 19) 8%, rgba(5, 14, 19, 0) 40%),
+  background: linear-gradient(
+      to top,
+      rgb(13, 20, 21) 8%,
+      rgba(5, 14, 19, 0) 40%
+    ),
     url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
   background-size: cover;
   background-position: center;
@@ -58,16 +66,17 @@
   z-index: 1; /* Lower z-index compared to .Coding-Blur */
   background: linear-gradient(
       to bottom,
-      rgb(5, 14, 19) 5%,
-      rgba(5, 14, 19, 0) 30%
+      rgb(7, 22, 31) 8%,
+      rgba(5, 14, 19, 0) 40%
     ),
-    linear-gradient(to top, rgb(5, 14, 19) 10%, rgba(248, 247, 247, 0) 20%),
+    linear-gradient(to top, rgb(7, 22, 31) 8%, rgba(5, 14, 19, 0) 40%),
     url("../../Images/Home/Coding/Coding12.jpeg");
   filter: blur(1px) grayscale(10%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
+/* -6, +2, +10 */
 
 .Medicine-Screen::before {
   content: "";
@@ -79,12 +88,13 @@
   z-index: 0;
   background: linear-gradient(
       to bottom,
-      rgb(5, 14, 19) 10%,
-      rgba(248, 247, 247, 0) 20%
+      rgb(6, 19, 31) 8%,
+      rgba(8, 20, 27, 0) 40%
     ),
-    linear-gradient(to top, rgb(0, 0, 0) 5%, rgba(248, 247, 247, 0) 20%),
+    linear-gradient(to top, rgb(7.5, 15, 26) 8%, rgba(8, 20, 27, 0) 40%),
     url("../../Images/Home/Medicine/Medicine22.jpeg");
-  filter: blur(1px);
+  filter: blur(1px) grayscale(10%) hue-rotate(-15deg) brightness(100%)
+    sepia(0.5);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -100,10 +110,11 @@
   z-index: 0;
   background: linear-gradient(
       to bottom,
-      rgb(0, 0, 0) 5%,
-      rgba(248, 247, 247, 0) 10%
+      rgb(6, 19, 31) 8%,
+      rgba(8, 20, 27, 0) 40%
     ),
     url("../../Images/Home/Tutoring/Tutoring9.jpeg");
+  filter: blur(1px) grayscale(10%) hue-rotate(0deg) brightness(80%) sepia(0.5);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
