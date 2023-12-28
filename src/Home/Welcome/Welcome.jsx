@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header, Grid, Image } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarousel from "../../Utils/VerticalCarousel/VerticalCarousel";
 import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarouselButtons";
@@ -115,18 +115,6 @@ const Welcome = (props) => {
         </div>
 
         <div className="Welcome-Vertical-Carousel-Ticker" />
-      </div>
-
-      <div className="Coding-Screen">
-        <div className="Coding-Content">Coding Test</div>
-      </div>
-
-      <div className="Medicine-Screen">
-        <div className="Medicine-Content">Medicine Test</div>
-      </div>
-
-      <div className="Tutoring-Screen">
-        <div className="Tutoring-Content">Tutoring Test</div>
       </div>
     </div>
   );

@@ -1,5 +1,9 @@
 import { React } from "react";
 import Welcome from "./Welcome/Welcome";
+import Coding from "./Coding";
+import Medicine from "./Medicine";
+import Tutoring from "./Tutoring";
+
 import "./Home.css";
 
 const Home = () => {
@@ -7,6 +11,9 @@ const Home = () => {
     <>
       <div className="Home-Page">
         <Welcome />
+        <Coding />
+        <Medicine />
+        <Tutoring />
       </div>
     </>
   );
