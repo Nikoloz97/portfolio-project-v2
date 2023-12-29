@@ -1,5 +1,5 @@
 import React from "react";
-import "./Welcome/Welcome.css";
+import "./Home.css";
 
 const Tutoring = (props) => {
   return (

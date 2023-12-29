@@ -64,57 +64,72 @@ const Welcome = (props) => {
     <div className="Welcome-Page">
       {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
       {/* <Loader content="Loading" active={true} /> */}
-      <div className="Welcome-Screen">
-        <div className="Welcome-Content">
-          <div className="Welcome-Text-Position">
-            <Header
-              className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
-                props.isSidebarVisible ? "Sidebar-Visible" : ""
-              }`}
-            >
-              {isFirstLineComplete ? (
-                <span>{displayedWelcomeTextLineOne}</span>
-              ) : (
-                <span className="Typewriter-Cursor">
-                  {displayedWelcomeTextLineOne}
-                </span>
-              )}
-            </Header>
+      <div className={`Welcome-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
+        <div
+          className={`Welcome-Text-Container ${
+            isDesktop ? "Desktop" : "Phone"
+          }`}
+        >
+          <Header
+            style={{ marginBottom: "-20px" }}
+            textAlign={isDesktop ? "left" : "center"}
+            className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
+              props.isSidebarVisible ? "Sidebar-Visible" : ""
+            }`}
+          >
+            {isFirstLineComplete ? (
+              <span>{displayedWelcomeTextLineOne}</span>
+            ) : (
+              <span className="Typewriter-Cursor">
+                {displayedWelcomeTextLineOne}
+              </span>
+            )}
+          </Header>
 
-            <Header
-              className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
-                props.isSidebarVisible ? "Sidebar-Visible" : ""
-              }
+          <Header
+            textAlign={isDesktop ? "left" : "center"}
+            className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
+              props.isSidebarVisible ? "Sidebar-Visible" : ""
+            }
                     `}
-            >
-              {isSecondLineComplete ? (
-                <span>{displayedWelcomeTextLineTwo}</span>
-              ) : (
-                <span
-                  className={`${
-                    isFirstLineComplete ? "Typewriter-Cursor" : ""
-                  }`}
-                >
-                  {displayedWelcomeTextLineTwo}
-                </span>
-              )}
-            </Header>
-          </div>
-
-          <div className="Welcome-Vertical-Carousel-Position">
-            <VerticalCarousel index={carouselIndex} content={carouselContent} />
-          </div>
-
-          <div className="Welcome-Vertical-Carousel-Buttons-Position">
-            <VerticalCarouselButtons
-              index={carouselIndex}
-              setIndex={setCarouselIndex}
-              content={carouselContent}
-            />
-          </div>
+          >
+            {isSecondLineComplete ? (
+              <span>{displayedWelcomeTextLineTwo}</span>
+            ) : (
+              <span
+                className={`${isFirstLineComplete ? "Typewriter-Cursor" : ""}`}
+              >
+                {displayedWelcomeTextLineTwo}
+              </span>
+            )}
+          </Header>
         </div>
 
-        <div className="Welcome-Vertical-Carousel-Ticker" />
+        <div
+          className={`Welcome-Vertical-Carousel-Position ${
+            isDesktop ? "Desktop" : "Phone"
+          }`}
+        >
+          <VerticalCarousel index={carouselIndex} content={carouselContent} />
+        </div>
+
+        <div
+          className={`Welcome-Vertical-Carousel-Buttons-Position ${
+            isDesktop ? "Desktop" : "Phone"
+          }`}
+        >
+          <VerticalCarouselButtons
+            index={carouselIndex}
+            setIndex={setCarouselIndex}
+            content={carouselContent}
+          />
+        </div>
+
+        <div
+          className={`Welcome-Vertical-Carousel-Ticker ${
+            isDesktop ? "Desktop" : "Phone"
+          }`}
+        />
       </div>
     </div>
   );

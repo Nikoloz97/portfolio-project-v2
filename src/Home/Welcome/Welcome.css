@@ -13,133 +13,36 @@
   height: auto;
 }
 
-.Welcome-Screen,
-.Coding-Screen,
-.Medicine-Screen,
-.Tutoring-Screen {
-  position: relative;
-  display: flex !important;
-  height: 99vh; /* Fixes gap due as a result of blur filter*/
-  justify-content: center;
-  align-items: center;
-}
-
-.Tutoring-Screen {
-  height: 100vh;
-}
-
-.Coding-Content,
-.Medicine-Content,
-.Tutoring-Content {
-  position: relative;
-  z-index: 1;
-}
-
-/* Welcome screen */
-
-.Welcome-Screen::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  background: linear-gradient(
-      to top,
-      rgb(13, 20, 21) 8%,
-      rgba(5, 14, 19, 0) 40%
-    ),
-    url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.Coding-Screen::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1; /* Lower z-index compared to .Coding-Blur */
-  background: linear-gradient(
-      to bottom,
-      rgb(7, 22, 31) 8%,
-      rgba(5, 14, 19, 0) 40%
-    ),
-    linear-gradient(to top, rgb(7, 22, 31) 8%, rgba(5, 14, 19, 0) 40%),
-    url("../../Images/Home/Coding/Coding12.jpeg");
-  filter: blur(0px) grayscale(10%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-/* -6, +2, +10 */
-
-.Medicine-Screen::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  background: linear-gradient(
-      to bottom,
-      rgb(6, 19, 31) 8%,
-      rgba(8, 20, 27, 0) 20%
-    ),
-    linear-gradient(to top, rgb(7.5, 15, 26) 8%, rgba(8, 20, 27, 0) 40%),
-    url("../../Images/Home/Medicine/Medicine26.jpeg");
-  filter: blur(0px) grayscale(0%) hue-rotate(-15deg) brightness(100%) sepia(0.5);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.Tutoring-Screen::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  background: linear-gradient(
-      to bottom,
-      rgb(6, 19, 31) 8%,
-      rgba(8, 20, 27, 0) 40%
-    ),
-    url("../../Images/Home/Tutoring/Tutoring9.jpeg");
-  filter: blur(0px) grayscale(10%) hue-rotate(0deg) brightness(80%) sepia(0.5);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.Welcome-Text {
-  color: white !important;
-  height: 8rem;
-  font-family: "Noto Sans JP", sans-serif !important;
-  font-weight: 400 !important;
-}
-
-.Welcome-Text-Position {
+/* .Welcome-Text-Position {
   position: absolute !important;
+} */
+
+.Welcome-Text-Container.Desktop {
+  position: absolute;
   left: 5%;
   top: 40%;
 }
 
+.Welcome-Text-Container.Phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: 5%;
+}
+
+.Welcome-Text {
+  color: white !important;
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: 400 !important;
+}
+
 .Welcome-Text.Desktop {
   font-size: 7rem !important;
-  width: 30rem !important;
 }
 
 .Welcome-Text.Phone {
-  left: 38%;
-  bottom: 40.5%;
+  font-size: 5rem !important;
 }
 
 .Welcome-Text.Phone.Sidebar-Visible {
@@ -148,21 +51,48 @@
 
 .Welcome-Vertical-Carousel-Position {
   position: absolute;
+}
+
+.Welcome-Vertical-Carousel-Position.Desktop {
   right: 15%;
   top: 35%;
 }
 
+.Welcome-Vertical-Carousel-Position.Phone {
+  right: 27.5%;
+  top: 50%;
+}
+
 .Welcome-Vertical-Carousel-Buttons-Position {
   position: absolute;
+}
+
+.Welcome-Vertical-Carousel-Buttons-Position.Desktop {
   right: 7%;
   top: 45.5%;
 }
 
+.Welcome-Vertical-Carousel-Buttons-Position.Phone {
+  right: 0%;
+  top: 60%;
+}
+
 .Welcome-Vertical-Carousel-Ticker {
+  position: absolute;
+}
+
+.Welcome-Vertical-Carousel-Ticker.Desktop {
+  background-color: gray;
   width: 10rem;
   height: 1px;
-  background-color: gray;
-  position: absolute;
   top: 52%;
   right: 5%;
+}
+
+.Welcome-Vertical-Carousel-Ticker.Phone {
+  background-color: rgba(255, 255, 255, 0.651);
+  width: 7rem;
+  height: 1px;
+  top: 66.5%;
+  right: 0%;
 }
