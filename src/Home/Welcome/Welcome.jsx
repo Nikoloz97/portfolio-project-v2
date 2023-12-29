@@ -90,8 +90,7 @@ const Welcome = (props) => {
             textAlign={isDesktop ? "left" : "center"}
             className={`Welcome-Text ${isDesktop ? "Desktop" : "Phone"} ${
               props.isSidebarVisible ? "Sidebar-Visible" : ""
-            }
-                    `}
+            }`}
           >
             {isSecondLineComplete ? (
               <span>{displayedWelcomeTextLineTwo}</span>

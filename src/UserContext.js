@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
 
   const isDesktop = useMediaQuery({
-    query: "(min-width: 1224px)",
+    query: "(min-width: 1444px)",
   });
 
   return (

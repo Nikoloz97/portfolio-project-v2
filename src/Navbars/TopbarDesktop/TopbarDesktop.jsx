@@ -12,7 +12,7 @@ const TopbarDesktop = () => {
   return (
     <div>
       <Menu className="Topbar-Desktop" id="Topbar-Bottom-Border">
-        <Menu.Menu>
+        <Menu.Menu position="left">
           <MenuItem>
             <Image
               src={require("../../Images/Logo/Borjgali_White.png")}
@@ -26,7 +26,7 @@ const TopbarDesktop = () => {
           </MenuItem>
         </Menu.Menu>
 
-        <Menu.Menu>
+        <Menu.Menu className="Topbar-Desktop-Options">
           <MenuItem as={Link} to="/">
             <Button
               className={`Topbar-Desktop-Button ${
@@ -79,7 +79,7 @@ const TopbarDesktop = () => {
           </MenuItem>
         </Menu.Menu>
 
-        <Menu.Menu>
+        <Menu.Menu position="right">
           {user == undefined && user == null ? (
             <div style={{ display: "flex" }}>
               <MenuItem

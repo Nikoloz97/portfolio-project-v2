@@ -1,4 +1,23 @@
-.Topbar {
-  background-color: #383c43 !important;
-  border-radius: 0 !important;
+.Topbar-Phone {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0) !important;
+  z-index: 1;
+  width: 100%;
+  border-radius: 0% !important;
+}
+
+.Topbar-Phone-Hamburger-Menu {
+  background-color: transparent !important;
+  color: white !important;
+  border: 0.5px solid white !important;
+}
+
+.Topbar-Phone-User-Buttons {
+  background-color: transparent !important;
+  border: 0.5px solid white !important;
+  height: 2rem;
+  width: 5rem;
+  border-radius: 2rem !important;
+  color: white !important;
+  font-size: 0.75rem !important;
 }

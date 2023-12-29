@@ -7,7 +7,7 @@ import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
 import TopbarPhone from "./Navbars/TopbarPhone/TopbarPhone.jsx";
 import SidebarPhone from "./Navbars/SidebarPhone/SidebarPhone.jsx";
-import TopbarDesktopLayover from "./Utils/TopbarDesktopLayover.jsx";
+import TopbarLayover from "./Utils/TopbarLayover.jsx";
 import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
 import Kronos from "./Projects/Clocks/Kronos";
@@ -61,113 +61,113 @@ function AppRouter() {
             <Route
               path=""
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <Home />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/blog"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <Blog />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/contact"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <Contact />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/projects"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <Projects />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/projects/calculator"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <Calculator />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/projects/kronos"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <Kronos />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/projects/fantasy-basketball"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <FantasyBasketball />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/projects/fantasy-basketball/team-analyzer"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <TeamAnalyzer />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/projects/fantasy-basketball/schedule-analyzer"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <ScheduleAnalyzer />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/projects/geography-game"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <GeographyGame />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/forumPage"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <ForumPage />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/login"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <Login />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/signup"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <SignUp />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
             <Route
               path="/profilePage"
               element={
-                <TopbarDesktopLayover>
+                <TopbarLayover>
                   <ProfilePage />
-                </TopbarDesktopLayover>
+                </TopbarLayover>
               }
             />
           </Routes>
@@ -175,7 +175,6 @@ function AppRouter() {
       ) : (
         <BrowserRouter>
           <div className={`app-container ${isSidebarVisible ? "dimmed" : ""}`}>
-            <TopbarPhone toggleSidebarVisibility={toggleSidebarVisibility} />
             <Sidebar
               className="Sidebar"
               id="Sidebar-Overflow"
@@ -190,37 +189,146 @@ function AppRouter() {
               <Route
                 path=""
                 element={
-                  <Home
+                  <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
-                    isSidebarVisible={isSidebarVisible}
-                  />
+                  >
+                    <Home
+                      toggleSidebarVisibility={toggleSidebarVisibility}
+                      isSidebarVisible={isSidebarVisible}
+                    />
+                  </TopbarLayover>
                 }
               />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/calculator" element={<Calculator />} />
-              <Route path="/projects/kronos" element={<Kronos />} />
+              <Route
+                path="/blog"
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <Blog />
+                  </TopbarLayover>
+                }
+              />
+              <Route
+                path="/contact"
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <Contact />
+                  </TopbarLayover>
+                }
+              />
+              <Route
+                path="/projects"
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <Projects />
+                  </TopbarLayover>
+                }
+              />
+              <Route
+                path="/projects/calculator"
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <Calculator />
+                  </TopbarLayover>
+                }
+              />
+              <Route
+                path="/projects/kronos"
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <Kronos />
+                  </TopbarLayover>
+                }
+              />
               <Route
                 path="/projects/fantasy-basketball"
-                element={<FantasyBasketball />}
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <FantasyBasketball />
+                  </TopbarLayover>
+                }
               />
               <Route
                 path="/projects/fantasy-basketball/team-analyzer"
-                element={<TeamAnalyzer />}
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <TeamAnalyzer />
+                  </TopbarLayover>
+                }
               />
               <Route
                 path="/projects/fantasy-basketball/schedule-analyzer"
-                element={<ScheduleAnalyzer />}
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <ScheduleAnalyzer />
+                  </TopbarLayover>
+                }
               />
               <Route
                 path="/projects/geography-game"
-                element={<GeographyGame />}
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <GeographyGame />
+                  </TopbarLayover>
+                }
               />
-              <Route path="/forumPage" element={<ForumPage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/profilePage" element={<ProfilePage />} />
+              <Route
+                path="/forumPage"
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <ForumPage />
+                  </TopbarLayover>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <Login />
+                  </TopbarLayover>
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <SignUp />
+                  </TopbarLayover>
+                }
+              />
+              <Route
+                path="/profilePage"
+                element={
+                  <TopbarLayover
+                    toggleSidebarVisibility={toggleSidebarVisibility}
+                  >
+                    <ProfilePage />
+                  </TopbarLayover>
+                }
+              />
             </Routes>
           </div>
         </BrowserRouter>

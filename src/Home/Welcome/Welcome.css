@@ -43,6 +43,7 @@
 
 .Welcome-Text.Phone {
   font-size: 5rem !important;
+  height: 90px;
 }
 
 .Welcome-Text.Phone.Sidebar-Visible {

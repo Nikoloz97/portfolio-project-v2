@@ -9,33 +9,42 @@ const TopbarPhone = (props) => {
 
   return (
     <div>
-      <Menu className="Topbar">
+      <Menu className="Topbar-Phone">
         <MenuItem>
           <Button
             icon
             onClick={props.toggleSidebarVisibility}
+            className="Topbar-Phone-Hamburger-Menu"
             style={{ width: "4rem" }}
           >
             <Icon name="bars"></Icon>
           </Button>
         </MenuItem>
-        <Menu.Menu position="right">
-          <MenuItem as={Link} to={user ? "/profilePage" : "/login"}>
-            <Header className="Profile-Message" as="h5">
-              {user !== undefined && user !== null
-                ? `Welcome, ${user.firstName}`
-                : "Log In / Sign Up Here"}
-            </Header>
 
+        <Menu.Menu position="left">
+          <MenuItem>
             <Image
-              src={
-                user !== undefined && user !== null && user.profileURL !== null
-                  ? user.profileURL
-                  : "https://react.semantic-ui.com/images/wireframe/square-image.png"
-              }
-              avatar
+              src={require("../../Images/Logo/Borjgali_White.png")}
+              style={{ height: "2rem" }}
             />
           </MenuItem>
+          <MenuItem as={Link} to="/">
+            <Header className="Topbar-Desktop-Logo-Text">
+              Nick's Portfolio
+            </Header>
+          </MenuItem>
+        </Menu.Menu>
+
+        <Menu.Menu position="right">
+          {user == undefined && user == null ? (
+            <div style={{ display: "flex" }}>
+              <MenuItem as={Link} to="/login">
+                <Button className="Topbar-Phone-User-Buttons" content="Login" />
+              </MenuItem>
+            </div>
+          ) : (
+            <Image src={user.profileURL} avatar />
+          )}
         </Menu.Menu>
       </Menu>
     </div>
