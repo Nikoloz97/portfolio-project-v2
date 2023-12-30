@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, MenuItem, Button, Icon, Image, Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
@@ -6,10 +6,43 @@ import "./TopbarPhone.css";
 
 const TopbarPhone = (props) => {
   const { user } = useUserContext();
+  const [scrolled, setScrolled] = useState(false);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 70) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (scrolled) {
+      const delayShowing = setTimeout(() => {
+        setShow(true);
+      }, 20);
+      return () => {
+        clearTimeout(delayShowing);
+      };
+    } else {
+      setShow(false);
+    }
+  }, [scrolled]);
 
   return (
     <div>
-      <Menu className="Topbar-Phone">
+      <Menu
+        className={`Topbar-Phone ${scrolled ? "Scrolled" : ""} ${
+          show ? "Show" : ""
+        }`}
+      >
         <MenuItem>
           <Button
             icon
@@ -29,9 +62,7 @@ const TopbarPhone = (props) => {
             />
           </MenuItem>
           <MenuItem as={Link} to="/">
-            <Header className="Topbar-Desktop-Logo-Text">
-              Nick's Portfolio
-            </Header>
+            <Header className="Topbar-Phone-Logo-Text">Nick's Portfolio</Header>
           </MenuItem>
         </Menu.Menu>
 

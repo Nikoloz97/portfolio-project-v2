@@ -1,15 +1,33 @@
 .Topbar-Phone {
   position: absolute;
   background-color: rgba(0, 0, 0, 0) !important;
-  z-index: 1;
+  z-index: 9999;
   width: 100%;
   border-radius: 0% !important;
+}
+
+.Topbar-Phone.Scrolled {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  top: -100%;
+  transition: top 0.5s !important;
+}
+
+.Topbar-Phone.Scrolled.Show {
+  top: 0;
 }
 
 .Topbar-Phone-Hamburger-Menu {
   background-color: transparent !important;
   color: white !important;
   border: 0.5px solid white !important;
+}
+
+.Topbar-Phone-Logo-Text {
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: 400 !important;
+  color: white !important;
+  margin-left: -1rem !important;
 }
 
 .Topbar-Phone-User-Buttons {
