@@ -7,7 +7,11 @@ import "./TopbarDesktop.css";
 const TopbarDesktop = () => {
   const { user } = useUserContext();
 
-  const [redButtonName, setRedButtonName] = useState("Home");
+  const [selectionName, setSelectionName] = useState("Home");
+
+  const handleButtonClick = (buttonName) => {
+    setSelectionName(buttonName);
+  };
 
   return (
     <div>
@@ -29,50 +33,40 @@ const TopbarDesktop = () => {
         <Menu.Menu className="Topbar-Desktop-Options">
           <MenuItem as={Link} to="/">
             <Button
-              className={`Topbar-Desktop-Button ${
-                redButtonName === "Home" ? "active" : ""
-              }`}
-              onClick={() => setRedButtonName("Home")}
+              className="Topbar-Desktop-Button"
+              onClick={() => handleButtonClick("Home")}
             >
               Home
             </Button>
           </MenuItem>
           <MenuItem as={Link} to="/blog">
             <Button
-              className={`Topbar-Desktop-Button ${
-                redButtonName === "Blog" ? "active" : ""
-              }`}
-              onClick={() => setRedButtonName("Blog")}
+              className="Topbar-Desktop-Button"
+              onClick={() => handleButtonClick("Blog")}
             >
               Blog
             </Button>
           </MenuItem>
           <MenuItem as={Link} to="/projects">
             <Button
-              className={`Topbar-Desktop-Button ${
-                redButtonName === "Projects" ? "active" : ""
-              }`}
-              onClick={() => setRedButtonName("Projects")}
+              className="Topbar-Desktop-Button"
+              onClick={() => handleButtonClick("Projects")}
             >
               Projects
             </Button>
           </MenuItem>
           <MenuItem as={Link} to="/forumPage">
             <Button
-              className={`Topbar-Desktop-Button ${
-                redButtonName === "Forum" ? "active" : ""
-              }`}
-              onClick={() => setRedButtonName("Forum")}
+              className="Topbar-Desktop-Button"
+              onClick={() => handleButtonClick("Forum")}
             >
               Forum
             </Button>
           </MenuItem>
           <MenuItem as={Link} to="/contact">
             <Button
-              className={`Topbar-Desktop-Button ${
-                redButtonName === "Contact" ? "active" : ""
-              }`}
-              onClick={() => setRedButtonName("Contact")}
+              className="Topbar-Desktop-Button"
+              onClick={() => handleButtonClick("Contact")}
             >
               Contact
             </Button>
@@ -85,32 +79,23 @@ const TopbarDesktop = () => {
               <MenuItem
                 as={Link}
                 to="/login"
-                onClick={() => setRedButtonName("Login")}
+                onClick={() => handleButtonClick("Login")}
               >
-                <Button
-                  className={`Topbar-Desktop-User-Buttons ${
-                    redButtonName === "Login" ? "active" : ""
-                  }`}
-                  content="Login"
-                />
+                <Button className="Topbar-Desktop-Button" content="Login" />
               </MenuItem>
               <MenuItem
                 as={Link}
                 to="/signup"
-                onClick={() => setRedButtonName("Signup")}
+                onClick={() => handleButtonClick("Signup")}
               >
-                <Button
-                  className={`Topbar-Desktop-User-Buttons ${
-                    redButtonName === "Signup" ? "active" : ""
-                  }`}
-                  content="Signup"
-                />
+                <Button className="Topbar-Desktop-Button" content="Signup" />
               </MenuItem>
             </div>
           ) : (
             <Image src={user.profileURL} avatar />
           )}
         </Menu.Menu>
+        <div className={`Topbar-Desktop-Selection-Bar ${selectionName}`} />
       </Menu>
     </div>
   );

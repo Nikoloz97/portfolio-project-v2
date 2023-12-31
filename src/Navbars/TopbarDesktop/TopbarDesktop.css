@@ -29,6 +29,13 @@
   margin-right: -10px !important;
 }
 
+.Topbar-Desktop-Logo-Text {
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: 400 !important;
+  color: white !important;
+  margin-left: -1rem !important;
+}
+
 .Topbar-Desktop-Button {
   background-color: transparent !important;
   color: white !important;
@@ -38,27 +45,42 @@
   font-weight: 200 !important;
 }
 
-.Topbar-Desktop-Logo-Text {
-  font-family: "Noto Sans JP", sans-serif !important;
-  font-weight: 400 !important;
-  color: white !important;
-  margin-left: -1rem !important;
-}
-
-.Topbar-Desktop-Button::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 100%;
+.Topbar-Desktop-Selection-Bar {
+  position: absolute !important;
+  top: 54px !important;
+  left: 215px;
+  width: 100px;
   height: 0.7px;
-  background-color: #ccc;
-  transition: background-color 0.3s;
+  background-color: rgba(255, 0, 0, 0.6);
+  transition: transform 0.5s ease;
 }
 
-.Topbar-Desktop-Button.active::after {
-  background-color: red !important; /* Change the color to red when the button is active */
+.Topbar-Desktop-Selection-Bar.Home {
+  transform: translateX(0%);
+}
+
+.Topbar-Desktop-Selection-Bar.Blog {
+  transform: translateX(130%);
+}
+
+.Topbar-Desktop-Selection-Bar.Projects {
+  transform: translateX(262%);
+}
+
+.Topbar-Desktop-Selection-Bar.Forum {
+  transform: translateX(400%);
+}
+
+.Topbar-Desktop-Selection-Bar.Contact {
+  transform: translateX(540%);
+}
+
+.Topbar-Desktop-Selection-Bar.Login {
+  transform: translateX(659%);
+}
+
+.Topbar-Desktop-Selection-Bar.Signup {
+  transform: translateX(760%);
 }
 
 .Topbar-Desktop-User-Buttons {
@@ -68,20 +90,4 @@
   border-radius: 2rem !important;
   color: black !important;
   font-size: 0.75rem !important;
-}
-
-.Topbar-Desktop-User-Buttons::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -13.6px;
-  left: 0;
-  width: 100%;
-  height: 0.6px;
-  background-color: #ccc;
-  transition: background-color 0.3s;
-}
-
-.Topbar-Desktop-User-Buttons.active::after {
-  background-color: red !important; /* Change the color to red when the button is active */
 }
