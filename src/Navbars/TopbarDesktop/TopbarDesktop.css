@@ -48,7 +48,7 @@
 .Topbar-Desktop-Selection-Bar {
   position: absolute !important;
   top: 54px !important;
-  left: 215px;
+  left: 265px;
   width: 100px;
   height: 0.7px;
   background-color: rgba(255, 0, 0, 0.6);
@@ -60,27 +60,27 @@
 }
 
 .Topbar-Desktop-Selection-Bar.Blog {
-  transform: translateX(130%);
+  transform: translateX(165%);
 }
 
 .Topbar-Desktop-Selection-Bar.Projects {
-  transform: translateX(262%);
+  transform: translateX(330%);
 }
 
 .Topbar-Desktop-Selection-Bar.Forum {
-  transform: translateX(400%);
+  transform: translateX(500%);
 }
 
 .Topbar-Desktop-Selection-Bar.Contact {
-  transform: translateX(540%);
+  transform: translateX(685%);
 }
 
 .Topbar-Desktop-Selection-Bar.Login {
-  transform: translateX(659%);
+  transform: translateX(845%);
 }
 
 .Topbar-Desktop-Selection-Bar.Signup {
-  transform: translateX(760%);
+  transform: translateX(970%);
 }
 
 .Topbar-Desktop-User-Buttons {

@@ -1,14 +1,25 @@
 /* .Sidebar-Container {
-  height: 100vh !important;
+  border: 1px solid white;
 } */
+
+.ui.segment {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  padding: 0 !important;
+}
 
 .Sidebar-Phone {
   background-color: rgba(255, 255, 255, 0) !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-evenly;
   align-items: center;
-  height: 100vh !important;
+  height: 100.5vh !important;
+}
+
+.Sidebar-Button-Container {
+  height: 18.6%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .Sidebar-Button {
@@ -20,6 +31,35 @@
   padding: 0 !important;
 }
 
-.ui.segment {
-  background-color: rgba(0, 0, 0, 0.2) !important;
+.Sidebar-Phone-Selection-Bar {
+  position: absolute !important;
+  left: 99.5%;
+  width: 1px !important;
+  height: 18.6%;
+  background-color: rgba(255, 255, 255, 0.5);
+  top: 0px;
+  transition: transform 0.5s ease;
+}
+
+.Sidebar-Phone-Selection-Bar.Home {
+  transform: translateY(0);
+}
+
+.Sidebar-Phone-Selection-Bar.Blog {
+  transform: translateY(101%);
+  height: 18%;
+}
+
+.Sidebar-Phone-Selection-Bar.Projects {
+  transform: translateY(201.5%);
+  height: 18.6%;
+}
+
+.Sidebar-Phone-Selection-Bar.Forum {
+  transform: translateY(301.5%);
+  height: 18.65%;
+}
+
+.Sidebar-Phone-Selection-Bar.Contact {
+  transform: translateY(403%);
 }
