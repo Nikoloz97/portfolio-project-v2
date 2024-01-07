@@ -13,6 +13,7 @@
   flex-direction: column !important;
   align-items: center;
   height: 100.5vh !important;
+  z-index: 9998;
 }
 
 .Sidebar-Button-Container {

@@ -96,7 +96,7 @@
 /* Monitor */
 
 .Topbar-Desktop-Selection-Bar.Monitor {
-  left: 270px;
+  left: 265px;
 }
 
 .Topbar-Desktop-Selection-Bar.Monitor.Home {
@@ -124,7 +124,7 @@
 }
 
 .Topbar-Desktop-Selection-Bar.Monitor.Signup {
-  transform: translateX(970%);
+  transform: translateX(965%);
 }
 
 .Topbar-Desktop-User-Buttons {
