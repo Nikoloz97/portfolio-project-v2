@@ -15,7 +15,7 @@ const TopbarDesktop = () => {
 
   return (
     <div>
-      <Menu className="Topbar-Desktop" id="Topbar-Bottom-Border">
+      <Menu className="Topbar-Desktop" id="Topbar-Desktop-Overrides">
         <Menu.Menu position="left">
           <MenuItem>
             <Image
@@ -31,7 +31,7 @@ const TopbarDesktop = () => {
         </Menu.Menu>
 
         <Menu.Menu className="Topbar-Desktop-Options">
-          <MenuItem as={Link} to="/">
+          <MenuItem id="Topbar-Desktop-Hover-Override" as={Link} to="/">
             <Button
               className="Topbar-Desktop-Button"
               onClick={() => handleButtonClick("Home")}
@@ -39,7 +39,7 @@ const TopbarDesktop = () => {
               Home
             </Button>
           </MenuItem>
-          <MenuItem as={Link} to="/blog">
+          <MenuItem id="Topbar-Desktop-Hover-Override" as={Link} to="/blog">
             <Button
               className="Topbar-Desktop-Button"
               onClick={() => handleButtonClick("Blog")}
@@ -47,7 +47,7 @@ const TopbarDesktop = () => {
               Blog
             </Button>
           </MenuItem>
-          <MenuItem as={Link} to="/projects">
+          <MenuItem id="Topbar-Desktop-Hover-Override" as={Link} to="/projects">
             <Button
               className="Topbar-Desktop-Button"
               onClick={() => handleButtonClick("Projects")}
@@ -55,7 +55,11 @@ const TopbarDesktop = () => {
               Projects
             </Button>
           </MenuItem>
-          <MenuItem as={Link} to="/forumPage">
+          <MenuItem
+            id="Topbar-Desktop-Hover-Override"
+            as={Link}
+            to="/forumPage"
+          >
             <Button
               className="Topbar-Desktop-Button"
               onClick={() => handleButtonClick("Forum")}
@@ -63,7 +67,7 @@ const TopbarDesktop = () => {
               Forum
             </Button>
           </MenuItem>
-          <MenuItem as={Link} to="/contact">
+          <MenuItem id="Topbar-Desktop-Hover-Override" as={Link} to="/contact">
             <Button
               className="Topbar-Desktop-Button"
               onClick={() => handleButtonClick("Contact")}
@@ -77,6 +81,7 @@ const TopbarDesktop = () => {
           {user == undefined && user == null ? (
             <div style={{ display: "flex" }}>
               <MenuItem
+                id="Topbar-Desktop-Hover-Override"
                 as={Link}
                 to="/login"
                 onClick={() => handleButtonClick("Login")}
@@ -84,6 +89,7 @@ const TopbarDesktop = () => {
                 <Button className="Topbar-Desktop-Button" content="Login" />
               </MenuItem>
               <MenuItem
+                id="Topbar-Desktop-Hover-Override"
                 as={Link}
                 to="/signup"
                 onClick={() => handleButtonClick("Signup")}

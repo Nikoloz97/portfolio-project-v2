@@ -43,13 +43,18 @@ function AppRouter() {
     };
 
     if (isSidebarVisible) {
+      // Click outside sidebar closes it
       document.addEventListener("click", handleDocumentClick);
+
+      // No scrolling while sidebar open
+      document.body.classList.add("no-scroll");
     } else {
       document.removeEventListener("click", handleDocumentClick);
     }
 
     return () => {
       document.removeEventListener("click", handleDocumentClick);
+      document.body.classList.remove("no-scroll");
     };
   }, [isSidebarVisible]);
 

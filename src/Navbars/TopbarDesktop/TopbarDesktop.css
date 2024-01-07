@@ -1,9 +1,9 @@
-/* Prevents menu buttons from changing background upon hover */
-.ui.menu a.item:hover {
+/* Prevents menu buttons from changing background upon hover  (#Hover-Override)*/
+/* .ui.menu a.item:hover {
   background-color: initial !important;
-}
+} */
 
-/* Removes faint dark line between MenuItem components */
+/* Removes faint dark line between MenuItem components (#Topbar-Desktop-Overrides, background property) */
 .ui.menu .item:before {
   background: none !important;
 }
@@ -18,8 +18,13 @@
   width: 70%;
 }
 
-#Topbar-Bottom-Border {
+#Topbar-Desktop-Overrides {
+  background: none !important;
   border-bottom: 1px solid #ccc !important;
+}
+
+#Topbar-Desktop-Hover-Override {
+  background-color: initial;
 }
 
 .Topbar-Desktop-Options {

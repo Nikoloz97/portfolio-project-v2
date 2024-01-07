@@ -19,6 +19,10 @@ body {
   z-index: 2;
 }
 
+.no-scroll {
+  overflow: hidden !important;
+}
+
 /* Overrides .ui.sidebar styling from semantic-ui */
 #Sidebar-Overflow {
   overflow-y: hidden !important;
