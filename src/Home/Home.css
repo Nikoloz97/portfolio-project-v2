@@ -44,7 +44,6 @@
     );
   width: 100vw;
   height: 100vh;
-  z-index: 0;
 }
 
 .Welcome-Screen.Desktop {
@@ -57,7 +56,7 @@
 .Welcome-Screen.Phone {
   background: url("../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
   background-size: cover;
-  background-position: left 70% bottom 20%;
+  background-position: left 55% bottom 0%;
   background-repeat: no-repeat;
 }
 
@@ -66,19 +65,31 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1; /* Lower z-index compared to .Coding-Blur */
+  z-index: 1 !important;
+  /* Lower z-index compared to .Coding-Blur */
   background: linear-gradient(
       to bottom,
       rgb(7, 22, 31) 8%,
       rgba(5, 14, 19, 0) 40%
     ),
-    linear-gradient(to top, rgb(7, 22, 31) 8%, rgba(5, 14, 19, 0) 40%),
-    url("../Images/Home/Coding/Coding12.jpeg");
-  filter: blur(0px) grayscale(10%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+    linear-gradient(to top, rgb(7, 22, 31) 8%, rgba(5, 14, 19, 0) 40%);
+  width: 100vw;
+  height: 100vh;
+}
+
+.Coding-Screen.Desktop {
+  background: url("../Images/Home/Coding/Coding12.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Coding-Screen.Phone {
+  background: url("../Images/Home/Coding/Coding12.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+  background-size: cover;
+  background-position: left 30% bottom 0%;
   background-repeat: no-repeat;
 }
 
@@ -95,11 +106,22 @@
       rgb(6, 19, 31) 8%,
       rgba(8, 20, 27, 0) 20%
     ),
-    linear-gradient(to top, rgb(7.5, 15, 26) 8%, rgba(8, 20, 27, 0) 40%),
-    url("../Images/Home/Medicine/Medicine26.jpeg");
-  filter: blur(0px) grayscale(0%) hue-rotate(-15deg) brightness(100%) sepia(0.5);
+    linear-gradient(to top, rgb(7.5, 15, 26) 8%, rgba(8, 20, 27, 0) 40%);
+}
+
+.Medicine-Screen.Desktop {
+  background: url("../Images/Home/Medicine/Medicine26.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Medicine-Screen.Phone {
+  background: url("../Images/Home/Medicine/Medicine26.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+  background-size: cover;
+  background-position: left 0% bottom 0%;
   background-repeat: no-repeat;
 }
 
@@ -112,13 +134,24 @@
   height: 100vh;
   z-index: 0;
   background: linear-gradient(
-      to bottom,
-      rgb(6, 19, 31) 8%,
-      rgba(8, 20, 27, 0) 40%
-    ),
-    url("../Images/Home/Tutoring/Tutoring9.jpeg");
-  filter: blur(0px) grayscale(10%) hue-rotate(0deg) brightness(80%) sepia(0.5);
+    to bottom,
+    rgb(6, 19, 31) 8%,
+    rgba(8, 20, 27, 0) 40%
+  );
+}
+
+.Tutoring-Screen.Desktop {
+  background: url("../Images/Home/Tutoring/Tutoring9.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Tutoring-Screen.Phone {
+  background: url("../Images/Home/Tutoring/Tutoring9.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+  background-size: cover;
+  background-position: left 8% bottom 0%;
   background-repeat: no-repeat;
 }
