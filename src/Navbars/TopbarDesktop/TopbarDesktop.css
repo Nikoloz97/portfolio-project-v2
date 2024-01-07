@@ -48,38 +48,77 @@
 .Topbar-Desktop-Selection-Bar {
   position: absolute !important;
   top: 54px !important;
-  left: 265px;
   width: 100px;
   height: 0.7px;
   background-color: rgba(255, 0, 0, 0.6);
   transition: transform 0.5s ease;
 }
 
-.Topbar-Desktop-Selection-Bar.Home {
+/* Desktop (i.e. laptop-screen) */
+
+.Topbar-Desktop-Selection-Bar.Desktop {
+  left: 200px;
+}
+
+.Topbar-Desktop-Selection-Bar.Desktop.Home {
   transform: translateX(0%);
 }
 
-.Topbar-Desktop-Selection-Bar.Blog {
+.Topbar-Desktop-Selection-Bar.Desktop.Blog {
+  transform: translateX(127%);
+}
+
+.Topbar-Desktop-Selection-Bar.Desktop.Projects {
+  transform: translateX(255%);
+}
+
+.Topbar-Desktop-Selection-Bar.Desktop.Forum {
+  transform: translateX(387%);
+}
+
+.Topbar-Desktop-Selection-Bar.Desktop.Contact {
+  transform: translateX(520%);
+}
+
+.Topbar-Desktop-Selection-Bar.Desktop.Login {
+  transform: translateX(640%);
+}
+
+.Topbar-Desktop-Selection-Bar.Desktop.Signup {
+  transform: translateX(762%);
+}
+
+/* Monitor */
+
+.Topbar-Desktop-Selection-Bar.Monitor {
+  left: 270px;
+}
+
+.Topbar-Desktop-Selection-Bar.Monitor.Home {
+  transform: translateX(0%);
+}
+
+.Topbar-Desktop-Selection-Bar.Monitor.Blog {
   transform: translateX(165%);
 }
 
-.Topbar-Desktop-Selection-Bar.Projects {
+.Topbar-Desktop-Selection-Bar.Monitor.Projects {
   transform: translateX(330%);
 }
 
-.Topbar-Desktop-Selection-Bar.Forum {
+.Topbar-Desktop-Selection-Bar.Monitor.Forum {
   transform: translateX(500%);
 }
 
-.Topbar-Desktop-Selection-Bar.Contact {
+.Topbar-Desktop-Selection-Bar.Monitor.Contact {
   transform: translateX(685%);
 }
 
-.Topbar-Desktop-Selection-Bar.Login {
+.Topbar-Desktop-Selection-Bar.Monitor.Login {
   transform: translateX(845%);
 }
 
-.Topbar-Desktop-Selection-Bar.Signup {
+.Topbar-Desktop-Selection-Bar.Monitor.Signup {
   transform: translateX(970%);
 }
 

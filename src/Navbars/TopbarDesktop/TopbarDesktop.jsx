@@ -5,7 +5,7 @@ import { useUserContext } from "../../UserContext";
 import "./TopbarDesktop.css";
 
 const TopbarDesktop = () => {
-  const { user } = useUserContext();
+  const { user, isMonitor } = useUserContext();
 
   const [selectionName, setSelectionName] = useState("Home");
 
@@ -95,7 +95,11 @@ const TopbarDesktop = () => {
             <Image src={user.profileURL} avatar />
           )}
         </Menu.Menu>
-        <div className={`Topbar-Desktop-Selection-Bar ${selectionName}`} />
+        <div
+          className={`Topbar-Desktop-Selection-Bar ${
+            isMonitor ? "Monitor" : "Desktop"
+          } ${selectionName}`}
+        />
       </Menu>
     </div>
   );
