@@ -16,7 +16,7 @@
 .Welcome-Text-And-Carousel-Container.Phone {
   display: flex;
   flex-direction: column;
-  margin-top: 200px;
+  margin-top: 160px;
 }
 
 .Welcome-Text-And-Carousel-Container.Desktop {
@@ -29,6 +29,10 @@
 
 .Welcome-Text-Container.Desktop {
   margin-left: 80px;
+}
+
+.Welcome-Text-Container.Phone {
+  margin-bottom: 100px;
 }
 
 .Welcome-Text {

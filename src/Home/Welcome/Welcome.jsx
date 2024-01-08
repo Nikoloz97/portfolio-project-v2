@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarousel from "../../Utils/VerticalCarousel/VerticalCarousel";
+import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarouselPhone";
 import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarouselButtons";
 import "./Welcome.css";
 
@@ -17,6 +18,9 @@ const Welcome = (props) => {
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const carouselContent = ["Coding", "Medicine", "Tutoring"];
+
+  const [touchStartY, setTouchStartY] = useState(0);
+  const [touchEndY, setTouchEndY] = useState(0);
 
   useEffect(() => {
     const completeWelcomeTextLineOne = "Welcome,";
@@ -59,6 +63,43 @@ const Welcome = (props) => {
       }, 120);
     }
   }, [isFirstLineComplete]);
+
+  useEffect(() => {
+    if (touchStartY > touchEndY) {
+      handleSwipeUp();
+    } else if (touchStartY < touchEndY) {
+      handleSwipeDown();
+    }
+  }, [touchStartY, touchEndY]);
+
+  const handleSwipeUp = () => {
+    const deltaY = touchStartY - touchEndY;
+    const sensitivity = 50; // Adjust the sensitivity as needed
+
+    if (deltaY > sensitivity) {
+      handleNext();
+    }
+  };
+
+  const handleSwipeDown = () => {
+    const deltaY = touchEndY - touchStartY;
+    const sensitivity = 50; // Adjust the sensitivity as needed
+
+    if (deltaY > sensitivity) {
+      handlePrev();
+    }
+  };
+
+  const handleNext = () => {
+    setCarouselIndex((prevIndex) => (prevIndex + 1) % carouselContent.length);
+  };
+
+  const handlePrev = () => {
+    setCarouselIndex(
+      (prevIndex) =>
+        (prevIndex - 1 + carouselContent.length) % carouselContent.length
+    );
+  };
 
   return (
     <div className="Welcome-Page">
@@ -109,32 +150,73 @@ const Welcome = (props) => {
               )}
             </Header>
           </div>
-          <div
-            className={`Welcome-Vertical-Carousel-Container ${
-              isDesktop ? "Desktop" : "Phone"
-            }`}
-          >
-            <VerticalCarousel index={carouselIndex} content={carouselContent} />
-          </div>
-        </div>
 
-        <div
-          className={`Welcome-Vertical-Carousel-Buttons-Position ${
-            isDesktop ? "Desktop" : "Phone"
-          }`}
-        >
-          <VerticalCarouselButtons
-            index={carouselIndex}
-            setIndex={setCarouselIndex}
-            content={carouselContent}
-          />
-        </div>
+          {/* Vertical carousel */}
 
-        <div
-          className={`Welcome-Vertical-Carousel-Ticker ${
-            isDesktop ? "Desktop" : "Phone"
-          }`}
-        />
+          {isDesktop ? (
+            <div>
+              <div
+                className={`Welcome-Vertical-Carousel-Container ${
+                  isDesktop ? "Desktop" : ""
+                }`}
+              >
+                <VerticalCarousel
+                  index={carouselIndex}
+                  content={carouselContent}
+                />
+              </div>
+
+              <div
+                className={`Welcome-Vertical-Carousel-Buttons-Position ${
+                  isDesktop ? "Desktop" : "Phone"
+                }`}
+              >
+                <VerticalCarouselButtons
+                  index={carouselIndex}
+                  setIndex={setCarouselIndex}
+                  content={carouselContent}
+                />
+              </div>
+              <div
+                className={`Welcome-Vertical-Carousel-Ticker ${
+                  isDesktop ? "Desktop" : "Phone"
+                }
+            
+            
+              `}
+              />
+            </div>
+          ) : (
+            <div>
+              <div
+                className={`Welcome-Vertical-Carousel-Container ${
+                  isDesktop ? "Desktop" : ""
+                }`}
+                onTouchStart={(e) => setTouchStartY(e.touches[0].clientY)}
+                onTouchEnd={(e) => {
+                  setTouchEndY(e.changedTouches[0].clientY);
+                }}
+              >
+                <VerticalCarouselPhone
+                  index={carouselIndex}
+                  content={carouselContent}
+                />
+              </div>
+
+              <div
+                className={`Welcome-Vertical-Carousel-Buttons-Position ${
+                  isDesktop ? "Desktop" : "Phone"
+                }`}
+              >
+                <VerticalCarouselButtons
+                  index={carouselIndex}
+                  setIndex={setCarouselIndex}
+                  content={carouselContent}
+                />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
