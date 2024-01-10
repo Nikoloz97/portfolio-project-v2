@@ -18,9 +18,11 @@ const Welcome = (props) => {
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const carouselContent = ["Coding", "Medicine", "Tutoring"];
+  const [isTouchingCarousel, setIsTouchingCarousel] = useState(false);
 
   const [touchStartY, setTouchStartY] = useState(0);
   const [touchEndY, setTouchEndY] = useState(0);
+  const [touchMove, setTouchMove] = useState(0);
 
   useEffect(() => {
     const completeWelcomeTextLineOne = "Welcome,";
@@ -65,12 +67,23 @@ const Welcome = (props) => {
   }, [isFirstLineComplete]);
 
   useEffect(() => {
-    if (touchStartY > touchEndY) {
-      handleSwipeUp();
-    } else if (touchStartY < touchEndY) {
-      handleSwipeDown();
+    if (touchStartY > 0 && touchEndY > 0 && touchMove > 0) {
+      if (touchStartY > touchEndY) {
+        handleSwipeUp();
+      } else if (touchStartY < touchEndY) {
+        handleSwipeDown();
+      }
     }
   }, [touchStartY, touchEndY]);
+
+  // Reset everything once carousel changes
+  useEffect(() => {
+    if (touchStartY > 0 && touchEndY > 0 && touchMove > 0) {
+      setTouchStartY(0);
+      setTouchEndY(0);
+      setTouchMove(0);
+    }
+  }, [carouselIndex]);
 
   const handleSwipeUp = () => {
     const deltaY = touchStartY - touchEndY;
@@ -91,16 +104,36 @@ const Welcome = (props) => {
   };
 
   const handleNext = () => {
-    setCarouselIndex((prevIndex) => (prevIndex + 1) % carouselContent.length);
+    if (carouselIndex < carouselContent.length - 1) {
+      setCarouselIndex((prevIndex) => (prevIndex + 1) % carouselContent.length);
+    }
   };
 
   const handlePrev = () => {
-    setCarouselIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + carouselContent.length) % carouselContent.length
-    );
+    if (carouselIndex > 0) {
+      setCarouselIndex(
+        (prevIndex) =>
+          (prevIndex - 1 + carouselContent.length) % carouselContent.length
+      );
+    }
   };
 
+  // Prevent scroll-down of homepage when in vertical carousel container
+  useEffect(() => {
+    const handleTouchMove = (e) => {
+      if (isTouchingCarousel) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+
+    return () => {
+      document.removeEventListener("touchmove", handleTouchMove, {
+        passive: true,
+      });
+    };
+  }, [isTouchingCarousel]);
   return (
     <div className="Welcome-Page">
       {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
@@ -192,9 +225,16 @@ const Welcome = (props) => {
                 className={`Welcome-Vertical-Carousel-Container ${
                   isDesktop ? "Desktop" : ""
                 }`}
-                onTouchStart={(e) => setTouchStartY(e.touches[0].clientY)}
+                onTouchStart={(e) => {
+                  setTouchStartY(e.touches[0].clientY);
+                  setIsTouchingCarousel(true);
+                }}
                 onTouchEnd={(e) => {
                   setTouchEndY(e.changedTouches[0].clientY);
+                  setIsTouchingCarousel(false);
+                }}
+                onTouchMove={(e) => {
+                  setTouchMove(e.touches[0].clientY);
                 }}
               >
                 <VerticalCarouselPhone
@@ -203,7 +243,7 @@ const Welcome = (props) => {
                 />
               </div>
 
-              <div
+              {/* <div
                 className={`Welcome-Vertical-Carousel-Buttons-Position ${
                   isDesktop ? "Desktop" : "Phone"
                 }`}
@@ -213,7 +253,7 @@ const Welcome = (props) => {
                   setIndex={setCarouselIndex}
                   content={carouselContent}
                 />
-              </div>
+              </div> */}
             </div>
           )}
         </div>

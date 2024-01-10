@@ -4,14 +4,18 @@ import "../VerticalCarousel/VerticalCarousel.css";
 
 const VerticalCarouselButtons = (props) => {
   const handleNext = () => {
-    props.setIndex((prevIndex) => (prevIndex + 1) % props.content.length);
+    if (props.content.length > props.content.length - 1) {
+      props.setIndex((prevIndex) => (prevIndex + 1) % props.content.length);
+    }
   };
 
   const handlePrev = () => {
-    props.setIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + props.content.length) % props.content.length
-    );
+    if (props.index > 0) {
+      props.setIndex(
+        (prevIndex) =>
+          (prevIndex - 1 + props.content.length) % props.content.length
+      );
+    }
   };
 
   return (
