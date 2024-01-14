@@ -1,0 +1,41 @@
+.ui.card {
+  margin: 0.5rem !important;
+}
+
+.Vertical-Carousel-Container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+
+.Carousel-Card {
+  height: 3rem;
+  width: 12rem !important;
+  background: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.5s, transform 0.5s !important;
+}
+
+.Carousel-Card.Hide {
+  opacity: 0 !important;
+}
+
+.Carousel-Buttons {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  width: 100px;
+  height: 105px;
+}
+
+.Carousel-Button {
+  background: none !important;
+}
+
+.Carousel-Button-Icon {
+  color: white !important;
+  opacity: 0.5 !important;
+}

@@ -17,12 +17,13 @@ const Welcome = (props) => {
   const [isSecondLineComplete, setIsSecondLineComplete] = useState(false);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const carouselContent = ["Coding", "Medicine", "Tutoring"];
   const [isTouchingCarousel, setIsTouchingCarousel] = useState(false);
 
-  const [touchStartY, setTouchStartY] = useState(0);
-  const [touchEndY, setTouchEndY] = useState(0);
-  const [touchMove, setTouchMove] = useState(0);
+  const [touchStartY, setTouchStartY] = useState(null);
+  const [touchEndY, setTouchEndY] = useState(null);
+  const [touchMove, setTouchMove] = useState(null);
+
+  const carouselContent = ["Coding", "Medicine", "Tutoring"];
 
   useEffect(() => {
     const completeWelcomeTextLineOne = "Welcome,";
@@ -67,27 +68,27 @@ const Welcome = (props) => {
   }, [isFirstLineComplete]);
 
   useEffect(() => {
-    if (touchStartY > 0 && touchEndY > 0 && touchMove > 0) {
+    if (touchStartY && touchEndY && touchMove) {
       if (touchStartY > touchEndY) {
         handleSwipeUp();
       } else if (touchStartY < touchEndY) {
         handleSwipeDown();
       }
     }
-  }, [touchStartY, touchEndY]);
+  }, [touchEndY]);
 
-  // Reset everything once carousel changes
+  // Reset everything
   useEffect(() => {
-    if (touchStartY > 0 && touchEndY > 0 && touchMove > 0) {
-      setTouchStartY(0);
-      setTouchEndY(0);
-      setTouchMove(0);
+    if (touchStartY && touchEndY && touchMove) {
+      setTouchStartY(null);
+      setTouchEndY(null);
+      setTouchMove(null);
     }
   }, [carouselIndex]);
 
   const handleSwipeUp = () => {
     const deltaY = touchStartY - touchEndY;
-    const sensitivity = 50; // Adjust the sensitivity as needed
+    const sensitivity = 50;
 
     if (deltaY > sensitivity) {
       handleNext();
@@ -96,7 +97,7 @@ const Welcome = (props) => {
 
   const handleSwipeDown = () => {
     const deltaY = touchEndY - touchStartY;
-    const sensitivity = 50; // Adjust the sensitivity as needed
+    const sensitivity = 50;
 
     if (deltaY > sensitivity) {
       handlePrev();
@@ -126,7 +127,9 @@ const Welcome = (props) => {
       }
     };
 
-    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener("touchmove", handleTouchMove, {
+      passive: false,
+    });
 
     return () => {
       document.removeEventListener("touchmove", handleTouchMove, {
@@ -134,6 +137,7 @@ const Welcome = (props) => {
       });
     };
   }, [isTouchingCarousel]);
+
   return (
     <div className="Welcome-Page">
       {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
@@ -238,22 +242,10 @@ const Welcome = (props) => {
                 }}
               >
                 <VerticalCarouselPhone
-                  index={carouselIndex}
+                  carouselIndex={carouselIndex}
                   content={carouselContent}
                 />
               </div>
-
-              {/* <div
-                className={`Welcome-Vertical-Carousel-Buttons-Position ${
-                  isDesktop ? "Desktop" : "Phone"
-                }`}
-              >
-                <VerticalCarouselButtons
-                  index={carouselIndex}
-                  setIndex={setCarouselIndex}
-                  content={carouselContent}
-                />
-              </div> */}
             </div>
           )}
         </div>
