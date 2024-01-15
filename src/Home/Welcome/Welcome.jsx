@@ -18,7 +18,6 @@ const Welcome = (props) => {
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isTouchingCarousel, setIsTouchingCarousel] = useState(false);
-
   const [touchStartY, setTouchStartY] = useState(null);
   const [touchEndY, setTouchEndY] = useState(null);
   const [touchMove, setTouchMove] = useState(null);
@@ -66,58 +65,6 @@ const Welcome = (props) => {
       }, 120);
     }
   }, [isFirstLineComplete]);
-
-  useEffect(() => {
-    if (touchStartY && touchEndY && touchMove) {
-      if (touchStartY > touchEndY) {
-        handleSwipeUp();
-      } else if (touchStartY < touchEndY) {
-        handleSwipeDown();
-      }
-    }
-  }, [touchEndY]);
-
-  // Reset everything
-  useEffect(() => {
-    if (touchStartY && touchEndY && touchMove) {
-      setTouchStartY(null);
-      setTouchEndY(null);
-      setTouchMove(null);
-    }
-  }, [carouselIndex]);
-
-  const handleSwipeUp = () => {
-    const deltaY = touchStartY - touchEndY;
-    const sensitivity = 50;
-
-    if (deltaY > sensitivity) {
-      handleNext();
-    }
-  };
-
-  const handleSwipeDown = () => {
-    const deltaY = touchEndY - touchStartY;
-    const sensitivity = 50;
-
-    if (deltaY > sensitivity) {
-      handlePrev();
-    }
-  };
-
-  const handleNext = () => {
-    if (carouselIndex < carouselContent.length - 1) {
-      setCarouselIndex((prevIndex) => (prevIndex + 1) % carouselContent.length);
-    }
-  };
-
-  const handlePrev = () => {
-    if (carouselIndex > 0) {
-      setCarouselIndex(
-        (prevIndex) =>
-          (prevIndex - 1 + carouselContent.length) % carouselContent.length
-      );
-    }
-  };
 
   // Prevent scroll-down of homepage when in vertical carousel container
   useEffect(() => {
@@ -243,7 +190,18 @@ const Welcome = (props) => {
               >
                 <VerticalCarouselPhone
                   carouselIndex={carouselIndex}
+                  setCarouselIndex={setCarouselIndex}
+                  carouselContent={carouselContent}
+                  isTouchingCarousel={isTouchingCarousel}
+                  setIsTouchingCarousel={setIsTouchingCarousel}
+                  touchStartY={touchStartY}
+                  setTouchStartY={setTouchStartY}
+                  touchEndY={touchEndY}
+                  setTouchEndY={setTouchEndY}
+                  touchMove={touchMove}
+                  setTouchMove={setTouchMove}
                   content={carouselContent}
+                  handleSlide={props.handleSlide}
                 />
               </div>
             </div>

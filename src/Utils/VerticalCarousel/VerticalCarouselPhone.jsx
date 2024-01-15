@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card } from "semantic-ui-react";
 import "../VerticalCarousel/VerticalCarouselPhone.css";
 
@@ -51,11 +51,87 @@ const VerticalCarouselPhone = (props) => {
       return {
         transform: `translateY(-60px)`,
         opacity: 0,
+        pointerEvents: "none",
       };
     } else {
       return {
         opacity: 0,
+        pointerEvents: "none",
       };
+    }
+  };
+
+  useEffect(() => {
+    if (props.touchStartY && props.touchEndY && props.touchMove) {
+      if (props.touchStartY > props.touchEndY) {
+        handleSwipeUp();
+      } else if (props.touchStartY < props.touchEndY) {
+        handleSwipeDown();
+      }
+    }
+  }, [props.touchEndY]);
+
+  // Reset everything
+  useEffect(() => {
+    if (props.touchStartY && props.touchEndY && props.touchMove) {
+      props.setTouchStartY(null);
+      props.setTouchEndY(null);
+      props.setTouchMove(null);
+    }
+  }, [props.carouselIndex]);
+
+  // Prevent scroll-down of homepage when in vertical carousel container
+  useEffect(() => {
+    const handleTouchMove = (e) => {
+      if (props.isTouchingCarousel) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("touchmove", handleTouchMove, {
+      passive: false,
+    });
+
+    return () => {
+      document.removeEventListener("touchmove", handleTouchMove, {
+        passive: true,
+      });
+    };
+  }, [props.isTouchingCarousel]);
+
+  const handleSwipeUp = () => {
+    const deltaY = props.touchStartY - props.touchEndY;
+    const sensitivity = 50;
+
+    if (deltaY > sensitivity) {
+      handleNext();
+    }
+  };
+
+  const handleSwipeDown = () => {
+    const deltaY = props.touchEndY - props.touchStartY;
+    const sensitivity = 50;
+
+    if (deltaY > sensitivity) {
+      handlePrev();
+    }
+  };
+
+  const handleNext = () => {
+    if (props.carouselIndex < props.carouselContent.length - 1) {
+      props.setCarouselIndex(
+        (prevIndex) => (prevIndex + 1) % props.carouselContent.length
+      );
+    }
+  };
+
+  const handlePrev = () => {
+    if (props.carouselIndex > 0) {
+      props.setCarouselIndex(
+        (prevIndex) =>
+          (prevIndex - 1 + props.carouselContent.length) %
+          props.carouselContent.length
+      );
     }
   };
 
@@ -67,6 +143,9 @@ const VerticalCarouselPhone = (props) => {
           className="Carousel-Card"
           content={content}
           style={styleCalculation(index)}
+          onClick={() => {
+            props.handleSlide(index);
+          }}
         />
       ))}
     </div>
