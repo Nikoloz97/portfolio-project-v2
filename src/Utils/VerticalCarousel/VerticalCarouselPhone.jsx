@@ -48,6 +48,7 @@ const VerticalCarouselPhone = (props) => {
         opacity: 0,
       };
     } else if (props.carouselIndex > cardIndex && cardIndex === 1) {
+      // pointerEvents = prevents click-ability
       return {
         transform: `translateY(-60px)`,
         opacity: 0,
