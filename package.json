@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test ./__tests__",
+    "test": "react-scripts test --testMatch '**/__tests__/**/*.test.jsx'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
