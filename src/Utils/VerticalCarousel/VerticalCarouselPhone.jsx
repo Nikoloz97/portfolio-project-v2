@@ -78,6 +78,7 @@ const VerticalCarouselPhone = (props) => {
       props.setTouchStartY(null);
       props.setTouchEndY(null);
       props.setTouchMove(null);
+      props.setIsTouchingCarousel(false);
     }
   }, [props.carouselIndex]);
 
@@ -137,15 +138,15 @@ const VerticalCarouselPhone = (props) => {
   };
 
   return (
-    <div className="Vertical-Carousel-Container">
+    <div>
       {props.content.map((content, index) => (
         <Card
           key={index}
-          className="Carousel-Card"
+          className="Carousel-Card-Phone"
           content={content}
           style={styleCalculation(index)}
           onClick={() => {
-            props.handleSlide(index);
+            props.handleCardClick(index);
           }}
         />
       ))}

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import Welcome from "./Welcome/Welcome";
 import Coding from "./Coding";
 import Medicine from "./Medicine";
@@ -7,7 +7,7 @@ import Tutoring from "./Tutoring";
 import "./Home.css";
 
 const Home = () => {
-  const handleSlide = (cardIndex) => {
+  const handleCardClick = (cardIndex) => {
     // Calculate the target position based on the current scroll position
     const currentPosition = window.scrollY;
     const targetPosition =
@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <>
       <div className="Home-Page">
-        <Welcome handleSlide={handleSlide} />
+        <Welcome handleCardClick={handleCardClick} />
         <Coding />
         <Medicine />
         <Tutoring />

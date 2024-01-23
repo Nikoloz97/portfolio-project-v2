@@ -8,12 +8,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Get rid of vertical scrolling */
-  /* overflow: hidden !important; */
+  overflow: scroll;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+body::-webkit-scrollbar {
+  width: 3px; /* Adjust the width as needed */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(77, 77, 77); /* Set to transparent */
+}
+
+body::-webkit-scrollbar-track {
+  background-color: rgb(27, 26, 26); /* Set to transparent */
 }
 
 .Default-Page {

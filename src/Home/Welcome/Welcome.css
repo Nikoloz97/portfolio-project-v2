@@ -32,7 +32,7 @@
 }
 
 .Welcome-Text-Container.Phone {
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 }
 
 .Welcome-Text {
@@ -54,40 +54,34 @@
   bottom: 71.3%;
 }
 
+.Welcome-Vertical-Carousel-Container {
+  height: auto;
+  width: auto;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+
 .Welcome-Vertical-Carousel-Container.Desktop {
-  margin-right: 250px;
+  margin-top: 110px;
+  margin-right: 10px;
 }
 
-.Welcome-Vertical-Carousel-Buttons-Position {
-  position: absolute;
-}
-
-.Welcome-Vertical-Carousel-Buttons-Position.Desktop {
-  right: 7%;
-  top: 45.5%;
-}
-
-.Welcome-Vertical-Carousel-Buttons-Position.Phone {
-  right: 0%;
-  top: 60%;
+.Welcome-Vertical-Carousel-Buttons-Ticker-Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Welcome-Vertical-Carousel-Ticker {
-  position: absolute;
-}
-
-.Welcome-Vertical-Carousel-Ticker.Desktop {
   background-color: gray;
   width: 10rem;
   height: 1px;
-  top: 52%;
-  right: 5%;
 }
 
-.Welcome-Vertical-Carousel-Ticker.Phone {
-  background-color: rgba(255, 255, 255, 0.651);
-  width: 7rem;
-  height: 1px;
-  top: 66.5%;
-  right: 0%;
+.Welcome-Vertical-Carousel-Buttons-Container {
+  width: 60px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }

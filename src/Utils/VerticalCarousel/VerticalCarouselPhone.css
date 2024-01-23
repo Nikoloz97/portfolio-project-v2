@@ -3,17 +3,17 @@ a {
 }
 
 .ui.card {
-  margin: 0.5rem !important;
+  margin: 1rem !important;
 }
 
-.Vertical-Carousel-Container {
+.Vertical-Carousel-Container-Phone {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-direction: column !important;
 }
 
-.Carousel-Card {
+.Carousel-Card-Phone {
   height: 3rem;
   width: 12rem !important;
   background: none !important;

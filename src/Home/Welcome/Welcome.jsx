@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header } from "semantic-ui-react";
+import { Header, Grid } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarousel from "../../Utils/VerticalCarousel/VerticalCarousel";
 import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarouselPhone";
@@ -138,23 +138,8 @@ const Welcome = (props) => {
           {/* Vertical carousel */}
 
           {isDesktop ? (
-            <div>
-              <div
-                className={`Welcome-Vertical-Carousel-Container ${
-                  isDesktop ? "Desktop" : ""
-                }`}
-              >
-                <VerticalCarousel
-                  index={carouselIndex}
-                  content={carouselContent}
-                />
-              </div>
-
-              <div
-                className={`Welcome-Vertical-Carousel-Buttons-Position ${
-                  isDesktop ? "Desktop" : "Phone"
-                }`}
-              >
+            <div className="Welcome-Vertical-Carousel-Buttons-Ticker-Container">
+              <div className="Welcome-Vertical-Carousel-Buttons-Container">
                 <VerticalCarouselButtons
                   index={carouselIndex}
                   setIndex={setCarouselIndex}
@@ -162,19 +147,46 @@ const Welcome = (props) => {
                 />
               </div>
               <div
-                className={`Welcome-Vertical-Carousel-Ticker ${
+                className={`Welcome-Vertical-Carousel-Container ${
                   isDesktop ? "Desktop" : "Phone"
-                }
-            
-            
-              `}
-              />
+                }`}
+                onTouchStart={(e) => {
+                  setTouchStartY(e.touches[0].clientY);
+                  setIsTouchingCarousel(true);
+                }}
+                onTouchEnd={(e) => {
+                  setTouchEndY(e.changedTouches[0].clientY);
+                  setIsTouchingCarousel(false);
+                }}
+                onTouchMove={(e) => {
+                  setTouchMove(e.touches[0].clientY);
+                }}
+              >
+                <VerticalCarousel
+                  carouselIndex={carouselIndex}
+                  setCarouselIndex={setCarouselIndex}
+                  carouselContent={carouselContent}
+                  isTouchingCarousel={isTouchingCarousel}
+                  setIsTouchingCarousel={setIsTouchingCarousel}
+                  touchStartY={touchStartY}
+                  setTouchStartY={setTouchStartY}
+                  touchEndY={touchEndY}
+                  setTouchEndY={setTouchEndY}
+                  touchMove={touchMove}
+                  setTouchMove={setTouchMove}
+                  content={carouselContent}
+                  handleCardClick={props.handleCardClick}
+                />
+              </div>
+
+              <div className="Welcome-Vertical-Carousel-Ticker" />
             </div>
           ) : (
             <div>
+              {/* TODO: Make onTouchStart trigger all throughout div (not just Vertical Carousel Phone)*/}
               <div
                 className={`Welcome-Vertical-Carousel-Container ${
-                  isDesktop ? "Desktop" : ""
+                  isDesktop ? "Desktop" : "Phone"
                 }`}
                 onTouchStart={(e) => {
                   setTouchStartY(e.touches[0].clientY);
@@ -201,7 +213,7 @@ const Welcome = (props) => {
                   touchMove={touchMove}
                   setTouchMove={setTouchMove}
                   content={carouselContent}
-                  handleSlide={props.handleSlide}
+                  handleCardClick={props.handleCardClick}
                 />
               </div>
             </div>
