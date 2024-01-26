@@ -9,7 +9,10 @@ const Display = (props) => {
 
   return (
     <>
-      <div className={`Display-Page ${isDesktop ? "" : "Phone"}`}>
+      <div
+        className={`Display-Page ${isDesktop ? "" : "Phone"}`}
+        data-testid="Display"
+      >
         <Loader content="Loading" active={props.isLoading} />
 
         <Image

@@ -1,7 +1,9 @@
+import { UserProvider } from "../../UserContext";
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { UserProvider } from "../Mocks/UserContextMock";
 import Coding from "../../Home/Coding";
+
+// Mock the useMediaQuery hook
+jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
 
 describe("Coding screen", () => {
   it("text header is displayed", () => {

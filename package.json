@@ -17,6 +17,11 @@
     "semantic-ui-react": "^2.1.4",
     "web-vitals": "^2.1.4"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "^axios$": "axios/dist/axios.min.js"
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -45,6 +50,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
+    "axios-mock-adapter": "^1.22.0",
     "jest": "^29.7.0"
   }
 }

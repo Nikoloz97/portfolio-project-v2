@@ -22,10 +22,9 @@ function Forum(props) {
 
   const getForumProfiles = () => {
     props.setIsLoading(true);
-    axios
-      .get(apiForumRoot)
+    const response = axios.get(apiForumRoot);
+    response
       .then((response) => {
-        console.log(response.data);
         setForumProfileData(response.data);
         props.setIsLoading(false);
         props.setIsFetchSuccessful(true);
@@ -44,7 +43,7 @@ function Forum(props) {
   };
 
   return (
-    <div>
+    <div data-testid="Forum">
       {isForumHidden ? null : (
         <div className="Forum-Page">
           <Grid centered>
