@@ -11,6 +11,7 @@ function ForumPage() {
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);
   const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(false);
   const [isRetryingFetch, setIsRetryingFetch] = useState(false);
+  const [renderDisplay, setRenderDisplay] = useState(false);
 
   useEffect(() => {
     if (!isLoading) {
@@ -19,6 +20,12 @@ function ForumPage() {
       }, 200);
     }
   }, [isLoading]);
+
+  useEffect(() => {
+    if (isDisplayVisible) {
+      setRenderDisplay(true);
+    }
+  }, [isDisplayVisible]);
 
   useEffect(() => {
     if (isDisplayVisible && isFetchSuccessful === false) {
@@ -40,15 +47,17 @@ function ForumPage() {
 
   return (
     <>
-      <Display
-        isLoading={isLoading}
-        isDisplayVisible={isDisplayVisible}
-        isFetchSuccessful={isFetchSuccessful}
-        isErrorModalDisplayed={isErrorModalDisplayed}
-        setIsErrorModalDisplayed={setIsErrorModalDisplayed}
-        handleScrollDown={handleScrollDown}
-        handleRetry={handleRetry}
-      />
+      {renderDisplay && (
+        <Display
+          isLoading={isLoading}
+          isDisplayVisible={isDisplayVisible}
+          isFetchSuccessful={isFetchSuccessful}
+          isErrorModalDisplayed={isErrorModalDisplayed}
+          setIsErrorModalDisplayed={setIsErrorModalDisplayed}
+          handleScrollDown={handleScrollDown}
+          handleRetry={handleRetry}
+        />
+      )}
 
       <div ref={forumRef}>
         <Forum
