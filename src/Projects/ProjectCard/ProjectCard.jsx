@@ -66,7 +66,11 @@ const ProjectCard = (props) => {
             {props.projectData.introSubtext}
           </Card.Description>
           <Card.Content extra style={{ maxWidth: "70%" }} textAlign="center">
-            <Button className="project-left-arrow-button" disabled>
+            <Button
+              data-testid="intro-left-arrow-button"
+              className="project-left-arrow-button"
+              disabled={true}
+            >
               <Icon name="arrow left" style={{ marginLeft: "-8px" }} />
             </Button>
 
@@ -84,6 +88,7 @@ const ProjectCard = (props) => {
 
             <Button
               className="project-right-arrow-button"
+              data-testid="intro-right-arrow-button"
               disabled={
                 props.currentProjectIndex === props.projectsDataLength - 1
                   ? true

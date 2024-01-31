@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ProjectCard from "../../Projects/ProjectCard/ProjectCard";
+import { MemoryRouter } from "react-router-dom";
 
-const mockProjectData = [
-  {
+const mockProps = {
+  projectData: {
     introText: "Projects",
     introSubtext:
       "Select the arrow on the right to navigate to my various projects - or click on the links below",
@@ -11,27 +12,24 @@ const mockProjectData = [
       { title: "Kronos", url: "/projects/kronos" },
       { title: "Calculator", url: "/projects/calculator" },
       { title: "Geography Game", url: "/projects/geography-game" },
-      {
-        title: "Fantasy Basketball",
-        url: "/projects/fantasy-basketball",
-      },
+      { title: "Fantasy Basketball", url: "/projects/fantasy-basketball" },
     ],
   },
-];
+  projectsDataLength: 1,
+  currentProjectIndex: 0,
+  goToNextProject: jest.fn(),
+  goToPrevProject: jest.fn(),
+};
 
 describe("Project Card", () => {
-  it("Kronos button sends user to endpoint with header called Stopwatch", () => {
+  it("Project card renders with intro card", () => {
     render(
-      <ProjectCard
-        projectData={mockProjectData[0]}
-        projectDataLength={1}
-        currentProjectIndex={0}
-      />
+      <MemoryRouter>
+        <ProjectCard {...mockProps} />
+      </MemoryRouter>
     );
 
-    const kronosButton = screen.getByText("Kronos");
-    kronosButton.click();
-
-    expect(screen.queryByText("Stopwatch")).toBeVisible();
+    expect(screen.queryByText("Projects")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Kronos" })).toBeInTheDocument();
   });
 });

@@ -6,7 +6,6 @@ import axios from "axios";
 
 import { apiForumRoot } from "../../Utils/ApiRoutes";
 import MockAdapter from "axios-mock-adapter";
-import { act } from "react-dom/test-utils";
 
 const mock = new MockAdapter(axios);
 

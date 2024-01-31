@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCard/ProjectCard.jsx";
 const Projects = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
-  const [projectsData, setProjectsData] = useState([
+  const projectsData = [
     {
       introText: "Projects",
       introSubtext:
@@ -41,7 +41,7 @@ const Projects = () => {
         "This is a description about the fantasy basketball project",
       linkUrl: "/projects/fantasy-basketball",
     },
-  ]);
+  ];
 
   const goToNextProject = () => {
     setCurrentProjectIndex(currentProjectIndex + 1);
