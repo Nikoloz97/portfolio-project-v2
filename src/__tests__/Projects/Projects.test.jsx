@@ -4,7 +4,7 @@ import Projects from "../../Projects/Projects";
 import { MemoryRouter } from "react-router-dom";
 
 describe("Projects", () => {
-  it("Projects component produces intro card on rendered", () => {
+  it("Projects component produces intro card on render", () => {
     render(
       <MemoryRouter>
         <Projects />

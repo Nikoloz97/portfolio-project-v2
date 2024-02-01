@@ -116,6 +116,7 @@ const ProjectCard = (props) => {
             {props.projectData.title}
           </Card.Header>
           <Image
+            data-testid="project-card-image"
             style={{ maxWidth: "70%", marginBottom: "5%" }}
             src={require("../../Images/Projects/Calc1.jpg")}
             wrapped

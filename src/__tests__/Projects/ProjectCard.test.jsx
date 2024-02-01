@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import ProjectCard from "../../Projects/ProjectCard/ProjectCard";
 import { MemoryRouter } from "react-router-dom";
 
-const mockProps = {
+const introMockProps = {
   projectData: {
     introText: "Projects",
     introSubtext:
@@ -21,15 +21,38 @@ const mockProps = {
   goToPrevProject: jest.fn(),
 };
 
+const kronosMockProps = {
+  projectData: {
+    title: "Kronos",
+    mediaUrl: "../../Images/Projects/Kronos2.jpg",
+    mediaCaption: "This is a description about the clocks project",
+    linkUrl: "/projects/kronos",
+  },
+  projectsDataLength: 1,
+  currentProjectIndex: 1,
+  goToNextProject: jest.fn(),
+  goToPrevProject: jest.fn(),
+};
+
 describe("Project Card", () => {
-  it("Project card renders with intro card", () => {
+  it("Renders with intro card", () => {
     render(
       <MemoryRouter>
-        <ProjectCard {...mockProps} />
+        <ProjectCard {...introMockProps} />
       </MemoryRouter>
     );
 
     expect(screen.queryByText("Projects")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Kronos" })).toBeInTheDocument();
+  });
+
+  it("Renders with kronos project card", () => {
+    render(
+      <MemoryRouter>
+        <ProjectCard {...kronosMockProps} />
+      </MemoryRouter>
+    );
+
+    expect(screen.queryByTestId("project-card-image")).toBeInTheDocument();
   });
 });
