@@ -1,12 +1,7 @@
 import { render, waitFor } from "@testing-library/react";
-import axios from "axios";
 import Forum from "../../Forum/Forum";
-import { apiForumRoot } from "../../Utils/ApiRoutes";
-import MockAdapter from "axios-mock-adapter";
 
-const mock = new MockAdapter(axios);
-
-mock.onGet(apiForumRoot).reply(200, [
+const forumProfileData = [
   {
     age: 30,
     displayName: "Future Hendrix",
@@ -46,37 +41,12 @@ mock.onGet(apiForumRoot).reply(200, [
     postsCount: 1,
     profileURL: "testURL",
   },
-]);
-
-const forumProfilesMockProps = {
-  projectData: {
-    introText: "Projects",
-    introSubtext:
-      "Select the arrow on the right to navigate to my various projects - or click on the links below",
-    linkUrls: [
-      { title: "Kronos", url: "/projects/kronos" },
-      { title: "Calculator", url: "/projects/calculator" },
-      { title: "Geography Game", url: "/projects/geography-game" },
-      { title: "Fantasy Basketball", url: "/projects/fantasy-basketball" },
-    ],
-  },
-  projectsDataLength: 1,
-  currentProjectIndex: 0,
-  goToNextProject: jest.fn(),
-  goToPrevProject: jest.fn(),
-};
+];
 
 describe("Forum screen", () => {
   it("renders correctly", async () => {
     // Create mock functions for props
-    render(
-      <Forum
-        setIsLoading={jest.fn()}
-        setIsErrorModalDisplayed={jest.fn()}
-        setIsRetryingFetch={jest.fn()}
-        setIsFetchSuccessful={jest.fn()}
-      />
-    );
+    render(<Forum forumProfileData={forumProfileData} />);
     // Wait for state updates (in promises) to complete
     await waitFor(() => {});
   });

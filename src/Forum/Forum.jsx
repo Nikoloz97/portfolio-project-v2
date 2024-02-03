@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import ProfileCard from "./ProfileCard";
 import { Card, Grid, Button } from "semantic-ui-react";
 import "./ForumPage.css";

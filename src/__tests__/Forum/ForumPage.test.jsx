@@ -1,5 +1,5 @@
 import { UserProvider } from "../../UserContext";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ForumPage from "../../Forum/ForumPage";
 import axios from "axios";
@@ -55,8 +55,37 @@ mock.onGet(apiForumRoot).reply(200, [
 jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
 
 describe("Forum Page", () => {
-  // TODO: uncomment and/or update once loading component created
-  // it("renders loading screen on render", async () => {
+  it("renders Loader element in Display component on render", async () => {
+    await act(async () => {
+      render(
+        <UserProvider>
+          <ForumPage />
+        </UserProvider>
+      );
+    });
+    expect(screen.getByText("Loading")).toBeInTheDocument();
+  });
+
+  it("Once isLoading state becomes false, display text is rendered following a delay", async () => {
+    jest.useFakeTimers();
+
+    await act(async () => {
+      render(
+        <UserProvider>
+          <ForumPage />
+        </UserProvider>
+      );
+    });
+
+    const welcomeMessage = await screen.findByText("Welcome to the Forum");
+
+    await act(async () => {
+      jest.runAllTimers();
+      await waitFor(() => expect(welcomeMessage).toBeInTheDocument());
+    });
+  });
+
+  // it("renders ForumErrorModal component on unsuccessful fetch", async () => {
   //   await act(async () => {
   //     render(
   //       <UserProvider>
@@ -87,24 +116,4 @@ describe("Forum Page", () => {
   //     expect(setIsDisplayVisible).toHaveBeenCalledWith(true);
   //   });
   // });
-
-  it("Once isLoading state becomes false, display text is rendered following a delay", async () => {
-    const setIsDisplayVisible = jest.fn();
-    jest.useFakeTimers();
-
-    render(
-      <UserProvider>
-        <ForumPage
-          isLoading={false}
-          setIsDisplayVisible={setIsDisplayVisible}
-        />
-      </UserProvider>
-    );
-
-    const welcomeMessage = await screen.findByText("Welcome to the Forum");
-
-    jest.runAllTimers();
-
-    await waitFor(() => expect(welcomeMessage).toBeInTheDocument());
-  });
 });
