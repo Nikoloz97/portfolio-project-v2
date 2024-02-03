@@ -1,72 +1,96 @@
 import { React, useEffect, useRef, useState } from "react";
 import Display from "./Display";
 import Forum from "./Forum";
+import { apiForumRoot } from "../Utils/ApiRoutes";
+import { ForumErrorModal } from "../Utils/Error/Error";
+
+import axios from "axios";
 import "./ForumPage.css";
 
 function ForumPage() {
   const forumRef = useRef(null);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isDisplayVisible, setIsDisplayVisible] = useState(false);
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);
   const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(false);
   const [isRetryingFetch, setIsRetryingFetch] = useState(false);
-  const [renderDisplay, setRenderDisplay] = useState(false);
+  const [renderForum, setRenderForum] = useState(false);
+  const [forumProfileData, setForumProfileData] = useState(null);
+  const [isDisplayToBeginFadein, setIsDisplayToBeginFadein] = useState(false);
 
   useEffect(() => {
-    if (!isLoading) {
-      setTimeout(() => {
-        setIsDisplayVisible(true);
-      }, 200);
+    getForumProfiles();
+  }, []);
+
+  useEffect(() => {
+    if (isRetryingFetch) {
+      getForumProfiles();
+      setIsRetryingFetch(false);
     }
-  }, [isLoading]);
+  }, [isRetryingFetch]);
+
+  const getForumProfiles = () => {
+    setIsLoading(true);
+    axios
+      .get(apiForumRoot)
+      .then((response) => {
+        setForumProfileData(response.data);
+        console.log(response);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+        setIsErrorModalDisplayed(false);
+        setIsFetchSuccessful(true);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+        setIsErrorModalDisplayed(true);
+        setIsFetchSuccessful(false);
+      });
+  };
 
   useEffect(() => {
-    if (isDisplayVisible) {
-      setRenderDisplay(true);
-    }
-  }, [isDisplayVisible]);
-
-  useEffect(() => {
-    if (isDisplayVisible && isFetchSuccessful === false) {
+    if (isFetchSuccessful === false) {
       setTimeout(() => {
         setIsErrorModalDisplayed(true);
-      }, 200);
+      }, 700);
     }
-  }, [isDisplayVisible]);
+    setTimeout(() => {
+      setIsDisplayToBeginFadein(true);
+    }, 700);
+  }, [isFetchSuccessful]);
 
   const handleScrollDown = () => {
-    forumRef.current.scrollIntoView({ behavior: "smooth" });
+    setRenderForum(true);
+    setTimeout(() => {
+      forumRef.current.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   const handleRetry = () => {
-    setIsDisplayVisible(false);
+    setIsLoading(true);
     setIsErrorModalDisplayed(false);
     setIsRetryingFetch(true);
   };
 
   return (
     <>
-      {renderDisplay && (
-        <Display
-          isLoading={isLoading}
-          isDisplayVisible={isDisplayVisible}
-          isFetchSuccessful={isFetchSuccessful}
-          isErrorModalDisplayed={isErrorModalDisplayed}
-          setIsErrorModalDisplayed={setIsErrorModalDisplayed}
-          handleScrollDown={handleScrollDown}
-          handleRetry={handleRetry}
-        />
-      )}
-
+      <Display
+        isDisplayToBeginFadein={isDisplayToBeginFadein}
+        isLoading={isLoading}
+        handleScrollDown={handleScrollDown}
+        handleRetry={handleRetry}
+      />
+      <ForumErrorModal
+        isErrorModalDisplayed={isErrorModalDisplayed}
+        closeErrorModalDisplay={() => setIsErrorModalDisplayed(false)}
+        handleRetry={handleRetry}
+      />
       <div ref={forumRef}>
-        <Forum
-          setIsFetchSuccessful={setIsFetchSuccessful}
-          setIsLoading={setIsLoading}
-          setIsErrorModalDisplayed={setIsErrorModalDisplayed}
-          isRetryingFetch={isRetryingFetch}
-          setIsRetryingFetch={setIsRetryingFetch}
-        />
+        {renderForum && <Forum forumProfileData={forumProfileData} />}
       </div>
     </>
   );
