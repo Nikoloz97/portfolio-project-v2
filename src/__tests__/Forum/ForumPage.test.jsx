@@ -80,40 +80,43 @@ describe("Forum Page", () => {
     const welcomeMessage = await screen.findByText("Welcome to the Forum");
 
     await act(async () => {
-      jest.runAllTimers();
+      jest.advanceTimersByTime(1000);
       await waitFor(() => expect(welcomeMessage).toBeInTheDocument());
+    });
+
+    jest.clearAllTimers();
+  });
+
+  // Mock failed axios fetch
+  mock.onGet(apiForumRoot).reply(500);
+
+  it("renders ForumErrorModal component on unsuccessful fetch", async () => {
+    await act(async () => {
+      render(
+        <UserProvider>
+          <ForumPage />
+        </UserProvider>
+      );
+    });
+
+    await act(async () => {
+      screen.debug();
+      expect(screen.getByText("Would you like to retry?")).toBeInTheDocument();
     });
   });
 
-  // it("renders ForumErrorModal component on unsuccessful fetch", async () => {
-  //   await act(async () => {
-  //     render(
-  //       <UserProvider>
-  //         <ForumPage />
-  //       </UserProvider>
-  //     );
-  //   });
-  //   expect(screen.getByTestId("Loading-Screen")).toBeInTheDocument();
-  // });
+  it("isDisplayToBeginFadeIn state is set to true once isFetchSuccessful becomes false", async () => {
+    render(
+      <UserProvider>
+        <ForumPage />
+      </UserProvider>
+    );
 
-  // TODO: Update test (instead of setIsDisplayVisible, waitFor should look at isDisplayVisible state)
-  // it("isDisplayVisible state is set to true once isLoading becomes false following delay", async () => {
-  //   const setIsDisplayVisible = jest.fn();
-  //   jest.useFakeTimers();
-
-  //   render(
-  //     <UserProvider>
-  //       <ForumPage
-  //         isLoading={false}
-  //         setIsDisplayVisible={setIsDisplayVisible}
-  //       />
-  //     </UserProvider>
-  //   );
-
-  //   jest.runAllTimers();
-
-  //   await waitFor(() => {
-  //     expect(setIsDisplayVisible).toHaveBeenCalledWith(true);
-  //   });
-  // });
+    await waitFor(() => {
+      expect(screen.getByTestId("Display")).toHaveAttribute(
+        "data-state",
+        "true"
+      );
+    });
+  });
 });

@@ -11,6 +11,7 @@ const Display = (props) => {
       <div
         className={`Display-Page ${isDesktop ? "" : "Phone"}`}
         data-testid="Display"
+        data-state={props.isDisplayToBeginFadein}
       >
         <Loader content="Loading" active={props.isLoading} />
 

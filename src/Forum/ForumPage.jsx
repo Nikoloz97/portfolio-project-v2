@@ -12,7 +12,7 @@ function ForumPage() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);
-  const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(false);
+  const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(true);
   const [isRetryingFetch, setIsRetryingFetch] = useState(false);
   const [renderForum, setRenderForum] = useState(false);
   const [forumProfileData, setForumProfileData] = useState(null);

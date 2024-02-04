@@ -2,14 +2,10 @@ import React from "react";
 import { Modal, Button, Message, Header } from "semantic-ui-react";
 import "./Error.css";
 
-export const ForumErrorModal = ({
-  isErrorModalDisplayed,
-  closeErrorModalDisplay,
-  handleRetry,
-}) => {
+export const ForumErrorModal = (props) => {
   return (
-    <div data-testid="Loading-Screen">
-      <Modal open={isErrorModalDisplayed} centered size="fullscreen">
+    <div data-testid="Error-Modal">
+      <Modal open={props.isErrorModalDisplayed} centered size="fullscreen">
         <Modal.Header className="Error-Modal">
           There was a problem fetching your data
         </Modal.Header>
@@ -21,13 +17,13 @@ export const ForumErrorModal = ({
         <Modal.Actions className="Error-Modal">
           <Button
             content="No"
-            onClick={closeErrorModalDisplay}
+            onClick={props.closeErrorModalDisplay}
             className="Error-Modal-Button"
             inverted
           />
           <Button
             content="Yes"
-            onClick={handleRetry}
+            onClick={props.handleRetry}
             className="Error-Modal-Button"
             inverted
           />
