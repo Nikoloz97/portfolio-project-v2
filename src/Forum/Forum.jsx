@@ -14,10 +14,10 @@ function Forum(props) {
         <Grid centered>
           <Grid.Row style={{ marginTop: "3rem" }}>
             <Card.Group>
-              {props.forumProfileData.map((eachForumProfile) => (
+              {props.forumProfileData.map((forumProfile) => (
                 <ProfileCard
-                  forumProfile={eachForumProfile}
-                  key={eachForumProfile.forumProfileId}
+                  forumProfile={forumProfile}
+                  key={forumProfile.forumProfileId}
                 />
               ))}
             </Card.Group>

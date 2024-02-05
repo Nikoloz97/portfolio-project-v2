@@ -55,20 +55,17 @@ mock.onGet(apiForumRoot).reply(200, [
 jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
 
 describe("Forum Page", () => {
-  it("renders Loader element in Display component on render", async () => {
-    await act(async () => {
-      render(
-        <UserProvider>
-          <ForumPage />
-        </UserProvider>
-      );
-    });
+  it("renders Loader element in Display component on render", () => {
+    render(
+      <UserProvider>
+        <ForumPage />
+      </UserProvider>
+    );
+
     expect(screen.getByText("Loading")).toBeInTheDocument();
   });
 
-  it("Once isLoading state becomes false, display text is rendered following a delay", async () => {
-    jest.useFakeTimers();
-
+  it("Once isLoading state becomes false, display text is rendered", async () => {
     await act(async () => {
       render(
         <UserProvider>
@@ -80,11 +77,8 @@ describe("Forum Page", () => {
     const welcomeMessage = await screen.findByText("Welcome to the Forum");
 
     await act(async () => {
-      jest.advanceTimersByTime(1000);
       await waitFor(() => expect(welcomeMessage).toBeInTheDocument());
     });
-
-    jest.clearAllTimers();
   });
 
   // Mock failed axios fetch
@@ -100,7 +94,6 @@ describe("Forum Page", () => {
     });
 
     await act(async () => {
-      screen.debug();
       expect(screen.getByText("Would you like to retry?")).toBeInTheDocument();
     });
   });
@@ -119,4 +112,15 @@ describe("Forum Page", () => {
       );
     });
   });
+
+  // TODO: continue along tutorial: https://www.youtube.com/watch?v=SppbtlpPZu4&list=PL4cUxeGkcC9gm4_-5UsNmLqMosM-dzuvQ&index=4
+  // it("", () => {
+  //   render(
+  //     <UserProvider>
+  //       <ForumPage />
+  //     </UserProvider>
+  //   );
+
+  //   expect();
+  // });
 });

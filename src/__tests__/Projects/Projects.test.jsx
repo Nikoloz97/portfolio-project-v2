@@ -1,48 +1,75 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Projects from "../../Projects/Projects";
 import { MemoryRouter } from "react-router-dom";
 
 describe("Projects", () => {
-  it("Projects component produces intro card on render", () => {
+  it("on render, produces intro card", () => {
     render(
       <MemoryRouter>
         <Projects />
       </MemoryRouter>
     );
 
-    // introText
     expect(screen.getByText("Projects")).toBeInTheDocument();
-    // left arrow button (disabled)
     expect(screen.getByTestId("intro-left-arrow-button")).toHaveAttribute(
       "disabled"
     );
-
-    // right arrow button (not disabled)
     expect(screen.getByTestId("intro-right-arrow-button")).not.toHaveAttribute(
       "disabled"
     );
   });
 
-  it("Selecting right arrow button goes to next card", () => {
+  it("on render, left arrow button is disabled while right is not", () => {
     render(
       <MemoryRouter>
         <Projects />
       </MemoryRouter>
     );
 
-    // click rightArrow
-    const rightArrowButton = screen.getByTestId("intro-right-arrow-button");
+    expect(screen.getByText("Projects")).toBeInTheDocument();
+    expect(screen.getByTestId("intro-left-arrow-button")).toHaveAttribute(
+      "disabled"
+    );
+    expect(screen.getByTestId("intro-right-arrow-button")).not.toHaveAttribute(
+      "disabled"
+    );
+  });
 
-    fireEvent.click(rightArrowButton);
+  it("selecting right arrow button goes to next card", () => {
+    render(
+      <MemoryRouter>
+        <Projects />
+      </MemoryRouter>
+    );
 
-    // assert first project card
+    const rightIntroArrowButton = screen.getByTestId(
+      "intro-right-arrow-button"
+    );
+
+    fireEvent.click(rightIntroArrowButton);
+
     expect(screen.getByText("Kronos")).toBeInTheDocument();
+  });
 
-    // assert left and right buttons are not disabled
-    expect(rightArrowButton).not.toHaveAttribute("disabled");
-    const leftArrowButton = screen.getByTestId("intro-left-arrow-button");
+  it("selecting right arrow button displays right project arrow button and is not disabled", async () => {
+    render(
+      <MemoryRouter>
+        <Projects />
+      </MemoryRouter>
+    );
 
-    expect(leftArrowButton).toHaveAttribute("disabled");
+    const rightIntroArrowButton = screen.getByTestId(
+      "intro-right-arrow-button"
+    );
+
+    fireEvent.click(rightIntroArrowButton);
+
+    await waitFor(() => {
+      const rightProjectArrowButton = screen.getByTestId(
+        "project-right-arrow-button"
+      );
+      expect(rightProjectArrowButton).not.toHaveAttribute("disabled");
+    });
   });
 });

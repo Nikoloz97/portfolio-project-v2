@@ -140,6 +140,7 @@ const ProjectCard = (props) => {
           >
             <Button
               className="project-left-arrow-button"
+              data-testid="project-left-arrow-button"
               onClick={handlePrevProject}
             >
               <Icon name="arrow left" style={{ marginLeft: "-8px" }} />
@@ -149,6 +150,7 @@ const ProjectCard = (props) => {
             </Button>
             <Button
               className="project-right-arrow-button"
+              data-testid="project-right-arrow-button"
               disabled={
                 props.currentProjectIndex === props.projectsDataLength - 1
                   ? true

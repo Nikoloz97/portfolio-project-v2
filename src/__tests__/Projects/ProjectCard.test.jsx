@@ -35,7 +35,7 @@ const kronosMockProps = {
 };
 
 describe("Project Card", () => {
-  it("Renders with intro card", () => {
+  it("renders with intro card", () => {
     render(
       <MemoryRouter>
         <ProjectCard {...introMockProps} />
@@ -46,7 +46,7 @@ describe("Project Card", () => {
     expect(screen.getByRole("button", { name: "Kronos" })).toBeInTheDocument();
   });
 
-  it("Renders with kronos project card", () => {
+  it("renders with kronos project card", () => {
     render(
       <MemoryRouter>
         <ProjectCard {...kronosMockProps} />

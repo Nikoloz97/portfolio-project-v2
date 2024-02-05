@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Forum from "../../Forum/Forum";
 
 const forumProfileData = [
@@ -41,13 +41,57 @@ const forumProfileData = [
     postsCount: 1,
     profileURL: "testURL",
   },
+  {
+    age: 30,
+    displayName: "Future Hendrix",
+    followerCount: 1,
+    followers: [
+      { displayName: "Drake Parker", followerId: 1, profileURL: "testUrl" },
+    ],
+    followingCount: 1,
+    followings: [
+      { displayName: "Drake Parker", followerId: 1, profileURL: "testUrl" },
+    ],
+    forumProfileId: 2,
+    interests: [{ description: "Smokes weed and gets high", interestId: 3 }],
+    posts: [
+      {
+        commentCount: 1,
+        comments: [
+          {
+            commentDate: "2023-07-12T20:38:15",
+            commentId: 1,
+            displayName: "Tom Segura",
+            flags: 0,
+            likes: 5,
+            profileUrl: "testUrl",
+            text: "First.",
+          },
+        ],
+        flags: 0,
+        likes: 0,
+        photoURL: "testPhotoUrl",
+        postId: 1,
+        postedDate: "2023-07-09T17:38:15",
+        text: "I prefer working with 21 Savage than Drake - I mean look at that smile.",
+        title: "Drake vs 21 Savage",
+      },
+    ],
+    postsCount: 1,
+    profileURL: "testURL",
+  },
 ];
 
 describe("Forum screen", () => {
-  it("renders correctly", async () => {
-    // Create mock functions for props
+  it("renders correctly", () => {
     render(<Forum forumProfileData={forumProfileData} />);
-    // Wait for state updates (in promises) to complete
-    await waitFor(() => {});
+
+    expect(screen.getByTestId("Forum")).toBeInTheDocument();
+  });
+
+  it("maps profile cards correctly", () => {
+    render(<Forum forumProfileData={forumProfileData} />);
+
+    expect(screen.getAllByTestId("Profile-Card")).toHaveLength(2);
   });
 });

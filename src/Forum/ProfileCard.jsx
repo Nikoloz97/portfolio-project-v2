@@ -24,7 +24,11 @@ const ProfileCard = (props) => {
   };
 
   return (
-    <Card className="Forum-Card" style={{ marginRight: "2rem" }}>
+    <Card
+      className="Forum-Card"
+      style={{ marginRight: "2rem" }}
+      data-testid="Profile-Card"
+    >
       <Card.Content>
         <Image
           floated="left"

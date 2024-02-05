@@ -43,7 +43,7 @@ function ForumPage() {
         setIsFetchSuccessful(true);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        // console.error("Error fetching data:", error);
         setTimeout(() => {
           setIsLoading(false);
         }, 500);
