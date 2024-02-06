@@ -83,6 +83,7 @@ function ForumPage() {
         isLoading={isLoading}
         handleScrollDown={handleScrollDown}
         handleRetry={handleRetry}
+        isFetchSuccessful={isFetchSuccessful}
       />
       <ForumErrorModal
         isErrorModalDisplayed={isErrorModalDisplayed}
