@@ -12,7 +12,7 @@ function ForumPage() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);
-  const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(true);
+  const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(false);
   const [isRetryingFetch, setIsRetryingFetch] = useState(false);
   const [renderForum, setRenderForum] = useState(false);
   const [forumProfileData, setForumProfileData] = useState(null);
@@ -38,7 +38,7 @@ function ForumPage() {
         console.log(response);
         setTimeout(() => {
           setIsLoading(false);
-        }, 500);
+        }, 200);
         setIsErrorModalDisplayed(false);
         setIsFetchSuccessful(true);
       })
@@ -46,25 +46,37 @@ function ForumPage() {
         // console.error("Error fetching data:", error);
         setTimeout(() => {
           setIsLoading(false);
-        }, 500);
-        setIsErrorModalDisplayed(true);
+        }, 200);
         setIsFetchSuccessful(false);
       });
   };
 
   useEffect(() => {
+    let errorTimeout;
+    let fadeInTimeout;
+
+    if (isFetchSuccessful !== null)
+      fadeInTimeout = setTimeout(() => {
+        setIsDisplayToBeginFadein(true);
+      }, 400);
+
     if (isFetchSuccessful === false) {
-      setTimeout(() => {
+      errorTimeout = setTimeout(() => {
         setIsErrorModalDisplayed(true);
-      }, 700);
+      }, 600);
     }
-    setTimeout(() => {
-      setIsDisplayToBeginFadein(true);
-    }, 700);
+
+    if (isFetchSuccessful) {
+      setRenderForum(true);
+    }
+
+    return () => {
+      clearTimeout(errorTimeout);
+      clearTimeout(fadeInTimeout);
+    };
   }, [isFetchSuccessful]);
 
   const handleScrollDown = () => {
-    setRenderForum(true);
     setTimeout(() => {
       forumRef.current.scrollIntoView({ behavior: "smooth" });
     }, 100);

@@ -83,42 +83,40 @@ describe("Forum Page", () => {
     });
   });
 
-  // Mock failed axios fetch
-  // mock.onGet(apiForumRoot).reply(500);
+  //Mock failed axios fetch
+  mock.onGet(apiForumRoot).reply(500);
 
-  // it("renders ForumErrorModal component on unsuccessful fetch", async () => {
-  //   await act(async () => {
-  //     render(
-  //       <UserProvider>
-  //         <ForumPage />
-  //       </UserProvider>
-  //     );
-  //   });
+  it("renders ForumErrorModal component on unsuccessful fetch", async () => {
+    await act(async () => {
+      render(
+        <UserProvider>
+          <ForumPage />
+        </UserProvider>
+      );
+    });
 
-  //   await act(async () => {
-  //     expect(screen.getByText("Would you like to retry?")).toBeInTheDocument();
-  //   });
-  // });
+    await waitFor(() => {
+      expect(screen.getByText("Would you like to retry?")).toBeInTheDocument();
+    });
+  });
 
-  // it("isDisplayToBeginFadeIn state is set to true once isFetchSuccessful becomes false", async () => {
-  //   await act(async () => {
-  //     render(
-  //       <UserProvider>
-  //         <ForumPage />
-  //       </UserProvider>
-  //     );
-  //   });
+  it("isDisplayToBeginFadeIn state is set to true once isFetchSuccessful becomes false", async () => {
+    await act(async () => {
+      render(
+        <UserProvider>
+          <ForumPage />
+        </UserProvider>
+      );
+    });
 
-  //   await waitFor(() => {
-  //     expect(screen.getByTestId("Display")).toHaveAttribute(
-  //       "data-state",
-  //       "true"
-  //     );
-  //   });
-  // });
+    await waitFor(() => {
+      expect(screen.getByTestId("Display")).toHaveAttribute(
+        "data-state",
+        "true"
+      );
+    });
+  });
 
-  // TODO: get this test to fail
-  // TODO: continue along tutorial: https://www.youtube.com/watch?v=SppbtlpPZu4&list=PL4cUxeGkcC9gm4_-5UsNmLqMosM-dzuvQ&index=4
   it("does not render forum component on unsuccessful fetch", async () => {
     await act(async () => {
       render(
@@ -129,7 +127,9 @@ describe("Forum Page", () => {
     });
 
     await waitFor(() => {
+      screen.debug();
       expect(screen.queryByTestId("Forum")).toBeNull();
     });
   });
+  // TODO: continue along tutorial: https://www.youtube.com/watch?v=PLL5Pvuk-tw&list=PL4cUxeGkcC9gm4_-5UsNmLqMosM-dzuvQ&index=6
 });
