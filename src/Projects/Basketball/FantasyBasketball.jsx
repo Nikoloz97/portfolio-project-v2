@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import "./FantasyBasketball.css";
 
 const FantasyBasketball = () => {
+  const [isScheduleHovered, setIsScheduleHovered] = useState(false);
+  const [isTeamHovered, setIsTeamHovered] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
 
   useEffect(() => {
@@ -23,15 +25,35 @@ const FantasyBasketball = () => {
           Fantasy Basketball Hub
         </div>
         <div className="FB-Button-Container">
-          <Button as={Link} to="/projects/fantasy-basketball/team-analyzer">
-            Team Analyzer
-          </Button>
-          <Button
-            as={Link}
-            to="/projects/fantasy-basketball/schedule-analyzer/"
+          <div
+            className={`Hub-Team-Analyzer ${isTeamHovered ? "Hovered" : ""}`}
+            onMouseEnter={() => setIsTeamHovered(true)}
+            onMouseLeave={() => setIsTeamHovered(false)}
           >
-            Schedule Analyzer
-          </Button>
+            <Button
+              as={Link}
+              to="/projects/fantasy-basketball/team-analyzer"
+              className="FB-Button"
+            >
+              Team Analyzer
+            </Button>
+          </div>
+
+          <div
+            className={`Hub-Schedule-Analyzer ${
+              isScheduleHovered ? "Hovered" : ""
+            }`}
+            onMouseEnter={() => setIsScheduleHovered(true)}
+            onMouseLeave={() => setIsScheduleHovered(false)}
+          >
+            <Button
+              as={Link}
+              to="/projects/fantasy-basketball/schedule-analyzer/"
+              className="FB-Button"
+            >
+              Schedule Analyzer
+            </Button>
+          </div>
         </div>
       </div>
     </div>

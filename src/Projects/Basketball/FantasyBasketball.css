@@ -22,8 +22,44 @@
 
 .FB-Button-Container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.FB-Button {
+  background-color: black !important;
+}
+
+.Hub-Team-Analyzer {
+  background: url("../../Images/FantasyBball/NbaPlayers.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 700px;
+  width: 50%;
+  filter: brightness(70%);
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin-top: 1rem;
-  gap: 1rem; /* Gap between buttons*/
+}
+
+.Hub-Team-Analyzer.Hovered {
+  filter: brightness(100%) !important;
+}
+
+.Hub-Schedule-Analyzer {
+  background: url("../../Images/FantasyBball/NbaSchedule.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 700px;
+  width: 50%;
+  filter: brightness(70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Hub-Schedule-Analyzer.Hovered {
+  filter: brightness(100%) !important;
 }
