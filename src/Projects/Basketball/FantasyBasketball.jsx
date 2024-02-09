@@ -6,12 +6,12 @@ import "./FantasyBasketball.css";
 const FantasyBasketball = () => {
   const [isScheduleHovered, setIsScheduleHovered] = useState(false);
   const [isTeamHovered, setIsTeamHovered] = useState(false);
-  const [fadeIn, setFadeIn] = useState(false);
+  const [isHeaderToFadeIn, setIsHeaderToFadeIn] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFadeIn(true);
-    }, 500);
+      setIsHeaderToFadeIn(true);
+    }, 100);
 
     return () => {
       clearTimeout(timer);
@@ -21,7 +21,7 @@ const FantasyBasketball = () => {
   return (
     <div className="Default-Page">
       <div className="FB-Container">
-        <div className={`FB-Header ${fadeIn ? "visible" : ""}`}>
+        <div className={`FB-Header ${isHeaderToFadeIn ? "visible" : ""}`}>
           Fantasy Basketball Hub
         </div>
         <div className="FB-Button-Container">
