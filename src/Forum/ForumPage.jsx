@@ -35,7 +35,7 @@ function ForumPage() {
       .get(apiForumRoot)
       .then((response) => {
         setForumProfileData(response.data);
-        console.log(response);
+        // console.log(response);
         setTimeout(() => {
           setIsLoading(false);
         }, 200);
