@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Form, Dropdown, Card, Image } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import axios from "axios";
+import PlayerCard from "./PlayerCard";
 import ResultsModal from "./ResultsModal";
 import {
   selectedPlayersArray,
@@ -10,6 +11,8 @@ import {
 
 function TeamAnalyzer() {
   const [selectedPlayers, setSelectedPlayers] = useState(selectedPlayersArray);
+
+  const [playerIndex, setPlayerIndex] = useState(0);
 
   const [playerNameInput, setPlayerNameInput] = useState("");
 
@@ -43,7 +46,6 @@ function TeamAnalyzer() {
             "X-RapidAPI-Host": "tank01-fantasy-stats.p.rapidapi.com",
           },
         });
-        console.log(response);
         populatePlayerOptions(response.data.body);
       } catch (error) {
         console.error(error);
@@ -76,6 +78,8 @@ function TeamAnalyzer() {
 
         const fetchedData = response.data.body[0];
 
+        console.log(playerNameInput);
+
         populateCurrentPlayer(
           updatedSelectedPlayers,
           currentPlayer,
@@ -93,14 +97,14 @@ function TeamAnalyzer() {
     }
   }, [playerNameInput]);
 
-  const handleDropdownSelection = (index, event) => {
+  const handleDropdownSelection = (event) => {
     const value = event.target.innerText;
     const updatedSelectedPlayers = [...selectedPlayers];
-    updatedSelectedPlayers[index].playerName = value;
+    updatedSelectedPlayers[playerIndex].playerName = value;
 
     setSelectedPlayers(updatedSelectedPlayers);
 
-    setLatestDropdownModifiedIndex(index);
+    setLatestDropdownModifiedIndex(playerIndex);
 
     setPlayerNameInput(value);
   };
@@ -109,44 +113,30 @@ function TeamAnalyzer() {
     <div className="Default-Page">
       <header>Welcome to the Team Analyzer</header>
       <Form className="Default-Form">
-        {playerDropdowns.map((x, index) => (
-          <div key={x.key}>
-            {/* TODO: Fix dropdown (enter = not working) */}
-            <Dropdown
-              placeholder={x.placeholder}
-              fluid
-              search
-              selection
-              options={playerOptions}
-              onChange={(event) => handleDropdownSelection(index, event)}
-            />
+        <PlayerCard
+          selectedPlayer={selectedPlayers[playerIndex]}
+          playerDropdown={playerDropdowns[playerIndex]}
+          playerOptions={playerOptions}
+          handleDropdownSelection={handleDropdownSelection}
+        />
 
-            {selectedPlayers[index].isModified && (
-              <Card>
-                <Card.Content>
-                  <Image
-                    floated="right"
-                    size="mini"
-                    src={selectedPlayers[index].playerURL}
-                  />
-                  <Card.Header>{selectedPlayers[index].playerName}</Card.Header>
-                  <Card.Meta>{selectedPlayers[index].teamName}</Card.Meta>
+        <Button
+          disabled={playerIndex === 0}
+          onClick={() => setPlayerIndex(playerIndex - 1)}
+        >
+          Previous
+        </Button>
 
-                  <Card.Description>
-                    {selectedPlayers[index].stats.map((stat) => (
-                      <div key={stat.name}>
-                        <header>{stat.name}</header>
-                        <p>{stat.value}</p>
-                      </div>
-                    ))}
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-            )}
-          </div>
-        ))}
+        <Button
+          disabled={playerIndex === selectedPlayers.length - 1}
+          onClick={() => setPlayerIndex(playerIndex + 1)}
+        >
+          Next
+        </Button>
 
-        <ResultsModal dropdownSelectedPlayers={selectedPlayers} />
+        {playerIndex === selectedPlayers.length - 1 && (
+          <ResultsModal dropdownSelectedPlayers={selectedPlayers} />
+        )}
       </Form>
     </div>
   );

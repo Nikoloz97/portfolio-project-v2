@@ -7,6 +7,10 @@ const FantasyBasketball = () => {
   const [isScheduleHovered, setIsScheduleHovered] = useState(false);
   const [isTeamHovered, setIsTeamHovered] = useState(false);
   const [isHeaderToFadeIn, setIsHeaderToFadeIn] = useState(false);
+  const [isTeamButtonToBeInverted, setIsTeamButtonToBeInverted] =
+    useState(false);
+  const [isScheduleButtonToBeInverted, setIsScheduleButtonToBeInverted] =
+    useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,13 +34,19 @@ const FantasyBasketball = () => {
             onMouseEnter={() => setIsTeamHovered(true)}
             onMouseLeave={() => setIsTeamHovered(false)}
           >
-            <Button
-              as={Link}
-              to="/projects/fantasy-basketball/team-analyzer"
-              className="FB-Button"
+            <div
+              onMouseEnter={() => setIsTeamButtonToBeInverted(true)}
+              onMouseLeave={() => setIsTeamButtonToBeInverted(false)}
             >
-              Team Analyzer
-            </Button>
+              <Button
+                as={Link}
+                to="/projects/fantasy-basketball/team-analyzer"
+                className="FB-Button"
+                inverted={isTeamButtonToBeInverted}
+              >
+                Team Analyzer
+              </Button>
+            </div>
           </div>
 
           <div
@@ -46,13 +56,19 @@ const FantasyBasketball = () => {
             onMouseEnter={() => setIsScheduleHovered(true)}
             onMouseLeave={() => setIsScheduleHovered(false)}
           >
-            <Button
-              as={Link}
-              to="/projects/fantasy-basketball/schedule-analyzer/"
-              className="FB-Button"
+            <div
+              onMouseEnter={() => setIsScheduleButtonToBeInverted(true)}
+              onMouseLeave={() => setIsScheduleButtonToBeInverted(false)}
             >
-              Schedule Analyzer
-            </Button>
+              <Button
+                as={Link}
+                to="/projects/fantasy-basketball/schedule-analyzer/"
+                className="FB-Button"
+                inverted={isScheduleButtonToBeInverted}
+              >
+                Schedule Analyzer
+              </Button>
+            </div>
           </div>
         </div>
       </div>

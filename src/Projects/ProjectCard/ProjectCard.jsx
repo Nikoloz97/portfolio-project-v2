@@ -5,6 +5,7 @@ import "./ProjectCard.css";
 
 const ProjectCard = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [buttonIndexForInversion, setButtonIndexForInversion] = useState(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -75,15 +76,20 @@ const ProjectCard = (props) => {
             </Button>
 
             {props.projectData.linkUrls.map((link, index) => (
-              <Button
-                as={Link}
-                to={link.url}
+              <div
+                onMouseEnter={() => setButtonIndexForInversion(index)}
+                onMouseLeave={() => setButtonIndexForInversion(null)}
                 key={index}
-                style={{ marginBottom: "10%" }}
-                inverted
               >
-                {link.title}
-              </Button>
+                <Button
+                  as={Link}
+                  to={link.url}
+                  style={{ marginBottom: "10%" }}
+                  inverted={buttonIndexForInversion === index ? false : true}
+                >
+                  {link.title}
+                </Button>
+              </div>
             ))}
 
             <Button
