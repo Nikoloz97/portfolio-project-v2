@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Card } from "semantic-ui-react";
 import axios from "axios";
 import PlayerCard from "./PlayerCard";
 import ResultsModal from "./ResultsModal";
@@ -8,6 +8,7 @@ import {
   generatePlayerDropdowns,
   populateCurrentPlayer,
 } from "../../../Utils/Projects/FantasyBball/TeamAnalyzer";
+import "./TeamAnalyzer.css";
 
 function TeamAnalyzer() {
   const [selectedPlayers, setSelectedPlayers] = useState(selectedPlayersArray);
@@ -20,6 +21,8 @@ function TeamAnalyzer() {
     useState(0);
 
   const [playerOptions, setPlayerOptions] = useState([]);
+
+  const [hasPlayerChoosingBegun, setHasPlayerChoosingBegun] = useState(false);
 
   const playerDropdowns = generatePlayerDropdowns(playerOptions);
 
@@ -111,33 +114,54 @@ function TeamAnalyzer() {
 
   return (
     <div className="Default-Page">
-      <header>Welcome to the Team Analyzer</header>
-      <Form className="Default-Form">
-        <PlayerCard
-          selectedPlayer={selectedPlayers[playerIndex]}
-          playerDropdown={playerDropdowns[playerIndex]}
-          playerOptions={playerOptions}
-          handleDropdownSelection={handleDropdownSelection}
-        />
+      {!hasPlayerChoosingBegun && (
+        <div className="TA-Intro-Container">
+          <header style={{ marginBottom: "10px" }}>
+            Welcome to the Team Analyzer
+          </header>
+          <Card className="TA-Intro-Card">
+            <Card.Header className="TA-Intro-Card-Header" textAlign="center">
+              Instructions
+            </Card.Header>
+            <Card.Description className="TA-Intro-Card-Description">
+              Choose players that are on your 12-Team fantasy league from the
+              dropdowns. Then, select 'View Results' to see how the average of
+              your team stats compare with that of the top 132 players in the
+              league
+            </Card.Description>
+          </Card>
+          <Button onClick={() => setHasPlayerChoosingBegun(true)}>Start</Button>
+        </div>
+      )}
 
-        <Button
-          disabled={playerIndex === 0}
-          onClick={() => setPlayerIndex(playerIndex - 1)}
-        >
-          Previous
-        </Button>
+      {hasPlayerChoosingBegun && (
+        <Form className="Default-Form">
+          <PlayerCard
+            selectedPlayer={selectedPlayers[playerIndex]}
+            playerDropdown={playerDropdowns[playerIndex]}
+            playerOptions={playerOptions}
+            handleDropdownSelection={handleDropdownSelection}
+          />
 
-        <Button
-          disabled={playerIndex === selectedPlayers.length - 1}
-          onClick={() => setPlayerIndex(playerIndex + 1)}
-        >
-          Next
-        </Button>
+          <Button
+            disabled={playerIndex === 0}
+            onClick={() => setPlayerIndex(playerIndex - 1)}
+          >
+            Previous
+          </Button>
 
-        {playerIndex === selectedPlayers.length - 1 && (
-          <ResultsModal dropdownSelectedPlayers={selectedPlayers} />
-        )}
-      </Form>
+          <Button
+            disabled={playerIndex === selectedPlayers.length - 1}
+            onClick={() => setPlayerIndex(playerIndex + 1)}
+          >
+            Next
+          </Button>
+
+          {playerIndex === selectedPlayers.length - 1 && (
+            <ResultsModal dropdownSelectedPlayers={selectedPlayers} />
+          )}
+        </Form>
+      )}
     </div>
   );
 }
