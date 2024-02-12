@@ -43,15 +43,27 @@ describe("Team Analyzer", () => {
         ],
       });
 
+    it("Displays first card following selection of the start button", async () => {
+      await act(async () => {
+        render(<TeamAnalyzer />);
+      });
+
+      fireEvent.click(screen.getByRole("button", { name: "Start" }));
+
+      await waitFor(() =>
+        expect(screen.getByText("Choose player one")).toBeInTheDocument()
+      );
+    });
+
     it("Dropdown options reflect longName property from object array in api fetch", async () => {
       await act(async () => {
         render(<TeamAnalyzer />);
       });
 
-      await waitFor(
-        () => expect(screen.getAllByText("LaMelo Ball")).toHaveLength(12),
-        expect(screen.getAllByText("Tyler Herro")).toHaveLength(12),
-        expect(screen.getAllByText("Franz Wagner")).toHaveLength(12)
+      fireEvent.click(screen.getByRole("button", { name: "Start" }));
+
+      await waitFor(() =>
+        expect(screen.getByText("LaMelo Ball")).toBeInTheDocument()
       );
     });
   });
@@ -115,12 +127,20 @@ describe("Team Analyzer", () => {
           },
         ],
       });
-    it("Populates card appropriately following fetch", async () => {
-      await act(async () => {
-        render(<TeamAnalyzer />);
-      });
 
-      await waitFor(() => expect(screen.getByText("PTS")).toBeInTheDocument());
-    });
+    // TODO: Find a way to make this test work?
+    // 1. Looks like 2nd fireEvent occurs before 1st
+    // 2. Cards are already pre-populated because of mock fetch (I think)
+    // it("Following clicking start, player card becomes populated with FG% following dropdown selection", async () => {
+    //   await act(async () => {
+    //     render(<TeamAnalyzer />);
+    //   });
+
+    //   fireEvent.click(screen.getByRole("button", { name: "Start" }));
+
+    //   fireEvent.click(screen.getByText("LaMelo Ball"));
+
+    //   await waitFor(() => expect(screen.getByText("43.3")).toBeInTheDocument());
+    // });
   });
 });

@@ -3,7 +3,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -47,7 +46,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -91,7 +89,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -135,7 +132,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -179,7 +175,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -223,7 +218,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -267,7 +261,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -311,7 +304,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -355,7 +347,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -399,7 +390,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -443,7 +433,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -487,7 +476,6 @@ export const selectedPlayersArray = [
     playerName: "",
     teamName: "",
     playerURL: "",
-    isModified: false,
     stats: [
       {
         name: "PTS",
@@ -634,8 +622,6 @@ export const populateCurrentPlayer = (
   currentPlayer.stats[7].value = fetchedData.stats.ast;
 
   currentPlayer.stats[8].value = fetchedData.stats.stl;
-
-  currentPlayer.isModified = true;
 
   updatedSelectedPlayers[latestDropdownModifiedIndex] = currentPlayer;
 

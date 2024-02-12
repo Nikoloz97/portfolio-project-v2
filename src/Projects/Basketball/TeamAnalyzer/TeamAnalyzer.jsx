@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Card } from "semantic-ui-react";
+import { Form, Button, Card, Icon } from "semantic-ui-react";
 import axios from "axios";
 import PlayerCard from "./PlayerCard";
 import ResultsModal from "./ResultsModal";
@@ -141,21 +141,10 @@ function TeamAnalyzer() {
             playerDropdown={playerDropdowns[playerIndex]}
             playerOptions={playerOptions}
             handleDropdownSelection={handleDropdownSelection}
+            playerIndex={playerIndex}
+            setPlayerIndex={setPlayerIndex}
+            selectedPlayers={selectedPlayers}
           />
-
-          <Button
-            disabled={playerIndex === 0}
-            onClick={() => setPlayerIndex(playerIndex - 1)}
-          >
-            Previous
-          </Button>
-
-          <Button
-            disabled={playerIndex === selectedPlayers.length - 1}
-            onClick={() => setPlayerIndex(playerIndex + 1)}
-          >
-            Next
-          </Button>
 
           {playerIndex === selectedPlayers.length - 1 && (
             <ResultsModal dropdownSelectedPlayers={selectedPlayers} />
