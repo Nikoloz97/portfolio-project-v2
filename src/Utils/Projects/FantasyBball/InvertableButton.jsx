@@ -12,9 +12,13 @@ const InvertableButton = (props) => {
     >
       <Button
         as={Link}
-        inverted={isHovered}
+        inverted={props.isInversionCustom ? false : isHovered}
         to={props.link}
-        className={props.className}
+        className={
+          props.isInversionCustom
+            ? `${props.className} ${isHovered ? "Inverted" : ""}`
+            : props.className
+        }
       >
         {props.name}
       </Button>
