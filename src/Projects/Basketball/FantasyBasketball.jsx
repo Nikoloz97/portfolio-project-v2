@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import "./FantasyBasketball.css";
+import InvertableButton from "../../Utils/Projects/FantasyBball/InvertableButton";
 
 const FantasyBasketball = () => {
   const [isScheduleHovered, setIsScheduleHovered] = useState(false);
   const [isTeamHovered, setIsTeamHovered] = useState(false);
   const [isHeaderToFadeIn, setIsHeaderToFadeIn] = useState(false);
-  const [isTeamButtonToBeInverted, setIsTeamButtonToBeInverted] =
-    useState(false);
-  const [isScheduleButtonToBeInverted, setIsScheduleButtonToBeInverted] =
-    useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -34,19 +29,11 @@ const FantasyBasketball = () => {
             onMouseEnter={() => setIsTeamHovered(true)}
             onMouseLeave={() => setIsTeamHovered(false)}
           >
-            <div
-              onMouseEnter={() => setIsTeamButtonToBeInverted(true)}
-              onMouseLeave={() => setIsTeamButtonToBeInverted(false)}
-            >
-              <Button
-                as={Link}
-                to="/projects/fantasy-basketball/team-analyzer"
-                className="FB-Button"
-                inverted={isTeamButtonToBeInverted}
-              >
-                Team Analyzer
-              </Button>
-            </div>
+            <InvertableButton
+              link="/projects/fantasy-basketball/team-analyzer"
+              className="FB-Button"
+              name="Team Analyzer"
+            />
           </div>
 
           <div
@@ -56,19 +43,11 @@ const FantasyBasketball = () => {
             onMouseEnter={() => setIsScheduleHovered(true)}
             onMouseLeave={() => setIsScheduleHovered(false)}
           >
-            <div
-              onMouseEnter={() => setIsScheduleButtonToBeInverted(true)}
-              onMouseLeave={() => setIsScheduleButtonToBeInverted(false)}
-            >
-              <Button
-                as={Link}
-                to="/projects/fantasy-basketball/schedule-analyzer/"
-                className="FB-Button"
-                inverted={isScheduleButtonToBeInverted}
-              >
-                Schedule Analyzer
-              </Button>
-            </div>
+            <InvertableButton
+              link="/projects/fantasy-basketball/schedule-analyzer/"
+              className="FB-Button"
+              name="Schedule Analyzer"
+            />
           </div>
         </div>
       </div>
