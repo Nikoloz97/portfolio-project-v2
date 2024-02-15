@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import "./FantasyBasketball.css";
 import InvertableButton from "../../Utils/Projects/FantasyBball/InvertableButton";
 
@@ -8,10 +6,6 @@ const FantasyBasketball = () => {
   const [isScheduleHovered, setIsScheduleHovered] = useState(false);
   const [isTeamHovered, setIsTeamHovered] = useState(false);
   const [isHeaderToFadeIn, setIsHeaderToFadeIn] = useState(false);
-  const [isTeamButtonToBeInverted, setIsTeamButtonToBeInverted] =
-    useState(false);
-  const [isScheduleButtonToBeInverted, setIsScheduleButtonToBeInverted] =
-    useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
