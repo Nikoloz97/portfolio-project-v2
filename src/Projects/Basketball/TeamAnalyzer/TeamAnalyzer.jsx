@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Card, Icon } from "semantic-ui-react";
+import { Form, Button, Card } from "semantic-ui-react";
 import axios from "axios";
 import PlayerCard from "./PlayerCard";
 import ResultsModal from "./ResultsModal";

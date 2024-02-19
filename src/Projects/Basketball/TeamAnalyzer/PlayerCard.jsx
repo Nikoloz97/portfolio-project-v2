@@ -4,49 +4,49 @@ import { Dropdown, Card, Image, Button, Icon } from "semantic-ui-react";
 const PlayerCard = (props) => {
   return (
     <div className="Player-Card-Component-Container">
-      {/* TODO: should card ternary be created for placeholder? Or make it work with one card component */}
-      {/* {props.isPlayerChosen ? (
-        <Card>
-          <Card.Content>
-            <Image
-              floated="right"
-              size="mini"
-              src={selectedPlayers[index].playerURL}
-            />
-            <Card.Header>{selectedPlayers[index].playerName}</Card.Header>
-            <Card.Meta>{selectedPlayers[index].teamName}</Card.Meta>
-
-            <Card.Description>
-              {selectedPlayers[index].stats.map((stat) => (
-                <div key={stat.name}>
-                  <header>{stat.name}</header>
-                  <p>{stat.value}</p>
-                </div>
-              ))}
-            </Card.Description>
-          </Card.Content>
-        </Card>
-      ) : ( */}
       <div className="Player-Card-Container">
-        <Card>
-          <Card.Content>
-            <Image
-              floated="right"
-              size="mini"
-              src={props.selectedPlayer.playerURL}
-            />
-            <Card.Header>{props.selectedPlayer.playerName}</Card.Header>
-            <Card.Meta>{props.selectedPlayer.teamName}</Card.Meta>
-            <Card.Description>
-              {props.selectedPlayer.stats.map((stat, index) => (
-                <div key={index}>
-                  <header>{stat.name}</header>
-                  <p>{stat.value}</p>
-                </div>
-              ))}
-            </Card.Description>
-          </Card.Content>
+        <Card className="Player-Card">
+          <div className="Player-Card-Contents-Container">
+            <div className="Player-Card-Headshot-Container">
+              <Image
+                // src={require("../../../Images/General/avatar-icon.jpg")}
+                src={
+                  props.selectedPlayer.playerURL === ""
+                    ? require("../../../Images/General/avatar-icon.jpg")
+                    : props.selectedPlayer.playerURL
+                }
+                style={{ width: "100%", height: "25%", marginBottom: "80px" }}
+              />
+            </div>
+            <div>
+              <Card.Header style={{ color: "white" }}>
+                <h1>{props.selectedPlayer.playerName.toUpperCase()}</h1>
+              </Card.Header>
+
+              <Card.Content>
+                <Card.Meta style={{ color: "white" }}>
+                  {props.selectedPlayer.teamName}
+                </Card.Meta>
+                <Card.Description
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "60%",
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  {props.selectedPlayer.stats.map((stat, index) => (
+                    <div key={index} className="Player-Stat-Card">
+                      <header>{stat.name.toUpperCase()}</header>
+                      <p>{stat.value}</p>
+                    </div>
+                  ))}
+                </Card.Description>
+              </Card.Content>
+            </div>
+          </div>
         </Card>
+
         <div className="Player-Card-Buttons-Container">
           <Button
             className="Player-Card-Button"
@@ -64,7 +64,6 @@ const PlayerCard = (props) => {
           </Button>
         </div>
       </div>
-      {/* )} */}
 
       {/* TODO: Fix dropdown (enter = not working) */}
       <Dropdown

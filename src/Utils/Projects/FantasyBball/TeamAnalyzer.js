@@ -1,23 +1,23 @@
 export const selectedPlayersArray = [
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
       {
-        name: "PTS",
+        name: "Points",
         value: 0,
       },
       {
-        name: "FG%",
+        name: "Field Goal %",
         value: 0,
       },
       {
-        name: "FT%",
+        name: "Free Throw %",
         value: 0,
       },
       {
-        name: "3PM",
+        name: "3 Point Makes",
         value: 0,
       },
       {
