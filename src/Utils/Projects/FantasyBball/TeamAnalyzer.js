@@ -43,7 +43,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -86,7 +86,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -129,7 +129,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -172,7 +172,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -215,7 +215,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -258,7 +258,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -301,7 +301,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -344,7 +344,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -387,7 +387,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -430,7 +430,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [
@@ -473,7 +473,7 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "",
+    playerName: "Choose a player",
     teamName: "",
     playerURL: "",
     stats: [

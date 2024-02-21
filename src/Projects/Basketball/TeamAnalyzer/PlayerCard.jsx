@@ -1,5 +1,6 @@
 import React from "react";
-import { Dropdown, Card, Image, Button, Icon, Grid } from "semantic-ui-react";
+import { Dropdown, Card, Image, Button, Icon } from "semantic-ui-react";
+import AutoCompleteInput from "../../../Utils/General/AutoCompleteInput";
 
 const PlayerCard = (props) => {
   return (
@@ -55,13 +56,16 @@ const PlayerCard = (props) => {
           >
             <Icon name="angle left" />
           </Button>
-          <Dropdown
+          {/* <Dropdown
             placeholder={props.playerDropdown.placeholder}
             search
             selection
             options={props.playerOptions}
             onChange={(event) => props.handleDropdownSelection(event)}
-          />
+          /> */}
+
+          <AutoCompleteInput suggestions={props.playerOptions} />
+
           <Button
             className="Player-Card-Button"
             disabled={props.playerIndex === props.selectedPlayers.length - 1}

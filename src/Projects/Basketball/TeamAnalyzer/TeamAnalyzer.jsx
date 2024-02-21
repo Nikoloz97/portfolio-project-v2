@@ -28,12 +28,16 @@ function TeamAnalyzer() {
 
   const populatePlayerOptions = (playerOptionsData) => {
     const playerOptionsList = [
-      playerOptionsData.map((playerObj) => ({
-        key: playerObj.playerID,
-        text: playerObj.longName,
-        value: playerObj.longName,
-      })),
+      playerOptionsData.map((playerObj) => playerObj.longName),
     ];
+
+    // const playerOptionsList = [
+    //   playerOptionsData.map((playerObj) => ({
+    //     key: playerObj.playerID,
+    //     text: playerObj.longName,
+    //     value: playerObj.longName,
+    //   })),
+    // ];
     setPlayerOptions(playerOptionsList[0]);
   };
 
