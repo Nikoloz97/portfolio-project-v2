@@ -48,62 +48,19 @@ export const selectedPlayersArray = [
     playerURL: "",
     stats: [
       {
-        name: "PTS",
+        name: "Points",
         value: 0,
       },
       {
-        name: "FG%",
+        name: "Field Goal %",
         value: 0,
       },
       {
-        name: "FT%",
+        name: "Free Throw %",
         value: 0,
       },
       {
-        name: "3PM",
-        value: 0,
-      },
-      {
-        name: "Rebounds",
-        value: 0,
-      },
-      {
-        name: "Blocks",
-        value: 0,
-      },
-      {
-        name: "Turnovers",
-        value: 0,
-      },
-      {
-        name: "Assists",
-        value: 0,
-      },
-      {
-        name: "Steals",
-        value: 0,
-      },
-    ],
-  },
-  {
-    playerName: "Choose a player",
-    teamName: "",
-    playerURL: "",
-    stats: [
-      {
-        name: "PTS",
-        value: 0,
-      },
-      {
-        name: "FG%",
-        value: 0,
-      },
-      {
-        name: "FT%",
-        value: 0,
-      },
-      {
-        name: "3PM",
+        name: "3 Point Makes",
         value: 0,
       },
       {
@@ -134,62 +91,19 @@ export const selectedPlayersArray = [
     playerURL: "",
     stats: [
       {
-        name: "PTS",
+        name: "Points",
         value: 0,
       },
       {
-        name: "FG%",
+        name: "Field Goal %",
         value: 0,
       },
       {
-        name: "FT%",
+        name: "Free Throw %",
         value: 0,
       },
       {
-        name: "3PM",
-        value: 0,
-      },
-      {
-        name: "Rebounds",
-        value: 0,
-      },
-      {
-        name: "Blocks",
-        value: 0,
-      },
-      {
-        name: "Turnovers",
-        value: 0,
-      },
-      {
-        name: "Assists",
-        value: 0,
-      },
-      {
-        name: "Steals",
-        value: 0,
-      },
-    ],
-  },
-  {
-    playerName: "Choose a player",
-    teamName: "",
-    playerURL: "",
-    stats: [
-      {
-        name: "PTS",
-        value: 0,
-      },
-      {
-        name: "FG%",
-        value: 0,
-      },
-      {
-        name: "FT%",
-        value: 0,
-      },
-      {
-        name: "3PM",
+        name: "3 Point Makes",
         value: 0,
       },
       {
@@ -220,62 +134,19 @@ export const selectedPlayersArray = [
     playerURL: "",
     stats: [
       {
-        name: "PTS",
+        name: "Points",
         value: 0,
       },
       {
-        name: "FG%",
+        name: "Field Goal %",
         value: 0,
       },
       {
-        name: "FT%",
+        name: "Free Throw %",
         value: 0,
       },
       {
-        name: "3PM",
-        value: 0,
-      },
-      {
-        name: "Rebounds",
-        value: 0,
-      },
-      {
-        name: "Blocks",
-        value: 0,
-      },
-      {
-        name: "Turnovers",
-        value: 0,
-      },
-      {
-        name: "Assists",
-        value: 0,
-      },
-      {
-        name: "Steals",
-        value: 0,
-      },
-    ],
-  },
-  {
-    playerName: "Choose a player",
-    teamName: "",
-    playerURL: "",
-    stats: [
-      {
-        name: "PTS",
-        value: 0,
-      },
-      {
-        name: "FG%",
-        value: 0,
-      },
-      {
-        name: "FT%",
-        value: 0,
-      },
-      {
-        name: "3PM",
+        name: "3 Point Makes",
         value: 0,
       },
       {
@@ -306,62 +177,19 @@ export const selectedPlayersArray = [
     playerURL: "",
     stats: [
       {
-        name: "PTS",
+        name: "Points",
         value: 0,
       },
       {
-        name: "FG%",
+        name: "Field Goal %",
         value: 0,
       },
       {
-        name: "FT%",
+        name: "Free Throw %",
         value: 0,
       },
       {
-        name: "3PM",
-        value: 0,
-      },
-      {
-        name: "Rebounds",
-        value: 0,
-      },
-      {
-        name: "Blocks",
-        value: 0,
-      },
-      {
-        name: "Turnovers",
-        value: 0,
-      },
-      {
-        name: "Assists",
-        value: 0,
-      },
-      {
-        name: "Steals",
-        value: 0,
-      },
-    ],
-  },
-  {
-    playerName: "Choose a player",
-    teamName: "",
-    playerURL: "",
-    stats: [
-      {
-        name: "PTS",
-        value: 0,
-      },
-      {
-        name: "FG%",
-        value: 0,
-      },
-      {
-        name: "FT%",
-        value: 0,
-      },
-      {
-        name: "3PM",
+        name: "3 Point Makes",
         value: 0,
       },
       {
@@ -392,62 +220,19 @@ export const selectedPlayersArray = [
     playerURL: "",
     stats: [
       {
-        name: "PTS",
+        name: "Points",
         value: 0,
       },
       {
-        name: "FG%",
+        name: "Field Goal %",
         value: 0,
       },
       {
-        name: "FT%",
+        name: "Free Throw %",
         value: 0,
       },
       {
-        name: "3PM",
-        value: 0,
-      },
-      {
-        name: "Rebounds",
-        value: 0,
-      },
-      {
-        name: "Blocks",
-        value: 0,
-      },
-      {
-        name: "Turnovers",
-        value: 0,
-      },
-      {
-        name: "Assists",
-        value: 0,
-      },
-      {
-        name: "Steals",
-        value: 0,
-      },
-    ],
-  },
-  {
-    playerName: "Choose a player",
-    teamName: "",
-    playerURL: "",
-    stats: [
-      {
-        name: "PTS",
-        value: 0,
-      },
-      {
-        name: "FG%",
-        value: 0,
-      },
-      {
-        name: "FT%",
-        value: 0,
-      },
-      {
-        name: "3PM",
+        name: "3 Point Makes",
         value: 0,
       },
       {
@@ -478,19 +263,234 @@ export const selectedPlayersArray = [
     playerURL: "",
     stats: [
       {
-        name: "PTS",
+        name: "Points",
         value: 0,
       },
       {
-        name: "FG%",
+        name: "Field Goal %",
         value: 0,
       },
       {
-        name: "FT%",
+        name: "Free Throw %",
         value: 0,
       },
       {
-        name: "3PM",
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
         value: 0,
       },
       {
@@ -598,7 +598,7 @@ export const populateCurrentPlayer = (
   updatedSelectedPlayers,
   currentPlayer,
   fetchedData,
-  latestDropdownModifiedIndex,
+  playerIndex,
   setSelectedPlayers
 ) => {
   currentPlayer.teamName = fetchedData.team;
@@ -623,7 +623,7 @@ export const populateCurrentPlayer = (
 
   currentPlayer.stats[8].value = fetchedData.stats.stl;
 
-  updatedSelectedPlayers[latestDropdownModifiedIndex] = currentPlayer;
+  updatedSelectedPlayers[playerIndex] = currentPlayer;
 
   setSelectedPlayers(updatedSelectedPlayers);
 };

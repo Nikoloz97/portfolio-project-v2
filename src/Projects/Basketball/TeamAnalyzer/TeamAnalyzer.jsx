@@ -17,9 +17,6 @@ function TeamAnalyzer() {
 
   const [playerNameInput, setPlayerNameInput] = useState("");
 
-  const [latestDropdownModifiedIndex, setLatestDropdownModifiedIndex] =
-    useState(0);
-
   const [playerOptions, setPlayerOptions] = useState([]);
 
   const [hasPlayerChoosingBegun, setHasPlayerChoosingBegun] = useState(false);
@@ -30,14 +27,6 @@ function TeamAnalyzer() {
     const playerOptionsList = [
       playerOptionsData.map((playerObj) => playerObj.longName),
     ];
-
-    // const playerOptionsList = [
-    //   playerOptionsData.map((playerObj) => ({
-    //     key: playerObj.playerID,
-    //     text: playerObj.longName,
-    //     value: playerObj.longName,
-    //   })),
-    // ];
     setPlayerOptions(playerOptionsList[0]);
   };
 
@@ -80,8 +69,7 @@ function TeamAnalyzer() {
 
         const updatedSelectedPlayers = [...selectedPlayers];
 
-        const currentPlayer =
-          updatedSelectedPlayers[latestDropdownModifiedIndex];
+        const currentPlayer = updatedSelectedPlayers[playerIndex];
 
         const fetchedData = response.data.body[0];
 
@@ -91,7 +79,7 @@ function TeamAnalyzer() {
           updatedSelectedPlayers,
           currentPlayer,
           fetchedData,
-          latestDropdownModifiedIndex,
+          playerIndex,
           setSelectedPlayers
         );
       } catch (error) {
@@ -103,18 +91,6 @@ function TeamAnalyzer() {
       fetchSelectedPlayer();
     }
   }, [playerNameInput]);
-
-  const handleDropdownSelection = (event) => {
-    const value = event.target.innerText;
-    const updatedSelectedPlayers = [...selectedPlayers];
-    updatedSelectedPlayers[playerIndex].playerName = value;
-
-    setSelectedPlayers(updatedSelectedPlayers);
-
-    setLatestDropdownModifiedIndex(playerIndex);
-
-    setPlayerNameInput(value);
-  };
 
   return (
     <div className="Default-Page">
@@ -144,10 +120,11 @@ function TeamAnalyzer() {
             selectedPlayer={selectedPlayers[playerIndex]}
             playerDropdown={playerDropdowns[playerIndex]}
             playerOptions={playerOptions}
-            handleDropdownSelection={handleDropdownSelection}
+            // handleDropdownSelection={handleDropdownSelection}
             playerIndex={playerIndex}
             setPlayerIndex={setPlayerIndex}
             selectedPlayers={selectedPlayers}
+            setPlayerNameInput={setPlayerNameInput}
           />
 
           {playerIndex === selectedPlayers.length - 1 && (

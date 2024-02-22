@@ -56,15 +56,12 @@ const PlayerCard = (props) => {
           >
             <Icon name="angle left" />
           </Button>
-          {/* <Dropdown
-            placeholder={props.playerDropdown.placeholder}
-            search
-            selection
-            options={props.playerOptions}
-            onChange={(event) => props.handleDropdownSelection(event)}
-          /> */}
 
-          <AutoCompleteInput suggestions={props.playerOptions} />
+          <AutoCompleteInput
+            suggestions={props.playerOptions}
+            setPlayerNameInput={props.setPlayerNameInput}
+            playerIndex={props.playerIndex}
+          />
 
           <Button
             className="Player-Card-Button"
