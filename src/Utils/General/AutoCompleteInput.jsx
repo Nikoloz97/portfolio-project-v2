@@ -48,7 +48,7 @@ const AutoCompleteInput = (props) => {
         value={inputValue}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        placeholder="Start typing..."
+        placeholder="Type your player here..."
         className="User-Input"
       />
     </div>

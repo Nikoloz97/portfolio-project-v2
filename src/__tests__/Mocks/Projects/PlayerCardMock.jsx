@@ -1,3 +1,522 @@
+export const mockSelectedPlayers = [
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+  {
+    playerName: "Choose a player",
+    teamName: "",
+    playerURL: "",
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
+];
+
 export const mockNonSelectedPlayer = {
   playerName: "",
   teamName: "",

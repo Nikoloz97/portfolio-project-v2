@@ -18,7 +18,7 @@ describe("Team Analyzer", () => {
   getPlayerList();
 
   describe("Dealing with player options", () => {
-    it("Displays first card following selection of the start button", async () => {
+    it("Displays 2 input elements (user and suggestion) following start button click", async () => {
       await act(async () => {
         render(<TeamAnalyzer />);
       });
@@ -26,27 +26,9 @@ describe("Team Analyzer", () => {
       fireEvent.click(screen.getByRole("button", { name: "Start" }));
 
       await waitFor(() =>
-        expect(screen.getByText("Choose player one")).toBeInTheDocument()
+        expect(screen.getAllByRole("textbox")).toHaveLength(2)
       );
     });
-
-    // TODO: remove(for now use it for reference for below)
-    // it("Dropdown options reflect longName property from object array in api fetch", async () => {
-    //   await act(async () => {
-    //     render(<TeamAnalyzer />);
-    //   });
-
-    //   fireEvent.click(screen.getByRole("button", { name: "Start" }));
-
-    //   await waitFor(() =>
-    //     expect(screen.getByText("LaMelo Ball")).toBeInTheDocument()
-    //   );
-    // });
-
-    // TODO: make test
-    // it("Suggestion input works upon user typing in text", async() => {
-
-    // })
   });
 
   describe("Dealing with player-specific data", () => {
