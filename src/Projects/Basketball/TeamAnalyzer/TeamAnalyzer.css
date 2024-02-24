@@ -43,6 +43,12 @@ h1 {
   flex-direction: column;
 }
 
+.Player-Card-Buttons-Row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .Player-Card {
   background-color: #23354d !important;
   width: 100% !important;
@@ -80,10 +86,8 @@ h1 {
   box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.438);
 }
 
-.Player-Card-Buttons-Input-Container {
+.Player-Card-Input-Container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
   margin-top: 20px;
 }
 
@@ -110,5 +114,6 @@ h1 {
 }
 
 .Player-Card-Button {
-  width: 25%;
+  background: transparent !important;
+  color: white !important;
 }

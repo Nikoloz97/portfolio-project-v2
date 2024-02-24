@@ -5,7 +5,6 @@ import PlayerCard from "./PlayerCard";
 import ResultsModal from "./ResultsModal";
 import {
   selectedPlayersArray,
-  generatePlayerDropdowns,
   populateCurrentPlayer,
 } from "../../../Utils/Projects/FantasyBball/TeamAnalyzer";
 import "./TeamAnalyzer.css";
@@ -21,15 +20,6 @@ function TeamAnalyzer() {
 
   const [hasPlayerChoosingBegun, setHasPlayerChoosingBegun] = useState(false);
 
-  const playerDropdowns = generatePlayerDropdowns(playerOptions);
-
-  const populatePlayerOptions = (playerOptionsData) => {
-    const playerOptionsList = [
-      playerOptionsData.map((playerObj) => playerObj.longName),
-    ];
-    setPlayerOptions(playerOptionsList[0]);
-  };
-
   useEffect(() => {
     const fetchPlayerOptions = async () => {
       try {
@@ -42,7 +32,9 @@ function TeamAnalyzer() {
             "X-RapidAPI-Host": "tank01-fantasy-stats.p.rapidapi.com",
           },
         });
-        populatePlayerOptions(response.data.body);
+        setPlayerOptions(
+          response.data.body.map((playerObj) => playerObj.longName)
+        );
       } catch (error) {
         console.error(error);
       }
@@ -73,7 +65,7 @@ function TeamAnalyzer() {
 
         const fetchedData = response.data.body[0];
 
-        console.log(playerNameInput);
+        console.log(fetchedData);
 
         populateCurrentPlayer(
           updatedSelectedPlayers,
@@ -118,9 +110,7 @@ function TeamAnalyzer() {
         <Form className="Default-Form">
           <PlayerCard
             selectedPlayer={selectedPlayers[playerIndex]}
-            playerDropdown={playerDropdowns[playerIndex]}
             playerOptions={playerOptions}
-            // handleDropdownSelection={handleDropdownSelection}
             playerIndex={playerIndex}
             setPlayerIndex={setPlayerIndex}
             selectedPlayers={selectedPlayers}

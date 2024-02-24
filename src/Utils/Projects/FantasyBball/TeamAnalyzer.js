@@ -517,83 +517,6 @@ export const selectedPlayersArray = [
   },
 ];
 
-export const generatePlayerDropdowns = (playerOptions) => {
-  return [
-    {
-      key: 1,
-      label: "Player one",
-      placeholder: "Choose player one",
-      options: playerOptions,
-    },
-    {
-      key: 2,
-      label: "Player two",
-      placeholder: "Choose player two",
-      options: playerOptions,
-    },
-    {
-      key: 3,
-      label: "Player three",
-      placeholder: "Choose player three",
-      options: playerOptions,
-    },
-    {
-      key: 4,
-      label: "Player four",
-      placeholder: "Choose player four",
-      options: playerOptions,
-    },
-    {
-      key: 5,
-      label: "Player five",
-      placeholder: "Choose player five",
-      options: playerOptions,
-    },
-    {
-      key: 6,
-      label: "Player six",
-      placeholder: "Choose player six",
-      options: playerOptions,
-    },
-    {
-      key: 7,
-      label: "Player seven",
-      placeholder: "Choose player seven",
-      options: playerOptions,
-    },
-    {
-      key: 8,
-      label: "Player eight",
-      placeholder: "Choose player eight",
-      options: playerOptions,
-    },
-    {
-      key: 9,
-      label: "Player nine",
-      placeholder: "Choose player nine",
-      options: playerOptions,
-    },
-    {
-      key: 10,
-      label: "Player ten",
-      placeholder: "Choose player ten",
-      options: playerOptions,
-    },
-    {
-      key: 11,
-      label: "Player eleven",
-      placeholder: "Choose player eleven",
-      options: playerOptions,
-    },
-    {
-      key: 12,
-      label: "Player twelve",
-      placeholder: "Choose player twelve",
-      options: playerOptions,
-    },
-  ];
-};
-
 export const populateCurrentPlayer = (
   updatedSelectedPlayers,
   currentPlayer,
@@ -601,6 +524,8 @@ export const populateCurrentPlayer = (
   playerIndex,
   setSelectedPlayers
 ) => {
+  currentPlayer.playerName = fetchedData.espnName;
+
   currentPlayer.teamName = fetchedData.team;
 
   currentPlayer.playerURL = fetchedData.espnHeadshot;

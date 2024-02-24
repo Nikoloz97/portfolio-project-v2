@@ -11,6 +11,9 @@ const AutoCompleteInput = (props) => {
         suggestion.toLowerCase().startsWith(inputValue.toLowerCase())
       );
       setMatchedSuggestion(match || "");
+      if (match) {
+        setInputValue(match.substring(0, inputValue.length));
+      }
     } else {
       setMatchedSuggestion("");
     }
@@ -25,7 +28,7 @@ const AutoCompleteInput = (props) => {
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === "Enter" && matchedSuggestion) {
+    if (event.key === "Enter" || (event.key === "Tab" && matchedSuggestion)) {
       setInputValue(matchedSuggestion);
       props.setPlayerNameInput(matchedSuggestion);
       event.preventDefault();
@@ -33,7 +36,7 @@ const AutoCompleteInput = (props) => {
   };
 
   return (
-    <div>
+    <div style={{ width: "800px" }}>
       <input
         type="text"
         value={matchedSuggestion}

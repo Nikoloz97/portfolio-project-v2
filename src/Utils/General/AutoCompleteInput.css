@@ -1,10 +1,16 @@
 .User-Input {
-  position: absolute;
-  left: 34.8%;
-  width: 30.5% !important;
+  position: absolute !important;
+  left: 24.8%;
+  width: 50% !important;
   background-color: transparent !important;
+  color: white !important;
+  border: 1px solid white !important;
 }
 
 .Suggestion-Input {
-  color: rgba(0, 0, 0, 0.5) !important;
+  position: absolute !important;
+  left: 24.8%;
+  width: 50% !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  background-color: transparent !important;
 }
