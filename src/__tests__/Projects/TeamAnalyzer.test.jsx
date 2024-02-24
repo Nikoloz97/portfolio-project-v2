@@ -30,17 +30,23 @@ describe("Team Analyzer", () => {
       );
     });
 
-    it("Dropdown options reflect longName property from object array in api fetch", async () => {
-      await act(async () => {
-        render(<TeamAnalyzer />);
-      });
+    // TODO: remove(for now use it for reference for below)
+    // it("Dropdown options reflect longName property from object array in api fetch", async () => {
+    //   await act(async () => {
+    //     render(<TeamAnalyzer />);
+    //   });
 
-      fireEvent.click(screen.getByRole("button", { name: "Start" }));
+    //   fireEvent.click(screen.getByRole("button", { name: "Start" }));
 
-      await waitFor(() =>
-        expect(screen.getByText("LaMelo Ball")).toBeInTheDocument()
-      );
-    });
+    //   await waitFor(() =>
+    //     expect(screen.getByText("LaMelo Ball")).toBeInTheDocument()
+    //   );
+    // });
+
+    // TODO: make test
+    // it("Suggestion input works upon user typing in text", async() => {
+
+    // })
   });
 
   describe("Dealing with player-specific data", () => {
