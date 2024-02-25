@@ -85,13 +85,11 @@ describe("Forum Page", () => {
     // });
 
     it("does not render forum component on unsuccessful fetch", async () => {
-      await act(async () => {
-        render(
-          <UserProvider>
-            <ForumPage />
-          </UserProvider>
-        );
-      });
+      render(
+        <UserProvider>
+          <ForumPage />
+        </UserProvider>
+      );
 
       await waitFor(() => {
         expect(screen.queryByText("Follow")).toBeNull();
