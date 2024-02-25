@@ -12,35 +12,29 @@ import {
 jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
 
 describe("Forum Page", () => {
-  describe("Using successful mock fetch", () => {
+  describe("Using successful fetch", () => {
     getForumData();
 
-    it("renders Loader element in Display component on render", async () => {
-      await act(async () => {
-        render(
-          <UserProvider>
-            <ForumPage />
-          </UserProvider>
-        );
-      });
+    it("On render, displays Loader component", async () => {
+      render(
+        <UserProvider>
+          <ForumPage />
+        </UserProvider>
+      );
 
-      expect(screen.getByText("Loading")).toBeInTheDocument();
+      expect(await screen.findByText("Loading")).toBeInTheDocument();
     });
 
-    it("Once isLoading state becomes false, display text is rendered", async () => {
-      await act(async () => {
-        render(
-          <UserProvider>
-            <ForumPage />
-          </UserProvider>
-        );
-      });
+    it("Once loading is complete, renders display text", async () => {
+      render(
+        <UserProvider>
+          <ForumPage />
+        </UserProvider>
+      );
 
-      const welcomeMessage = await screen.findByText("Welcome to the Forum");
-
-      await act(async () => {
-        await waitFor(() => expect(welcomeMessage).toBeInTheDocument());
-      });
+      expect(
+        await screen.findByText("Welcome to the Forum")
+      ).toBeInTheDocument();
     });
 
     // TODO: Make this pass
@@ -60,41 +54,35 @@ describe("Forum Page", () => {
     // });
   });
 
-  describe("Using failed mock fetch", () => {
+  describe("Using failed server-side fetch", () => {
     getFailedServerSideFetch();
 
-    it("renders ForumErrorModal component on unsuccessful fetch", async () => {
-      await act(async () => {
-        render(
-          <UserProvider>
-            <ForumPage />
-          </UserProvider>
-        );
-      });
+    it("renders ForumErrorModal component", async () => {
+      render(
+        <UserProvider>
+          <ForumPage />
+        </UserProvider>
+      );
 
-      await waitFor(() => {
-        expect(
-          screen.getByText("Would you like to retry?")
-        ).toBeInTheDocument();
-      });
+      expect(
+        await screen.findByText("Would you like to retry?")
+      ).toBeInTheDocument();
     });
 
-    it("isDisplayToBeginFadeIn state is set to true once isFetchSuccessful becomes false", async () => {
-      await act(async () => {
-        render(
-          <UserProvider>
-            <ForumPage />
-          </UserProvider>
-        );
-      });
+    // TODO: change test (do not check for state changes)
+    // it("isDisplayToBeginFadeIn state is set to true once isFetchSuccessful becomes false", async () => {
+    //   render(
+    //     <UserProvider>
+    //       <ForumPage />
+    //     </UserProvider>
+    //   );
 
-      await waitFor(() => {
-        expect(screen.getByTestId("Display")).toHaveAttribute(
-          "data-state",
-          "true"
-        );
-      });
-    });
+    //   const displayElement = await screen.findByTestId("Display");
+
+    //   await waitFor(() => {
+    //     expect(displayElement).toHaveAttribute("data-state", "true");
+    //   });
+    // });
 
     it("does not render forum component on unsuccessful fetch", async () => {
       await act(async () => {
@@ -106,7 +94,7 @@ describe("Forum Page", () => {
       });
 
       await waitFor(() => {
-        expect(screen.queryByTestId("Forum")).toBeNull();
+        expect(screen.queryByText("Follow")).toBeNull();
       });
     });
   });

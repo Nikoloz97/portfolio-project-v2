@@ -8,11 +8,7 @@ const Display = (props) => {
 
   return (
     <>
-      <div
-        className={`Display-Page ${isDesktop ? "" : "Phone"}`}
-        data-testid="Display"
-        data-state={props.isDisplayToBeginFadein}
-      >
+      <div className={`Display-Page ${isDesktop ? "" : "Phone"}`}>
         <Loader content="Loading" active={props.isLoading} />
 
         <Image
