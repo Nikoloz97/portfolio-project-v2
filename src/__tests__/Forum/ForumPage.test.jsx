@@ -1,5 +1,5 @@
 import { UserProvider } from "../../UserContext";
-import { render, screen, waitFor, act } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ForumPage from "../../Forum/ForumPage";
 

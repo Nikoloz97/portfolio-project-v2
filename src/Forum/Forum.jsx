@@ -9,7 +9,7 @@ function Forum(props) {
   };
 
   return (
-    <div data-testid="Forum">
+    <div>
       <div className="Forum-Page">
         <Grid centered>
           <Grid.Row style={{ marginTop: "3rem" }}>

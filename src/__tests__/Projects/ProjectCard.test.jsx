@@ -26,6 +26,8 @@ describe("Project Card", () => {
       </MemoryRouter>
     );
 
-    expect(screen.queryByTestId("project-card-image")).toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: "Go to Project" })
+    ).toBeInTheDocument();
   });
 });

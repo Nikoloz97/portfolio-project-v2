@@ -1,10 +1,5 @@
-import {
-  render,
-  screen,
-  act,
-  waitFor,
-  fireEvent,
-} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import TeamAnalyzer from "../../Projects/Basketball/TeamAnalyzer/TeamAnalyzer";
 import {
@@ -19,15 +14,11 @@ describe("Team Analyzer", () => {
 
   describe("Dealing with player options", () => {
     it("Displays 2 input elements (user and suggestion) following start button click", async () => {
-      await act(async () => {
-        render(<TeamAnalyzer />);
-      });
+      render(<TeamAnalyzer />);
 
-      fireEvent.click(screen.getByRole("button", { name: "Start" }));
+      userEvent.click(screen.getByRole("button", { name: "Start" }));
 
-      await waitFor(() =>
-        expect(screen.getAllByRole("textbox")).toHaveLength(2)
-      );
+      expect(await screen.findAllByRole("textbox")).toHaveLength(2);
     });
   });
 

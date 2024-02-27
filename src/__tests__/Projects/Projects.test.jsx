@@ -12,12 +12,14 @@ describe("Projects", () => {
     );
 
     expect(screen.getByText("Projects")).toBeInTheDocument();
-    expect(screen.getByTestId("intro-left-arrow-button")).toHaveAttribute(
-      "disabled"
-    );
-    expect(screen.getByTestId("intro-right-arrow-button")).not.toHaveAttribute(
-      "disabled"
-    );
+    expect(
+      screen.getByRole("button", { name: "Previous project" })
+    ).toHaveAttribute("disabled");
+    expect(
+      screen.getByRole("button", {
+        name: "Next project",
+      })
+    ).not.toHaveAttribute("disabled");
   });
 
   it("on render, left arrow button is disabled while right is not", () => {
@@ -28,12 +30,12 @@ describe("Projects", () => {
     );
 
     expect(screen.getByText("Projects")).toBeInTheDocument();
-    expect(screen.getByTestId("intro-left-arrow-button")).toHaveAttribute(
-      "disabled"
-    );
-    expect(screen.getByTestId("intro-right-arrow-button")).not.toHaveAttribute(
-      "disabled"
-    );
+    expect(
+      screen.getByRole("button", { name: "Previous project" })
+    ).toHaveAttribute("disabled");
+    expect(
+      screen.getByRole("button", { name: "Next project" })
+    ).not.toHaveAttribute("disabled");
   });
 
   it("selecting right arrow button goes to next card", () => {
@@ -59,16 +61,17 @@ describe("Projects", () => {
       </MemoryRouter>
     );
 
-    const rightIntroArrowButton = screen.getByTestId(
-      "intro-right-arrow-button"
-    );
+    const rightIntroArrowButton = screen.getByRole("button", {
+      name: "Next project",
+    });
 
     fireEvent.click(rightIntroArrowButton);
 
     await waitFor(() => {
-      const rightProjectArrowButton = screen.getByTestId(
-        "project-right-arrow-button"
-      );
+      const rightProjectArrowButton = screen.getByRole("button", {
+        name: "Next project",
+      });
+
       expect(rightProjectArrowButton).not.toHaveAttribute("disabled");
     });
   });

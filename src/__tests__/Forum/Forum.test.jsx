@@ -3,15 +3,17 @@ import Forum from "../../Forum/Forum";
 import { forumProfileData } from "../Mocks/Forum/ForumMock";
 
 describe("Forum screen", () => {
-  it("renders correctly", () => {
+  it("renders button to return user back to display", () => {
     render(<Forum forumProfileData={forumProfileData} />);
 
-    expect(screen.getByTestId("Forum")).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Back to top" })
+    ).toBeInTheDocument();
   });
 
-  it("maps profile cards correctly", () => {
+  it("properly maps to profile card images, as well as post images", () => {
     render(<Forum forumProfileData={forumProfileData} />);
 
-    expect(screen.getAllByTestId("Profile-Card")).toHaveLength(2);
+    expect(screen.getAllByRole("img")).toHaveLength(4);
   });
 });

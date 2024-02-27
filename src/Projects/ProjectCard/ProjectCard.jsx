@@ -68,7 +68,7 @@ const ProjectCard = (props) => {
           </Card.Description>
           <Card.Content extra style={{ maxWidth: "70%" }} textAlign="center">
             <Button
-              data-testid="intro-left-arrow-button"
+              aria-label="Previous project"
               className="project-left-arrow-button"
               disabled={true}
             >
@@ -93,7 +93,7 @@ const ProjectCard = (props) => {
             ))}
 
             <Button
-              className="project-right-arrow-button"
+              aria-label="Next project"
               data-testid="intro-right-arrow-button"
               disabled={
                 props.currentProjectIndex === props.projectsDataLength - 1
@@ -122,7 +122,6 @@ const ProjectCard = (props) => {
             {props.projectData.title}
           </Card.Header>
           <Image
-            data-testid="project-card-image"
             style={{ maxWidth: "70%", marginBottom: "5%" }}
             src={require("../../Images/Projects/Calc1.jpg")}
             wrapped
@@ -145,8 +144,8 @@ const ProjectCard = (props) => {
             textAlign="center"
           >
             <Button
+              aria-label="Previous project"
               className="project-left-arrow-button"
-              data-testid="project-left-arrow-button"
               onClick={handlePrevProject}
             >
               <Icon name="arrow left" style={{ marginLeft: "-8px" }} />
@@ -155,8 +154,8 @@ const ProjectCard = (props) => {
               Go to Project
             </Button>
             <Button
+              aria-label="Next project"
               className="project-right-arrow-button"
-              data-testid="project-right-arrow-button"
               disabled={
                 props.currentProjectIndex === props.projectsDataLength - 1
                   ? true
