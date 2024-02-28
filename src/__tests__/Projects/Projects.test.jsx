@@ -1,9 +1,21 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import renderer from "react-test-renderer";
 import "@testing-library/jest-dom";
 import Projects from "../../Projects/Projects";
 import { MemoryRouter } from "react-router-dom";
 
 describe("Projects", () => {
+  it("renders correctly", () => {
+    const projectsPage = renderer
+      .create(
+        <MemoryRouter>
+          <Projects />
+        </MemoryRouter>
+      )
+      .toJSON();
+    expect(projectsPage).toMatchSnapshot();
+  });
+
   it("on render, produces intro card", () => {
     render(
       <MemoryRouter>
