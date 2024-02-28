@@ -134,7 +134,6 @@ exports[`Projects renders correctly 1`] = `
         <button
           aria-label="Next project"
           className="ui button"
-          data-testid="intro-right-arrow-button"
           onClick={[Function]}
         >
           <i

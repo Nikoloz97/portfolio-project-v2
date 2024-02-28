@@ -94,7 +94,6 @@ const ProjectCard = (props) => {
 
             <Button
               aria-label="Next project"
-              data-testid="intro-right-arrow-button"
               disabled={
                 props.currentProjectIndex === props.projectsDataLength - 1
                   ? true

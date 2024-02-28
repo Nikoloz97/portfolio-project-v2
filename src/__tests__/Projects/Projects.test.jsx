@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom";
 import Projects from "../../Projects/Projects";
@@ -57,11 +58,11 @@ describe("Projects", () => {
       </MemoryRouter>
     );
 
-    const rightIntroArrowButton = screen.getByTestId(
-      "intro-right-arrow-button"
-    );
+    const rightIntroArrowButton = screen.getByRole("button", {
+      name: "Next project",
+    });
 
-    fireEvent.click(rightIntroArrowButton);
+    userEvent.click(rightIntroArrowButton);
 
     expect(screen.getByText("Kronos")).toBeInTheDocument();
   });
@@ -77,7 +78,7 @@ describe("Projects", () => {
       name: "Next project",
     });
 
-    fireEvent.click(rightIntroArrowButton);
+    userEvent.click(rightIntroArrowButton);
 
     await waitFor(() => {
       const rightProjectArrowButton = screen.getByRole("button", {

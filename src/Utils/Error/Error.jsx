@@ -4,7 +4,7 @@ import "./Error.css";
 
 export const ForumErrorModal = (props) => {
   return (
-    <div data-testid="Error-Modal">
+    <div>
       <Modal open={props.isErrorModalDisplayed} centered size="fullscreen">
         <Modal.Header className="Error-Modal">
           There was a problem fetching your data
