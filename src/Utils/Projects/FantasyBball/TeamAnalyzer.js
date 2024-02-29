@@ -1,8 +1,9 @@
 export const selectedPlayersArray = [
   {
-    playerName: "Choose a player",
+    playerName: "Player 1",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -43,9 +44,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 2",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -86,9 +88,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 3",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -129,9 +132,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 4",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -172,9 +176,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 5",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -215,9 +220,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 6",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -258,9 +264,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 7",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -301,9 +308,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 8",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -344,9 +352,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 9",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -387,9 +396,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 10",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -430,9 +440,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 11",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -473,9 +484,10 @@ export const selectedPlayersArray = [
     ],
   },
   {
-    playerName: "Choose a player",
+    playerName: "Player 12",
     teamName: "",
     playerURL: "",
+    isPlayerChosen: false,
     stats: [
       {
         name: "Points",
@@ -529,6 +541,8 @@ export const populateCurrentPlayer = (
   currentPlayer.teamName = fetchedData.team;
 
   currentPlayer.playerURL = fetchedData.espnHeadshot;
+
+  currentPlayer.isPlayerChosen = true;
 
   currentPlayer.stats[0].value = fetchedData.stats.pts;
 

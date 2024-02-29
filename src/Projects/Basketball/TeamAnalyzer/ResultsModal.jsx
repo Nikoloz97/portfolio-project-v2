@@ -155,7 +155,14 @@ export default function ResultsModal(props) {
   ]);
 
   return (
-    <div>
+    <div
+      className={`Team-Analyzer-Results-Modal-Container ${
+        props.playerIndex === props.dropdownSelectedPlayers.length - 1 &&
+        props.selectedPlayer.isPlayerChosen
+          ? "Unhide"
+          : ""
+      }`}
+    >
       <Modal
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}

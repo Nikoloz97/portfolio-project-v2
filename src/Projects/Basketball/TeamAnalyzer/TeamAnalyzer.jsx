@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Card } from "semantic-ui-react";
 import axios from "axios";
+
+import PlayerDisplay from "./PlayerDisplay";
 import PlayerCard from "./PlayerCard";
 import ResultsModal from "./ResultsModal";
 import {
@@ -107,20 +109,27 @@ function TeamAnalyzer() {
       )}
 
       {hasPlayerChoosingBegun && (
-        <Form className="Default-Form">
-          <PlayerCard
-            selectedPlayer={selectedPlayers[playerIndex]}
-            playerOptions={playerOptions}
-            playerIndex={playerIndex}
-            setPlayerIndex={setPlayerIndex}
-            selectedPlayers={selectedPlayers}
-            setPlayerNameInput={setPlayerNameInput}
-          />
+        <div className="Team-Analyzer-Container">
+          <PlayerDisplay selectedPlayers={selectedPlayers} />
 
-          {playerIndex === selectedPlayers.length - 1 && (
-            <ResultsModal dropdownSelectedPlayers={selectedPlayers} />
-          )}
-        </Form>
+          <Form className="Default-Form">
+            <PlayerCard
+              selectedPlayer={selectedPlayers[playerIndex]}
+              playerOptions={playerOptions}
+              playerIndex={playerIndex}
+              setPlayerIndex={setPlayerIndex}
+              selectedPlayers={selectedPlayers}
+              setPlayerNameInput={setPlayerNameInput}
+            />
+            <div style={{ marginTop: "10px" }}>
+              <ResultsModal
+                dropdownSelectedPlayers={selectedPlayers}
+                selectedPlayer={selectedPlayers[playerIndex]}
+                playerIndex={playerIndex}
+              />
+            </div>
+          </Form>
+        </div>
       )}
     </div>
   );

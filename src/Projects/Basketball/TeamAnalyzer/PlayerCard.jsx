@@ -33,7 +33,9 @@ const PlayerCard = (props) => {
                   style={{ width: "50%" }}
                 >
                   <Card.Header style={{ color: "white" }}>
-                    <h1>{props.selectedPlayer.playerName.toUpperCase()}</h1>
+                    <h1 style={{ textAlign: "center" }}>
+                      {props.selectedPlayer.playerName.toUpperCase()}
+                    </h1>
                     <Card.Meta textAlign="center" style={{ color: "white" }}>
                       {props.selectedPlayer.teamName}
                     </Card.Meta>
@@ -58,7 +60,10 @@ const PlayerCard = (props) => {
           </Card>
           <Button
             className="Player-Card-Button"
-            disabled={props.playerIndex === props.selectedPlayers.length - 1}
+            disabled={
+              props.playerIndex === props.selectedPlayers.length - 1 ||
+              !props.selectedPlayer.isPlayerChosen
+            }
             onClick={() => props.setPlayerIndex(props.playerIndex + 1)}
             size="massive"
           >
