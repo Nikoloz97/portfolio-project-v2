@@ -10,11 +10,13 @@ import {
   Header,
 } from "semantic-ui-react";
 
+import "./TeamAnalyzer.css";
+
 export default function ResultsModal(props) {
   const [open, setOpen] = useState(false);
 
   const calculateUserStats = () => {
-    const selectedPlayers = props.dropdownSelectedPlayers;
+    const selectedPlayers = props.selectedPlayers;
 
     const avgPoints = (
       selectedPlayers.reduce(
@@ -157,10 +159,12 @@ export default function ResultsModal(props) {
   return (
     <div
       className={`Team-Analyzer-Results-Modal-Container ${
-        props.playerIndex === props.dropdownSelectedPlayers.length - 1 &&
+        props.playerIndex === props.selectedPlayers.length - 1 &&
         props.selectedPlayer.isPlayerChosen
           ? "Unhide"
-          : ""
+          : // : ""
+            // TODO: remove (+ uncomment above)
+            "Unhide"
       }`}
     >
       <Modal
@@ -171,9 +175,9 @@ export default function ResultsModal(props) {
           <Form.Button onClick={calculateUserStats}>Show Results</Form.Button>
         }
       >
-        <Modal.Header>Results</Modal.Header>
+        <Modal.Header style={{ textAlign: "center" }}>Results</Modal.Header>
 
-        <Modal.Content>
+        {/* <Modal.Content>
           <Segment>
             <Grid columns={2} relaxed="very">
               <Grid.Column>
@@ -205,18 +209,14 @@ export default function ResultsModal(props) {
               </Grid.Column>
             </Grid>
 
-            <Divider vertical>VS</Divider>
+            <Divider vertical></Divider>
           </Segment>
-        </Modal.Content>
+        </Modal.Content> */}
 
-        <Modal.Actions>
-          <Button
-            content="Return"
-            labelPosition="left"
-            icon="checkmark"
-            onClick={() => setOpen(false)}
-            positive
-          />
+        <Modal.Content></Modal.Content>
+
+        <Modal.Actions style={{ textAlign: "center" }}>
+          <Button inverted content="Return" onClick={() => setOpen(false)} />
         </Modal.Actions>
       </Modal>
     </div>

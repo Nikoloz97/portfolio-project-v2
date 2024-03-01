@@ -123,7 +123,7 @@ function TeamAnalyzer() {
             />
             <div style={{ marginTop: "10px" }}>
               <ResultsModal
-                dropdownSelectedPlayers={selectedPlayers}
+                selectedPlayers={selectedPlayers}
                 selectedPlayer={selectedPlayers[playerIndex]}
                 playerIndex={playerIndex}
               />

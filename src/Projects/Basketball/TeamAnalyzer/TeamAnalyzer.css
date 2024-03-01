@@ -161,3 +161,26 @@ h1 {
 .Team-Analyzer-Results-Modal-Container.Unhide {
   opacity: 1;
 }
+
+/* Results Modal */
+.ui.dimmer {
+  background-color: black !important;
+  opacity: 0.99 !important;
+}
+.ui.modal {
+  border: 1px solid white !important;
+}
+.ui.modal > .header {
+  background: rgb(15, 15, 15) !important;
+  color: white !important;
+}
+
+.ui.modal > .content {
+  background: rgb(15, 15, 15) !important;
+  color: white !important;
+}
+
+.ui.modal > .actions {
+  background: rgb(15, 15, 15) !important;
+  color: white !important;
+}
