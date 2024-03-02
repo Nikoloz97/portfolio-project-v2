@@ -616,3 +616,44 @@ export const populateAverageUserCategories = (playerCollection) => {
     },
   ];
 };
+
+export const populateTop150Cats = () => {
+  return [
+    {
+      category: "PTS",
+      value: 17.05,
+    },
+    {
+      category: "FG%",
+      value: 49.36,
+    },
+    {
+      category: "FT%",
+      value: 79.43,
+    },
+    {
+      category: "3PM",
+      value: 1.74,
+    },
+    {
+      category: "REB",
+      value: 5.83,
+    },
+    {
+      category: "BLK",
+      value: 0.71,
+    },
+    {
+      category: "TO",
+      value: 1.88,
+    },
+    {
+      category: "AST",
+      value: 3.97,
+    },
+    {
+      category: "STL",
+      value: 0.97,
+    },
+  ];
+};

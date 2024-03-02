@@ -169,10 +169,13 @@ h1 {
 }
 .ui.modal {
   border: 1px solid white !important;
+  background: rgb(15, 15, 15) !important;
 }
-.ui.modal > .header {
+
+.ui.modal > h1 {
   background: rgb(15, 15, 15) !important;
   color: white !important;
+  margin-bottom: 0;
 }
 
 .ui.modal > .content {
@@ -191,7 +194,7 @@ h1 {
   gap: 5px;
 }
 
-.Results-Category {
+.Results-Category-Container {
   display: flex;
   flex-direction: column;
   align-items: center;
