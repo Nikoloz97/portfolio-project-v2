@@ -13,6 +13,7 @@
     "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
     "react-simple-maps": "^3.0.0",
+    "recharts": "^2.12.2",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
     "web-vitals": "^2.1.4"
