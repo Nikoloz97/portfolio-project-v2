@@ -566,3 +566,53 @@ export const populateCurrentPlayer = (
 
   setSelectedPlayers(updatedSelectedPlayers);
 };
+
+const calculateCategoryAverage = (playerCollection, statIndex) => {
+  return (
+    playerCollection.reduce(
+      (acc, player) => acc + parseFloat(player.stats[statIndex].value),
+      0
+    ) / 12
+  ).toFixed(2);
+};
+
+export const populateAverageUserCategories = (playerCollection) => {
+  return [
+    {
+      category: "PTS",
+      value: calculateCategoryAverage(playerCollection, 0),
+    },
+    {
+      category: "FG%",
+      value: calculateCategoryAverage(playerCollection, 1),
+    },
+    {
+      category: "FT%",
+      value: calculateCategoryAverage(playerCollection, 2),
+    },
+    {
+      category: "3PM",
+      value: calculateCategoryAverage(playerCollection, 3),
+    },
+    {
+      category: "REB",
+      value: calculateCategoryAverage(playerCollection, 4),
+    },
+    {
+      category: "BLK",
+      value: calculateCategoryAverage(playerCollection, 5),
+    },
+    {
+      category: "TO",
+      value: calculateCategoryAverage(playerCollection, 6),
+    },
+    {
+      category: "AST",
+      value: calculateCategoryAverage(playerCollection, 7),
+    },
+    {
+      category: "STL",
+      value: calculateCategoryAverage(playerCollection, 8),
+    },
+  ];
+};
