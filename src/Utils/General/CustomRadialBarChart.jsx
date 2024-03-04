@@ -3,8 +3,8 @@ import { RadialBarChart, RadialBar } from "recharts";
 
 const CustomRadialBarChart = (props) => {
   const data = [
-    { name: "Page A", uv: 80, fill: "#70faba" },
-    { uv: 100, opacity: "0" },
+    { name: "Page A", uv: props.percentile, fill: "#70faba" },
+    { uv: props.total, opacity: "0" },
   ];
   return (
     <div>

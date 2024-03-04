@@ -4,6 +4,7 @@ import { Form, Button, Modal } from "semantic-ui-react";
 import {
   populateAverageUserCategories,
   populateTop150Cats,
+  populatePercentiles,
 } from "../../../Utils/Projects/FantasyBball/TeamAnalyzer";
 import CustomRadialBarChart from "../../../Utils/General/CustomRadialBarChart";
 import "./TeamAnalyzer.css";
@@ -15,12 +16,14 @@ export default function ResultsModal(props) {
 
   const [top150Cats, setTop150Cats] = useState([]);
 
-  const handlePercentileCalculation = (array) => {};
+  const [percentiles, setPercentiles] = useState([]);
 
   useEffect(() => {
     if (open) {
       setUserCats(populateAverageUserCategories(props.selectedPlayers));
       setTop150Cats(populateTop150Cats);
+      // TODO: create useEffect (userCats not set in time)
+      setPercentiles(populatePercentiles(userCats));
     }
   }, [open]);
 
@@ -54,6 +57,10 @@ export default function ResultsModal(props) {
                     userCatValue={userCat.value}
                     categoryName={userCat.category}
                     topValue={top150Cats[index].value}
+                    // should correspond to correct category
+                    percentile={percentiles[index].percentile}
+                    // 156 total players
+                    total={156}
                   />
                   <h1>{top150Cats[index].value}</h1>
                 </div>
