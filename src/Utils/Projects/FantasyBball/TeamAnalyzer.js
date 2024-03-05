@@ -558,9 +558,9 @@ export const populateCurrentPlayer = (
 
   currentPlayer.stats[0].value = fetchedData.stats.pts;
 
-  currentPlayer.stats[1].value = fetchedData.stats.fgp;
+  currentPlayer.stats[1].value = fetchedData.stats.fgp / 100;
 
-  currentPlayer.stats[2].value = fetchedData.stats.ftp;
+  currentPlayer.stats[2].value = fetchedData.stats.ftp / 100;
 
   currentPlayer.stats[3].value = fetchedData.stats.tptfgm;
 
@@ -717,8 +717,14 @@ const handlePercentileCalculation = (array, userCategoryValue) => {
   let endIndex = array.length - 1;
   while (startIndex <= endIndex) {
     let midIndex = Math.floor((startIndex + endIndex) / 2);
+    // Checks for absolute min and max
+    if (midIndex === 0) {
+      return 0;
+    } else if (midIndex === array.length - 1) {
+      return array.length - 1;
+    }
     // Sorting is in ascending order
-    if (
+    else if (
       userCategoryValue === array[midIndex] ||
       (userCategoryValue > array[midIndex - 1] &&
         userCategoryValue < array[midIndex + 1])
@@ -727,7 +733,7 @@ const handlePercentileCalculation = (array, userCategoryValue) => {
     } else if (userCategoryValue > array[midIndex]) {
       startIndex = midIndex + 1;
     } else if (userCategoryValue < array[midIndex]) {
-      startIndex = midIndex - 1;
+      endIndex = midIndex - 1;
     }
   }
 };
@@ -793,7 +799,8 @@ export const populatePercentiles = (userCats) => {
           sortedTurnoverArray,
           userCats[6].value
         );
-        percObj.percentile = turnoverPercentile;
+        // Turnovers = exception (lower = better)
+        percObj.percentile = sortedTurnoverArray.length - turnoverPercentile;
         break;
       case "AST":
         const assistsPercentile = handlePercentileCalculation(
