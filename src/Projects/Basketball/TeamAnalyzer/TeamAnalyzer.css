@@ -200,3 +200,12 @@ h1 {
   align-items: center;
   border: 1px solid white;
 }
+
+.Results-Stats-Container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Results-Averages-Grid {
+}

@@ -49,7 +49,12 @@ const PlayerCard = (props) => {
                       {props.selectedPlayer.stats.map((stat, index) => (
                         <div key={index} className="Player-Stat-Card">
                           <header>{stat.name.toUpperCase()}</header>
-                          <p>{stat.value}</p>
+                          {stat.name === "Field Goal %" ||
+                          stat.name === "Free Throw %" ? (
+                            <p>{parseFloat((stat.value * 100).toFixed(2))}</p>
+                          ) : (
+                            <p>{stat.value}</p>
+                          )}
                         </div>
                       ))}
                     </div>

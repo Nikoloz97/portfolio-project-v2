@@ -62,19 +62,24 @@ export default function ResultsModal(props) {
               {userCats.map((userCat, index) => (
                 <div key={index} className="Results-Category-Container">
                   <h1>{userCat.category}</h1>
-                  <div>
-                    <h1>{userCat.value}</h1>
+                  <div className="Results-Stats-Container">
+                    <div className="Results-Averages-Grid">
+                      <h1>User</h1>
+                      <h1 style={{ marginBottom: "0px" }}>{userCat.value}</h1>
+                      <h1>Top-156</h1>
+                      <h1 style={{ marginTop: "0px" }}>
+                        {top150Cats[index].value}
+                      </h1>
+                    </div>
 
                     <CustomRadialBarChart
                       userCatValue={userCat.value}
                       categoryName={userCat.category}
                       topValue={top150Cats[index].value}
-                      // should correspond to correct category
                       percentile={percentiles[index].percentile}
                       // 156 total players
                       total={156}
                     />
-                    <h1>{top150Cats[index].value}</h1>
                   </div>
                 </div>
               ))}

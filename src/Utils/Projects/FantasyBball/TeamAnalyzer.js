@@ -539,6 +539,51 @@ export const selectedPlayersArray = [
       },
     ],
   },
+
+  {
+    playerName: "Player 13",
+    teamName: "",
+    playerURL: "",
+    isPlayerChosen: false,
+    stats: [
+      {
+        name: "Points",
+        value: 0,
+      },
+      {
+        name: "Field Goal %",
+        value: 0,
+      },
+      {
+        name: "Free Throw %",
+        value: 0,
+      },
+      {
+        name: "3 Point Makes",
+        value: 0,
+      },
+      {
+        name: "Rebounds",
+        value: 0,
+      },
+      {
+        name: "Blocks",
+        value: 0,
+      },
+      {
+        name: "Turnovers",
+        value: 0,
+      },
+      {
+        name: "Assists",
+        value: 0,
+      },
+      {
+        name: "Steals",
+        value: 0,
+      },
+    ],
+  },
 ];
 
 export const populateCurrentPlayer = (
@@ -584,7 +629,7 @@ const calculateCategoryAverage = (playerCollection, statIndex) => {
     playerCollection.reduce(
       (acc, player) => acc + parseFloat(player.stats[statIndex].value),
       0
-    ) / 12
+    ) / 13
   ).toFixed(2);
 };
 
@@ -600,7 +645,7 @@ export const populateAverageUserCategories = (playerCollection) => {
     },
     {
       category: "FT%",
-      value: calculateCategoryAverage(playerCollection, 2),
+      value: parseFloat(calculateCategoryAverage(playerCollection, 2)),
     },
     {
       category: "3PM",
