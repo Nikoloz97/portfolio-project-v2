@@ -1,5 +1,6 @@
 import React from "react";
 import { RadialBarChart, RadialBar } from "recharts";
+import "./CustomRadialBarChart.css";
 
 const CustomRadialBarChart = (props) => {
   const stringPercentile = ((props.percentile / props.total) * 100).toFixed(0);
@@ -36,8 +37,8 @@ const CustomRadialBarChart = (props) => {
   return (
     <div>
       <RadialBarChart
-        width={150}
-        height={150}
+        width={125}
+        height={125}
         innerRadius="50%"
         outerRadius="80%"
         data={data}
@@ -48,7 +49,9 @@ const CustomRadialBarChart = (props) => {
           animationDuration={2000}
         />
       </RadialBarChart>
-      <div>{`${stringPercentile}${ordinalSuffix()}`}</div>
+      <div className="Percentile-Digit-Display">
+        <h4>{`${stringPercentile}${ordinalSuffix()}`}</h4>
+      </div>
     </div>
   );
 };

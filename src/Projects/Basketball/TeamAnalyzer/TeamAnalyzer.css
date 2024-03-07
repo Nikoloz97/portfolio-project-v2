@@ -201,11 +201,52 @@ h1 {
   border: 1px solid white;
 }
 
-.Results-Stats-Container {
+.Results-Category-Header {
+  margin-bottom: -20px;
+}
+
+.Results-Averages-Percentile-Container {
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: center;
+  gap: 15px;
+  padding: 10px;
+}
+
+.Results-Averages-Container {
+  display: flex;
+  flex-direction: column;
 }
 
 .Results-Averages-Grid {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.Results-Averages-Column {
+  display: flex;
+  flex-direction: column;
+}
+
+.Percentile-Chart-Container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: -10px;
+  margin-right: -30px;
+}
+
+.Percentile-Chart-Header {
+  margin-bottom: -20px;
+}
+
+.Percentile-Digit-Display {
+  width: 60px;
+  position: absolute;
+  top: 42%;
+  left: 25%;
+  text-align: center;
 }

@@ -61,25 +61,39 @@ export default function ResultsModal(props) {
             <div className="Results-Container">
               {userCats.map((userCat, index) => (
                 <div key={index} className="Results-Category-Container">
-                  <h1>{userCat.category}</h1>
-                  <div className="Results-Stats-Container">
-                    <div className="Results-Averages-Grid">
-                      <h1>User</h1>
-                      <h1 style={{ marginBottom: "0px" }}>{userCat.value}</h1>
-                      <h1>Top-156</h1>
-                      <h1 style={{ marginTop: "0px" }}>
-                        {top150Cats[index].value}
-                      </h1>
+                  <h1 className="Results-Category-Header">
+                    {userCat.category}
+                  </h1>
+                  <div className="Results-Averages-Percentile-Container">
+                    <div className="Results-Averages-Container">
+                      <h4>Averages</h4>
+                      <div className="Results-Averages-Grid">
+                        <div className="Results-Averages-Column">
+                          <h4>User</h4>
+                          <p style={{ marginBottom: "0px" }}>{userCat.value}</p>
+                        </div>
+                        <div className="Results-Averages-Column">
+                          <h4>Top-156</h4>
+                          <p style={{ marginTop: "0px" }}>
+                            {top150Cats[index].value}
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
-                    <CustomRadialBarChart
-                      userCatValue={userCat.value}
-                      categoryName={userCat.category}
-                      topValue={top150Cats[index].value}
-                      percentile={percentiles[index].percentile}
-                      // 156 total players
-                      total={156}
-                    />
+                    <div className="Percentile-Chart-Container">
+                      <div className="Percentile-Chart-Header">
+                        <h4>Percentile</h4>
+                      </div>
+                      <CustomRadialBarChart
+                        userCatValue={userCat.value}
+                        categoryName={userCat.category}
+                        topValue={top150Cats[index].value}
+                        percentile={percentiles[index].percentile}
+                        // 156 total players
+                        total={156}
+                      />
+                    </div>
                   </div>
                 </div>
               ))}
