@@ -1,17 +1,24 @@
 import { React, useState, useEffect } from "react";
-import { Button, Card, Image } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
+import { postDateFormatter } from "../Utils/Formatters.js";
 import Post from "./Post.jsx";
 
 const ProfileCard = (props) => {
   const [currentPostIndex, setCurrentPostIndex] = useState(0);
 
-  useEffect(() => {
-    setCurrentPost(props.forumProfile.posts[currentPostIndex]);
-  }, [currentPostIndex]);
+  const [isPostLiked, setIsPostLiked] = useState(false);
 
   const [currentPost, setCurrentPost] = useState(
     props.forumProfile.posts[currentPostIndex]
   );
+
+  useEffect(() => {
+    setCurrentPost(props.forumProfile.posts[currentPostIndex]);
+  }, [currentPostIndex]);
+
+  const handlePostLike = () => {
+    setIsPostLiked(!isPostLiked);
+  };
 
   const handleNextPost = () => {
     const currentIndex = currentPostIndex;
@@ -24,32 +31,63 @@ const ProfileCard = (props) => {
   };
 
   return (
-    <div className="Forum-Card" style={{ marginRight: "2rem" }}>
-      <div>
-        <Image
-          floated="left"
-          size="tiny"
-          circular
-          src={props.forumProfile.profileURL}
-        />
-        <Card.Header style={{ color: "white" }}>
-          {props.forumProfile.displayName}
-        </Card.Header>
+    <div className="Forum-Card">
+      <div className="Forum-Card-Top-Container">
+        <div className="Forum-Card-Image-Header-Container">
+          <img
+            className="Forum-Card-Image"
+            src={props.forumProfile.profileURL}
+            alt="profile-image"
+          />
+          <h3 style={{ marginTop: "25px" }}>
+            {props.forumProfile.displayName}
+          </h3>
+        </div>
+        <div className="Forum-Card-Bars-Icon">
+          <h5> {postDateFormatter(currentPost.postedDate.toLocaleString())}</h5>
+          <Icon size="small" name="bars" />
+        </div>
       </div>
 
-      <div>
-        <Post
-          post={currentPost}
-          handlePreviousPost={handlePreviousPost}
-          handleNextPost={handleNextPost}
-          currentPostIndex={currentPostIndex}
-          postsLength={props.forumProfile.posts.length - 1}
-        />
+      <div className="Post-Buttons-Container">
+        <Button
+          className="Post-Arrow-Button"
+          disabled={currentPostIndex === 0 ? true : false}
+          onClick={handlePreviousPost}
+        >
+          <Icon name="arrow left" />
+        </Button>
+        <div className="Post-Container">
+          <Post
+            post={currentPost}
+            handlePreviousPost={handlePreviousPost}
+            handleNextPost={handleNextPost}
+          />
+        </div>
+        <Button
+          className="Post-Arrow-Button"
+          disabled={
+            currentPostIndex === props.forumProfile.posts.length - 1
+              ? true
+              : false
+          }
+          onClick={handleNextPost}
+        >
+          <Icon name="arrow right" />
+        </Button>
       </div>
-
-      <div className="ui two buttons">
-        <Button>Follow</Button>
-        <Button>Read More</Button>
+      <div className="Post-Likes-Comments-Container-Container">
+        <div className="Post-Likes-Comments-Container">
+          <div>
+            <Icon
+              name={isPostLiked ? "heart" : "heart outline"}
+              color={isPostLiked ? "red" : "white"}
+              onClick={handlePostLike}
+            />
+            {currentPost.likes} Likes
+          </div>
+          <div>{currentPost.commentCount} Comments</div>
+        </div>
       </div>
     </div>
   );

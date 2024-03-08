@@ -8,7 +8,7 @@ const Display = (props) => {
   const { isDesktop } = useUserContext();
 
   return (
-    <>
+    <div className="Loading-Display-Container">
       <Loader content="Loading" active={props.isLoading} />
       <div
         className={`Display-Page ${isDesktop ? "" : "Phone"} ${
@@ -53,7 +53,7 @@ const Display = (props) => {
         </div>
         <Forum forumProfileData={props.forumProfileData} />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -3,6 +3,11 @@
   opacity: 0.95 !important;
 }
 
+.Loading-Display-Container {
+  background: #282c34;
+  color: white;
+}
+
 /* Display */
 
 /* Some properties on here = important for loading screen */
@@ -126,8 +131,34 @@
 /* ProfileCard */
 
 .Forum-Card {
-  background-color: #5a5c5f;
+  background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2);
+  width: 400px;
+  height: 300px;
+}
+
+.Forum-Card-Image {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.Forum-Card-Top-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Forum-Card-Image-Header-Container {
+  display: flex;
+  flex-direction: row;
+}
+
+.Forum-Card-Bars-Icon {
+  display: flex;
+  margin: 25px 20px 0 0;
+  gap: 10px;
 }
 
 .Forum-Card-Left-Arrow-Button {
@@ -148,26 +179,49 @@
 }
 
 /* Post */
+.Post-Buttons-Container {
+  display: flex;
+  height: 200px;
 
-.Post-Card {
-  color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.Post-Container {
+  width: 75%;
+  height: 80%;
+  border: 0.5px solid rgba(255, 255, 255, 0.26);
+  color: white;
   font-size: 1rem;
+  padding: 10px;
 }
 
-.Post-Left-Arrow-Button {
-  position: absolute;
-  width: 20px !important;
-  top: 0;
-  left: 0;
-  bottom: 0;
+.Post-Title-Text-Image-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 
-.Post-Right-Arrow-Button {
-  position: absolute;
-  width: 20px !important;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  transform: translateX(530%);
-  border-radius: 0.28571429rem !important;
+.Post-Image {
+  height: 80px;
+}
+
+.Post-Arrow-Button {
+  background: none !important;
+  color: white !important;
+}
+.Post-Likes-Comments-Container-Container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+.Post-Likes-Comments-Container {
+  display: flex;
+  justify-content: center;
+  gap: 75px;
+  flex: row;
+  width: 75%;
+  font-size: 1.2rem;
 }
