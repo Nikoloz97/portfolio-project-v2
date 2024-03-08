@@ -7,7 +7,11 @@
 
 /* Some properties on here = important for loading screen */
 .Display-Page {
-  background-color: #282c34 !important;
+  /* background-color: #282c34 !important; */
+  background: url("../Images/ForumDisplay/Travel5.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,15 +19,21 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  opacity: 0;
+}
+
+.Display-Page.Fade-In {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
 .ForumPage-Display-Text {
   position: absolute;
-  top: 40%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: bold;
   text-align: center;
 }
@@ -37,6 +47,18 @@
   font-size: 4rem;
   font-weight: bold;
   text-align: center;
+}
+
+.ForumPage-Display-Subtext {
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+  opacity: 0.7;
 }
 
 .ForumPage-Display-Error-Subtext {
@@ -73,29 +95,39 @@
   text-align: center;
 }
 
-.ForumPage-Display {
-  opacity: 0;
-}
-
-.ForumPage-Display.Fade-In {
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
+.ForumPage-Display::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+      to top,
+      rgb(13, 20, 21) 8%,
+      rgba(5, 14, 19, 0) 40%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(13, 20, 21, 0.473) 8%,
+      rgba(5, 14, 19, 0) 40%
+    );
+  width: 100vw;
+  height: 100vh;
 }
 
 /* Forum  */
 
-/* Overflow = prevents part of display screen from persisting upon scrollDown */
-.Forum-Page {
-  background-color: #282c34;
-  min-height: 100vh;
-  overflow: hidden;
+.Forum-Container {
+  margin-top: 15%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 100px;
 }
 
 /* ProfileCard */
 
 .Forum-Card {
-  background-color: #5a5c5f !important;
-  box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2) !important;
+  background-color: #5a5c5f;
+  box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2);
 }
 
 .Forum-Card-Left-Arrow-Button {

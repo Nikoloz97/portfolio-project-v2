@@ -2,7 +2,6 @@ import { React, useEffect, useRef, useState } from "react";
 import Display from "./Display";
 import Forum from "./Forum";
 import { apiForumRoot } from "../Utils/ApiRoutes";
-import { ErrorModal } from "../Utils/Error/Error";
 
 import axios from "axios";
 import "./ForumPage.css";
@@ -12,10 +11,8 @@ function ForumPage() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);
-  const [isErrorModalDisplayed, setIsErrorModalDisplayed] = useState(false);
   const [isRetryingFetch, setIsRetryingFetch] = useState(false);
-  const [renderForum, setRenderForum] = useState(false);
-  const [forumProfileData, setForumProfileData] = useState(null);
+  const [forumProfileData, setForumProfileData] = useState([]);
   const [isDisplayToBeginFadein, setIsDisplayToBeginFadein] = useState(false);
 
   useEffect(() => {
@@ -42,9 +39,7 @@ function ForumPage() {
       })
       .catch((error) => {
         console.log(error);
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 100);
+        setIsLoading(false);
         setIsFetchSuccessful(false);
       });
   };
@@ -56,10 +51,6 @@ function ForumPage() {
       fadeInTimeout = setTimeout(() => {
         setIsDisplayToBeginFadein(true);
       }, 200);
-
-    if (isFetchSuccessful) {
-      setRenderForum(true);
-    }
 
     return () => {
       clearTimeout(fadeInTimeout);
@@ -74,7 +65,6 @@ function ForumPage() {
 
   const handleRetry = () => {
     setIsLoading(true);
-    setIsErrorModalDisplayed(false);
     setIsRetryingFetch(true);
   };
 
@@ -86,10 +76,8 @@ function ForumPage() {
         handleScrollDown={handleScrollDown}
         handleRetry={handleRetry}
         isFetchSuccessful={isFetchSuccessful}
+        forumProfileData={forumProfileData}
       />
-      <div ref={forumRef}>
-        {renderForum && <Forum forumProfileData={forumProfileData} />}
-      </div>
     </>
   );
 }

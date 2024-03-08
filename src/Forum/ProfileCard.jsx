@@ -24,8 +24,8 @@ const ProfileCard = (props) => {
   };
 
   return (
-    <Card className="Forum-Card" style={{ marginRight: "2rem" }}>
-      <Card.Content>
+    <div className="Forum-Card" style={{ marginRight: "2rem" }}>
+      <div>
         <Image
           floated="left"
           size="tiny"
@@ -35,9 +35,9 @@ const ProfileCard = (props) => {
         <Card.Header style={{ color: "white" }}>
           {props.forumProfile.displayName}
         </Card.Header>
-      </Card.Content>
+      </div>
 
-      <Card.Content>
+      <div>
         <Post
           post={currentPost}
           handlePreviousPost={handlePreviousPost}
@@ -45,14 +45,13 @@ const ProfileCard = (props) => {
           currentPostIndex={currentPostIndex}
           postsLength={props.forumProfile.posts.length - 1}
         />
-      </Card.Content>
-      <Card.Content extra>
-        <div className="ui two buttons">
-          <Button>Follow</Button>
-          <Button>Read More</Button>
-        </div>
-      </Card.Content>
-    </Card>
+      </div>
+
+      <div className="ui two buttons">
+        <Button>Follow</Button>
+        <Button>Read More</Button>
+      </div>
+    </div>
   );
 };
 
