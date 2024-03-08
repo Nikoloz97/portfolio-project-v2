@@ -1,0 +1,13 @@
+.Error-Modal-Container {
+  background-color: #383c43 !important;
+  color: white !important;
+  text-align: center !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+}
+
+.Error-Modal-Buttons-Container {
+  margin-bottom: 10px;
+}

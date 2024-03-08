@@ -1,33 +1,28 @@
 import React from "react";
-import { Modal, Button, Message, Header } from "semantic-ui-react";
+import { Modal, Button, Message } from "semantic-ui-react";
 import "./Error.css";
 
-export const ForumErrorModal = (props) => {
+export const ErrorModal = (props) => {
   return (
     <div>
       <Modal open={props.isErrorModalDisplayed} centered size="fullscreen">
-        <Modal.Header className="Error-Modal">
-          There was a problem fetching your data
-        </Modal.Header>
-        <Modal.Content className="Error-Modal">
-          <Modal.Description className="Error-Modal">
-            <Header className="Error-Modal">Would you like to retry?</Header>
-          </Modal.Description>
-        </Modal.Content>
-        <Modal.Actions className="Error-Modal">
-          <Button
-            content="No"
-            onClick={props.closeErrorModalDisplay}
-            className="Error-Modal-Button"
-            inverted
-          />
-          <Button
-            content="Yes"
-            onClick={props.handleRetry}
-            className="Error-Modal-Button"
-            inverted
-          />
-        </Modal.Actions>
+        <div className="Error-Modal-Container">
+          <h1 style={{ marginTop: "20px" }}>
+            There was a problem fetching your data
+          </h1>
+          <div>
+            <h2>Would you like to retry?</h2>
+          </div>
+          <div className="Error-Modal-Buttons-Container">
+            <Button
+              content="No"
+              onClick={props.closeErrorModalDisplay}
+              inverted
+              style={{ marginRight: "30px" }}
+            />
+            <Button content="Yes" onClick={props.handleRetry} inverted />
+          </div>
+        </div>
       </Modal>
     </div>
   );

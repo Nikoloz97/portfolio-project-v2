@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Button, Loader } from "semantic-ui-react";
+import { Image, Button, Loader, Icon } from "semantic-ui-react";
 import { useUserContext } from ".././UserContext";
 import "./ForumPage.css";
 
@@ -25,15 +25,42 @@ const Display = (props) => {
               props.isDisplayToBeginFadein ? "Fade-In" : ""
             }`}
           >
-            <div className="ForumPage-Display-Text">Welcome to the Forum</div>
-            <div className="ForumPage-Display-Subtext">Express and Discuss</div>
-            <Button
-              onClick={props.handleScrollDown}
-              className="ForumPage-Display-Button"
-              disabled={props.isFetchSuccessful === false}
-            >
-              Join
-            </Button>
+            {!props.isLoading && (
+              <div>
+                {props.isFetchSuccessful ? (
+                  <div>
+                    <div className="ForumPage-Display-Text">
+                      Welcome to the Forum
+                    </div>
+                    <div className="ForumPage-Display-Subtext">
+                      Express and Discuss
+                    </div>
+                    <Button
+                      onClick={props.handleScrollDown}
+                      className="ForumPage-Display-Button"
+                    >
+                      Join
+                    </Button>
+                  </div>
+                ) : (
+                  <div>
+                    <div className="ForumPage-Display-Error-Text">
+                      Network Error :(
+                    </div>
+                    <div className="ForumPage-Display-Error-Subtext">
+                      Please Try Again
+                    </div>
+                    <Button
+                      onClick={props.handleRetry}
+                      className="ForumPage-Error-Button"
+                    >
+                      <Icon name="redo" />
+                      Retry
+                    </Button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

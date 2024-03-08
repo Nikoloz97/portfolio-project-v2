@@ -1,10 +1,4 @@
 /* General */
-.Error-Modal {
-  background-color: #383c43 !important;
-  color: white !important;
-  text-align: center !important;
-}
-
 .ui.dimmer {
   opacity: 0.95 !important;
 }
@@ -34,13 +28,24 @@
   text-align: center;
 }
 
-.ForumPage-Display-Subtext {
+.ForumPage-Display-Error-Text {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-size: 3rem;
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.ForumPage-Display-Error-Subtext {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 2rem;
   font-weight: 400;
   text-align: center;
   opacity: 0.7;
@@ -57,13 +62,24 @@
   text-align: center;
 }
 
+.ForumPage-Error-Button {
+  position: absolute;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+}
+
 .ForumPage-Display {
-  opacity: 0 !important;
+  opacity: 0;
 }
 
 .ForumPage-Display.Fade-In {
-  opacity: 1 !important;
-  transition: opacity 1s ease-in-out !important;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
 /* Forum  */
