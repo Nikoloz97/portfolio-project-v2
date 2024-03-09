@@ -11,7 +11,7 @@ import TopbarLayover from "./Utils/TopbarLayover.jsx";
 import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
 import Kronos from "./Projects/Clocks/Kronos";
-import ForumPage from "./Forum/ForumPage.jsx";
+import Forum from "./Forum/Forum.jsx";
 import Login from "./User/Login";
 import SignUp from "./User/Signup";
 import FantasyBasketball from "./Projects/Basketball/FantasyBasketball";
@@ -144,10 +144,10 @@ function AppRouter() {
               }
             />
             <Route
-              path="/forumPage"
+              path="/forum"
               element={
                 <TopbarLayover>
-                  <ForumPage />
+                  <Forum />
                 </TopbarLayover>
               }
             />
@@ -295,12 +295,12 @@ function AppRouter() {
                 }
               />
               <Route
-                path="/forumPage"
+                path="/forum"
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
                   >
-                    <ForumPage />
+                    <Forum />
                   </TopbarLayover>
                 }
               />

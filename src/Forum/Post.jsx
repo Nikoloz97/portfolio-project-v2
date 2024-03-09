@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Form, Button } from "semantic-ui-react";
 import Comment from "./Comment";
-import "./ForumPage.css";
+import "./Forum.css";
 
 const Post = (props) => {
   const [isPostLiked, setIsPostLiked] = useState(false);

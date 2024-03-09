@@ -1,13 +1,12 @@
 import { React, useEffect, useState } from "react";
-import { useUserContext } from ".././UserContext";
+import { useUserContext } from "../UserContext";
 import { Button, Loader, Icon } from "semantic-ui-react";
 import ProfileCard from "./ProfileCard";
 import { apiForumRoot } from "../Utils/ApiRoutes";
-
 import axios from "axios";
-import "./ForumPage.css";
+import "./Forum.css";
 
-function ForumPage() {
+function Forum() {
   const { isDesktop } = useUserContext();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -120,4 +119,4 @@ function ForumPage() {
   );
 }
 
-export default ForumPage;
+export default Forum;

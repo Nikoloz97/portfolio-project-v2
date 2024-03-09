@@ -1,7 +1,7 @@
 import { UserProvider } from "../../UserContext";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ForumPage from "../../Forum/ForumPage";
+import ForumPage from "../../Forum/Forum";
 
 import {
   getForumData,

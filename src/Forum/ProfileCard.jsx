@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { Button, Icon } from "semantic-ui-react";
 import { postDateFormatter } from "../Utils/Formatters.js";
 import Post from "./Post.jsx";
+import "./Forum.css";
 
 const ProfileCard = (props) => {
   const [currentPostIndex, setCurrentPostIndex] = useState(0);

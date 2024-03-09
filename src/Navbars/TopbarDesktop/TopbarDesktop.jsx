@@ -55,11 +55,7 @@ const TopbarDesktop = () => {
               Projects
             </Button>
           </MenuItem>
-          <MenuItem
-            id="Topbar-Desktop-Hover-Override"
-            as={Link}
-            to="/forumPage"
-          >
+          <MenuItem id="Topbar-Desktop-Hover-Override" as={Link} to="/forum">
             <Button
               className="Topbar-Desktop-Button"
               onClick={() => handleButtonClick("Forum")}

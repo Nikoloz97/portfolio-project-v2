@@ -42,11 +42,7 @@ const SidebarPhone = (props) => {
             content="Projects"
           ></Button>
         </MenuItem>
-        <MenuItem
-          as={Link}
-          to="/forumPage"
-          className={`Sidebar-Button-Container`}
-        >
+        <MenuItem as={Link} to="/forum" className={`Sidebar-Button-Container`}>
           <Button
             className="Sidebar-Button"
             onClick={() => handleButtonClick("Forum")}
