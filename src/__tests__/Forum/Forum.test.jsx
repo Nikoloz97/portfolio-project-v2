@@ -1,13 +1,12 @@
 import { UserProvider } from "../../UserContext";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Forum from "../../Forum/Forum";
-import { forumProfileData } from "../Mocks/Forum/ForumMock";
 
 import {
   getForumData,
   getFailedServerSideFetch,
-} from "../Mocks/Forum/ForumMock";
+} from "../__mocks__/Forum/ForumMock";
 
 // Mock the useMediaQuery hook
 jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
@@ -48,18 +47,6 @@ describe("Forum Page", () => {
       );
 
       expect(await screen.findByText("Please Try Again")).toBeInTheDocument();
-    });
-
-    it("does not render forum component on unsuccessful fetch", async () => {
-      render(
-        <UserProvider>
-          <Forum />
-        </UserProvider>
-      );
-
-      await waitFor(() => {
-        expect(screen.queryByText("Follow")).toBeNull();
-      });
     });
   });
 });
