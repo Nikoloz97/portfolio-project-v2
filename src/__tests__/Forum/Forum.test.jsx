@@ -28,7 +28,11 @@ describe("Forum Page", () => {
     });
 
     it("Properly maps to profile card images, as well as post images", async () => {
-      render(<Forum />);
+      render(
+        <UserProvider>
+          <Forum />
+        </UserProvider>
+      );
 
       expect(await screen.findAllByRole("img")).toHaveLength(4);
     });

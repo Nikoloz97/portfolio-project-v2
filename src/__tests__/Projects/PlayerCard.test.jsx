@@ -5,7 +5,7 @@ import {
   mockSelectedPlayer,
   mockSelectedPlayers,
   mockNonSelectedPlayer,
-} from "../Mocks/Projects/PlayerCardMock";
+} from "../__mocks__/Projects/PlayerCardMock";
 
 describe("Player Card", () => {
   it("Displays player silhouette on card prior to player selection", () => {

@@ -5,7 +5,7 @@ import TeamAnalyzer from "../../Projects/Basketball/TeamAnalyzer/TeamAnalyzer";
 import {
   getPlayerInfo,
   getPlayerList,
-} from "../Mocks/Projects/TeamAnalyzerMocks";
+} from "../__mocks__/Projects/TeamAnalyzerMocks";
 
 // TODO: Continue tutorial (11:23) - https://www.youtube.com/watch?v=0Y11K7KSC80&list=PL4cUxeGkcC9gm4_-5UsNmLqMosM-dzuvQ&index=10
 
