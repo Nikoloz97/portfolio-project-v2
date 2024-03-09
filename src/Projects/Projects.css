@@ -1,0 +1,47 @@
+.project-card {
+  color: white;
+  align-items: center;
+  padding: 0.5rem !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
+  margin-top: 2rem !important;
+  background-color: #383c43 !important;
+  position: relative;
+
+  transition: height 1s cubic-bezier(0.5, 0, 0.2, 1),
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease-in !important;
+
+  width: 20.7rem !important;
+}
+
+/* On render animation */
+.project-card-preloaded {
+  height: 5em !important;
+  transform: scaleY(0) !important;
+  transform-origin: center !important;
+  opacity: 0.1 !important;
+}
+
+.project-card-loaded {
+  height: 20em !important;
+  transform: scaleY(1) !important;
+  opacity: 1 !important;
+}
+
+/* Left-right arrow button positions */
+
+.project-left-arrow-button {
+  position: absolute;
+  width: 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.project-right-arrow-button {
+  position: absolute;
+  width: 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transform: translateX(591%);
+}

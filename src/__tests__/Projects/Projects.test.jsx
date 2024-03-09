@@ -6,7 +6,7 @@ import Projects from "../../Projects/Projects";
 import { MemoryRouter } from "react-router-dom";
 
 describe("Projects", () => {
-  it("renders correctly", () => {
+  it("matches snapshot following changes", () => {
     const projectsPage = renderer
       .create(
         <MemoryRouter>
@@ -17,7 +17,7 @@ describe("Projects", () => {
     expect(projectsPage).toMatchSnapshot();
   });
 
-  it("on render, produces intro card", () => {
+  it("produces intro card where prev/next buttons are disabled/enabled, respectively", () => {
     render(
       <MemoryRouter>
         <Projects />
@@ -35,39 +35,7 @@ describe("Projects", () => {
     ).not.toHaveAttribute("disabled");
   });
 
-  it("on render, left arrow button is disabled while right is not", () => {
-    render(
-      <MemoryRouter>
-        <Projects />
-      </MemoryRouter>
-    );
-
-    expect(screen.getByText("Projects")).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: "Previous project" })
-    ).toHaveAttribute("disabled");
-    expect(
-      screen.getByRole("button", { name: "Next project" })
-    ).not.toHaveAttribute("disabled");
-  });
-
-  it("selecting right arrow button goes to next card", () => {
-    render(
-      <MemoryRouter>
-        <Projects />
-      </MemoryRouter>
-    );
-
-    const rightIntroArrowButton = screen.getByRole("button", {
-      name: "Next project",
-    });
-
-    userEvent.click(rightIntroArrowButton);
-
-    expect(screen.getByText("Kronos")).toBeInTheDocument();
-  });
-
-  it("selecting right arrow button displays right project arrow button and is not disabled", async () => {
+  it("selecting right arrow button goes to next card and right arrow button is not disabled", async () => {
     render(
       <MemoryRouter>
         <Projects />
@@ -85,6 +53,7 @@ describe("Projects", () => {
         name: "Next project",
       });
 
+      expect(screen.getByText("Kronos")).toBeInTheDocument();
       expect(rightProjectArrowButton).not.toHaveAttribute("disabled");
     });
   });
