@@ -1,7 +1,8 @@
 import { UserProvider } from "../../UserContext";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ForumPage from "../../Forum/Forum";
+import Forum from "../../Forum/Forum";
+import { forumProfileData } from "../Mocks/Forum/ForumMock";
 
 import {
   getForumData,
@@ -20,40 +21,18 @@ describe("Forum Page", () => {
     it("On render, displays Loader component", async () => {
       render(
         <UserProvider>
-          <ForumPage />
+          <Forum />
         </UserProvider>
       );
 
       expect(await screen.findByText("Loading")).toBeInTheDocument();
     });
 
-    it("Once loading is complete, renders cards", async () => {
-      render(
-        <UserProvider>
-          <ForumPage />
-        </UserProvider>
-      );
+    it("Properly maps to profile card images, as well as post images", async () => {
+      render(<Forum />);
 
-      expect(
-        await screen.findByText("Welcome to the Forum")
-      ).toBeInTheDocument();
+      expect(await screen.findAllByRole("img")).toHaveLength(4);
     });
-
-    // TODO: Make this pass
-    // it("renders forum component on successful fetch", async () => {
-    //   await act(async () => {
-    //     render(
-    //       <UserProvider>
-    //         <ForumPage />
-    //       </UserProvider>
-    //     );
-    //   });
-
-    //   await act(async () => {
-    //     screen.debug();
-    //     expect(await screen.findByTestId("Forum")).toBeInTheDocument();
-    //   });
-    // });
   });
 
   describe("Using failed server-side fetch", () => {
@@ -64,32 +43,17 @@ describe("Forum Page", () => {
     it("displays error headings", async () => {
       render(
         <UserProvider>
-          <ForumPage />
+          <Forum />
         </UserProvider>
       );
 
       expect(await screen.findByText("Please Try Again")).toBeInTheDocument();
     });
 
-    // TODO: change test (do not check for state changes)
-    // it("isDisplayToBeginFadeIn state is set to true once isFetchSuccessful becomes false", async () => {
-    //   render(
-    //     <UserProvider>
-    //       <ForumPage />
-    //     </UserProvider>
-    //   );
-
-    //   const displayElement = await screen.findByTestId("Display");
-
-    //   await waitFor(() => {
-    //     expect(displayElement).toHaveAttribute("data-state", "true");
-    //   });
-    // });
-
     it("does not render forum component on unsuccessful fetch", async () => {
       render(
         <UserProvider>
-          <ForumPage />
+          <Forum />
         </UserProvider>
       );
 
