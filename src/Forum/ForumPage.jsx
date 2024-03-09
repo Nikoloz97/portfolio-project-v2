@@ -1,13 +1,14 @@
-import { React, useEffect, useRef, useState } from "react";
-import Display from "./Display";
-import Forum from "./Forum";
+import { React, useEffect, useState } from "react";
+import { useUserContext } from ".././UserContext";
+import { Button, Loader, Icon } from "semantic-ui-react";
+import ProfileCard from "./ProfileCard";
 import { apiForumRoot } from "../Utils/ApiRoutes";
 
 import axios from "axios";
 import "./ForumPage.css";
 
 function ForumPage() {
-  const forumRef = useRef(null);
+  const { isDesktop } = useUserContext();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);
@@ -57,28 +58,65 @@ function ForumPage() {
     };
   }, [isFetchSuccessful]);
 
-  const handleScrollDown = () => {
-    setTimeout(() => {
-      forumRef.current.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  };
-
   const handleRetry = () => {
     setIsLoading(true);
     setIsRetryingFetch(true);
   };
 
   return (
-    <>
-      <Display
-        isDisplayToBeginFadein={isDisplayToBeginFadein}
-        isLoading={isLoading}
-        handleScrollDown={handleScrollDown}
-        handleRetry={handleRetry}
-        isFetchSuccessful={isFetchSuccessful}
-        forumProfileData={forumProfileData}
-      />
-    </>
+    <div className="Loading-Display-Container">
+      <Loader content="Loading" active={isLoading} />
+      <div
+        className={`Display-Page ${isDesktop ? "" : "Phone"} ${
+          isDisplayToBeginFadein ? "Fade-In" : ""
+        }`}
+      >
+        <div
+          className={`ForumPage-Display ${
+            isDisplayToBeginFadein ? "Fade-In" : ""
+          }`}
+        >
+          {!isLoading && (
+            <div>
+              {isFetchSuccessful ? (
+                <div>
+                  <div className="ForumPage-Display-Text">
+                    Welcome to the Forum
+                  </div>
+                  <div className="ForumPage-Display-Subtext">
+                    Express and Discuss
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="ForumPage-Display-Error-Text">
+                    Network Error :(
+                  </div>
+                  <div className="ForumPage-Display-Error-Subtext">
+                    Please Try Again
+                  </div>
+                  <Button
+                    onClick={handleRetry}
+                    className="ForumPage-Error-Button"
+                  >
+                    <Icon name="redo" />
+                    Retry
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+        <div className="Forum-Container">
+          {forumProfileData.map((forumProfile) => (
+            <ProfileCard
+              forumProfile={forumProfile}
+              key={forumProfile.forumProfileId}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 

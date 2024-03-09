@@ -27,7 +27,7 @@ describe("Forum Page", () => {
       expect(await screen.findByText("Loading")).toBeInTheDocument();
     });
 
-    it("Once loading is complete, renders display text", async () => {
+    it("Once loading is complete, renders cards", async () => {
       render(
         <UserProvider>
           <ForumPage />
