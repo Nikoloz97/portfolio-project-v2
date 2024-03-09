@@ -7,7 +7,7 @@ import { forumProfileData } from "../Mocks/Forum/ForumMock";
 import {
   getForumData,
   getFailedServerSideFetch,
-} from "../Mocks/Forum/ForumPageMock";
+} from "../Mocks/Forum/ForumMock";
 
 // Mock the useMediaQuery hook
 jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
