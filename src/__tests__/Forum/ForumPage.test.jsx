@@ -13,7 +13,9 @@ jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
 
 describe("Forum Page", () => {
   describe("Using successful fetch", () => {
-    getForumData();
+    beforeEach(() => {
+      getForumData();
+    });
 
     it("On render, displays Loader component", async () => {
       render(
@@ -55,18 +57,18 @@ describe("Forum Page", () => {
   });
 
   describe("Using failed server-side fetch", () => {
-    getFailedServerSideFetch();
+    beforeEach(() => {
+      getFailedServerSideFetch();
+    });
 
-    it("renders ForumErrorModal component", async () => {
+    it("displays error headings", async () => {
       render(
         <UserProvider>
           <ForumPage />
         </UserProvider>
       );
 
-      expect(
-        await screen.findByText("Would you like to retry?")
-      ).toBeInTheDocument();
+      expect(await screen.findByText("Please Try Again")).toBeInTheDocument();
     });
 
     // TODO: change test (do not check for state changes)

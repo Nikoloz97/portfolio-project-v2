@@ -133,7 +133,7 @@ exports[`Projects renders correctly 1`] = `
         </div>
         <button
           aria-label="Next project"
-          className="ui button"
+          className="ui button project-right-arrow-button"
           onClick={[Function]}
         >
           <i

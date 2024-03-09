@@ -81,7 +81,7 @@ const ProfileCard = (props) => {
           <div>
             <Icon
               name={isPostLiked ? "heart" : "heart outline"}
-              color={isPostLiked ? "red" : "white"}
+              color={isPostLiked ? "red" : null}
               onClick={handlePostLike}
             />
             {currentPost.likes} Likes
