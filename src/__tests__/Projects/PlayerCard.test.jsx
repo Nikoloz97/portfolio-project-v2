@@ -22,7 +22,7 @@ describe("Player Card", () => {
     expect(headshotElement.src).not.toBe(mockSelectedPlayer.playerURL);
   });
 
-  it("Player card is populated following player selection", () => {
+  it("Input suggestion is filled following user input", () => {
     render(
       <PlayerCard
         selectedPlayers={mockSelectedPlayers}

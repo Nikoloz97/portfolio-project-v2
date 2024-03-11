@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header, Grid } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarousel from "../../Utils/VerticalCarousel/VerticalCarousel";
 import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarouselPhone";

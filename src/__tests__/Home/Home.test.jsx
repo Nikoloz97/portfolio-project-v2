@@ -6,14 +6,14 @@ import Home from "../../Home/Home";
 jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
 
 describe("Home Page", () => {
-  it("Following a set amount of time, displays welcome text, coding, medicine, and tutoring screens", async () => {
+  it("On render, displays coding, medicine, and tutoring text", async () => {
     render(
       <UserProvider>
         <Home />
       </UserProvider>
     );
 
-    // TODO: fix (stops at "Welcom" for some reason)
+    // TODO: fix (stops at "Welcom")
     // const welcomeScreenText = await screen.findByText(/^Welcome,$/);
     const codingScreenText = screen.getByText("Coding Test");
     const medicineScreenText = screen.getByText("Medicine Test");
