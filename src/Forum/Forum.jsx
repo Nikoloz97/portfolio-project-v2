@@ -3,16 +3,18 @@ import { useUserContext } from "../UserContext";
 import { Button, Loader, Icon } from "semantic-ui-react";
 import ProfileCard from "./ProfileCard";
 import { apiForumRoot } from "../Utils/ApiRoutes";
+import UserProfileCard from "./UserProfileCard";
 import axios from "axios";
 import "./Forum.css";
 
 function Forum() {
-  const { isDesktop } = useUserContext();
+  const { isDesktop, user } = useUserContext();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);
   const [isRetryingFetch, setIsRetryingFetch] = useState(false);
   const [forumProfileData, setForumProfileData] = useState([]);
+  const [userProfileData, setUserProfileData] = useState({});
   const [isDisplayToBeginFadein, setIsDisplayToBeginFadein] = useState(false);
 
   useEffect(() => {
@@ -26,24 +28,6 @@ function Forum() {
     }
   }, [isRetryingFetch]);
 
-  const getForumProfiles = () => {
-    setIsLoading(true);
-    axios
-      .get(apiForumRoot)
-      .then((response) => {
-        setForumProfileData(response.data);
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 100);
-        setIsFetchSuccessful(true);
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsLoading(false);
-        setIsFetchSuccessful(false);
-      });
-  };
-
   useEffect(() => {
     let fadeInTimeout;
 
@@ -56,6 +40,42 @@ function Forum() {
       clearTimeout(fadeInTimeout);
     };
   }, [isFetchSuccessful]);
+
+  const handleUserAndForumProfileData = (forumProfiles) => {
+    if (user) {
+      setForumProfileData(
+        forumProfiles.filter(
+          (forumProfile) => forumProfile.userId !== user.userId
+        )
+      );
+      setUserProfileData(
+        forumProfiles.filter(
+          (forumProfile) => forumProfile.userId === user.userId
+        )[0]
+      );
+    } else {
+      setForumProfileData(forumProfiles);
+    }
+  };
+
+  const getForumProfiles = () => {
+    setIsLoading(true);
+    axios
+      .get(apiForumRoot)
+      .then((response) => {
+        // setForumProfileData(response.data);
+        handleUserAndForumProfileData(response.data);
+        // setTimeout(() => {
+        setIsLoading(false);
+        // }, 100);
+        setIsFetchSuccessful(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+        setIsFetchSuccessful(false);
+      });
+  };
 
   const handleRetry = () => {
     setIsLoading(true);
@@ -107,6 +127,16 @@ function Forum() {
           )}
         </div>
         <div className="Forum-Container">
+          {isFetchSuccessful &&
+            (user ? (
+              userProfileData ? (
+                <UserProfileCard userProfile={userProfileData} />
+              ) : (
+                <div>Click here to create your first card!</div>
+              )
+            ) : (
+              <div>Please sign in to create a card!</div>
+            ))}
           {forumProfileData.map((forumProfile) => (
             <ProfileCard
               forumProfile={forumProfile}
