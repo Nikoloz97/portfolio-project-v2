@@ -4,6 +4,7 @@ import { Button, Loader, Icon } from "semantic-ui-react";
 import ProfileCard from "./ProfileCard";
 import { apiForumRoot } from "../Utils/ApiRoutes";
 import UserProfileCard from "./UserProfileCard";
+import PromptSignInCard from "./PromptSignInCard";
 import axios from "axios";
 import "./Forum.css";
 
@@ -63,11 +64,8 @@ function Forum() {
     axios
       .get(apiForumRoot)
       .then((response) => {
-        // setForumProfileData(response.data);
         handleUserAndForumProfileData(response.data);
-        // setTimeout(() => {
         setIsLoading(false);
-        // }, 100);
         setIsFetchSuccessful(true);
       })
       .catch((error) => {
@@ -135,8 +133,14 @@ function Forum() {
                 <div>Click here to create your first card!</div>
               )
             ) : (
-              <div>Please sign in to create a card!</div>
+              <PromptSignInCard />
             ))}
+
+          {/* TODO: Remove (used for testing display) */}
+          {/* <PromptSignInCard />
+          <PromptSignInCard />
+          <PromptSignInCard /> */}
+
           {forumProfileData.map((forumProfile) => (
             <ProfileCard
               forumProfile={forumProfile}
@@ -145,6 +149,7 @@ function Forum() {
           ))}
         </div>
       </div>
+      {/* <div className="Display-Page-Overflow"></div> */}
     </div>
   );
 }
