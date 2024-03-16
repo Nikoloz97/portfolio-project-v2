@@ -9,6 +9,8 @@ const ProfileCard = (props) => {
 
   const [isPostLiked, setIsPostLiked] = useState(false);
 
+  const [isCommentButtonClicked, setIsCommentButtonClicked] = useState(false);
+
   const [currentPost, setCurrentPost] = useState(
     props.forumProfile.posts[currentPostIndex]
   );
@@ -19,6 +21,10 @@ const ProfileCard = (props) => {
 
   const handlePostLike = () => {
     setIsPostLiked(!isPostLiked);
+  };
+
+  const handleCommentClick = () => {
+    setIsCommentButtonClicked(!isCommentButtonClicked);
   };
 
   const handleNextPost = () => {
@@ -87,7 +93,11 @@ const ProfileCard = (props) => {
             />
             {currentPost.likes} Likes
           </div>
-          <div>{currentPost.commentCount} Comments</div>
+          <Button className="Comments-Button" onClick={handleCommentClick}>
+            <div className="Comments-Button-Text">
+              {currentPost.commentCount} Comments
+            </div>
+          </Button>
         </div>
       </div>
     </div>

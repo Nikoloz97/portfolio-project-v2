@@ -128,11 +128,14 @@
 /* Forum  */
 
 .Forum-Container {
-  margin-top: -400px;
+  margin-top: 250px;
+  height: 150vh;
+}
+
+.Forum-Grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 100px;
-  position: absolute;
 }
 
 /* ProfileCard */
@@ -259,4 +262,21 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.Comments-Button {
+  background: none !important;
+  color: white !important;
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: 200 !important;
+  font-size: 1em !important;
+  height: 20px;
+}
+
+.Comments-Button:hover {
+  background: rgba(255, 255, 255, 0.089) !important;
+}
+
+.Comments-Button-Text {
+  margin-top: -10px;
 }

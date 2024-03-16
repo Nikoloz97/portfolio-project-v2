@@ -4,7 +4,7 @@ import { Button, Loader, Icon } from "semantic-ui-react";
 import ProfileCard from "./ProfileCard";
 import { apiForumRoot } from "../Utils/ApiRoutes";
 import UserProfileCard from "./UserProfileCard";
-import PromptSignInCard from "./PromptSignInCard";
+import PlaceholderCard from "./PlaceholderCard";
 import axios from "axios";
 import "./Forum.css";
 
@@ -125,31 +125,27 @@ function Forum() {
           )}
         </div>
         <div className="Forum-Container">
-          {isFetchSuccessful &&
-            (user ? (
-              userProfileData ? (
-                <UserProfileCard userProfile={userProfileData} />
+          <div className="Forum-Grid">
+            {isFetchSuccessful &&
+              (user ? (
+                userProfileData.posts.length > 0 ? (
+                  <UserProfileCard userProfile={userProfileData} />
+                ) : (
+                  <PlaceholderCard isUserSignedIn={true} />
+                )
               ) : (
-                <div>Click here to create your first card!</div>
-              )
-            ) : (
-              <PromptSignInCard />
+                <PlaceholderCard isUserSignedIn={false} />
+              ))}
+
+            {forumProfileData.map((forumProfile) => (
+              <ProfileCard
+                forumProfile={forumProfile}
+                key={forumProfile.forumProfileId}
+              />
             ))}
-
-          {/* TODO: Remove (used for testing display) */}
-          {/* <PromptSignInCard />
-          <PromptSignInCard />
-          <PromptSignInCard /> */}
-
-          {forumProfileData.map((forumProfile) => (
-            <ProfileCard
-              forumProfile={forumProfile}
-              key={forumProfile.forumProfileId}
-            />
-          ))}
+          </div>
         </div>
       </div>
-      {/* <div className="Display-Page-Overflow"></div> */}
     </div>
   );
 }

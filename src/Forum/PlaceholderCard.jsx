@@ -1,6 +1,7 @@
 import { React } from "react";
-import { Button, Icon, Modal } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import "./Forum.css";
+import { Link } from "react-router-dom";
 
 const PromptSignInCard = (props) => {
   return (
@@ -10,7 +11,9 @@ const PromptSignInCard = (props) => {
           <div className="Prompt-Forum-Card-Image">
             <Icon name="user circle" size="large" />
           </div>
-          <h3 style={{ marginTop: "25px", marginLeft: "10px" }}>John Smith </h3>
+          <h3 style={{ marginTop: "25px", marginLeft: "10px" }}>
+            {props.isUserSignedIn ? "Signed in" : "John Smith"}{" "}
+          </h3>
         </div>
         <div className="Forum-Card-Bars-Icon">
           <h5>
@@ -22,7 +25,7 @@ const PromptSignInCard = (props) => {
               })
               .replace(/ /g, "-")
               .replace(/,/g, "")}
-          </h5>{" "}
+          </h5>
           <Icon size="small" name="bars" />
         </div>
       </div>
@@ -43,14 +46,17 @@ const PromptSignInCard = (props) => {
           <div>0 Comments</div>
         </div>
       </div>
-
-      <div className="Sign-In-Prompt">
-        <div></div>
-      </div>
-      <div className="Sign-In-Prompt">
-        <div>Log in to post</div>
-        <Button content="Login" />
-      </div>
+      {props.isUserSignedIn ? (
+        <div className="Create-First-Post-Prompt">
+          <div>No posts yet...</div>
+          <Button content="Create" />
+        </div>
+      ) : (
+        <div className="Sign-In-Prompt">
+          <div>Log in to post</div>
+          <Button as={Link} to="/login" content="Login" />
+        </div>
+      )}
     </div>
   );
 };

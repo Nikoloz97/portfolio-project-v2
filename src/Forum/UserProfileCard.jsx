@@ -82,8 +82,9 @@ const UserProfileCard = (props) => {
               color={isPostLiked ? "red" : null}
               onClick={handlePostLike}
             />
-            {currentPost.likes} Likes
+            {currentPost.likes}
           </div>
+          div
           <div>{currentPost.commentCount} Comments</div>
         </div>
       </div>
