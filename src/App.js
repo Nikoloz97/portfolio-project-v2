@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AppRouter from "./AppRouter";
 import { UserProvider } from "./UserContext";
 import "./App.css";

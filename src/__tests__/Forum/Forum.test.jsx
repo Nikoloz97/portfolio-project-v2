@@ -1,4 +1,5 @@
 import { UserProvider } from "../../UserContext";
+import { MockUserProvider } from "../__mocks__/UserContextMock";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Forum from "../../Forum/Forum";
@@ -8,10 +9,9 @@ import {
   getFailedServerSideFetch,
 } from "../__mocks__/Forum/ForumMock";
 
-// Mock the useMediaQuery hook
-jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
+import { BrowserRouter as Router } from "react-router-dom";
 
-describe("Forum Page", () => {
+describe("Forum", () => {
   describe("Using successful fetch", () => {
     beforeEach(() => {
       getForumData();
@@ -19,9 +19,11 @@ describe("Forum Page", () => {
 
     it("On render, displays Loader component", async () => {
       render(
-        <UserProvider>
-          <Forum />
-        </UserProvider>
+        <Router>
+          <UserProvider>
+            <Forum />
+          </UserProvider>
+        </Router>
       );
 
       expect(await screen.findByText("Loading")).toBeInTheDocument();
@@ -29,9 +31,11 @@ describe("Forum Page", () => {
 
     it("Properly maps to profile card images, as well as post images", async () => {
       render(
-        <UserProvider>
-          <Forum />
-        </UserProvider>
+        <Router>
+          <UserProvider>
+            <Forum />
+          </UserProvider>
+        </Router>
       );
 
       expect(await screen.findAllByRole("img")).toHaveLength(4);
@@ -45,11 +49,12 @@ describe("Forum Page", () => {
 
     it("displays error headings", async () => {
       render(
-        <UserProvider>
-          <Forum />
-        </UserProvider>
+        <Router>
+          <UserProvider>
+            <Forum />
+          </UserProvider>
+        </Router>
       );
-
       expect(await screen.findByText("Please Try Again")).toBeInTheDocument();
     });
   });

@@ -1,11 +1,37 @@
-import React, { createContext, useContext } from "react";
+import { createContext, useState, useContext } from "react";
+import { useMediaQuery } from "react-responsive";
 
-const UserContext = createContext({
-  isDesktop: false,
-});
+// UserContext = allows state to persist/change among various routes
+
+const UserContext = createContext();
 
 export const useUserContext = () => useContext(UserContext);
 
-export const UserProvider = ({ children, value }) => (
-  <UserContext.Provider value={value}>{children}</UserContext.Provider>
-);
+export const MockUserProvider = ({ children }) => {
+  const [user, setUser] = useState({ tacos: "tacos" });
+  const [isUserSignedIn, setIsUserSignedIn] = useState(true);
+
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 1444px)",
+    // and (max-width: 1599px)",
+  });
+
+  const isMonitor = useMediaQuery({
+    query: "(min-width:1600px)",
+  });
+
+  return (
+    <UserContext.Provider
+      value={{
+        user,
+        setUser,
+        isUserSignedIn,
+        setIsUserSignedIn,
+        isDesktop,
+        isMonitor,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+};

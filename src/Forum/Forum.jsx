@@ -9,7 +9,7 @@ import axios from "axios";
 import "./Forum.css";
 
 function Forum() {
-  const { isDesktop, user } = useUserContext();
+  const { isDesktop, isUserSignedIn } = useUserContext();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);
@@ -43,7 +43,7 @@ function Forum() {
   }, [isFetchSuccessful]);
 
   const handleUserAndForumProfileData = (forumProfiles) => {
-    if (user) {
+    if (isUserSignedIn) {
       setForumProfileData(
         forumProfiles.filter(
           (forumProfile) => forumProfile.userId !== user.userId
@@ -69,7 +69,6 @@ function Forum() {
         setIsFetchSuccessful(true);
       })
       .catch((error) => {
-        console.log(error);
         setIsLoading(false);
         setIsFetchSuccessful(false);
       });
@@ -127,9 +126,12 @@ function Forum() {
         <div className="Forum-Container">
           <div className="Forum-Grid">
             {isFetchSuccessful &&
-              (user ? (
+              (isUserSignedIn ? (
                 userProfileData.posts.length > 0 ? (
-                  <UserProfileCard userProfile={userProfileData} />
+                  <div>
+                    <UserProfileCard userProfile={userProfileData} />
+                    {console.log(isUserSignedIn)}
+                  </div>
                 ) : (
                   <PlaceholderCard isUserSignedIn={true} />
                 )

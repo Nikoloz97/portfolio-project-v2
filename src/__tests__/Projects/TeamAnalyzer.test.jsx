@@ -7,8 +7,6 @@ import {
   getPlayerList,
 } from "../__mocks__/Projects/TeamAnalyzerMocks";
 
-// TODO: Continue tutorial (11:23) - https://www.youtube.com/watch?v=0Y11K7KSC80&list=PL4cUxeGkcC9gm4_-5UsNmLqMosM-dzuvQ&index=10
-
 describe("Team Analyzer", () => {
   getPlayerList();
 
