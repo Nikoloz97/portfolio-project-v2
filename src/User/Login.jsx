@@ -15,7 +15,8 @@ import { apiUserRoot } from "../Utils/ApiRoutes";
 import "./User.css";
 
 const Login = () => {
-  const { setUser, setIsUserSignedIn, isDesktop } = useUserContext();
+  const { setUser, setIsUserSignedIn, isDesktop, isDefaultBlog } =
+    useUserContext();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -40,8 +41,12 @@ const Login = () => {
 
         localStorage.setItem("token", token);
 
-        // Upon login, navigate to homescreen
-        navigate("/");
+        // Upon login, navigate to specific page based on preferences (otherwise, default to home)
+        if (isDefaultBlog) {
+          navigate("/blog");
+        } else {
+          navigate("/");
+        }
       })
       .catch((error) => {
         if (error.response) {

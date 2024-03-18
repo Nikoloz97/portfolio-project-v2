@@ -4,9 +4,10 @@ import { apiUserRoot } from "../Utils/ApiRoutes";
 import { useUserContext } from "../UserContext";
 import axios from "axios";
 import "./User.css";
+import Cookies from "js-cookie";
 
 const ProfilePage = (props) => {
-  const { user } = useUserContext();
+  const { user, isDefaultBlog, setIsDefaultBlog } = useUserContext();
 
   const [newUserInfo, setNewUserInfo] = useState({
     Username: null,
@@ -30,7 +31,16 @@ const ProfilePage = (props) => {
       });
   };
 
-  const handleBlogPageToggle = () => {
+  const handleLightModeToggle = () => {
+    console.log("Test");
+  };
+
+  const handleBlogToggle = () => {
+    setIsDefaultBlog(true);
+    Cookies.set("defaultBlog", true);
+  };
+
+  const handleProjectsToggle = () => {
     console.log("Test");
   };
 
@@ -126,21 +136,21 @@ const ProfilePage = (props) => {
           <div className="Preferences-Container">
             <div className="Preferences-Checkbox-Label">
               <div>
-                <Checkbox toggle />
+                <Checkbox toggle onClick={handleLightModeToggle()} />
               </div>
               <p>Light Mode</p>
             </div>
             <div className="Preferences-Checkbox-Label">
               <div>
-                <Checkbox toggle onClick={handleBlogPageToggle()} />
+                <Checkbox toggle onClick={handleBlogToggle()} />
               </div>
-              <p>Default to Blog Page</p>
+              <p>Default to Blog </p>
             </div>
             <div className="Preferences-Checkbox-Label">
               <div>
-                <Checkbox toggle />
+                <Checkbox toggle onClick={handleProjectsToggle()} />
               </div>
-              <p>Preference 3</p>
+              <p>Default to Projects</p>
             </div>
           </div>
         </div>
