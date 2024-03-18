@@ -106,7 +106,7 @@ const TopbarDesktop = () => {
                   onClick={() => setUser(undefined)}
                 />
               </MenuItem>
-              <MenuItem>
+              <MenuItem as={Link} to="/profilePage">
                 {user.profileURL ? (
                   <Button
                     className="Topbar-Desktop-Button"

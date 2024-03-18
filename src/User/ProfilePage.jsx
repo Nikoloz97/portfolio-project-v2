@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Header, Image, Form } from "semantic-ui-react";
+import { Image, Form, Checkbox } from "semantic-ui-react";
 import { apiUserRoot } from "../Utils/ApiRoutes";
+import { useUserContext } from "../UserContext";
 import axios from "axios";
 import "./User.css";
 
 const ProfilePage = (props) => {
-  const [userInfo, setUserInfo] = useState({
+  const { user } = useUserContext();
+
+  const [newUserInfo, setNewUserInfo] = useState({
     Username: null,
     Email: null,
     FirstName: null,
@@ -14,105 +17,134 @@ const ProfilePage = (props) => {
     Bio: null,
   });
 
-  useEffect(() => {
-    getUserData();
-  }, []);
-
-  const getUserData = () => {
-    // setIsLoading(true);
+  // TODO: create user update (right now, just fetches all users)
+  const updateUserData = () => {
     axios
       .get(apiUserRoot)
       .then((response) => {
         console.log(response.data);
-        setUserInfo(response.data);
-        // setIsLoading(false);
-        props.setIsFetchSuccessful(true);
+        setNewUserInfo(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        // setIsLoading(false);
       });
+  };
+
+  const handleBlogPageToggle = () => {
+    console.log("Test");
   };
 
   return (
     <div className="Default-Page">
-      <Header className="Profile-Page-Header">Edit Profile</Header>
+      <h1>User Settings</h1>
 
-      <Form.Field>
-        <label>Profile Photo</label>
-        <Image
-          src={
-            userInfo.ProfileImageFile
-              ? userInfo.ProfileImageFile
-              : "https://react.semantic-ui.com/images/wireframe/square-image.png"
-          }
-          size="medium"
-          circular
-        />
-        <input
-          type="file"
-          onChange={(e) =>
-            setUserInfo({
-              ...userInfo,
-              ProfileImageFile: e.target.files[0],
-            })
-          }
-        />
-      </Form.Field>
-
-      <Form className="Default-Form">
-        <Form.Group widths="equal" style={{ marginTop: "10px" }}>
-          <Form.Input
-            fluid
-            label="Username"
-            placeholder={userInfo.Username}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, Username: e.target.value })
-            }
-          />
-          {/* Should changing password be its own special auth request? */}
-          <Form.Input
-            fluid
-            label="Password"
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, Password: e.target.value })
-            }
-          />
-        </Form.Group>
-
-        <Form.Group widths="equal" style={{ marginTop: "10px" }}>
-          <Form.Input
-            fluid
-            label="First name"
-            placeholder={userInfo.FirstName}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, FirstName: e.target.value })
-            }
-          />
-          <Form.Input
-            fluid
-            label="Last name"
-            placeholder={userInfo.LastName}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, LastName: e.target.value })
-            }
-          />
-        </Form.Group>
-
-        <Form.Input
-          fluid
-          label="Email"
-          placeholder={userInfo.LastName}
-          onChange={(e) => setUserInfo({ ...userInfo, Email: e.target.value })}
-        />
-
-        <Form.TextArea
-          label="Bio"
-          placeholder={userInfo.Bio}
-          onChange={(e) => setUserInfo({ ...userInfo, Bio: e.target.value })}
-        />
-        <Form.Button>Update Profile</Form.Button>
-      </Form>
+      <div className="User-Settings-Container">
+        <div className="Edit-Profile-Container">
+          <h2>Edit Profile</h2>
+          <Form className="Default-Form">
+            <Form.Field>
+              <div style={{ display: "flex" }}>
+                <label>Profile Photo</label>
+                <Image
+                  src={
+                    newUserInfo.ProfileImageFile
+                      ? newUserInfo.ProfileImageFile
+                      : "https://react.semantic-ui.com/images/wireframe/square-image.png"
+                  }
+                  size="tiny"
+                  circular
+                />
+                <input
+                  type="file"
+                  onChange={(e) =>
+                    setNewUserInfo({
+                      ...newUserInfo,
+                      ProfileImageFile: e.target.files[0],
+                    })
+                  }
+                />
+              </div>
+            </Form.Field>
+            <Form.Group widths="equal" style={{ marginTop: "10px" }}>
+              <Form.Input
+                fluid
+                label="Username"
+                placeholder={newUserInfo.Username}
+                onChange={(e) =>
+                  setNewUserInfo({ ...newUserInfo, Username: e.target.value })
+                }
+              />
+              {/* Should changing password be its own special auth request? */}
+              <Form.Input
+                fluid
+                label="Password"
+                onChange={(e) =>
+                  setNewUserInfo({ ...newUserInfo, Password: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group widths="equal" style={{ marginTop: "10px" }}>
+              <Form.Input
+                fluid
+                label="First name"
+                placeholder={newUserInfo.FirstName}
+                onChange={(e) =>
+                  setNewUserInfo({ ...newUserInfo, FirstName: e.target.value })
+                }
+              />
+              <Form.Input
+                fluid
+                label="Last name"
+                placeholder={newUserInfo.LastName}
+                onChange={(e) =>
+                  setNewUserInfo({ ...newUserInfo, LastName: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Input
+              fluid
+              label="Email"
+              placeholder={newUserInfo.LastName}
+              onChange={(e) =>
+                setNewUserInfo({ ...newUserInfo, Email: e.target.value })
+              }
+            />
+            <Form.TextArea
+              label="Bio"
+              placeholder={newUserInfo.Bio}
+              onChange={(e) =>
+                setNewUserInfo({ ...newUserInfo, Bio: e.target.value })
+              }
+            />
+            <Form.Button onClick={() => updateUserData(newUserInfo)}>
+              Update Profile
+            </Form.Button>
+          </Form>
+        </div>
+        <div className="Header-Preferences-Container">
+          <h2>Preferences</h2>
+          <div className="Preferences-Container">
+            <div className="Preferences-Checkbox-Label">
+              <div>
+                <Checkbox toggle />
+              </div>
+              <p>Light Mode</p>
+            </div>
+            <div className="Preferences-Checkbox-Label">
+              <div>
+                <Checkbox toggle onClick={handleBlogPageToggle()} />
+              </div>
+              <p>Default to Blog Page</p>
+            </div>
+            <div className="Preferences-Checkbox-Label">
+              <div>
+                <Checkbox toggle />
+              </div>
+              <p>Preference 3</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

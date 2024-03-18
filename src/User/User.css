@@ -40,8 +40,42 @@ label.ui.basic.button {
 }
 
 /*Profile Page  */
-.Profile-Page-Header {
-  color: white !important;
+.User-Settings-Container {
+  display: flex;
+  gap: 300px;
+}
+
+.Edit-Profile-Container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.Header-Preferences-Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Preferences-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80%;
+}
+
+.Preferences-Checkbox-Label {
+  display: flex;
+  gap: 20px;
+}
+
+.ui.toggle.checkbox {
+  border: 1px solid white;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.11);
+}
+
+p {
+  font-size: 1.2rem;
 }
 
 /* Sign Up */
