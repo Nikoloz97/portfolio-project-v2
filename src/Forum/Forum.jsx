@@ -9,7 +9,7 @@ import axios from "axios";
 import "./Forum.css";
 
 function Forum() {
-  const { isDesktop, isUserSignedIn } = useUserContext();
+  const { isDesktop, user, isUserSignedIn } = useUserContext();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isFetchSuccessful, setIsFetchSuccessful] = useState(null);

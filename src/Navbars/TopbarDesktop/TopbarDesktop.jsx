@@ -1,17 +1,21 @@
-import React, { useState } from "react";
-import { Menu, MenuItem, Button, Image, Header } from "semantic-ui-react";
+import React, { useEffect, useState } from "react";
+import { Menu, MenuItem, Button, Image, Header, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../UserContext";
 import "./TopbarDesktop.css";
 
 const TopbarDesktop = () => {
-  const { user, isMonitor } = useUserContext();
+  const { user, setUser, isMonitor } = useUserContext();
 
   const [selectionName, setSelectionName] = useState("Home");
 
   const handleButtonClick = (buttonName) => {
     setSelectionName(buttonName);
   };
+
+  useEffect(() => {
+    setSelectionName("Home");
+  }, [user]);
 
   return (
     <div>
@@ -75,7 +79,7 @@ const TopbarDesktop = () => {
 
         <Menu.Menu position="right">
           {user == undefined && user == null ? (
-            <div style={{ display: "flex" }}>
+            <div className="PreSignedIn-Container-Topbar">
               <MenuItem
                 id="Topbar-Desktop-Hover-Override"
                 as={Link}
@@ -94,7 +98,36 @@ const TopbarDesktop = () => {
               </MenuItem>
             </div>
           ) : (
-            <Image src={user.profileURL} avatar />
+            <div className="PostSignedIn-Container-Topbar">
+              <MenuItem>
+                <Button
+                  content="Sign Out"
+                  className="Topbar-Desktop-Button"
+                  onClick={() => setUser(undefined)}
+                />
+              </MenuItem>
+              <MenuItem>
+                {user.profileURL ? (
+                  <Button
+                    className="Topbar-Desktop-Button"
+                    onClick={() => handleButtonClick("UserProfile")}
+                  >
+                    <Image src={user.profileURL} avatar />
+                  </Button>
+                ) : (
+                  <Button
+                    className="Topbar-Desktop-Button-UserProfile"
+                    onClick={() => handleButtonClick("UserProfile")}
+                  >
+                    <Icon
+                      style={{ color: "white" }}
+                      name="user circle"
+                      size="big"
+                    />
+                  </Button>
+                )}
+              </MenuItem>
+            </div>
           )}
         </Menu.Menu>
         <div

@@ -93,6 +93,14 @@
   transform: translateX(762%);
 }
 
+.Topbar-Desktop-Selection-Bar.Desktop.SignOut {
+  transform: translateX(652%);
+}
+
+.Topbar-Desktop-Selection-Bar.Desktop.UserProfile {
+  transform: translateX(750%);
+}
+
 /* Monitor */
 
 .Topbar-Desktop-Selection-Bar.Monitor {
@@ -134,4 +142,24 @@
   border-radius: 2rem !important;
   color: black !important;
   font-size: 0.75rem !important;
+}
+
+.PreSignedIn-Container-Topbar {
+  display: flex;
+  width: 240px;
+}
+
+.PostSignedIn-Container-Topbar {
+  display: flex;
+  width: 240px;
+}
+
+.Topbar-Desktop-Button-UserProfile {
+  background-color: transparent !important;
+  color: white !important;
+  font-size: 1.1rem !important;
+  position: relative;
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: 200 !important;
+  padding: 0 !important;
 }
