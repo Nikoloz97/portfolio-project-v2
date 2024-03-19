@@ -11,9 +11,6 @@ export const useUserContext = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(undefined);
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
-  const [isDefaultBlog, setIsDefaultBlog] = useState(
-    Cookies.get("defaultBlog") === "true"
-  );
 
   const isDesktop = useMediaQuery({
     query: "(min-width: 1444px)",
@@ -31,8 +28,8 @@ export const UserProvider = ({ children }) => {
         setUser,
         isUserSignedIn,
         setIsUserSignedIn,
-        isDefaultBlog,
-        setIsDefaultBlog,
+        // isDefaultBlog,
+        // setIsDefaultBlog,
         isDesktop,
         isMonitor,
       }}

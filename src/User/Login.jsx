@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../UserContext";
 import { apiUserRoot } from "../Utils/ApiRoutes";
 import "./User.css";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const { setUser, setIsUserSignedIn, isDesktop, isDefaultBlog } =
@@ -42,7 +43,7 @@ const Login = () => {
         localStorage.setItem("token", token);
 
         // Upon login, navigate to specific page based on preferences (otherwise, default to home)
-        if (isDefaultBlog) {
+        if (Cookies.get("isBlogDefault") === "true") {
           navigate("/blog");
         } else {
           navigate("/");

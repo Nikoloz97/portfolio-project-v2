@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Menu, MenuItem, Button, Image, Header, Icon } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../UserContext";
 import "./TopbarDesktop.css";
 
 const TopbarDesktop = () => {
-  const { user, setUser, isMonitor } = useUserContext();
+  const { user, setUser, setIsUserSignedIn, isMonitor } = useUserContext();
 
   const [selectionName, setSelectionName] = useState("Home");
 
@@ -16,6 +16,14 @@ const TopbarDesktop = () => {
   useEffect(() => {
     setSelectionName("Home");
   }, [user]);
+
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    setUser(undefined);
+    setIsUserSignedIn(false);
+    navigate("/");
+  };
 
   return (
     <div>
@@ -103,7 +111,7 @@ const TopbarDesktop = () => {
                 <Button
                   content="Sign Out"
                   className="Topbar-Desktop-Button"
-                  onClick={() => setUser(undefined)}
+                  onClick={() => handleSignOut()}
                 />
               </MenuItem>
               <MenuItem as={Link} to="/profilePage">

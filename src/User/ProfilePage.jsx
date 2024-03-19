@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Image, Form, Checkbox } from "semantic-ui-react";
 import { apiUserRoot } from "../Utils/ApiRoutes";
 import { useUserContext } from "../UserContext";
@@ -32,16 +32,19 @@ const ProfilePage = (props) => {
   };
 
   const handleLightModeToggle = () => {
-    console.log("Test");
+    console.log("Test1");
   };
 
   const handleBlogToggle = () => {
-    setIsDefaultBlog(true);
-    Cookies.set("defaultBlog", true);
+    if (Cookies.get("isBlogDefault") === "true") {
+      Cookies.set("isBlogDefault", "false");
+    } else {
+      Cookies.set("isBlogDefault", "true");
+    }
   };
 
   const handleProjectsToggle = () => {
-    console.log("Test");
+    console.log("Test3");
   };
 
   return (
@@ -136,19 +139,23 @@ const ProfilePage = (props) => {
           <div className="Preferences-Container">
             <div className="Preferences-Checkbox-Label">
               <div>
-                <Checkbox toggle onClick={handleLightModeToggle()} />
+                <Checkbox toggle onClick={() => handleLightModeToggle()} />
               </div>
               <p>Light Mode</p>
             </div>
             <div className="Preferences-Checkbox-Label">
               <div>
-                <Checkbox toggle onClick={handleBlogToggle()} />
+                <Checkbox
+                  defaultChecked={Cookies.get("isBlogDefault") === "true"}
+                  toggle
+                  onClick={() => handleBlogToggle()}
+                />
               </div>
               <p>Default to Blog </p>
             </div>
             <div className="Preferences-Checkbox-Label">
               <div>
-                <Checkbox toggle onClick={handleProjectsToggle()} />
+                <Checkbox toggle onClick={() => handleProjectsToggle()} />
               </div>
               <p>Default to Projects</p>
             </div>
