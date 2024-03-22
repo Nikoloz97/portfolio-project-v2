@@ -27,7 +27,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --testMatch '**/__tests__/**/*.test.jsx'",
+    "test": "react-scripts test --coverage --testMatch '**/__tests__/**/*.test.jsx'",
+    "test:coverage": "react-scripts test --coverage --watchAll --testMatch '**/__tests__/**/*.test.jsx'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

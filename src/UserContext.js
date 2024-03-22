@@ -1,6 +1,5 @@
 import { createContext, useState, useContext } from "react";
 import { useMediaQuery } from "react-responsive";
-import Cookies from "js-cookie";
 
 // UserContext = allows state to persist/change among various routes
 

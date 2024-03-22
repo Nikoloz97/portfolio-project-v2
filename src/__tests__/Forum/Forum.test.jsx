@@ -1,5 +1,4 @@
 import { UserProvider } from "../../UserContext";
-import { MockUserProvider } from "../__mocks__/UserContextMock";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Forum from "../../Forum/Forum";
