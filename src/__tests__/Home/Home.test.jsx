@@ -1,16 +1,16 @@
 import { UserProvider } from "../../UserContext";
 import { render, screen } from "@testing-library/react";
 import Home from "../../Home/Home";
-
-// Mock the useMediaQuery hook
-jest.spyOn(require("react-responsive"), "useMediaQuery").mockReturnValue(true);
+import { BrowserRouter as Router } from "react-router-dom";
 
 describe("Home Page", () => {
   it("On render, displays coding, medicine, and tutoring text", async () => {
     render(
-      <UserProvider>
-        <Home />
-      </UserProvider>
+      <Router>
+        <UserProvider>
+          <Home />
+        </UserProvider>
+      </Router>
     );
 
     // TODO: fix (stops at "Welcom")

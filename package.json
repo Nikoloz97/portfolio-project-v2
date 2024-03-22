@@ -22,6 +22,14 @@
   "jest": {
     "moduleNameMapper": {
       "^axios$": "axios/dist/axios.min.js"
+    },
+    "coverageThreshold": {
+      "global": {
+        "statements": 20,
+        "branches": 20,
+        "functions": 20,
+        "lines": 20
+      }
     }
   },
   "scripts": {
