@@ -19,13 +19,21 @@ function Forum() {
   const [isDisplayToBeginFadein, setIsDisplayToBeginFadein] = useState(false);
 
   useEffect(() => {
-    getForumProfiles();
+    if (isUserSignedIn) {
+      getForumProfilesWithPostsExceptUser(user.userId);
+      getUserProfile(user.userId);
+    } else {
+      getForumProfilesWithPosts();
+    }
   }, []);
 
   useEffect(() => {
-    if (isRetryingFetch) {
-      getForumProfiles();
+    if (isRetryingFetch && isUserSignedIn) {
+      getForumProfilesWithPostsExceptUser(user.userId);
+      getUserProfile(user.userId);
       setIsRetryingFetch(false);
+    } else if (isRetryingFetch) {
+      getForumProfilesWithPosts();
     }
   }, [isRetryingFetch]);
 
@@ -42,29 +50,40 @@ function Forum() {
     };
   }, [isFetchSuccessful]);
 
-  const handleUserAndForumProfileData = (forumProfiles) => {
-    if (isUserSignedIn) {
-      setForumProfileData(
-        forumProfiles.filter(
-          (forumProfile) => forumProfile.userId !== user.userId
-        )
-      );
-      setUserProfileData(
-        forumProfiles.filter(
-          (forumProfile) => forumProfile.userId === user.userId
-        )[0]
-      );
-    } else {
-      setForumProfileData(forumProfiles);
-    }
-  };
-
-  const getForumProfiles = () => {
+  const getForumProfilesWithPostsExceptUser = (userId) => {
     setIsLoading(true);
     axios
-      .get(apiForumRoot)
+      .get(apiForumRoot + "/ForumProfilesWithPosts/" + userId)
       .then((response) => {
-        handleUserAndForumProfileData(response.data);
+        setForumProfileData(response.data);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setIsFetchSuccessful(false);
+      });
+  };
+
+  const getForumProfilesWithPosts = () => {
+    setIsLoading(true);
+    axios
+      .get(apiForumRoot + "/ForumProfilesWithPosts")
+      .then((response) => {
+        setForumProfileData(response.data);
+        setIsLoading(false);
+        setIsFetchSuccessful(true);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setIsFetchSuccessful(false);
+      });
+  };
+
+  const getUserProfile = (userId) => {
+    setIsLoading(true);
+    axios
+      .get(apiForumRoot + "/UserProfile/" + userId)
+      .then((response) => {
+        setUserProfileData(response.data);
         setIsLoading(false);
         setIsFetchSuccessful(true);
       })
@@ -130,10 +149,12 @@ function Forum() {
                 userProfileData.posts.length > 0 ? (
                   <div>
                     <UserProfileCard userProfile={userProfileData} />
-                    {console.log(isUserSignedIn)}
                   </div>
                 ) : (
-                  <PlaceholderCard isUserSignedIn={true} />
+                  <PlaceholderCard
+                    isUserSignedIn={true}
+                    userProfile={userProfileData}
+                  />
                 )
               ) : (
                 <PlaceholderCard isUserSignedIn={false} />

@@ -12,20 +12,12 @@ const PromptSignInCard = (props) => {
             <Icon name="user circle" size="large" />
           </div>
           <h3 style={{ marginTop: "25px", marginLeft: "10px" }}>
-            {props.isUserSignedIn ? "Signed in" : "John Smith"}{" "}
+            {props.isUserSignedIn
+              ? props.userProfile.displayName
+              : "John Smith"}
           </h3>
         </div>
         <div className="Forum-Card-Bars-Icon">
-          <h5>
-            {new Date(Date.now())
-              .toLocaleDateString("en-US", {
-                month: "short",
-                day: "2-digit",
-                year: "numeric",
-              })
-              .replace(/ /g, "-")
-              .replace(/,/g, "")}
-          </h5>
           <Icon size="small" name="bars" />
         </div>
       </div>
@@ -47,12 +39,12 @@ const PromptSignInCard = (props) => {
         </div>
       </div>
       {props.isUserSignedIn ? (
-        <div className="Create-First-Post-Prompt">
+        <div className="Placeholder-Overlay">
           <div>No posts yet...</div>
           <Button content="Create" />
         </div>
       ) : (
-        <div className="Sign-In-Prompt">
+        <div className="Placeholder-Overlay">
           <div>Log in to post</div>
           <Button as={Link} to="/login" content="Login" />
         </div>
