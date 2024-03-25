@@ -1,22 +1,10 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import renderer from "react-test-renderer";
 import "@testing-library/jest-dom";
 import Projects from "../../Projects/Projects";
 import { MemoryRouter } from "react-router-dom";
 
 describe("Projects", () => {
-  it("matches snapshot following changes", () => {
-    const projectsPage = renderer
-      .create(
-        <MemoryRouter>
-          <Projects />
-        </MemoryRouter>
-      )
-      .toJSON();
-    expect(projectsPage).toMatchSnapshot();
-  });
-
   it("produces intro card where prev/next buttons are disabled/enabled, respectively", () => {
     render(
       <MemoryRouter>

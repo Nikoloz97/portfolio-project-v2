@@ -27,8 +27,6 @@ export const UserProvider = ({ children }) => {
         setUser,
         isUserSignedIn,
         setIsUserSignedIn,
-        // isDefaultBlog,
-        // setIsDefaultBlog,
         isDesktop,
         isMonitor,
       }}

@@ -146,7 +146,7 @@ function Forum() {
           <div className="Forum-Grid">
             {isFetchSuccessful &&
               (isUserSignedIn ? (
-                userProfileData.posts.length > 0 ? (
+                userProfileData.postsCount > 0 ? (
                   <div>
                     <UserProfileCard userProfile={userProfileData} />
                   </div>

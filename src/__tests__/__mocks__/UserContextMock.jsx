@@ -8,7 +8,7 @@ const UserContext = createContext();
 export const useUserContext = () => useContext(UserContext);
 
 export const MockUserProvider = ({ children }) => {
-  const [user, setUser] = useState({ tacos: "tacos" });
+  const [user, setUser] = useState({ userId: 123 });
   const [isUserSignedIn, setIsUserSignedIn] = useState(true);
 
   const isDesktop = useMediaQuery({
