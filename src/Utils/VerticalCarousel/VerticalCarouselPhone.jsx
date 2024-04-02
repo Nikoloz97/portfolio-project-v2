@@ -7,34 +7,36 @@ const VerticalCarouselPhone = (props) => {
     const scaleValue = (cardIndex - props.carouselIndex) * 0.25;
 
     // Preset cards
-    if (
-      (cardIndex === 0 && props.carouselIndex === 0) ||
-      (cardIndex === 1 && props.carouselIndex + 1 === 1)
-    ) {
+    if (cardIndex === 0 && props.carouselIndex === 0) {
       return {
         transform: `scale(${1 - scaleValue}) `,
         opacity: 1 - scaleValue,
       };
+    } else if (cardIndex === 1 && props.carouselIndex + 1 === 1) {
+      return {
+        transform: `scale(${1 - scaleValue}) translateY(10px)`,
+        opacity: 1 - scaleValue,
+      };
     } else if (cardIndex === 2 && props.carouselIndex + 2 === 2) {
       return {
-        transform: `scale(${1 - scaleValue}) translateY(-20px)`,
+        transform: `scale(${1 - scaleValue}) translateY(5px)`,
         opacity: 1 - scaleValue,
       };
 
       // Movement of cards
     } else if (props.carouselIndex === cardIndex && cardIndex > 1) {
       return {
-        transform: `scale(${1 - scaleValue}) translateY(-120px)`,
+        transform: `scale(${1 - scaleValue}) translateY(-85px)`,
         opacity: 1 - scaleValue,
       };
     } else if (props.carouselIndex === cardIndex && cardIndex === 1) {
       return {
-        transform: `scale(${1 - scaleValue}) translateY(-60px)`,
+        transform: `scale(${1 - scaleValue}) translateY(-42px)`,
         opacity: 1 - scaleValue,
       };
     } else if (cardIndex === props.carouselIndex + 1) {
       return {
-        transform: `scale(${1 - scaleValue}) translateY(-80px)`,
+        transform: `scale(${1 - scaleValue}) translateY(-45px)`,
         opacity: 1 - scaleValue,
       };
     } else if (cardIndex === props.carouselIndex + 2) {

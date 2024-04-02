@@ -5,7 +5,6 @@ import { useUserContext } from "./UserContext.js";
 import Home from "./Home/Home";
 import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
-import TopbarPhone from "./Navbars/TopbarPhone/TopbarPhone.jsx";
 import SidebarPhone from "./Navbars/SidebarPhone/SidebarPhone.jsx";
 import TopbarLayover from "./Utils/TopbarLayover.jsx";
 import Projects from "./Projects/Projects.jsx";
