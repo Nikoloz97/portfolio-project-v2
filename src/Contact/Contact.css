@@ -1,0 +1,23 @@
+.Contact-Form {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif !important;
+  color: white !important;
+}
+
+.ui.selection.dropdown {
+  border-radius: 2rem !important;
+}
+
+.Contact-Page {
+  background-color: #282c34;
+  min-height: 94.1vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh !important;
+  gap: 50px;
+}

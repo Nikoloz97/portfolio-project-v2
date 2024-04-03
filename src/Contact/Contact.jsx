@@ -3,9 +3,10 @@ import axios from "axios";
 import { Form } from "semantic-ui-react";
 import { useUserContext } from "../UserContext";
 import { apiContactRoot } from "../Utils/ApiRoutes";
+import "./Contact.css";
 
 const Contact = () => {
-  const { isUserSignedIn } = useUserContext();
+  const { isUserSignedIn, isDesktop } = useUserContext();
 
   const subjectOptions = [
     { key: 1, text: "Job Offer", value: "jobOffer" },
@@ -46,13 +47,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="Default-Page">
-      <header>Contact Me Below!</header>
+    <div className="Contact-Page">
+      <header>Lets get in Contact</header>
 
       <Form
         onSubmit={handleContactSubmit}
-        className="Default-Form"
-        style={{ width: "40%" }}
+        className="Contact-Form"
+        style={{ width: isDesktop ? "40%" : "80%" }}
       >
         {/* Require firstName/lastName if user isn't signed in */}
         {isUserSignedIn ? null : (
@@ -105,7 +106,11 @@ const Contact = () => {
           onChange={(e) => setEmailInfo({ ...emailInfo, Body: e.target.value })}
         />
 
-        <Form.Button>Submit</Form.Button>
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <Form.Button>Submit</Form.Button>
+        </div>
       </Form>
     </div>
   );
