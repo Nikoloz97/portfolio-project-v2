@@ -108,66 +108,76 @@ const Blog = () => {
   };
 
   return (
-    <div className="Default-Page">
+    <div className="Blog-Page">
       {/* Header/Subheader */}
-      <Grid centered>
-        <Grid.Row
-          className={`Fade-In-Header ${isHeaderVisible ? "Fade-In" : ""}`}
+      <div
+        className={`Blog-Header-Subheader-Container ${
+          isDesktop ? "Desktop" : "Phone"
+        }`}
+      >
+        <div
+          className={`Default-Header Fade-In-Header ${
+            isHeaderVisible ? "Fade-In" : ""
+          }`}
         >
-          <div className="Default-Header">Nick's Blog</div>
-        </Grid.Row>
-        <Grid.Row
-          className={`Fade-In-Subheader ${isSubheaderVisible ? "Fade-In" : ""}`}
+          Nick's Blog
+        </div>
+        <div
+          className={`Blog-Subheader Fade-In-Subheader ${
+            isSubheaderVisible ? "Fade-In" : ""
+          }`}
         >
-          <div className="Default-Subtext">
-            Hover over each image for a short article summary
-          </div>
-        </Grid.Row>
-      </Grid>
+          {isDesktop ? "Hover " : "Tap "}
+          over each image for a short article summary
+        </div>
+      </div>
 
       {/* Cards */}
 
-      <Grid columns={isDesktop ? 4 : 2}>
+      <div
+        className={
+          isDesktop ? "Blog-Container-Desktop" : "Blog-Container-Phone"
+        }
+      >
         {cards.map((card, index) => (
-          <Grid.Column key={index}>
-            <Card
-              className={`Blog-Card ${isCardVisible[index] ? "Pop-in" : ""}`}
-            >
-              <Dimmer.Dimmable as={Image} dimmed={isHovered[index]}>
-                <Dimmer
-                  active={isHovered[index]}
-                  onMouseLeave={() => handleMouseLeave(index)}
-                >
-                  <Card.Content>
-                    <Card.Header style={{ color: "white" }}>
-                      {card.description}
-                    </Card.Header>
-                    <Card.Meta style={{ color: "white" }}>
-                      {card.postedDate}
-                    </Card.Meta>
-                  </Card.Content>
-                </Dimmer>
-                <Image
-                  src={card.imageUrl}
-                  style={{ cursor: "pointer" }}
-                  onMouseEnter={() => handleMouseEnter(index)}
-                />
-              </Dimmer.Dimmable>
-              <Card.Content>
-                <Card.Description style={{ color: "white" }}>
-                  {card.title}
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <Button>
-                  <Icon name="arrow right" style={{ marginRight: "10px" }} />
-                  Go to article
-                </Button>
-              </Card.Content>
-            </Card>
-          </Grid.Column>
+          <Card
+            key={index}
+            className={`Blog-Card ${isCardVisible[index] ? "Pop-in" : ""}`}
+          >
+            <Dimmer.Dimmable as={Image} dimmed={isHovered[index]}>
+              <Dimmer
+                active={isHovered[index]}
+                onMouseLeave={() => handleMouseLeave(index)}
+              >
+                <Card.Content>
+                  <Card.Header style={{ color: "white" }}>
+                    {card.description}
+                  </Card.Header>
+                  <Card.Meta style={{ color: "white" }}>
+                    {card.postedDate}
+                  </Card.Meta>
+                </Card.Content>
+              </Dimmer>
+              <Image
+                src={card.imageUrl}
+                style={{ cursor: "pointer" }}
+                onMouseEnter={() => handleMouseEnter(index)}
+              />
+            </Dimmer.Dimmable>
+            <Card.Content>
+              <Card.Description style={{ color: "white" }}>
+                {card.title}
+              </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+              <Button>
+                <Icon name="arrow right" style={{ marginRight: "10px" }} />
+                Go to article
+              </Button>
+            </Card.Content>
+          </Card>
         ))}
-      </Grid>
+      </div>
     </div>
   );
 };

@@ -7,10 +7,9 @@ import Tutoring from "./Tutoring";
 import "./Home.css";
 
 const Home = () => {
-  // TODO: understand how this function works
   const smoothScroll = (target, duration) => {
     var targetPosition = target;
-    var startPosition = window.pageYOffset;
+    var startPosition = window.scrollY;
     var distance = targetPosition - startPosition;
     var startTime = null;
 
@@ -22,11 +21,14 @@ const Home = () => {
       if (timeElapsed < duration) requestAnimationFrame(animation);
     };
 
-    const ease = (t, b, c, d) => {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t + b;
-      t--;
-      return (-c / 2) * (t * (t - 2) - 1) + b;
+    // Creates the gradual speed up -> slow down effect
+    const ease = (te, sp, dis, dur) => {
+      te /= dur / 2;
+      // Ease in (accelerate from zero via quadratic function)
+      if (te < 1) return (dis / 2) * te * te + sp;
+      te--;
+      // Ease out (decelerate to zero via quadratic function)
+      return (-dis / 2) * (te * (te - 2) - 1) + sp;
     };
 
     requestAnimationFrame(animation);
@@ -37,14 +39,9 @@ const Home = () => {
     const currentPosition = window.scrollY;
     const targetPosition =
       currentPosition + (cardIndex + 1) * window.innerHeight;
-
-    // // Scroll smoothly to the target position
-    // window.scrollTo({
-    //   top: targetPosition,
-    //   behavior: "smooth",
-    // });
     smoothScroll(targetPosition, 2000);
   };
+
   return (
     <>
       <div className="Home-Page">

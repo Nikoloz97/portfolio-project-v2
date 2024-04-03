@@ -16,6 +16,54 @@
   transition: opacity 1s ease-in-out;
 }
 
+.Blog-Subheader {
+  font-size: 1rem;
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+.Blog-Page {
+  background-color: #282c34;
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.Blog-Header-Subheader-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.Blog-Header-Subheader-Container.Phone {
+  margin-top: 20%;
+}
+
+.Blog-Container-Desktop {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.Blog-Container-Phone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 20%;
+  margin-top: -10%;
+}
+
 .Blog-Card {
   opacity: 0;
   transform: scale(0.2);
@@ -25,6 +73,7 @@
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
   margin-top: 2rem !important;
   background-color: #383c43 !important;
+  width: 75% !important;
 }
 
 .Blog-Card.Pop-in {
