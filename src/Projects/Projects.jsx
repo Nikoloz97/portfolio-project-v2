@@ -5,7 +5,6 @@ import "./Projects.css";
 
 const Projects = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [buttonIndexForInversion, setButtonIndexForInversion] = useState(null);
 
   const projectsData = [
@@ -47,35 +46,15 @@ const Projects = () => {
     },
   ];
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 200);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  });
-
   const handleNextProject = () => {
     if (currentProjectIndex < projectsData.length - 1) {
-      setIsLoaded(false);
-
-      setTimeout(() => {
-        setCurrentProjectIndex(currentProjectIndex + 1);
-        setIsLoaded(true);
-      }, 200);
+      setCurrentProjectIndex(currentProjectIndex + 1);
     }
   };
 
   const handlePrevProject = () => {
     if (currentProjectIndex <= projectsData.length - 1) {
-      setIsLoaded(false);
-
-      setTimeout(() => {
-        setCurrentProjectIndex(currentProjectIndex - 1);
-        setIsLoaded(true);
-      }, 200);
+      setCurrentProjectIndex(currentProjectIndex - 1);
     }
   };
 
@@ -83,13 +62,7 @@ const Projects = () => {
     <div className="Default-Page">
       {/* Intro card */}
       {currentProjectIndex === 0 ? (
-        <Card
-          className={`${
-            isLoaded
-              ? "project-card project-card-loaded"
-              : "project-card-preloaded"
-          }`}
-        >
+        <Card className="Project-Card">
           <Card.Header
             style={{ maxWidth: "70%", marginBottom: "10%", marginTop: "10%" }}
             textAlign="center"
@@ -109,7 +82,7 @@ const Projects = () => {
           <Card.Content extra style={{ maxWidth: "70%" }} textAlign="center">
             <Button
               aria-label="Previous project"
-              className="project-left-arrow-button"
+              className="Project-Left-Arrow-Button"
               disabled={true}
             >
               <Icon name="arrow left" style={{ marginLeft: "-8px" }} />
@@ -134,7 +107,7 @@ const Projects = () => {
 
             <Button
               aria-label="Next project"
-              className="project-right-arrow-button"
+              className="Project-Right-Arrow-Button"
               disabled={
                 currentProjectIndex === projectsData.length - 1 ? true : false
               }
@@ -146,13 +119,7 @@ const Projects = () => {
         </Card>
       ) : (
         /* Project card */
-        <Card
-          className={`${
-            isLoaded
-              ? "project-card project-card-loaded"
-              : "project-card-preloaded"
-          }`}
-        >
+        <Card className="Project-Card">
           <Card.Header
             style={{ maxWidth: "70%", marginBottom: "10%", marginTop: "10%" }}
             textAlign="center"
@@ -183,7 +150,7 @@ const Projects = () => {
           >
             <Button
               aria-label="Previous project"
-              className="project-left-arrow-button"
+              className="Project-Left-Arrow-Button"
               onClick={handlePrevProject}
             >
               <Icon name="arrow left" style={{ marginLeft: "-8px" }} />
@@ -197,7 +164,7 @@ const Projects = () => {
             </Button>
             <Button
               aria-label="Next project"
-              className="project-right-arrow-button"
+              className="Project-Right-Arrow-Button"
               disabled={
                 currentProjectIndex === projectsData.length - 1 ? true : false
               }
