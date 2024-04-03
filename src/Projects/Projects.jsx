@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Card, Image, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./Projects.css";

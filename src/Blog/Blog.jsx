@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Card, Image, Icon, Button, Dimmer } from "semantic-ui-react";
+import { Card, Image, Icon, Button, Dimmer } from "semantic-ui-react";
 import { useUserContext } from "../UserContext";
 import "./Blog.css";
 

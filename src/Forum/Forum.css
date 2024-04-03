@@ -58,6 +58,15 @@
   font-size: 4rem;
   font-weight: bold;
   text-align: center;
+  width: 100%;
+}
+
+.ForumPage-Display-Error-Text.Desktop {
+  font-size: 4rem;
+}
+
+.ForumPage-Display-Error-Text.Phone {
+  font-size: 3rem;
 }
 
 .ForumPage-Display-Subtext {
@@ -78,10 +87,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-size: 2rem;
   font-weight: 400;
   text-align: center;
   opacity: 0.7;
+}
+
+.ForumPage-Display-Error-Subtext.Desktop {
+  font-size: 2rem;
+}
+
+.ForumPage-Display-Error-Subtext.Phone {
+  font-size: 1.5rem;
 }
 
 .ForumPage-Display-Button {

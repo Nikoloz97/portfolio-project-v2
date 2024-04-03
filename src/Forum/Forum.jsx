@@ -124,10 +124,18 @@ function Forum() {
                 </div>
               ) : (
                 <div>
-                  <div className="ForumPage-Display-Error-Text">
+                  <div
+                    className={`ForumPage-Display-Error-Text ${
+                      isDesktop ? "Desktop" : "Phone"
+                    }`}
+                  >
                     Network Error :(
                   </div>
-                  <div className="ForumPage-Display-Error-Subtext">
+                  <div
+                    className={`ForumPage-Display-Error-Subtext ${
+                      isDesktop ? "Desktop" : "Phone"
+                    }`}
+                  >
                     Please Try Again
                   </div>
                   <Button
