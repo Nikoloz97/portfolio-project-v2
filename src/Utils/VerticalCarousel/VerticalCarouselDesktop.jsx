@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Card } from "semantic-ui-react";
-import "../VerticalCarousel/VerticalCarousel.css";
+import "../VerticalCarousel/VerticalCarouselDesktop.css";
 
 const VerticalCarousel = (props) => {
   useEffect(() => {
@@ -99,17 +99,17 @@ const VerticalCarousel = (props) => {
       // Movement of cards
     } else if (props.carouselIndex === cardIndex && cardIndex > 1) {
       return {
-        transform: `scale(${1 - scaleValue}) translateY(-120px)`,
+        transform: `scale(${1 - scaleValue}) translateY(-85px)`,
         opacity: 1 - scaleValue,
       };
     } else if (props.carouselIndex === cardIndex && cardIndex === 1) {
       return {
-        transform: `scale(${1 - scaleValue}) translateY(-60px)`,
+        transform: `scale(${1 - scaleValue}) translateY(-40px)`,
         opacity: 1 - scaleValue,
       };
     } else if (cardIndex === props.carouselIndex + 1) {
       return {
-        transform: `scale(${1 - scaleValue}) translateY(-80px)`,
+        transform: `scale(${1 - scaleValue}) translateY(-60px)`,
         opacity: 1 - scaleValue,
       };
     } else if (cardIndex === props.carouselIndex + 2) {

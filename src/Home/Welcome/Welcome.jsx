@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
-import VerticalCarousel from "../../Utils/VerticalCarousel/VerticalCarousel";
+import VerticalCarouselDesktop from "../../Utils/VerticalCarousel/VerticalCarouselDesktop";
 import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarouselPhone";
 import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarouselButtons";
 import "./Welcome.css";
@@ -162,7 +162,7 @@ const Welcome = (props) => {
                   setTouchMove(e.touches[0].clientY);
                 }}
               >
-                <VerticalCarousel
+                <VerticalCarouselDesktop
                   carouselIndex={carouselIndex}
                   setCarouselIndex={setCarouselIndex}
                   carouselContent={carouselContent}

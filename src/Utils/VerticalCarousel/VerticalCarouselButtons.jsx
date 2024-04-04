@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Icon } from "semantic-ui-react";
-import "../VerticalCarousel/VerticalCarousel.css";
+import "../VerticalCarousel/VerticalCarouselDesktop.css";
 
 const VerticalCarouselButtons = (props) => {
   const handleNext = () => {
