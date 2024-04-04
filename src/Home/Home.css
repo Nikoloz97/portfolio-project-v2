@@ -72,7 +72,7 @@
       rgb(7, 22, 31) 8%,
       rgba(5, 14, 19, 0) 40%
     ),
-    linear-gradient(to top, rgb(7, 22, 31) 8%, rgba(5, 14, 19, 0) 40%);
+    linear-gradient(to top, rgb(6, 21, 31) 2%, rgba(25, 136, 196, 0) 50%);
   width: 100vw;
   height: 100vh;
 }
@@ -103,10 +103,10 @@
   z-index: 0;
   background: linear-gradient(
       to bottom,
-      rgb(6, 19, 31) 8%,
+      rgb(6, 19, 31) 1%,
       rgba(8, 20, 27, 0) 20%
     ),
-    linear-gradient(to top, rgb(7.5, 15, 26) 8%, rgba(8, 20, 27, 0) 40%);
+    linear-gradient(to top, rgb(7.5, 15, 26) 2%, rgba(8, 20, 27, 0) 40%);
 }
 
 .Medicine-Screen.Desktop {
@@ -135,7 +135,7 @@
   z-index: 0;
   background: linear-gradient(
     to bottom,
-    rgb(6, 19, 31) 8%,
+    rgb(6, 15, 26) 2%,
     rgba(8, 20, 27, 0) 40%
   );
 }
