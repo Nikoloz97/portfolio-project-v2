@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Button, Message } from "semantic-ui-react";
 import "./Error.css";
+import "../../User/User.css";
 
 export const ErrorModal = (props) => {
   return (

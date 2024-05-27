@@ -222,9 +222,6 @@ const SignUp = () => {
 
       {/* Error message */}
       <UserErrorMessage
-        className={`Login-Error-Message ${
-          error.isErrorShowing ? "Login-Fade-In-Up" : "Login-Fade-Out-Down"
-        }`}
         error={error}
         onDismiss={(prevError) =>
           setError(() => ({ ...prevError, isErrorShowing: false }))
