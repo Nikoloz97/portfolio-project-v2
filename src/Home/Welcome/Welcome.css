@@ -32,7 +32,7 @@
 }
 
 .Welcome-Text-Container.Phone {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 .Welcome-Text {
@@ -64,8 +64,46 @@
 }
 
 .Welcome-Vertical-Carousel-Container.Desktop {
-  margin-top: 75px;
+  margin-top: 40px;
+  margin-bottom: 10px;
   margin-right: 10px;
+}
+
+.Welcome-VC-Header-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+}
+
+.Welcome-VC-Header-Container.Fade-In {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.Welcome-VC-Header {
+  padding: 20px;
+  margin-right: 75px;
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.507);
+}
+
+.Welcome-VC-Header-Container-Phone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  gap: 20px;
+}
+.Welcome-VC-Header-Container-Phone.Fade-In {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.Welcome-VC-Header-Phone {
+  padding: 20px;
+  color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
 }
 
 .Welcome-Vertical-Carousel-Buttons-Ticker-Container {
@@ -78,10 +116,17 @@
   background-color: gray;
   width: 10rem;
   height: 1px;
+  margin-bottom: 40px;
 }
 
 .Welcome-Vertical-Carousel-Buttons-Container {
   width: 60px;
-  margin-bottom: 5px;
-  margin-right: 5px;
+  margin-bottom: 50px;
+  margin-right: 0px;
+}
+
+.Welcome-Scroll-Down {
+  color: rgba(255, 255, 255, 0.75);
+  position: absolute;
+  bottom: 10px;
 }

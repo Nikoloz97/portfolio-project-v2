@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import Welcome from "./Welcome/Welcome";
 import Coding from "./Coding";
 import Medicine from "./Medicine";
@@ -7,6 +7,7 @@ import Tutoring from "./Tutoring";
 import "./Home.css";
 
 const Home = () => {
+  const [isHomeScrolled, setIsHomeScrolled] = useState(false);
   const smoothScroll = (target, duration) => {
     var targetPosition = target;
     var startPosition = window.scrollY;
@@ -35,7 +36,6 @@ const Home = () => {
   };
 
   const handleCardClick = (cardIndex) => {
-    // Calculate the target position based on the current scroll position
     const currentPosition = window.scrollY;
     const targetPosition =
       currentPosition + (cardIndex + 1) * window.innerHeight;
@@ -45,7 +45,10 @@ const Home = () => {
   return (
     <>
       <div className="Home-Page">
-        <Welcome handleCardClick={handleCardClick} />
+        <Welcome
+          handleCardClick={handleCardClick}
+          isHomeScrolled={isHomeScrolled}
+        />
         <Coding />
         <Medicine />
         <Tutoring />

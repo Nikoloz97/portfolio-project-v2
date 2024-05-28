@@ -138,51 +138,62 @@ const Welcome = (props) => {
           {/* Vertical carousel */}
 
           {isDesktop ? (
-            <div className="Welcome-Vertical-Carousel-Buttons-Ticker-Container">
-              <div className="Welcome-Vertical-Carousel-Buttons-Container">
-                <VerticalCarouselButtons
-                  index={carouselIndex}
-                  setIndex={setCarouselIndex}
-                  content={carouselContent}
-                />
+            <div
+              className={`Welcome-VC-Header-Container ${
+                isSecondLineComplete ? "Fade-In" : ""
+              }`}
+            >
+              <div className="Welcome-VC-Header">Jump to Section</div>
+              <div className="Welcome-Vertical-Carousel-Buttons-Ticker-Container">
+                <div className="Welcome-Vertical-Carousel-Buttons-Container">
+                  <VerticalCarouselButtons
+                    index={carouselIndex}
+                    setIndex={setCarouselIndex}
+                    content={carouselContent}
+                  />
+                </div>
+                <div
+                  className={`Welcome-Vertical-Carousel-Container ${
+                    isDesktop ? "Desktop" : "Phone"
+                  }`}
+                  onTouchStart={(e) => {
+                    setTouchStartY(e.touches[0].clientY);
+                    setIsTouchingCarousel(true);
+                  }}
+                  onTouchEnd={(e) => {
+                    setTouchEndY(e.changedTouches[0].clientY);
+                    setIsTouchingCarousel(false);
+                  }}
+                  onTouchMove={(e) => {
+                    setTouchMove(e.touches[0].clientY);
+                  }}
+                >
+                  <VerticalCarouselDesktop
+                    carouselIndex={carouselIndex}
+                    setCarouselIndex={setCarouselIndex}
+                    carouselContent={carouselContent}
+                    isTouchingCarousel={isTouchingCarousel}
+                    setIsTouchingCarousel={setIsTouchingCarousel}
+                    touchStartY={touchStartY}
+                    setTouchStartY={setTouchStartY}
+                    touchEndY={touchEndY}
+                    setTouchEndY={setTouchEndY}
+                    touchMove={touchMove}
+                    setTouchMove={setTouchMove}
+                    content={carouselContent}
+                    handleCardClick={props.handleCardClick}
+                  />
+                </div>
+                <div className="Welcome-Vertical-Carousel-Ticker" />
               </div>
-              <div
-                className={`Welcome-Vertical-Carousel-Container ${
-                  isDesktop ? "Desktop" : "Phone"
-                }`}
-                onTouchStart={(e) => {
-                  setTouchStartY(e.touches[0].clientY);
-                  setIsTouchingCarousel(true);
-                }}
-                onTouchEnd={(e) => {
-                  setTouchEndY(e.changedTouches[0].clientY);
-                  setIsTouchingCarousel(false);
-                }}
-                onTouchMove={(e) => {
-                  setTouchMove(e.touches[0].clientY);
-                }}
-              >
-                <VerticalCarouselDesktop
-                  carouselIndex={carouselIndex}
-                  setCarouselIndex={setCarouselIndex}
-                  carouselContent={carouselContent}
-                  isTouchingCarousel={isTouchingCarousel}
-                  setIsTouchingCarousel={setIsTouchingCarousel}
-                  touchStartY={touchStartY}
-                  setTouchStartY={setTouchStartY}
-                  touchEndY={touchEndY}
-                  setTouchEndY={setTouchEndY}
-                  touchMove={touchMove}
-                  setTouchMove={setTouchMove}
-                  content={carouselContent}
-                  handleCardClick={props.handleCardClick}
-                />
-              </div>
-
-              <div className="Welcome-Vertical-Carousel-Ticker" />
             </div>
           ) : (
-            <div>
+            <div
+              className={`Welcome-VC-Header-Container-Phone ${
+                isSecondLineComplete ? "Fade-In" : ""
+              }`}
+            >
+              <div className="Welcome-VC-Header-Phone">Jump to Section</div>
               {/* TODO: Make onTouchStart trigger all throughout div (not just Vertical Carousel Phone)*/}
               <div
                 className={`Welcome-Vertical-Carousel-Container ${
@@ -219,6 +230,7 @@ const Welcome = (props) => {
             </div>
           )}
         </div>
+        <div className="Welcome-Scroll-Down">Scroll Down to See My Journey</div>
       </div>
     </div>
   );
