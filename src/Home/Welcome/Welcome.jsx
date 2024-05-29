@@ -15,6 +15,7 @@ const Welcome = (props) => {
     useState("");
   const [isFirstLineComplete, setIsFirstLineComplete] = useState(false);
   const [isSecondLineComplete, setIsSecondLineComplete] = useState(false);
+  const [isJumpToSectionFadedIn, setIsJumpToSectionFadedIn] = useState(false);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isTouchingCarousel, setIsTouchingCarousel] = useState(false);
@@ -65,6 +66,15 @@ const Welcome = (props) => {
       }, 120);
     }
   }, [isFirstLineComplete]);
+
+  useEffect(() => {
+    if (isSecondLineComplete) {
+      const typingInterval = setInterval(() => {
+        setIsJumpToSectionFadedIn(true);
+        clearInterval(typingInterval);
+      }, 400);
+    }
+  }, [isSecondLineComplete]);
 
   // Prevent scroll-down of homepage when in vertical carousel container
   useEffect(() => {
@@ -230,7 +240,13 @@ const Welcome = (props) => {
             </div>
           )}
         </div>
-        <div className="Welcome-Scroll-Down">Scroll Down to See My Journey</div>
+        <div
+          className={`Welcome-Scroll-Down ${
+            isJumpToSectionFadedIn ? "Fade-In" : ""
+          }`}
+        >
+          Scroll Down to See My Journey
+        </div>
       </div>
     </div>
   );
