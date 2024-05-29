@@ -78,7 +78,7 @@
 
 .Welcome-VC-Header-Container.Fade-In {
   opacity: 1;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 2s ease-in-out;
 }
 
 .Welcome-VC-Header {
@@ -134,5 +134,5 @@
 
 .Welcome-Scroll-Down.Fade-In {
   opacity: 1;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 2s ease-in-out;
 }
