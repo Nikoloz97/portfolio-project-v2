@@ -4,10 +4,21 @@ import Coding from "./Coding";
 import Medicine from "./Medicine";
 import Tutoring from "./Tutoring";
 
+import { useScrollPosition } from "../Utils/General/TrackScrollPosition";
+
 import "./Home.css";
 
 const Home = () => {
-  const [isHomeScrolled, setIsHomeScrolled] = useState(false);
+  const [isTopOfPage, setIsTopOfPage] = useState(true);
+
+  const handleScrollEffect = ({ currPos }) => {
+    // Check if the user has scrolled back to the top
+    setIsTopOfPage(currPos.y === 0);
+  };
+
+  // Use the custom hook
+  useScrollPosition(handleScrollEffect, [], null, true, 100); // Adjust wait time as needed
+
   const smoothScroll = (target, duration) => {
     var targetPosition = target;
     var startPosition = window.scrollY;
@@ -45,10 +56,7 @@ const Home = () => {
   return (
     <>
       <div className="Home-Page">
-        <Welcome
-          handleCardClick={handleCardClick}
-          isHomeScrolled={isHomeScrolled}
-        />
+        <Welcome handleCardClick={handleCardClick} isTopOfPage={isTopOfPage} />
         <Coding />
         <Medicine />
         <Tutoring />
