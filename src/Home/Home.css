@@ -8,17 +8,43 @@
 .Medicine-Screen,
 .Tutoring-Screen {
   position: relative;
-  display: flex !important;
   height: 99vh; /* Fixes gap due as a result of blur filter*/
-  justify-content: center;
-  align-items: center;
 }
 
 .Coding-Content,
 .Medicine-Content,
 .Tutoring-Content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.Home-Angle-Up {
+  position: fixed;
+  background: none;
+  right: 50%;
+  z-index: 999;
+}
+
+.Home-Angle-Up:hover {
+  cursor: pointer;
+}
+
+.Home-Angle-Down {
+  position: fixed;
+  background: none;
+  bottom: 0;
+  right: 50%;
+  z-index: 999;
+}
+
+.Home-Angle-Down:hover {
+  cursor: pointer;
 }
 
 /* Welcome screen */

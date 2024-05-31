@@ -1,4 +1,5 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
+import { Icon } from "semantic-ui-react";
 import Welcome from "./Welcome/Welcome";
 import Coding from "./Coding";
 import Medicine from "./Medicine";
@@ -10,6 +11,38 @@ import "./Home.css";
 
 const Home = () => {
   const [isTopOfPage, setIsTopOfPage] = useState(true);
+  const [windowHeightPosition, setWindowHeightPosition] = useState(
+    window.scrollY
+  );
+  const [isHomeArrowsVisible, setIsHomeArrowsVisible] = useState(false);
+  const [isBottomArrowVisible, setIsBottomArrowVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setWindowHeightPosition(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (
+      windowHeightPosition > 100 &&
+      (windowHeightPosition % window.innerHeight < 100 ||
+        windowHeightPosition % window.innerHeight > window.innerHeight - 100)
+    ) {
+      setIsHomeArrowsVisible(true);
+    } else {
+      setIsHomeArrowsVisible(false);
+    }
+    if (windowHeightPosition > 2300) setIsBottomArrowVisible(false);
+    else {
+      setIsBottomArrowVisible(true);
+    }
+  }, [windowHeightPosition]);
 
   const handleScrollEffect = ({ currPos }) => {
     // Check if the user has scrolled back to the top
@@ -53,7 +86,13 @@ const Home = () => {
     smoothScroll(targetPosition, 2000);
   };
 
-  const handleJourneyClick = () => {
+  const handleUpClick = () => {
+    const currentPosition = window.scrollY;
+    const targetPosition = currentPosition - window.innerHeight;
+    smoothScroll(targetPosition, 2000);
+  };
+
+  const handleDownClick = () => {
     const currentPosition = window.scrollY;
     const targetPosition = currentPosition + window.innerHeight;
     smoothScroll(targetPosition, 2000);
@@ -62,9 +101,21 @@ const Home = () => {
   return (
     <>
       <div className="Home-Page">
+        {isHomeArrowsVisible && (
+          <div>
+            <div onClick={handleUpClick} className="Home-Angle-Up">
+              <Icon name="angle up" />
+            </div>
+            {isBottomArrowVisible && (
+              <div onClick={handleDownClick} className="Home-Angle-Down">
+                <Icon name="angle down" />
+              </div>
+            )}
+          </div>
+        )}
         <Welcome
           handleCardClick={handleCardClick}
-          handleJourneyClick={handleJourneyClick}
+          handleDownClick={handleDownClick}
           isTopOfPage={isTopOfPage}
         />
         <Coding />

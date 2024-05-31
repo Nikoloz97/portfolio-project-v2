@@ -7,7 +7,9 @@ const Medicine = (props) => {
 
   return (
     <div className={`Medicine-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
-      <div className="Medicine-Content">Medicine Test</div>
+      <div className="Medicine-Content">
+        <div>Medicine Section</div>
+      </div>
     </div>
   );
 };

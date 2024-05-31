@@ -241,7 +241,7 @@ const Welcome = (props) => {
             )}
           </div>
           <div
-            onClick={props.handleJourneyClick}
+            onClick={props.handleDownClick}
             className={`Arrow-Welcome-Scroll-Down-Container ${
               isStrictlyDesktop ? "Strictly-Desktop" : ""
             } ${isMonitor ? "Monitor" : ""} ${
@@ -254,7 +254,7 @@ const Welcome = (props) => {
           >
             <Icon name="arrow down" />
             <div style={{ marginBottom: "10px" }}>
-              Scroll or Click Here to See My Journey
+              Scroll or Click Here to Start My Journey
             </div>
             <Icon name="arrow down" />
           </div>

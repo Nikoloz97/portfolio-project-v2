@@ -7,7 +7,9 @@ const Coding = (props) => {
 
   return (
     <div className={`Coding-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
-      <div className="Coding-Content">Coding Test</div>
+      <div className="Coding-Content">
+        <div>Coding Section</div>
+      </div>
     </div>
   );
 };
