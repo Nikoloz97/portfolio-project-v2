@@ -13,11 +13,14 @@ export const UserProvider = ({ children }) => {
 
   const isDesktop = useMediaQuery({
     query: "(min-width: 1444px)",
-    // and (max-width: 1599px)",
+  });
+
+  const isStrictlyDesktop = useMediaQuery({
+    query: "(min-width: 1444px) and (max-width: 1599px)",
   });
 
   const isMonitor = useMediaQuery({
-    query: "(min-width:1600px)",
+    query: "(min-width: 1600px)",
   });
 
   return (
@@ -28,6 +31,7 @@ export const UserProvider = ({ children }) => {
         isUserSignedIn,
         setIsUserSignedIn,
         isDesktop,
+        isStrictlyDesktop,
         isMonitor,
       }}
     >

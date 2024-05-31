@@ -14,10 +14,6 @@
   align-items: center;
 }
 
-.Tutoring-Screen {
-  height: 100vh;
-}
-
 .Coding-Content,
 .Medicine-Content,
 .Tutoring-Content {
@@ -60,6 +56,8 @@
   background-repeat: no-repeat;
 }
 
+/* Coding */
+
 .Coding-Screen::before {
   content: "";
   position: absolute;
@@ -93,6 +91,8 @@
   background-repeat: no-repeat;
 }
 
+/* Medicine */
+
 .Medicine-Screen::before {
   content: "";
   position: absolute;
@@ -123,6 +123,12 @@
   background-size: cover;
   background-position: left 0% bottom 0%;
   background-repeat: no-repeat;
+}
+
+/* Tutoring */
+
+.Tutoring-Screen {
+  height: 100vh;
 }
 
 .Tutoring-Screen::before {

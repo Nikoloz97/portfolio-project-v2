@@ -53,10 +53,20 @@ const Home = () => {
     smoothScroll(targetPosition, 2000);
   };
 
+  const handleJourneyClick = () => {
+    const currentPosition = window.scrollY;
+    const targetPosition = currentPosition + window.innerHeight;
+    smoothScroll(targetPosition, 2000);
+  };
+
   return (
     <>
       <div className="Home-Page">
-        <Welcome handleCardClick={handleCardClick} isTopOfPage={isTopOfPage} />
+        <Welcome
+          handleCardClick={handleCardClick}
+          handleJourneyClick={handleJourneyClick}
+          isTopOfPage={isTopOfPage}
+        />
         <Coding />
         <Medicine />
         <Tutoring />

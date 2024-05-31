@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header, Icon } from "semantic-ui-react";
+import { Header, Icon, Button } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarouselDesktop from "../../Utils/VerticalCarousel/VerticalCarouselDesktop";
 import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarouselPhone";
@@ -7,7 +7,8 @@ import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarous
 import "./Welcome.css";
 
 const Welcome = (props) => {
-  const { user, isUserSignedIn, isDesktop } = useUserContext();
+  const { user, isUserSignedIn, isDesktop, isMonitor, isStrictlyDesktop } =
+    useUserContext();
 
   const [displayedWelcomeTextLineOne, setDisplayedWelcomeTextLineOne] =
     useState("");
@@ -240,7 +241,10 @@ const Welcome = (props) => {
             )}
           </div>
           <div
+            onClick={props.handleJourneyClick}
             className={`Arrow-Welcome-Scroll-Down-Container ${
+              isStrictlyDesktop ? "Strictly-Desktop" : ""
+            } ${isMonitor ? "Monitor" : ""} ${
               isJumpToSectionFadedIn && props.isTopOfPage
                 ? "Fade-In"
                 : !props.isTopOfPage
@@ -249,7 +253,10 @@ const Welcome = (props) => {
             }`}
           >
             <Icon name="arrow down" />
-            <div>Scroll Down to See My Journey</div>
+            <div style={{ marginBottom: "10px" }}>
+              Scroll or Click Here to See My Journey
+            </div>
+            <Icon name="arrow down" />
           </div>
         </div>
       </div>
