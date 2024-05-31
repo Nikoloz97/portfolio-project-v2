@@ -15,9 +15,9 @@ describe("Home Page", () => {
 
     // TODO: fix (stops at "Welcom")
     // const welcomeScreenText = await screen.findByText(/^Welcome,$/);
-    const codingScreenText = screen.getByText("Coding Test");
-    const medicineScreenText = screen.getByText("Medicine Test");
-    const tutoringScreenText = screen.getByText("Tutoring Test");
+    const codingScreenText = screen.getByText("Coding Section");
+    const medicineScreenText = screen.getByText("Medicine Section");
+    const tutoringScreenText = screen.getByText("Tutoring Section");
 
     // expect(welcomeScreenText).toBeInTheDocument();
     expect(codingScreenText).toBeInTheDocument();
