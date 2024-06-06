@@ -253,9 +253,7 @@ const Welcome = (props) => {
             }`}
           >
             <Icon name="arrow down" />
-            <div style={{ marginBottom: "10px" }}>
-              Scroll or Click Here to Start My Journey
-            </div>
+            <div style={{ marginBottom: "15px" }}>Begin Journey</div>
             <Icon name="arrow down" />
           </div>
         </div>
