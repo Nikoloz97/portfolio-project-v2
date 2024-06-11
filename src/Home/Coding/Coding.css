@@ -31,6 +31,45 @@
   background-repeat: no-repeat;
 }
 
+.Coding-Content {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.Coding-Headers-Container {
+  display: flex;
+  flex-direction: column;
+  z-index: inherit;
+  align-items: center;
+  justify-content: space-between;
+  height: 20%;
+  margin-top: 120px;
+}
+
+.Coding-Header {
+  font-size: 5rem;
+  font-weight: 300;
+  height: 25%;
+}
+
+.Coding-Subheader-One {
+  font-size: 3rem;
+  font-weight: 200;
+  height: 25%;
+  opacity: 0.75;
+}
+
+.Coding-Subheader-Two {
+  font-size: 2rem;
+  font-weight: 100;
+  height: 25%;
+  opacity: 0.6;
+}
+
 .Coding-Cards-Container {
   display: flex;
   flex-direction: row;
@@ -41,6 +80,11 @@
 
 .Coding-Card {
   background-color: rgba(0, 0, 0, 0.5);
-  height: 80%;
   padding: 10px;
+  height: 80%;
+  width: 20%;
+}
+
+.Coding-Card-Text {
+  font-size: 1rem;
 }
