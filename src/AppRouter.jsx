@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Sidebar, Segment } from "semantic-ui-react";
 import { useUserContext } from "./UserContext.js";
-import Home from "./Home/Home";
+import Home from "./Home/Home/Home.jsx";
 import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
 import SidebarPhone from "./Navbars/SidebarPhone/SidebarPhone.jsx";

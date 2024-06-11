@@ -1,0 +1,31 @@
+.Medicine-Screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background: linear-gradient(
+      to bottom,
+      rgb(6, 19, 31) 1%,
+      rgba(8, 20, 27, 0) 20%
+    ),
+    linear-gradient(to top, rgb(7.5, 15, 26) 2%, rgba(8, 20, 27, 0) 40%);
+}
+
+.Medicine-Screen.Desktop {
+  background: url("../../Images/Home/Medicine/Background/Medicine26.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Medicine-Screen.Phone {
+  background: url("../../Images/Home/Medicine/Background/Medicine26.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+  background-size: cover;
+  background-position: left 0% bottom 0%;
+  background-repeat: no-repeat;
+}

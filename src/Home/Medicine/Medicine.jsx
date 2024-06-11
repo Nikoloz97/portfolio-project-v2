@@ -1,6 +1,6 @@
 import React from "react";
-import "./Home.css";
-import { useUserContext } from "../UserContext";
+import "./Medicine.css";
+import { useUserContext } from "../../UserContext";
 
 const Medicine = (props) => {
   const { isDesktop } = useUserContext();

@@ -3,6 +3,39 @@
   border-right: 2px solid white; /* Simulate cursor blinking */
 }
 
+.Welcome-Screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+      to top,
+      rgb(13, 20, 21) 8%,
+      rgba(5, 14, 19, 0) 40%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(13, 20, 21, 0.473) 8%,
+      rgba(5, 14, 19, 0) 40%
+    );
+  width: 100vw;
+  height: 100vh;
+}
+
+.Welcome-Screen.Desktop {
+  background: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Welcome-Screen.Phone {
+  background: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
+  background-size: cover;
+  background-position: left 55% bottom 0%;
+  background-repeat: no-repeat;
+}
+
 .Welcome-Page {
   background-color: rgb(26, 24, 24);
   min-height: 94.1vh;

@@ -1,11 +1,11 @@
 import { React, useEffect, useState } from "react";
 import { Icon } from "semantic-ui-react";
-import Welcome from "./Welcome/Welcome";
-import Coding from "./Coding";
-import Medicine from "./Medicine";
-import Tutoring from "./Tutoring";
+import Welcome from "../Welcome/Welcome";
+import Coding from "../Coding/Coding";
+import Medicine from "../Medicine/Medicine";
+import Tutoring from "../Tutoring/Tutoring";
 
-import { useScrollPosition } from "../Utils/General/TrackScrollPosition";
+import { useScrollPosition } from "../../Utils/General/TrackScrollPosition";
 
 import "./Home.css";
 

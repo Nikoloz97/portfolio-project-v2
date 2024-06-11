@@ -1,0 +1,46 @@
+.Coding-Screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1 !important;
+  /* Lower z-index compared to .Coding-Blur */
+  background: linear-gradient(
+      to bottom,
+      rgb(7, 22, 31) 8%,
+      rgba(5, 14, 19, 0) 40%
+    ),
+    linear-gradient(to top, rgb(6, 21, 31) 2%, rgba(25, 136, 196, 0) 50%);
+  width: 100vw;
+  height: 100vh;
+}
+
+.Coding-Screen.Desktop {
+  background: url("../../Images/Home/Coding/Background/Coding12.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Coding-Screen.Phone {
+  background: url("../../Images/Home/Coding/Background/Coding12.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+  background-size: cover;
+  background-position: left 30% bottom 0%;
+  background-repeat: no-repeat;
+}
+
+.Coding-Cards-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50vh;
+  width: 80vw;
+}
+
+.Coding-Card {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 80%;
+  padding: 10px;
+}

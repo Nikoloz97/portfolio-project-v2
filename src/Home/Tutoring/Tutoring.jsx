@@ -1,6 +1,6 @@
 import React from "react";
-import "./Home.css";
-import { useUserContext } from "../UserContext";
+import "./Tutoring.css";
+import { useUserContext } from "../../UserContext";
 
 const Tutoring = (props) => {
   const { isDesktop } = useUserContext();
