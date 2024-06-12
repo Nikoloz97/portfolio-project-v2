@@ -3,9 +3,8 @@ import "./Coding.css";
 import { useUserContext } from "../../UserContext";
 import { Icon } from "semantic-ui-react";
 import moshImage from "../../Images/Home/Coding/Content/Self_Teach/Mosh.png";
-import pythonNotesVideo from "../../Images/Home/Coding/Content/Self_Teach/PythonNotes.mp4";
-import pythonDocVideo from "../../Images/Home/Coding/Content/Self_Teach/PythonDocZoomed.mp4";
-import georgiaVideo from "../../Images/Home/Coding/Content/Self_Teach/Georgia2021.mp4";
+import pythonImage from "../../Images/Home/Coding/Content/Self_Teach/PythonDoc1.png";
+import georgiaImage from "../../Images/Home/Coding/Content/Self_Teach/Georgia1.png";
 
 const Coding = (props) => {
   const { isDesktop } = useUserContext();
@@ -29,13 +28,7 @@ const Coding = (props) => {
           title: "Note Taking",
           mediaUrl: "../Images/Home/Coding/Content/Mosh.png",
           mediaCaption:
-            "I really went overboard with the notes. In addition to the one above, I made notes to: Intro to Programming and HTML",
-        },
-        {
-          title: "VS Code & Github",
-          mediaUrl: "../Images/Home/Coding/Content/Mosh.png",
-          mediaCaption:
-            " The notes also gave me introduction to using a code editor and source control",
+            "You can say I took thorough notes. In addition to the python, I made notes to: Intro to Programming and HTML",
         },
         {
           title: "First Website",
@@ -139,21 +132,34 @@ const Coding = (props) => {
                 alt="Mosh Youtube Logo"
               />
               <div className="Coding-Card-Text">
-                I did Mosh's courses on HTML, CSS, Python, and a little bit of
-                Java (until I realized it wasn’t the same thing as JavaScript)
+                I began my coding journey with Mosh's courses on HTML, CSS,
+                Python, and a little bit of Java (until I realized it wasn’t the
+                same thing as JavaScript)
               </div>
             </div>
             <div className="Coding-Card">
               <div style={{ height: "20px" }}>Note Taking</div>
-              <video
-                src={pythonDocVideo}
-                style={{ width: "70%" }}
-                controls
-                alt="Python doc scroll-through"
+              <img
+                src={pythonImage}
+                style={{ width: "60%" }}
+                alt="python google docs"
               />
               <div className="Coding-Card-Text">
-                I really went overboard with the notes. In addition to the one
-                above, I made notes to: Intro to Programming and HTML
+                I took thorough notes. In addition to python above, I made notes
+                to an Intro to Programming video by FreeCodeCamp and HTML/CSS by
+                mosh
+              </div>
+            </div>
+            <div className="Coding-Card">
+              <div style={{ height: "20px" }}>Website</div>
+              <img
+                src={georgiaImage}
+                style={{ width: "60%" }}
+                alt="Georgia website"
+              />
+              <div className="Coding-Card-Text">
+                Using my HTML/CSS notes, I created a website using bootstrap and
+                flat-icons
               </div>
             </div>
           </div>
