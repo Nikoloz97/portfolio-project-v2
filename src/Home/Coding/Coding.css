@@ -90,15 +90,21 @@
 .Coding-Card {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px;
-  height: 90%;
-  width: 45%;
   z-index: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   justify-content: center;
   align-items: center;
+  padding: 0;
+  gap: 20px;
+
+  height: 50%;
+  width: 30%;
+}
+
+.Coding-Card.Even {
+  margin-top: 100px;
 }
 
 .Coding-Card-Text {

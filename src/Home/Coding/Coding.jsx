@@ -125,25 +125,33 @@ const Coding = (props) => {
           </div>
           <div className="Coding-Cards-Container">
             <div className="Coding-Card">
-              <div>Tutorials</div>
               <img
                 src={moshImage}
-                style={{ width: "60%" }}
+                style={{
+                  width: "100%",
+                  borderRadius: "10px",
+                  maxHeight: "70%",
+                }}
                 alt="Mosh Youtube Logo"
               />
+              <div>Tutorials</div>
               <div className="Coding-Card-Text">
                 I began my coding journey with Mosh's courses on HTML, CSS,
                 Python, and a little bit of Java (until I realized it wasn’t the
                 same thing as JavaScript)
               </div>
             </div>
-            <div className="Coding-Card">
-              <div style={{ height: "20px" }}>Note Taking</div>
+            <div className="Coding-Card Even">
               <img
                 src={pythonImage}
-                style={{ width: "60%" }}
+                style={{
+                  width: "100%",
+                  borderRadius: "10px",
+                  maxHeight: "70%",
+                }}
                 alt="python google docs"
               />
+              <div style={{ height: "20px" }}>Note Taking</div>
               <div className="Coding-Card-Text">
                 I took thorough notes. In addition to python above, I made notes
                 to an Intro to Programming video by FreeCodeCamp and HTML/CSS by
@@ -151,12 +159,16 @@ const Coding = (props) => {
               </div>
             </div>
             <div className="Coding-Card">
-              <div style={{ height: "20px" }}>Website</div>
               <img
                 src={georgiaImage}
-                style={{ width: "60%" }}
+                style={{
+                  width: "100%",
+                  borderRadius: "10px",
+                  maxHeight: "70%",
+                }}
                 alt="Georgia website"
               />
+              <div style={{ height: "20px" }}>Website</div>
               <div className="Coding-Card-Text">
                 Using my HTML/CSS notes, I created a website using bootstrap and
                 flat-icons
