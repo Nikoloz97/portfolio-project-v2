@@ -123,56 +123,43 @@ const Coding = (props) => {
           <div onClick={handleLeftClick}>
             <Icon name="angle left" />
           </div>
-          <div className="Coding-Cards-Container">
-            <div className="Coding-Card">
-              <img
-                src={moshImage}
-                style={{
-                  width: "100%",
-                  borderRadius: "10px",
-                  maxHeight: "70%",
-                }}
-                alt="Mosh Youtube Logo"
-              />
-              <div>Tutorials</div>
-              <div className="Coding-Card-Text">
-                I began my coding journey with Mosh's courses on HTML, CSS,
-                Python, and a little bit of Java (until I realized it wasn’t the
-                same thing as JavaScript)
-              </div>
+          <div className="Coding-Card">
+            <img
+              src={moshImage}
+              className="Coding-Card-Image"
+              alt="Mosh Youtube Logo"
+            />
+            <div className="Coding-Card-Header">Tutorials</div>
+            <div className="Coding-Card-Text">
+              I began my coding journey with Mosh's courses on HTML, CSS,
+              Python, and a little bit of Java (until I realized it wasn’t the
+              same thing as JavaScript)
             </div>
-            <div className="Coding-Card Even">
-              <img
-                src={pythonImage}
-                style={{
-                  width: "100%",
-                  borderRadius: "10px",
-                  maxHeight: "70%",
-                }}
-                alt="python google docs"
-              />
-              <div style={{ height: "20px" }}>Note Taking</div>
-              <div className="Coding-Card-Text">
-                I took thorough notes. In addition to python above, I made notes
-                to an Intro to Programming video by FreeCodeCamp and HTML/CSS by
-                mosh
-              </div>
+          </div>
+          <div className="Coding-Card Even">
+            <img
+              src={pythonImage}
+              className="Coding-Card-Image"
+              alt="python google docs"
+            />
+            <div className="Coding-Card-Header">Note Taking</div>
+            <div className="Coding-Card-Text">
+              I took thorough notes. In addition to python above, I made notes
+              to an Intro to Programming video by FreeCodeCamp and HTML/CSS by
+              mosh
             </div>
-            <div className="Coding-Card">
-              <img
-                src={georgiaImage}
-                style={{
-                  width: "100%",
-                  borderRadius: "10px",
-                  maxHeight: "70%",
-                }}
-                alt="Georgia website"
-              />
-              <div style={{ height: "20px" }}>Website</div>
-              <div className="Coding-Card-Text">
-                Using my HTML/CSS notes, I created a website using bootstrap and
-                flat-icons
-              </div>
+          </div>
+          <div className="Coding-Card">
+            <img
+              src={georgiaImage}
+              className="Coding-Card-Image"
+              alt="Georgia website"
+            />
+            <div className="Coding-Card-Header">Website</div>
+            <div className="Coding-Card-Text">
+              Using my HTML & CSS notes, I created my first website using
+              bootstrap and flat-icons. It was my first instance of putting my
+              front-end skills to practice.
             </div>
           </div>
           <div onClick={handleRightClick}>
