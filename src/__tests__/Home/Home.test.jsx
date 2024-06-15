@@ -1,6 +1,6 @@
 import { UserProvider } from "../../UserContext";
 import { render, screen } from "@testing-library/react";
-import Home from "../../Home/Home";
+import Home from "../../Home/Home/Home";
 import { BrowserRouter as Router } from "react-router-dom";
 
 describe("Home Page", () => {
@@ -15,7 +15,7 @@ describe("Home Page", () => {
 
     // TODO: fix (stops at "Welcom")
     // const welcomeScreenText = await screen.findByText(/^Welcome,$/);
-    const codingScreenText = screen.getByText("Coding Section");
+    const codingScreenText = screen.getByText("Self-Teaching & Exploration");
     const medicineScreenText = screen.getByText("Medicine Section");
     const tutoringScreenText = screen.getByText("Tutoring Section");
 
