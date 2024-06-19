@@ -77,6 +77,7 @@
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.7);
   margin-top: -100px;
+  z-index: 1;
 }
 
 .Coding-Card {
@@ -106,6 +107,24 @@
   font-weight: 400;
   font-size: 1.2em;
   padding: 10px;
+}
+
+.Coding-Card-Button {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+
+.Coding-Card-Button:hover {
+  cursor: pointer;
+}
+
+.Coding-Card-Button.Disabled {
+  background-color: rgba(128, 128, 128, 0.25);
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .Coding-Card-Text {

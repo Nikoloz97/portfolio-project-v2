@@ -10,8 +10,6 @@ const Coding = (props) => {
   const { isDesktop } = useUserContext();
 
   const [periodIndex, setPeriodIndex] = useState(0);
-  const [leftCardIndex, setLeftCardIndex] = useState(0);
-  const [rightCardIndex, setRightCardIndex] = useState(1);
 
   const codingPeriods = [
     {
@@ -20,21 +18,21 @@ const Coding = (props) => {
       cards: [
         {
           title: "Tutorials",
-          mediaUrl: "../Images/Home/Coding/Content/Mosh.png",
+          mediaUrl: moshImage,
           mediaCaption:
-            "I did his courses on HTML, CSS, python, and a little bit of Java (until I realized it wasn’t the same thing as JavaScript)",
+            "I began my coding journey with Mosh's courses on HTML, CSS, Python, and a little bit of Java (until I realized it wasn’t the same thing as JavaScript)",
         },
         {
           title: "Note Taking",
-          mediaUrl: "../Images/Home/Coding/Content/Mosh.png",
+          mediaUrl: pythonImage,
           mediaCaption:
-            "You can say I took thorough notes. In addition to the python, I made notes to: Intro to Programming and HTML",
+            "I took thorough notes. In addition to python above, I made notes to an Intro to Programming video by FreeCodeCamp and HTML/CSS by mosh",
         },
         {
           title: "First Website",
-          mediaUrl: "../Images/Home/Coding/Content/Mosh.png",
+          mediaUrl: georgiaImage,
           mediaCaption:
-            "Through the help of my HTML notes, I created a website",
+            "Using my HTML & CSS notes, I created my first website using bootstrap and flat-icons. It was my first instance of putting my front-end skills to practice",
         },
       ],
     },
@@ -101,10 +99,14 @@ const Coding = (props) => {
   ];
 
   const handleLeftClick = () => {
-    let currentLeftCardIndex = leftCardIndex;
+    let currentPeriodIndex = periodIndex;
+    --currentPeriodIndex;
+    setPeriodIndex(currentPeriodIndex);
   };
   const handleRightClick = () => {
-    let currentRightCardIndex = rightCardIndex;
+    let currentPeriodIndex = periodIndex;
+    ++currentPeriodIndex;
+    setPeriodIndex(currentPeriodIndex);
   };
 
   return (
@@ -113,56 +115,61 @@ const Coding = (props) => {
         <div className="Coding-Headers-Container">
           <div className="Coding-Header">Coding</div>
           <div className="Coding-Subheader-One">
-            Self-Teaching & Exploration
+            {codingPeriods[periodIndex].title}
           </div>
-
-          <div className="Coding-Subheader-Two">Jan - Aug 2022</div>
+          <div className="Coding-Subheader-Two">
+            {codingPeriods[periodIndex].period}
+          </div>
         </div>
 
         <div className="Coding-Cards-Buttons-Container">
-          <div onClick={handleLeftClick}>
+          <div
+            className={`Coding-Card-Button ${
+              periodIndex === 0 ? "Disabled" : ""
+            }`}
+            onClick={handleLeftClick}
+          >
             <Icon name="angle left" />
           </div>
           <div className="Coding-Card">
             <img
-              src={moshImage}
+              src={codingPeriods[periodIndex].cards[0].mediaUrl}
               className="Coding-Card-Image"
               alt="Mosh Youtube Logo"
             />
             <div className="Coding-Card-Header">Tutorials</div>
             <div className="Coding-Card-Text">
-              I began my coding journey with Mosh's courses on HTML, CSS,
-              Python, and a little bit of Java (until I realized it wasn’t the
-              same thing as JavaScript)
+              {codingPeriods[periodIndex].cards[0].mediaCaption}
             </div>
           </div>
           <div className="Coding-Card Even">
             <img
-              src={pythonImage}
+              src={codingPeriods[periodIndex].cards[1].mediaUrl}
               className="Coding-Card-Image"
               alt="python google docs"
             />
             <div className="Coding-Card-Header">Note Taking</div>
             <div className="Coding-Card-Text">
-              I took thorough notes. In addition to python above, I made notes
-              to an Intro to Programming video by FreeCodeCamp and HTML/CSS by
-              mosh
+              {codingPeriods[periodIndex].cards[1].mediaCaption}
             </div>
           </div>
           <div className="Coding-Card">
             <img
-              src={georgiaImage}
+              src={codingPeriods[periodIndex].cards[2].mediaUrl}
               className="Coding-Card-Image"
               alt="Georgia website"
             />
             <div className="Coding-Card-Header">Website</div>
             <div className="Coding-Card-Text">
-              Using my HTML & CSS notes, I created my first website using
-              bootstrap and flat-icons. It was my first instance of putting my
-              front-end skills to practice.
+              {codingPeriods[periodIndex].cards[2].mediaCaption}
             </div>
           </div>
-          <div onClick={handleRightClick}>
+          <div
+            className={`Coding-Card-Button ${
+              periodIndex === codingPeriods.length - 1 ? "Disabled" : ""
+            }`}
+            onClick={handleRightClick}
+          >
             <Icon name="angle right" />
           </div>
         </div>
