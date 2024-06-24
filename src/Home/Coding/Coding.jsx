@@ -112,7 +112,7 @@ const Coding = () => {
         },
         {
           header: "Finance Side Project",
-          techStack: "TypeScript, React, Express, MongoDb",
+          techStack: "TypeScript, React, Express, MongoDB",
           mediaUrl: financeImage,
           mediaAltText: "Home screen of my finance side project",
           websiteLinkUrl: null,
@@ -165,6 +165,13 @@ const Coding = () => {
             <div className="Coding-Card-Header">
               {codingPeriods[periodIndex].cards[0].header}
             </div>
+            {codingPeriods[periodIndex].cards[0].techStack ? (
+              <div className="Coding-Card-Tech">
+                {`Tech Stack: ${codingPeriods[periodIndex].cards[0].techStack}`}
+              </div>
+            ) : (
+              <div></div>
+            )}
             <div className="Coding-Card-Text">
               {codingPeriods[periodIndex].cards[0].mediaCaption}
             </div>
@@ -178,6 +185,13 @@ const Coding = () => {
             <div className="Coding-Card-Header">
               {codingPeriods[periodIndex].cards[1].header}
             </div>
+            {codingPeriods[periodIndex].cards[1].techStack ? (
+              <div className="Coding-Card-Tech">
+                {`Tech Stack: ${codingPeriods[periodIndex].cards[1].techStack}`}
+              </div>
+            ) : (
+              <div></div>
+            )}
             <div className="Coding-Card-Text">
               {codingPeriods[periodIndex].cards[1].mediaCaption}
             </div>
@@ -206,6 +220,13 @@ const Coding = () => {
             <div className="Coding-Card-Header">
               {codingPeriods[periodIndex].cards[2].header}
             </div>
+            {codingPeriods[periodIndex].cards[2].techStack ? (
+              <div className="Coding-Card-Tech">
+                {`Tech Stack: ${codingPeriods[periodIndex].cards[2].techStack}`}
+              </div>
+            ) : (
+              <div></div>
+            )}
             <div className="Coding-Card-Text">
               {codingPeriods[periodIndex].cards[2].mediaCaption}
             </div>
