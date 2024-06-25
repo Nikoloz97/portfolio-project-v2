@@ -32,3 +32,105 @@
   background-position: left 8% bottom 0%;
   background-repeat: no-repeat;
 }
+
+.Tutoring-Headers-Container {
+  display: flex;
+  flex-direction: column;
+  z-index: inherit;
+  align-items: center;
+  height: 30vh;
+  margin-top: 100px;
+}
+
+.Tutoring-Header {
+  font-size: 5rem;
+  font-weight: 300;
+}
+
+.Tutoring-Subheader-One {
+  font-size: 3rem;
+  font-weight: 200;
+  opacity: 0.75;
+  margin-top: 50px;
+}
+
+.Tutoring-Subheader-Two {
+  font-size: 2rem;
+  font-weight: 100;
+  opacity: 0.6;
+  margin-top: 30px;
+}
+
+.Tutoring-Cards-Buttons-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 65vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-top: -100px;
+  z-index: 1;
+}
+
+.Tutoring-Card {
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 25%;
+}
+
+.Tutoring-Card.Even {
+  margin-top: 100px;
+}
+
+.Tutoring-Card-Image {
+  width: 100%;
+  border-radius: 10px;
+  height: 300px;
+}
+
+.Tutoring-Card-Header {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+.Tutoring-Card-Button {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+
+.Tutoring-Card-Button:hover {
+  cursor: pointer;
+}
+
+.Tutoring-Card-Button.Disabled {
+  background-color: rgba(128, 128, 128, 0.25);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.Tutoring-Card-Text {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+}
+
+.Tutoring-Card-Tech {
+  font-size: 1.4rem;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  height: 45px;
+  background-color: rgba(255, 255, 255, 0.03);
+}
