@@ -148,96 +148,99 @@ const Coding = () => {
         </div>
 
         <div className="Coding-Cards-Buttons-Container">
-          <div
-            className={`Coding-Card-Button ${
-              periodIndex === 0 ? "Disabled" : ""
-            }`}
-            onClick={handleLeftClick}
-          >
-            <Icon name="angle left" />
-          </div>
-          <div className="Coding-Card">
-            <img
-              src={codingPeriods[periodIndex].cards[0].mediaUrl}
-              className="Coding-Card-Image"
-              alt={codingPeriods[periodIndex].cards[0].mediaAltText}
-            />
-            <div className="Coding-Card-Header">
-              {codingPeriods[periodIndex].cards[0].header}
-            </div>
-            {codingPeriods[periodIndex].cards[0].techStack ? (
-              <div className="Coding-Card-Tech">
-                {`Tech Stack: ${codingPeriods[periodIndex].cards[0].techStack}`}
+          <div className="Coding-Cards-Container">
+            <div className="Coding-Card">
+              <img
+                src={codingPeriods[periodIndex].cards[0].mediaUrl}
+                className="Coding-Card-Image"
+                alt={codingPeriods[periodIndex].cards[0].mediaAltText}
+              />
+              <div className="Coding-Card-Header">
+                {codingPeriods[periodIndex].cards[0].header}
               </div>
-            ) : (
-              <div></div>
-            )}
-            <div className="Coding-Card-Text">
-              {codingPeriods[periodIndex].cards[0].mediaCaption}
-            </div>
-          </div>
-          <div className="Coding-Card Even">
-            <img
-              src={codingPeriods[periodIndex].cards[1].mediaUrl}
-              className="Coding-Card-Image"
-              alt={codingPeriods[periodIndex].cards[1].mediaAltText}
-            />
-            <div className="Coding-Card-Header">
-              {codingPeriods[periodIndex].cards[1].header}
-            </div>
-            {codingPeriods[periodIndex].cards[1].techStack ? (
-              <div className="Coding-Card-Tech">
-                {`Tech Stack: ${codingPeriods[periodIndex].cards[1].techStack}`}
+              {codingPeriods[periodIndex].cards[0].techStack ? (
+                <div className="Coding-Card-Tech">
+                  {`Tech Stack: ${codingPeriods[periodIndex].cards[0].techStack}`}
+                </div>
+              ) : (
+                <div></div>
+              )}
+              <div className="Coding-Card-Text">
+                {codingPeriods[periodIndex].cards[0].mediaCaption}
               </div>
-            ) : (
-              <div></div>
-            )}
-            <div className="Coding-Card-Text">
-              {codingPeriods[periodIndex].cards[1].mediaCaption}
             </div>
-          </div>
-          <div className="Coding-Card">
-            {codingPeriods[periodIndex].cards[2].websiteLinkUrl ? (
-              <a
-                href={codingPeriods[periodIndex].cards[2].websiteLinkUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <div className="Coding-Card">
+              <img
+                src={codingPeriods[periodIndex].cards[1].mediaUrl}
+                className="Coding-Card-Image"
+                alt={codingPeriods[periodIndex].cards[1].mediaAltText}
+              />
+              <div className="Coding-Card-Header">
+                {codingPeriods[periodIndex].cards[1].header}
+              </div>
+              {codingPeriods[periodIndex].cards[1].techStack ? (
+                <div className="Coding-Card-Tech">
+                  {`Tech Stack: ${codingPeriods[periodIndex].cards[1].techStack}`}
+                </div>
+              ) : (
+                <div></div>
+              )}
+              <div className="Coding-Card-Text">
+                {codingPeriods[periodIndex].cards[1].mediaCaption}
+              </div>
+            </div>
+            <div className="Coding-Card">
+              {codingPeriods[periodIndex].cards[2].websiteLinkUrl ? (
+                <a
+                  href={codingPeriods[periodIndex].cards[2].websiteLinkUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={codingPeriods[periodIndex].cards[2].mediaUrl}
+                    className="Coding-Card-Image"
+                    alt={codingPeriods[periodIndex].cards[2].mediaAltText}
+                  />
+                </a>
+              ) : (
                 <img
                   src={codingPeriods[periodIndex].cards[2].mediaUrl}
                   className="Coding-Card-Image"
                   alt={codingPeriods[periodIndex].cards[2].mediaAltText}
                 />
-              </a>
-            ) : (
-              <img
-                src={codingPeriods[periodIndex].cards[2].mediaUrl}
-                className="Coding-Card-Image"
-                alt={codingPeriods[periodIndex].cards[2].mediaAltText}
-              />
-            )}
-
-            <div className="Coding-Card-Header">
-              {codingPeriods[periodIndex].cards[2].header}
-            </div>
-            {codingPeriods[periodIndex].cards[2].techStack ? (
-              <div className="Coding-Card-Tech">
-                {`Tech Stack: ${codingPeriods[periodIndex].cards[2].techStack}`}
+              )}
+              <div className="Coding-Card-Header">
+                {codingPeriods[periodIndex].cards[2].header}
               </div>
-            ) : (
-              <div></div>
-            )}
-            <div className="Coding-Card-Text">
-              {codingPeriods[periodIndex].cards[2].mediaCaption}
+              {codingPeriods[periodIndex].cards[2].techStack ? (
+                <div className="Coding-Card-Tech">
+                  {`Tech Stack: ${codingPeriods[periodIndex].cards[2].techStack}`}
+                </div>
+              ) : (
+                <div></div>
+              )}
+              <div className="Coding-Card-Text">
+                {codingPeriods[periodIndex].cards[2].mediaCaption}
+              </div>
             </div>
           </div>
-          <div
-            className={`Coding-Card-Button ${
-              periodIndex === codingPeriods.length - 1 ? "Disabled" : ""
-            }`}
-            onClick={handleRightClick}
-          >
-            <Icon name="angle right" />
+          <div className="Coding-Buttons-Container">
+            <div
+              className={`Coding-Card-Button ${
+                periodIndex === 0 ? "Disabled" : ""
+              }`}
+              onClick={handleLeftClick}
+            >
+              <Icon name="angle left" />
+            </div>
+            <div
+              className={`Coding-Card-Button ${
+                periodIndex === codingPeriods.length - 1 ? "Disabled" : ""
+              }`}
+              onClick={handleRightClick}
+            >
+              <Icon name="angle right" />
+            </div>
           </div>
         </div>
       </div>
