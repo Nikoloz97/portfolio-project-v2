@@ -3,17 +3,17 @@ import "./Coding.css";
 import { useUserContext } from "../../UserContext";
 import { Icon } from "semantic-ui-react";
 
-import moshImage from "../../Images/Home/Coding/Content/Self_Teach/Mosh.png";
-import pythonImage from "../../Images/Home/Coding/Content/Self_Teach/PythonDoc1.png";
-import georgiaImage from "../../Images/Home/Coding/Content/Self_Teach/Georgia1.png";
+import moshImage from "../../Images/Home/Coding/Content/Self_Teach/Mosh_New.png";
+import pythonImage from "../../Images/Home/Coding/Content/Self_Teach/PythonDoc2_New.png";
+import georgiaImage from "../../Images/Home/Coding/Content/Self_Teach/Georgia1_New.png";
 
-import biochemImage from "../../Images/Home/Coding/Content/Bootcamp/BiochemSite1.png";
-import nickJsImage from "../../Images/Home/Coding/Content/Bootcamp/NickJS1.png";
-import restaurantTinderImage from "../../Images/Home/Coding/Content/Bootcamp/RT1.png";
+import biochemImage from "../../Images/Home/Coding/Content/Bootcamp/BiochemSite2_Square.png";
+import nickJsImage from "../../Images/Home/Coding/Content/Bootcamp/NickJS_Square.png";
+import restaurantTinderImage from "../../Images/Home/Coding/Content/Bootcamp/RT_Square.png";
 
-import portalImage from "../../Images/Home/Coding/Content/Work/ClaimGenPortal.png";
-import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle.png";
-import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite.png";
+import portalImage from "../../Images/Home/Coding/Content/Work/ClaimGenPortal_Square.png";
+import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle_Square.png";
+import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square.png";
 
 const Coding = () => {
   const { isDesktop } = useUserContext();
@@ -101,7 +101,7 @@ const Coding = () => {
             "As a full-stack developer at AccumTech, I work on fixing bugs and improving features on our website called ClaimGen Portal. It is a place where Business Analysts, Data Operations, and Health Insurance Vendors work with patient insurance claims",
         },
         {
-          header: "Technical Documentation",
+          header: "Technical Doc",
           techStack: null,
           mediaUrl: cookiesImage,
           mediaAltText:
@@ -137,93 +137,41 @@ const Coding = () => {
   return (
     <div className={`Coding-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
       <div className="Coding-Content">
-        <div className="Coding-Headers-Container">
-          <div className="Coding-Header">Coding</div>
-          <div className="Coding-Subheader-One">
-            {codingPeriods[periodIndex].title}
-          </div>
-          <div className="Coding-Subheader-Two">
-            {codingPeriods[periodIndex].period}
-          </div>
-        </div>
-
+        <div className="Coding-Header">Coding</div>
         <div className="Coding-Cards-Buttons-Container">
           <div className="Coding-Cards-Container">
-            <div className="Coding-Card">
-              <img
-                src={codingPeriods[periodIndex].cards[0].mediaUrl}
-                className="Coding-Card-Image"
-                alt={codingPeriods[periodIndex].cards[0].mediaAltText}
-              />
-              <div className="Coding-Card-Header">
-                {codingPeriods[periodIndex].cards[0].header}
-              </div>
-              {codingPeriods[periodIndex].cards[0].techStack ? (
-                <div className="Coding-Card-Tech">
-                  {`Tech Stack: ${codingPeriods[periodIndex].cards[0].techStack}`}
-                </div>
-              ) : (
-                <div></div>
-              )}
-              <div className="Coding-Card-Text">
-                {codingPeriods[periodIndex].cards[0].mediaCaption}
-              </div>
-            </div>
-            <div className="Coding-Card">
-              <img
-                src={codingPeriods[periodIndex].cards[1].mediaUrl}
-                className="Coding-Card-Image"
-                alt={codingPeriods[periodIndex].cards[1].mediaAltText}
-              />
-              <div className="Coding-Card-Header">
-                {codingPeriods[periodIndex].cards[1].header}
-              </div>
-              {codingPeriods[periodIndex].cards[1].techStack ? (
-                <div className="Coding-Card-Tech">
-                  {`Tech Stack: ${codingPeriods[periodIndex].cards[1].techStack}`}
-                </div>
-              ) : (
-                <div></div>
-              )}
-              <div className="Coding-Card-Text">
-                {codingPeriods[periodIndex].cards[1].mediaCaption}
-              </div>
-            </div>
-            <div className="Coding-Card">
-              {codingPeriods[periodIndex].cards[2].websiteLinkUrl ? (
-                <a
-                  href={codingPeriods[periodIndex].cards[2].websiteLinkUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+            {codingPeriods[periodIndex].cards.map((codingCard, index) => (
+              <div
+                className={`Coding-Card ${index % 2 === 0 ? "Even" : "Odd"}`}
+              >
+                {codingCard.websiteLinkUrl ? (
+                  <a
+                    href={codingCard.websiteLinkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ width: "100%" }}
+                  >
+                    <img
+                      src={codingCard.mediaUrl}
+                      className="Coding-Card-Image"
+                      alt={codingCard.mediaAltText}
+                    />
+                  </a>
+                ) : (
                   <img
-                    src={codingPeriods[periodIndex].cards[2].mediaUrl}
+                    src={codingCard.mediaUrl}
                     className="Coding-Card-Image"
-                    alt={codingPeriods[periodIndex].cards[2].mediaAltText}
+                    alt={codingCard.mediaAltText}
                   />
-                </a>
-              ) : (
-                <img
-                  src={codingPeriods[periodIndex].cards[2].mediaUrl}
-                  className="Coding-Card-Image"
-                  alt={codingPeriods[periodIndex].cards[2].mediaAltText}
-                />
-              )}
-              <div className="Coding-Card-Header">
-                {codingPeriods[periodIndex].cards[2].header}
-              </div>
-              {codingPeriods[periodIndex].cards[2].techStack ? (
-                <div className="Coding-Card-Tech">
-                  {`Tech Stack: ${codingPeriods[periodIndex].cards[2].techStack}`}
+                )}
+                <div className="Coding-Card-Header">{codingCard.header}</div>
+                <div className="Coding-Card-Text">
+                  {codingCard.mediaCaption}
                 </div>
-              ) : (
-                <div></div>
-              )}
-              <div className="Coding-Card-Text">
-                {codingPeriods[periodIndex].cards[2].mediaCaption}
               </div>
-            </div>
+            ))}
           </div>
+
           <div className="Coding-Buttons-Container">
             <div
               className={`Coding-Card-Button ${

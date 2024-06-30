@@ -40,32 +40,16 @@
   align-items: center;
 }
 
-.Coding-Headers-Container {
+.Coding-Header {
   display: flex;
   flex-direction: column;
   z-index: inherit;
   align-items: center;
-  height: 30vh;
+  height: 10vh;
+  width: 100vw;
   margin-top: 100px;
-}
-
-.Coding-Header {
   font-size: 5rem;
   font-weight: 300;
-}
-
-.Coding-Subheader-One {
-  font-size: 3rem;
-  font-weight: 200;
-  opacity: 0.75;
-  margin-top: 50px;
-}
-
-.Coding-Subheader-Two {
-  font-size: 2rem;
-  font-weight: 100;
-  opacity: 0.6;
-  margin-top: 30px;
 }
 
 .Coding-Cards-Buttons-Container {
@@ -73,18 +57,18 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 65vh;
+  height: 90vh;
   width: 100vw;
-  z-index: 1;
+  z-index: inherit;
   background-color: none;
-  margin-top: -250px;
   gap: 60px;
 }
 
 .Coding-Cards-Container {
   display: flex;
-  width: 95%;
-  justify-content: space-between;
+  width: 80%;
+  justify-content: center;
+  gap: 200px;
 }
 
 .Coding-Buttons-Container {
@@ -92,7 +76,7 @@
 }
 
 .Coding-Card {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.85);
   z-index: 1;
   text-align: center;
   display: flex;
@@ -100,8 +84,16 @@
   align-items: center;
   justify-content: start;
   border-radius: 10px;
-  width: 30%;
-  margin-top: 150px;
+  width: 22%;
+  height: fit-content;
+}
+
+.Coding-Card.Even {
+  margin-top: 0px;
+}
+
+.Coding-Card.Odd {
+  margin-top: 30px;
 }
 
 .Coding-Card-Image {
@@ -113,7 +105,7 @@
 .Coding-Card-Header {
   margin-top: 20px;
   font-weight: 400;
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding: 10px;
 }
 
@@ -139,13 +131,4 @@
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.85);
   padding: 20px;
-}
-
-.Coding-Card-Tech {
-  font-size: 1.4rem;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  height: 45px;
-  background-color: rgba(255, 255, 255, 0.03);
 }

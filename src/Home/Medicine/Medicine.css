@@ -30,66 +30,55 @@
   background-repeat: no-repeat;
 }
 
-.Medicine-Headers-Container {
+.Medicine-Header {
   display: flex;
   flex-direction: column;
   z-index: inherit;
   align-items: center;
-  height: 30vh;
+  height: 10vh;
+  width: 100vw;
   margin-top: 100px;
-}
-
-.Medicine-Header {
   font-size: 5rem;
   font-weight: 300;
 }
 
-.Medicine-Subheader-One {
-  font-size: 3rem;
-  font-weight: 200;
-  opacity: 0.75;
-  margin-top: 50px;
-}
-
-.Medicine-Subheader-Two {
-  font-size: 2rem;
-  font-weight: 100;
-  opacity: 0.6;
-  margin-top: 30px;
-}
-
-.Medicine-Cards-Buttons-Container {
+.Medicine-Cards-Container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 65vh;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 200px;
+  height: 90vh;
   width: 100vw;
-  z-index: 1;
+  z-index: inherit;
   background-color: none;
-  margin-top: -200px;
 }
 
 .Medicine-Card {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.85);
   z-index: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   border-radius: 10px;
-  width: 25%;
+  width: 22%;
+  height: fit-content;
 }
 
 .Medicine-Card.Even {
-  margin-top: 100px;
+  margin-top: 0px;
+}
+
+.Medicine-Card.Odd {
+  margin-top: 30px;
 }
 
 .Medicine-Card-Image {
   width: 100%;
   border-radius: 10px;
-  height: 300px;
+  max-height: 300px;
 }
 
 .Medicine-Card-Header {
@@ -99,35 +88,8 @@
   padding: 10px;
 }
 
-.Medicine-Card-Button {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.75);
-  z-index: 1;
-}
-
-.Medicine-Card-Button:hover {
-  cursor: pointer;
-}
-
-.Medicine-Card-Button.Disabled {
-  background-color: rgba(128, 128, 128, 0.25);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
 .Medicine-Card-Text {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.85);
   padding: 20px;
-}
-
-.Medicine-Card-Tech {
-  font-size: 1.4rem;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  height: 45px;
-  background-color: rgba(255, 255, 255, 0.03);
 }

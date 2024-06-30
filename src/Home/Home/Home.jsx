@@ -118,9 +118,9 @@ const Home = () => {
           handleDownClick={handleDownClick}
           isTopOfPage={isTopOfPage}
         />
-        <Coding />
         <Medicine />
         <Tutoring />
+        <Coding />
       </div>
     </>
   );

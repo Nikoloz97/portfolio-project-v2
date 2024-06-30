@@ -33,66 +33,55 @@
   background-repeat: no-repeat;
 }
 
-.Tutoring-Headers-Container {
+.Tutoring-Header {
   display: flex;
   flex-direction: column;
   z-index: inherit;
   align-items: center;
-  height: 30vh;
+  height: 10vh;
+  width: 100vw;
   margin-top: 100px;
-}
-
-.Tutoring-Header {
   font-size: 5rem;
   font-weight: 300;
 }
 
-.Tutoring-Subheader-One {
-  font-size: 3rem;
-  font-weight: 200;
-  opacity: 0.75;
-  margin-top: 50px;
-}
-
-.Tutoring-Subheader-Two {
-  font-size: 2rem;
-  font-weight: 100;
-  opacity: 0.6;
-  margin-top: 30px;
-}
-
-.Tutoring-Cards-Buttons-Container {
+.Tutoring-Cards-Container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 65vh;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 200px;
+  height: 90vh;
   width: 100vw;
-  z-index: 1;
+  z-index: inherit;
   background-color: none;
-  margin-top: -200px;
 }
 
 .Tutoring-Card {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.85);
   z-index: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   border-radius: 10px;
-  width: 25%;
+  width: 22%;
+  height: fit-content;
 }
 
 .Tutoring-Card.Even {
-  margin-top: 100px;
+  margin-top: 0px;
+}
+
+.Tutoring-Card.Odd {
+  margin-top: 30px;
 }
 
 .Tutoring-Card-Image {
   width: 100%;
   border-radius: 10px;
-  height: 300px;
+  max-height: 300px;
 }
 
 .Tutoring-Card-Header {
@@ -102,35 +91,8 @@
   padding: 10px;
 }
 
-.Tutoring-Card-Button {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.75);
-  z-index: 1;
-}
-
-.Tutoring-Card-Button:hover {
-  cursor: pointer;
-}
-
-.Tutoring-Card-Button.Disabled {
-  background-color: rgba(128, 128, 128, 0.25);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
 .Tutoring-Card-Text {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.85);
   padding: 20px;
-}
-
-.Tutoring-Card-Tech {
-  font-size: 1.4rem;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  height: 45px;
-  background-color: rgba(255, 255, 255, 0.03);
 }
