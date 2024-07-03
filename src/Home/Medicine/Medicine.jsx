@@ -20,7 +20,7 @@ const Medicine = (props) => {
     {
       header: "Research",
       mediaUrl: presentationImage,
-      mediaAltText: "Google docs Python notes",
+      mediaAltText: "My research presentation in the sociology department",
       mediaCaption:
         "Throughout my undergrad, I volunteered at various research labs in biochemistry and sociology. For sociology, I interviewed post-incarcerated individuals on their health status",
     },
@@ -41,6 +41,7 @@ const Medicine = (props) => {
         <div className="Medicine-Cards-Container">
           {cards.map((card, index) => (
             <div
+              key={index}
               className={`Medicine-Card ${index % 2 === 0 ? "Even" : "Odd"}`}
             >
               <img

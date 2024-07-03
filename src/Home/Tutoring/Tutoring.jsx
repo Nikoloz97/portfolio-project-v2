@@ -2,33 +2,36 @@ import React from "react";
 import "./Tutoring.css";
 import { useUserContext } from "../../UserContext";
 
+import wyzantImage from "../../Images/Home/Tutoring/Content/Wyzant_Square.png";
+import websiteImage from "../../Images/Home/Tutoring/Content/Tutoring_Square.png";
+import socialMediaImage from "../../Images/Home/Tutoring/Content/TikTok_Square.png";
+
 const Tutoring = (props) => {
   const { isDesktop } = useUserContext();
 
   const cards = [
     {
-      header: "Tutorials",
-      mediaUrl: "moshImage",
-      mediaAltText: "Mosh logo",
+      header: "Wyzant",
+      mediaUrl: wyzantImage,
+      mediaAltText: "Profile on the tutoring website Wyzant",
       websiteLinkUrl: null,
       mediaCaption:
         "I began my tutoring journey with Mosh's courses on HTML, CSS, Python, and a little bit of Java (until I realized it wasn’t the same thing as JavaScript)",
     },
     {
-      header: "Note Taking",
-      mediaUrl: "pythonImage",
-      mediaAltText: "Google docs Python notes",
+      header: "Personal Tutoring Website",
+      mediaUrl: websiteImage,
+      mediaAltText: "Intro screen to my tutoring website called NikoScience",
       websiteLinkUrl: null,
-      mediaCaption:
-        "I took thorough notes. In addition to python above, I made notes to an Intro to Programming video by FreeCodeCamp and HTML/CSS by mosh",
+      mediaCaption: "I made a personal website through Wix called NikoScience",
     },
     {
-      header: "First Website",
-      mediaUrl: "georgiaImage",
+      header: "Social Media Outreach",
+      mediaUrl: socialMediaImage,
       mediaAltText: "Website showing my trip in Georgia from 2021",
-      websiteLinkUrl: "https://nickgeorgiatrip2021.netlify.app/",
+      websiteLinkUrl: null,
       mediaCaption:
-        "Using my HTML & CSS notes, I created my first website with the help of bootstrap. It was my first instance of putting my front-end skills to practice. Click on the image above to see the website",
+        "As a way for public outreach, I created short form content in various science subjects",
     },
   ];
 
@@ -40,6 +43,7 @@ const Tutoring = (props) => {
         <div className="Tutoring-Cards-Container">
           {cards.map((card, index) => (
             <div
+              key={index}
               className={`Tutoring-Card ${index % 2 === 0 ? "Even" : "Odd"}`}
             >
               <img

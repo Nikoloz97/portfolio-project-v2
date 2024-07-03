@@ -142,6 +142,7 @@ const Coding = () => {
           <div className="Coding-Cards-Container">
             {codingPeriods[periodIndex].cards.map((codingCard, index) => (
               <div
+                key={index}
                 className={`Coding-Card ${index % 2 === 0 ? "Even" : "Odd"}`}
               >
                 {codingCard.websiteLinkUrl ? (
