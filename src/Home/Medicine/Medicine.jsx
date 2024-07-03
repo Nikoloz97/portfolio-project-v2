@@ -2,33 +2,34 @@ import React from "react";
 import "./Medicine.css";
 import { useUserContext } from "../../UserContext";
 
+import plasmaCenterImage from "../../Images/Home/Medicine/Content/Med5.jpg";
+import presentationImage from "../../Images/Home/Medicine/Content/Med9.png";
+import whiteCoatImage from "../../Images/Home/Medicine/Content/Medicine1.png";
+
 const Medicine = (props) => {
   const { isDesktop } = useUserContext();
 
   const cards = [
     {
-      header: "Tutorials",
-      mediaUrl: "moshImage",
-      mediaAltText: "Mosh logo",
-      websiteLinkUrl: null,
+      header: "Plasma Center",
+      mediaUrl: plasmaCenterImage,
+      mediaAltText: "Plasma Center",
       mediaCaption:
-        "I began my tutoring journey with Mosh's courses on HTML, CSS, Python, and a little bit of Java (until I realized it wasn’t the same thing as JavaScript)",
+        "I worked at a plasma center during my first year of undergrad",
     },
     {
-      header: "Note Taking",
-      mediaUrl: "pythonImage",
+      header: "Research",
+      mediaUrl: presentationImage,
       mediaAltText: "Google docs Python notes",
-      websiteLinkUrl: null,
       mediaCaption:
-        "I took thorough notes. In addition to python above, I made notes to an Intro to Programming video by FreeCodeCamp and HTML/CSS by mosh",
+        "Throughout my undergrad, I volunteered at various research labs in biochemistry and sociology. For sociology, I interviewed post-incarcerated individuals on their health status",
     },
     {
-      header: "First Website",
-      mediaUrl: "georgiaImage",
-      mediaAltText: "Website showing my trip in Georgia from 2021",
-      websiteLinkUrl: "https://nickgeorgiatrip2021.netlify.app/",
+      header: "Medical School",
+      mediaUrl: whiteCoatImage,
+      mediaAltText: "In my white coat on campus at Ohio University",
       mediaCaption:
-        "Using my HTML & CSS notes, I created my first website with the help of bootstrap. It was my first instance of putting my front-end skills to practice. Click on the image above to see the website",
+        "I went to medical school for a year at Ohio University Heritage College of Osteopathic Medicine (OUHCOM)",
     },
   ];
 
