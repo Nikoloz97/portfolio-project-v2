@@ -11,6 +11,10 @@
   height: 99vh; /* Fixes gap due as a result of blur filter*/
 }
 
+.Tutoring-Screen {
+  height: 101.75vh;
+}
+
 .Medicine-Content,
 .Tutoring-Content {
   display: flex;
