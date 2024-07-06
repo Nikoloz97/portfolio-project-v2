@@ -8,8 +8,8 @@
   z-index: 0;
   background: linear-gradient(
       to bottom,
-      rgb(6, 19, 31) 1%,
-      rgba(8, 20, 27, 0) 20%
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.05) 50%
     ),
     linear-gradient(to top, rgb(7.5, 15, 26) 2%, rgba(8, 20, 27, 0) 40%);
 }
@@ -30,16 +30,39 @@
   background-repeat: no-repeat;
 }
 
-.Medicine-Header {
+.Medicine-Header-Container {
   display: flex;
   flex-direction: column;
   z-index: inherit;
   align-items: center;
-  height: 10vh;
+  justify-content: end;
+  height: 35vh;
   width: 100vw;
-  margin-top: 100px;
+  gap: 10px;
+}
+
+.Medicine-Header-Primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
   font-size: 5rem;
   font-weight: 300;
+  width: 30%;
+}
+
+.Medicine-Header-Secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 30%;
+  font-size: 1.75rem;
+  font-weight: 200;
+  padding: 10px;
+  line-height: 1;
+  width: 50%;
+  opacity: 0.5;
 }
 
 .Medicine-Cards-Container {

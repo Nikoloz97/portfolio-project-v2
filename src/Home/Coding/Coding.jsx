@@ -20,6 +20,12 @@ const Coding = () => {
 
   const [periodIndex, setPeriodIndex] = useState(0);
 
+  const header = {
+    primary: "Coding",
+    secondary:
+      "From 2022, my coding journey consisted of self-studying, being enrolled in a coding bootcamp, and working as a full-stack software developer",
+  };
+
   const codingPeriods = [
     {
       title: "Self-Teaching & Exploration",
@@ -137,7 +143,10 @@ const Coding = () => {
   return (
     <div className={`Coding-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
       <div className="Coding-Content">
-        <div className="Coding-Header">Coding</div>
+        <div className="Coding-Header-Container">
+          <div className="Coding-Header-Primary">{header.primary}</div>
+          <div className="Coding-Header-Secondary">{header.secondary}</div>
+        </div>
         <div className="Coding-Cards-Buttons-Container">
           <div className="Coding-Cards-Container">
             {codingPeriods[periodIndex].cards.map((codingCard, index) => (

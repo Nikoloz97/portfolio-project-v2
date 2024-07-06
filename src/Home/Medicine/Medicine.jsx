@@ -9,6 +9,12 @@ import whiteCoatImage from "../../Images/Home/Medicine/Content/Medicine1.png";
 const Medicine = (props) => {
   const { isDesktop } = useUserContext();
 
+  const header = {
+    primary: "Medicine",
+    secondary:
+      "Throughout my undergraduate degree up until the first year of medical school, I was pursuing a career as a physician",
+  };
+
   const cards = [
     {
       header: "Plasma Center",
@@ -36,7 +42,10 @@ const Medicine = (props) => {
   return (
     <div className={`Medicine-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
       <div className="Medicine-Content">
-        <div className="Medicine-Header">Medicine</div>
+        <div className="Medicine-Header-Container">
+          <div className="Medicine-Header-Primary">{header.primary}</div>
+          <div className="Medicine-Header-Secondary">{header.secondary}</div>
+        </div>
 
         <div className="Medicine-Cards-Container">
           {cards.map((card, index) => (

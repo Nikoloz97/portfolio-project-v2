@@ -29,16 +29,39 @@
   background-repeat: no-repeat;
 }
 
-.Tutoring-Header {
+.Tutoring-Header-Container {
   display: flex;
   flex-direction: column;
   z-index: inherit;
   align-items: center;
-  height: 10vh;
+  justify-content: end;
+  height: 35vh;
   width: 100vw;
-  margin-top: 100px;
+  gap: 10px;
+}
+
+.Tutoring-Header-Primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
   font-size: 5rem;
   font-weight: 300;
+  width: 30%;
+}
+
+.Tutoring-Header-Secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 30%;
+  font-size: 1.75rem;
+  font-weight: 200;
+  padding: 10px;
+  line-height: 1;
+  width: 50%;
+  opacity: 0.5;
 }
 
 .Tutoring-Cards-Container {

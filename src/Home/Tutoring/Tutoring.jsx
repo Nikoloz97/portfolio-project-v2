@@ -9,6 +9,12 @@ import socialMediaImage from "../../Images/Home/Tutoring/Content/TikTok_Square.p
 const Tutoring = (props) => {
   const { isDesktop } = useUserContext();
 
+  const header = {
+    primary: "Tutoring",
+    secondary:
+      "Upon changing career paths from medicine to programming, I primarily worked a tutor",
+  };
+
   const cards = [
     {
       header: "Wyzant",
@@ -38,7 +44,10 @@ const Tutoring = (props) => {
   return (
     <div className={`Tutoring-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
       <div className="Tutoring-Content">
-        <div className="Tutoring-Header">Tutoring</div>
+        <div className="Tutoring-Header-Container">
+          <div className="Tutoring-Header-Primary">{header.primary}</div>
+          <div className="Tutoring-Header-Secondary">{header.secondary}</div>
+        </div>
 
         <div className="Tutoring-Cards-Container">
           {cards.map((card, index) => (
