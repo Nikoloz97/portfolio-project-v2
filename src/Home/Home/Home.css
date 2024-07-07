@@ -8,11 +8,7 @@
 .Medicine-Screen,
 .Tutoring-Screen {
   position: relative;
-  height: 99vh; /* Fixes gap due as a result of blur filter*/
-}
-
-.Tutoring-Screen {
-  height: 101.75vh;
+  height: 100vh; /* Fixes gap due as a result of blur filter*/
 }
 
 .Medicine-Content,

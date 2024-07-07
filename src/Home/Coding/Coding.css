@@ -3,16 +3,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1 !important;
-  /* Lower z-index compared to .Coding-Blur */
-  background: linear-gradient(
-      to bottom,
-      rgb(7, 22, 31) 8%,
-      rgba(5, 14, 19, 0) 40%
-    ),
-    linear-gradient(to top, rgb(6, 21, 31) 2%, rgba(25, 136, 196, 0) 50%);
   width: 100vw;
   height: 100vh;
+  z-index: 1 !important; /* Lower z-index compared to .Coding-Blur */
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.05) 80%
+    ),
+    linear-gradient(to top, rgb(7.5, 15, 26) 2%, rgba(8, 20, 27, 0) 40%);
 }
 
 .Coding-Screen.Desktop {
@@ -151,7 +150,7 @@
 }
 
 .Coding-Card-Text {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.85);
   padding: 20px;
 }

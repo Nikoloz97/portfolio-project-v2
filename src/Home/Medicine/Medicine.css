@@ -8,8 +8,8 @@
   z-index: 0;
   background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.75) 0%,
-      rgba(0, 0, 0, 0.05) 50%
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.05) 80%
     ),
     linear-gradient(to top, rgb(7.5, 15, 26) 2%, rgba(8, 20, 27, 0) 40%);
 }
