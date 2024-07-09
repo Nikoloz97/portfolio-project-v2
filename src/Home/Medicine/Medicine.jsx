@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Medicine.css";
 import { useUserContext } from "../../UserContext";
 
@@ -8,6 +8,14 @@ import whiteCoatImage from "../../Images/Home/Medicine/Content/Medicine1.png";
 
 const Medicine = (props) => {
   const { isDesktop } = useUserContext();
+
+  const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
+
+  const [isCardSetFadedIn, setIsCardSetFadedIn] = useState([
+    false,
+    false,
+    false,
+  ]);
 
   const header = {
     primary: "Medicine",
@@ -39,10 +47,51 @@ const Medicine = (props) => {
     },
   ];
 
+  useEffect(() => {
+    if (props.windowHeightPosition >= 900) {
+      const fadeInInterval = setInterval(() => {
+        setIsHeadersFadeIn(true);
+        clearInterval(fadeInInterval);
+        return;
+      }, 500);
+    }
+  }, [props.windowHeightPosition]);
+
+  useEffect(() => {
+    if (isHeadersFadedIn) {
+      const fadeInCardOneInterval = setInterval(() => {
+        setIsCardSetFadedIn(() => [true, false, false]);
+        clearInterval(fadeInCardOneInterval);
+        return;
+      }, 1500);
+    }
+  }, [isHeadersFadedIn]);
+
+  useEffect(() => {
+    if (isCardSetFadedIn[0]) {
+      const fadeInCardTwoInterval = setInterval(() => {
+        setIsCardSetFadedIn(() => [true, true, false]);
+        clearInterval(fadeInCardTwoInterval);
+        return;
+      }, 500);
+    }
+    if (isCardSetFadedIn[1]) {
+      const fadeInCardThreeInterval = setInterval(() => {
+        setIsCardSetFadedIn(() => [true, true, true]);
+        clearInterval(fadeInCardThreeInterval);
+        return;
+      }, 500);
+    }
+  }, [isCardSetFadedIn]);
+
   return (
     <div className={`Medicine-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
       <div className="Medicine-Content">
-        <div className="Medicine-Header-Container">
+        <div
+          className={`Medicine-Header-Container ${
+            isHeadersFadedIn ? "Fade-In" : ""
+          }`}
+        >
           <div className="Medicine-Header-Primary">{header.primary}</div>
           <div className="Medicine-Header-Secondary">{header.secondary}</div>
         </div>
@@ -51,7 +100,9 @@ const Medicine = (props) => {
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`Medicine-Card ${index % 2 === 0 ? "Even" : "Odd"}`}
+              className={`Medicine-Card ${index % 2 === 0 ? "Even" : "Odd"} ${
+                isCardSetFadedIn[index] ? "Fade-In" : ""
+              }`}
             >
               <img
                 src={card.mediaUrl}

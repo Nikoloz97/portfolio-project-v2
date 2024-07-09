@@ -25,7 +25,7 @@ const Tutoring = (props) => {
         "I began my tutoring journey with Mosh's courses on HTML, CSS, Python, and a little bit of Java (until I realized it wasn’t the same thing as JavaScript)",
     },
     {
-      header: "Personal Tutoring Website",
+      header: "Tutoring Site",
       mediaUrl: websiteImage,
       mediaAltText: "Intro screen to my tutoring website called NikoScience",
       websiteLinkUrl: null,

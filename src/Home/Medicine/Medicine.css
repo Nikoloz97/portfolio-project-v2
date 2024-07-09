@@ -39,6 +39,12 @@
   height: 35vh;
   width: 100vw;
   gap: 10px;
+  opacity: 0;
+}
+
+.Medicine-Header-Container.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
 }
 
 .Medicine-Header-Primary {
@@ -86,8 +92,14 @@
   align-items: center;
   justify-content: start;
   border-radius: 10px;
-  width: 22%;
+  width: 15%;
   height: fit-content;
+  opacity: 0;
+}
+
+.Medicine-Card.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
 }
 
 .Medicine-Card.Even {

@@ -16,6 +16,7 @@ const Home = () => {
   );
   const [isHomeArrowsVisible, setIsHomeArrowsVisible] = useState(false);
   const [isBottomArrowVisible, setIsBottomArrowVisible] = useState(false);
+  const [screenPosition, setScreenPosition] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,8 +50,7 @@ const Home = () => {
     setIsTopOfPage(currPos.y === 0);
   };
 
-  // Use the custom hook
-  useScrollPosition(handleScrollEffect, [], null, true, 100); // Adjust wait time as needed
+  useScrollPosition(handleScrollEffect, [], null, true, 100);
 
   const smoothScroll = (target, duration) => {
     var targetPosition = target;
@@ -69,10 +69,10 @@ const Home = () => {
     // Creates the gradual speed up -> slow down effect
     const ease = (te, sp, dis, dur) => {
       te /= dur / 2;
-      // Ease in (accelerate from zero via quadratic function)
+      // Ease in (accelerate)
       if (te < 1) return (dis / 2) * te * te + sp;
       te--;
-      // Ease out (decelerate to zero via quadratic function)
+      // Ease out (decelerate)
       return (-dis / 2) * (te * (te - 2) - 1) + sp;
     };
 
@@ -118,9 +118,9 @@ const Home = () => {
           handleDownClick={handleDownClick}
           isTopOfPage={isTopOfPage}
         />
-        <Medicine />
-        <Tutoring />
-        <Coding />
+        <Medicine windowHeightPosition={windowHeightPosition} />
+        <Tutoring windowHeightPosition={windowHeightPosition} />
+        <Coding windowHeightPosition={windowHeightPosition} />
       </div>
     </>
   );
