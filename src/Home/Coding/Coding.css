@@ -48,6 +48,12 @@
   height: 35vh;
   width: 100vw;
   gap: 20px;
+  opacity: 0;
+}
+
+.Coding-Header-Container.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
 }
 
 .Coding-Header-Primary {
@@ -69,7 +75,7 @@
   font-size: 1.75rem;
   font-weight: 200;
   padding: 10px;
-  line-height: 1;
+  line-height: 1.2;
   width: 50%;
   opacity: 0.5;
 }
@@ -108,6 +114,12 @@
   border-radius: 10px;
   width: 15%;
   height: fit-content;
+  opacity: 0;
+}
+
+.Coding-Card.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
 }
 
 .Coding-Card.Even {

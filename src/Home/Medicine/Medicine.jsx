@@ -53,7 +53,7 @@ const Medicine = (props) => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);
         return;
-      }, 500);
+      }, 100);
     }
   }, [props.windowHeightPosition]);
 

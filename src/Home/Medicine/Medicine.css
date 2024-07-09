@@ -40,6 +40,7 @@
   width: 100vw;
   gap: 10px;
   opacity: 0;
+  margin-bottom: 25px;
 }
 
 .Medicine-Header-Container.Fade-In {
@@ -66,9 +67,9 @@
   font-size: 1.75rem;
   font-weight: 200;
   padding: 10px;
-  line-height: 1;
+  line-height: 1.2;
   width: 50%;
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 .Medicine-Cards-Container {

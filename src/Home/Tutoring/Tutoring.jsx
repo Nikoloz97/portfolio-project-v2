@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Tutoring.css";
 import { useUserContext } from "../../UserContext";
 
@@ -12,8 +12,16 @@ const Tutoring = (props) => {
   const header = {
     primary: "Tutoring",
     secondary:
-      "Upon changing career paths from medicine to programming, I primarily worked a tutor",
+      "Between changing career paths from medicine to programming, I worked as a tutor",
   };
+
+  const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
+
+  const [isCardSetFadedIn, setIsCardSetFadedIn] = useState([
+    false,
+    false,
+    false,
+  ]);
 
   const cards = [
     {
@@ -41,10 +49,51 @@ const Tutoring = (props) => {
     },
   ];
 
+  useEffect(() => {
+    if (props.windowHeightPosition >= 1800) {
+      const fadeInInterval = setInterval(() => {
+        setIsHeadersFadeIn(true);
+        clearInterval(fadeInInterval);
+        return;
+      }, 100);
+    }
+  }, [props.windowHeightPosition]);
+
+  useEffect(() => {
+    if (isHeadersFadedIn) {
+      const fadeInCardOneInterval = setInterval(() => {
+        setIsCardSetFadedIn(() => [true, false, false]);
+        clearInterval(fadeInCardOneInterval);
+        return;
+      }, 1500);
+    }
+  }, [isHeadersFadedIn]);
+
+  useEffect(() => {
+    if (isCardSetFadedIn[0]) {
+      const fadeInCardTwoInterval = setInterval(() => {
+        setIsCardSetFadedIn(() => [true, true, false]);
+        clearInterval(fadeInCardTwoInterval);
+        return;
+      }, 500);
+    }
+    if (isCardSetFadedIn[1]) {
+      const fadeInCardThreeInterval = setInterval(() => {
+        setIsCardSetFadedIn(() => [true, true, true]);
+        clearInterval(fadeInCardThreeInterval);
+        return;
+      }, 500);
+    }
+  }, [isCardSetFadedIn]);
+
   return (
     <div className={`Tutoring-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
       <div className="Tutoring-Content">
-        <div className="Tutoring-Header-Container">
+        <div
+          className={`Tutoring-Header-Container ${
+            isHeadersFadedIn ? "Fade-In" : ""
+          }`}
+        >
           <div className="Tutoring-Header-Primary">{header.primary}</div>
           <div className="Tutoring-Header-Secondary">{header.secondary}</div>
         </div>
@@ -53,7 +102,9 @@ const Tutoring = (props) => {
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`Tutoring-Card ${index % 2 === 0 ? "Even" : "Odd"}`}
+              className={`Tutoring-Card ${index % 2 === 0 ? "Even" : "Odd"} ${
+                isCardSetFadedIn[index] ? "Fade-In" : ""
+              }`}
             >
               <img
                 src={card.mediaUrl}

@@ -38,7 +38,13 @@
   justify-content: end;
   height: 35vh;
   width: 100vw;
-  gap: 10px;
+  margin-bottom: 25px;
+  opacity: 0;
+}
+
+.Tutoring-Header-Container.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
 }
 
 .Tutoring-Header-Primary {
@@ -60,9 +66,9 @@
   font-size: 1.75rem;
   font-weight: 200;
   padding: 10px;
-  line-height: 1;
+  line-height: 1.2;
   width: 50%;
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 .Tutoring-Cards-Container {
@@ -88,6 +94,12 @@
   border-radius: 10px;
   width: 15%;
   height: fit-content;
+  opacity: 0;
+}
+
+.Tutoring-Card.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
 }
 
 .Tutoring-Card.Even {

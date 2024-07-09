@@ -62,19 +62,19 @@ const Blog = () => {
 
     // Delay card fade-ins
     setTimeout(() => {
-      setIsCardVisible((prev) => [true, prev[1], prev[2], prev[3]]);
+      setIsCardVisible(() => [true, false, false, false]);
     }, 1000);
 
     setTimeout(() => {
-      setIsCardVisible((prev) => [true, true, prev[2], prev[3]]);
+      setIsCardVisible(() => [true, true, false, false]);
     }, 1200);
 
     setTimeout(() => {
-      setIsCardVisible((prev) => [true, true, true, prev[3]]);
+      setIsCardVisible(() => [true, true, true, false]);
     }, 1400);
 
     setTimeout(() => {
-      setIsCardVisible((prev) => [true, true, true, true]);
+      setIsCardVisible(() => [true, true, true, true]);
     }, 1600);
   }, []);
 

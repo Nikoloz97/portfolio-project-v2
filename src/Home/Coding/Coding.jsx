@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Coding.css";
 import { useUserContext } from "../../UserContext";
 import { Icon } from "semantic-ui-react";
@@ -15,7 +15,7 @@ import portalImage from "../../Images/Home/Coding/Content/Work/ClaimGenPortal_Sq
 import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle_Square.png";
 import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square.png";
 
-const Coding = () => {
+const Coding = (props) => {
   const { isDesktop } = useUserContext();
 
   const [periodIndex, setPeriodIndex] = useState(0);
@@ -25,6 +25,14 @@ const Coding = () => {
     secondary:
       "From 2022, my coding journey consisted of self-studying, being enrolled in a coding bootcamp, and working as a full-stack software developer",
   };
+
+  const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
+
+  const [isCardSetFadedIn, setIsCardSetFadedIn] = useState([
+    false,
+    false,
+    false,
+  ]);
 
   const codingPeriods = [
     {
@@ -129,6 +137,43 @@ const Coding = () => {
     },
   ];
 
+  useEffect(() => {
+    if (props.windowHeightPosition >= 2700) {
+      const fadeInInterval = setInterval(() => {
+        setIsHeadersFadeIn(true);
+        clearInterval(fadeInInterval);
+        return;
+      }, 100);
+    }
+  }, [props.windowHeightPosition]);
+
+  useEffect(() => {
+    if (isHeadersFadedIn) {
+      const fadeInCardOneInterval = setInterval(() => {
+        setIsCardSetFadedIn(() => [true, false, false]);
+        clearInterval(fadeInCardOneInterval);
+        return;
+      }, 1500);
+    }
+  }, [isHeadersFadedIn]);
+
+  useEffect(() => {
+    if (isCardSetFadedIn[0]) {
+      const fadeInCardTwoInterval = setInterval(() => {
+        setIsCardSetFadedIn(() => [true, true, false]);
+        clearInterval(fadeInCardTwoInterval);
+        return;
+      }, 500);
+    }
+    if (isCardSetFadedIn[1]) {
+      const fadeInCardThreeInterval = setInterval(() => {
+        setIsCardSetFadedIn(() => [true, true, true]);
+        clearInterval(fadeInCardThreeInterval);
+        return;
+      }, 500);
+    }
+  }, [isCardSetFadedIn]);
+
   const handleLeftClick = () => {
     let currentPeriodIndex = periodIndex;
     --currentPeriodIndex;
@@ -143,7 +188,11 @@ const Coding = () => {
   return (
     <div className={`Coding-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
       <div className="Coding-Content">
-        <div className="Coding-Header-Container">
+        <div
+          className={`Coding-Header-Container ${
+            isHeadersFadedIn ? "Fade-In" : ""
+          }`}
+        >
           <div className="Coding-Header-Primary">{header.primary}</div>
           <div className="Coding-Header-Secondary">{header.secondary}</div>
         </div>
@@ -152,7 +201,9 @@ const Coding = () => {
             {codingPeriods[periodIndex].cards.map((codingCard, index) => (
               <div
                 key={index}
-                className={`Coding-Card ${index % 2 === 0 ? "Even" : "Odd"}`}
+                className={`Coding-Card ${index % 2 === 0 ? "Even" : "Odd"} ${
+                  isCardSetFadedIn[index] ? "Fade-In" : ""
+                }`}
               >
                 {codingCard.websiteLinkUrl ? (
                   <a
