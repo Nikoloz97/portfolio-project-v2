@@ -7,8 +7,14 @@ import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarous
 import "./Welcome.css";
 
 const Welcome = (props) => {
-  const { user, isUserSignedIn, isDesktop, isMonitor, isStrictlyDesktop } =
-    useUserContext();
+  const {
+    user,
+    isUserSignedIn,
+    isDesktop,
+    isMonitor,
+    isStrictlyDesktop,
+    isPhone,
+  } = useUserContext();
 
   const [displayedWelcomeTextLineOne, setDisplayedWelcomeTextLineOne] =
     useState("");
@@ -244,7 +250,7 @@ const Welcome = (props) => {
             onClick={props.handleDownClick}
             className={`Arrow-Welcome-Scroll-Down-Container ${
               isStrictlyDesktop ? "Strictly-Desktop" : ""
-            } ${isMonitor ? "Monitor" : ""} ${
+            } ${isMonitor ? "Monitor" : ""} ${isPhone ? "Phone" : ""} ${
               isJumpToSectionFadedIn && props.isTopOfPage
                 ? "Fade-In"
                 : !props.isTopOfPage
@@ -253,7 +259,9 @@ const Welcome = (props) => {
             }`}
           >
             <Icon name="arrow down" />
-            <div style={{ marginBottom: "15px" }}>Begin Journey</div>
+            <div style={{ marginBottom: isDesktop ? "15px" : "5px" }}>
+              Begin Journey
+            </div>
             <Icon name="arrow down" />
           </div>
         </div>

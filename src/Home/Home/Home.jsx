@@ -1,22 +1,27 @@
 import { React, useEffect, useState } from "react";
+import { useUserContext } from "../../UserContext";
 import { Icon } from "semantic-ui-react";
 import Welcome from "../Welcome/Welcome";
 import Coding from "../Coding/Coding";
+import CodingPhone from "../Coding/CodingPhone";
 import Medicine from "../Medicine/Medicine";
+import MedicinePhone from "../Medicine/MedicinePhone";
 import Tutoring from "../Tutoring/Tutoring";
+import TutoringPhone from "../Tutoring/TutoringPhone";
 
 import { useScrollPosition } from "../../Utils/General/TrackScrollPosition";
 
 import "./Home.css";
 
 const Home = () => {
+  const { isDesktop } = useUserContext();
+
   const [isTopOfPage, setIsTopOfPage] = useState(true);
   const [windowHeightPosition, setWindowHeightPosition] = useState(
     window.scrollY
   );
   const [isHomeArrowsVisible, setIsHomeArrowsVisible] = useState(false);
   const [isBottomArrowVisible, setIsBottomArrowVisible] = useState(false);
-  const [screenPosition, setScreenPosition] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -118,9 +123,19 @@ const Home = () => {
           handleDownClick={handleDownClick}
           isTopOfPage={isTopOfPage}
         />
-        <Medicine windowHeightPosition={windowHeightPosition} />
-        <Tutoring windowHeightPosition={windowHeightPosition} />
-        <Coding windowHeightPosition={windowHeightPosition} />
+        {isDesktop ? (
+          <>
+            <Medicine windowHeightPosition={windowHeightPosition} />
+            <Tutoring windowHeightPosition={windowHeightPosition} />
+            <Coding windowHeightPosition={windowHeightPosition} />
+          </>
+        ) : (
+          <>
+            <MedicinePhone windowHeightPosition={windowHeightPosition} />
+            <TutoringPhone windowHeightPosition={windowHeightPosition} />
+            <CodingPhone windowHeightPosition={windowHeightPosition} />
+          </>
+        )}
       </div>
     </>
   );

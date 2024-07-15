@@ -30,6 +30,21 @@
   background-repeat: no-repeat;
 }
 
+.Medicine-Content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.Medicine-Content.Phone {
+  gap: 20px;
+}
+
 .Medicine-Header-Container {
   display: flex;
   flex-direction: column;
@@ -43,12 +58,19 @@
   margin-bottom: 25px;
 }
 
+.Medicine-Header-Container.Phone {
+  height: 70vh;
+  gap: 0px;
+  width: 100vw;
+  margin-bottom: 0px;
+}
+
 .Medicine-Header-Container.Fade-In {
   opacity: 1;
   transition: opacity 2s ease-in-out;
 }
 
-.Medicine-Header-Primary {
+.Medicine-Header-Primary.Desktop {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,7 +80,17 @@
   width: 30%;
 }
 
-.Medicine-Header-Secondary {
+.Medicine-Header-Primary.Phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  font-size: 5rem;
+  font-weight: 300;
+  width: 30%;
+}
+
+.Medicine-Header-Secondary.Desktop {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,6 +102,20 @@
   line-height: 1.2;
   width: 50%;
   opacity: 0.75;
+}
+
+.Medicine-Header-Secondary.Phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50%;
+  font-weight: 200;
+  padding: 10px;
+  line-height: 1.2;
+  opacity: 0.75;
+  font-size: 1.5rem;
+  width: 75%;
 }
 
 .Medicine-Cards-Container {
@@ -84,6 +130,39 @@
   background-color: none;
 }
 
+.Medicine-Card-Buttons-Container-Phone {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  z-index: inherit;
+  background-color: none;
+  opacity: 0;
+}
+
+.Medicine-Card-Buttons-Container-Phone.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+.Medicine-PhoneCard-Button {
+  height: 100px;
+  width: 20%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+
+.Medicine-PhoneCard-Button:hover {
+  cursor: pointer;
+}
+
+.Medicine-PhoneCard-Button.Disabled {
+  background-color: rgba(128, 128, 128, 0.25);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .Medicine-Card {
   background-color: rgba(0, 0, 0, 0.85);
   z-index: 1;
@@ -96,6 +175,11 @@
   width: 15%;
   height: fit-content;
   opacity: 0;
+}
+
+.Medicine-Card.Phone {
+  width: 50%;
+  opacity: 1;
 }
 
 .Medicine-Card.Fade-In {

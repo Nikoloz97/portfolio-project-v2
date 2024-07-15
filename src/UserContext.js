@@ -11,6 +11,10 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(undefined);
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
 
+  const isPhone = useMediaQuery({
+    query: "(max-width: 1443px)",
+  });
+
   const isDesktop = useMediaQuery({
     query: "(min-width: 1444px)",
   });
@@ -33,6 +37,7 @@ export const UserProvider = ({ children }) => {
         isDesktop,
         isStrictlyDesktop,
         isMonitor,
+        isPhone,
       }}
     >
       {children}

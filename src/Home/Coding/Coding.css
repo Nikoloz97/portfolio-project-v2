@@ -85,8 +85,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 90vh;
-  width: 100vw;
+  height: auto;
+  width: 100%;
   z-index: inherit;
   background-color: none;
   gap: 60px;
