@@ -30,7 +30,7 @@ const Welcome = (props) => {
   const [touchEndY, setTouchEndY] = useState(null);
   const [touchMove, setTouchMove] = useState(null);
 
-  const carouselContent = ["Coding", "Medicine", "Tutoring"];
+  const carouselContent = ["Medicine", "Tutoring", "Coding"];
 
   useEffect(() => {
     const completeWelcomeTextLineOne = "Welcome,";
