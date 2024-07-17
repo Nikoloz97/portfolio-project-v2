@@ -90,9 +90,7 @@ const Medicine = (props) => {
             isHeadersFadedIn ? "Fade-In" : ""
           } Desktop`}
         >
-          <div className={`Medicine-Header-Primary Desktop`}>
-            {header.primary}
-          </div>
+          <div className="Medicine-Header-Primary">{header.primary}</div>
           <div className="Medicine-Header-Secondary Desktop">
             {header.secondary}
           </div>

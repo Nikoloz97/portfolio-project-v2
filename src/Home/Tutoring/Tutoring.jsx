@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Tutoring.css";
-import { useUserContext } from "../../UserContext";
 
 import wyzantImage from "../../Images/Home/Tutoring/Content/Wyzant_Square.png";
 import websiteImage from "../../Images/Home/Tutoring/Content/Tutoring_Square.png";
 import socialMediaImage from "../../Images/Home/Tutoring/Content/TikTok_Square.png";
 
 const Tutoring = (props) => {
-  const { isDesktop } = useUserContext();
-
   const header = {
     primary: "Tutoring",
     secondary:
@@ -87,7 +84,7 @@ const Tutoring = (props) => {
   }, [isCardSetFadedIn]);
 
   return (
-    <div className={`Tutoring-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
+    <div className="Tutoring-Screen Desktop">
       <div className="Tutoring-Content">
         <div
           className={`Tutoring-Header-Container ${
@@ -95,7 +92,9 @@ const Tutoring = (props) => {
           }`}
         >
           <div className="Tutoring-Header-Primary">{header.primary}</div>
-          <div className="Tutoring-Header-Secondary">{header.secondary}</div>
+          <div className="Tutoring-Header-Secondary Desktop">
+            {header.secondary}
+          </div>
         </div>
 
         <div className="Tutoring-Cards-Container">

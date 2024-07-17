@@ -106,7 +106,7 @@ const Home = () => {
   return (
     <>
       <div className="Home-Page">
-        {isHomeArrowsVisible && (
+        {isHomeArrowsVisible && isDesktop && (
           <div>
             <div onClick={handleUpClick} className="Home-Angle-Up">
               <Icon name="angle up" />

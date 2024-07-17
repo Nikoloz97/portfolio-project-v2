@@ -83,7 +83,7 @@ const Medicine = (props) => {
             isHeadersFadedIn ? "Fade-In" : ""
           } Phone`}
         >
-          <div className="Medicine-Header-Primary Phone">{header.primary}</div>
+          <div className="Medicine-Header-Primary">{header.primary}</div>
           <div className="Medicine-Header-Secondary Phone">
             {header.secondary}
           </div>
@@ -100,9 +100,9 @@ const Medicine = (props) => {
             }`}
             onClick={handleLeftClick}
           >
-            <Icon name="angle left" />
+            <Icon name="angle left" size="huge" />
           </div>
-          <div className={`Medicine-Card Phone `}>
+          <div className="Medicine-Card Phone">
             <img
               src={cards[cardIndex].mediaUrl}
               className="Medicine-Card-Image"
@@ -121,7 +121,7 @@ const Medicine = (props) => {
             }`}
             onClick={handleRightClick}
           >
-            <Icon name="angle right" />
+            <Icon name="angle right" size="huge" />
           </div>
         </div>
       </div>
