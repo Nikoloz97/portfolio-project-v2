@@ -39,6 +39,10 @@
   align-items: center;
 }
 
+.Coding-Content.Phone {
+  gap: 50px;
+}
+
 .Coding-Header-Container {
   display: flex;
   flex-direction: column;
@@ -49,6 +53,12 @@
   width: 100vw;
   gap: 20px;
   opacity: 0;
+}
+
+.Coding-Header-Container.Phone {
+  gap: 15px;
+  width: 100vw;
+  height: 40vh;
 }
 
 .Coding-Header-Container.Fade-In {
@@ -80,6 +90,20 @@
   opacity: 0.5;
 }
 
+.Coding-Header-Secondary.Phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 40%;
+  font-weight: 200;
+  padding: 10px;
+  line-height: 1.2;
+  opacity: 0.75;
+  font-size: 1.5rem;
+  width: 85%;
+}
+
 .Coding-Cards-Buttons-Container {
   display: flex;
   flex-direction: column;
@@ -99,6 +123,40 @@
   gap: 200px;
 }
 
+.Coding-Card-Buttons-Container-Phone {
+  display: flex;
+  height: 60vh;
+  flex-direction: row;
+  justify-content: center;
+  align-items: top;
+  width: 100vw;
+  z-index: inherit;
+  background-color: none;
+  opacity: 0;
+  gap: 5px;
+}
+
+.Coding-Card-Buttons-Container-Phone.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+.Coding-PhoneCard-Button {
+  margin-top: 35%;
+  height: 100px;
+  width: 20%;
+  z-index: 1;
+}
+
+.Coding-PhoneCard-Button:hover {
+  cursor: pointer;
+}
+
+.Coding-PhoneCard-Button.Disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .Coding-Buttons-Container {
   display: flex;
 }
@@ -115,6 +173,11 @@
   width: 15%;
   height: fit-content;
   opacity: 0;
+}
+
+.Coding-Card.Phone {
+  width: 50%;
+  opacity: 1;
 }
 
 .Coding-Card.Fade-In {

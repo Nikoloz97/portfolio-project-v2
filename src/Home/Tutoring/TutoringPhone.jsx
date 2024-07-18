@@ -58,7 +58,7 @@ const Tutoring = (props) => {
   };
 
   useEffect(() => {
-    if (props.windowHeightPosition >= 1800) {
+    if (props.windowHeightPosition >= 1650) {
       const fadeInInterval = setInterval(() => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);

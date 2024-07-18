@@ -43,18 +43,6 @@ const Medicine = (props) => {
     },
   ];
 
-  const handleLeftClick = () => {
-    let decCardIndex = cardIndex;
-    --decCardIndex;
-    setCardIndex(decCardIndex);
-  };
-
-  const handleRightClick = () => {
-    let incCardIndex = cardIndex;
-    ++incCardIndex;
-    setCardIndex(incCardIndex);
-  };
-
   useEffect(() => {
     if (props.windowHeightPosition >= 800) {
       const fadeInInterval = setInterval(() => {
@@ -74,6 +62,18 @@ const Medicine = (props) => {
       }, 1500);
     }
   }, [isHeadersFadedIn]);
+
+  const handleLeftClick = () => {
+    let decCardIndex = cardIndex;
+    --decCardIndex;
+    setCardIndex(decCardIndex);
+  };
+
+  const handleRightClick = () => {
+    let incCardIndex = cardIndex;
+    ++incCardIndex;
+    setCardIndex(incCardIndex);
+  };
 
   return (
     <div className="Medicine-Screen Phone">

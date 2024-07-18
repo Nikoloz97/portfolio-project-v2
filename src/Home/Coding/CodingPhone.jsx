@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Coding.css";
-import { useUserContext } from "../../UserContext";
 import { Icon } from "semantic-ui-react";
 
 import moshImage from "../../Images/Home/Coding/Content/Self_Teach/Mosh_New.png";
@@ -16,9 +15,13 @@ import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle_S
 import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square.png";
 
 const Coding = (props) => {
-  const { isDesktop } = useUserContext();
+  const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
+
+  const [isCardFadedIn, setIsCardFadedIn] = useState(false);
 
   const [periodIndex, setPeriodIndex] = useState(0);
+
+  const [cardIndex, setCardIndex] = useState(0);
 
   const header = {
     primary: "Coding",
@@ -26,15 +29,7 @@ const Coding = (props) => {
       "From 2022, my coding journey consisted of self-studying, being enrolled in a coding bootcamp, and working as a full-stack software developer",
   };
 
-  const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
-
-  const [isCardSetFadedIn, setIsCardSetFadedIn] = useState([
-    false,
-    false,
-    false,
-  ]);
-
-  const codingPeriods = [
+  const periods = [
     {
       title: "Self-Teaching & Exploration",
       period: "Jan - Aug 2022",
@@ -48,24 +43,24 @@ const Coding = (props) => {
           mediaCaption:
             "I began my coding journey with Mosh's courses on HTML, CSS, Python, and a little bit of Java (until I realized it wasn’t the same thing as JavaScript)",
         },
-        // {
-        //   header: "Note Taking",
-        //   techStack: null,
-        //   mediaUrl: pythonImage,
-        //   mediaAltText: "Google docs Python notes",
-        //   websiteLinkUrl: null,
-        //   mediaCaption:
-        //     "I took thorough notes. In addition to python above, I made notes to an Intro to Programming video by FreeCodeCamp and HTML/CSS by mosh",
-        // },
-        // {
-        //   header: "First Website",
-        //   techStack: "HTML, CSS",
-        //   mediaUrl: georgiaImage,
-        //   mediaAltText: "Website showing my trip in Georgia from 2021",
-        //   websiteLinkUrl: "https://nickgeorgiatrip2021.netlify.app/",
-        //   mediaCaption:
-        //     "Using my HTML & CSS notes, I created my first website with the help of bootstrap. It was my first instance of putting my front-end skills to practice. Click on the image above to see the website",
-        // },
+        {
+          header: "Note Taking",
+          techStack: null,
+          mediaUrl: pythonImage,
+          mediaAltText: "Google docs Python notes",
+          websiteLinkUrl: null,
+          mediaCaption:
+            "I took thorough notes. In addition to python above, I made notes to an Intro to Programming video by FreeCodeCamp and HTML/CSS by mosh",
+        },
+        {
+          header: "First Website",
+          techStack: "HTML, CSS",
+          mediaUrl: georgiaImage,
+          mediaAltText: "Website showing my trip in Georgia from 2021",
+          websiteLinkUrl: "https://nickgeorgiatrip2021.netlify.app/",
+          mediaCaption:
+            "Using my HTML & CSS notes, I created my first website with the help of bootstrap. It was my first instance of putting my front-end skills to practice. Click on the image above to see the website",
+        },
       ],
     },
     {
@@ -97,7 +92,7 @@ const Coding = (props) => {
           mediaAltText: "Intro screen to my biochemistry site",
           websiteLinkUrl: null,
           mediaCaption:
-            "Before I began my bootcamp journey, I worked as an online tutor. A frequent problem I faced was being able to share the useful notes I collected in a convenient way. That is when I started creating a website to do exactly that. ",
+            "Before beginning my bootcamp journey, I worked as an online tutor. A problem I wanted to solve was being able to share the notes I collected in a convenient way",
         },
       ],
     },
@@ -112,7 +107,7 @@ const Coding = (props) => {
           mediaAltText: "One of the screens of the ClaimGen Portal website",
           websiteLinkUrl: null,
           mediaCaption:
-            "As a full-stack developer at AccumTech, I work on fixing bugs and improving features on our website called ClaimGen Portal. It is a place where Business Analysts, Data Operations, and Health Insurance Vendors work with patient insurance claims",
+            "As a full-stack developer at AccumTech, I work on maintaining our website called ClaimGen Portal. It is a place where Health Insurance Vendors interact with patient records",
         },
         {
           header: "Technical Doc",
@@ -137,8 +132,10 @@ const Coding = (props) => {
     },
   ];
 
+  const card = periods[periodIndex].cards[cardIndex];
+
   useEffect(() => {
-    if (props.windowHeightPosition >= 2700) {
+    if (props.windowHeightPosition >= 2500) {
       const fadeInInterval = setInterval(() => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);
@@ -149,107 +146,105 @@ const Coding = (props) => {
 
   useEffect(() => {
     if (isHeadersFadedIn) {
-      const fadeInCardOneInterval = setInterval(() => {
-        setIsCardSetFadedIn(() => [true, false, false]);
-        clearInterval(fadeInCardOneInterval);
+      const fadeInCardInterval = setInterval(() => {
+        setIsCardFadedIn(true);
+        clearInterval(fadeInCardInterval);
         return;
       }, 1500);
     }
   }, [isHeadersFadedIn]);
 
-  useEffect(() => {
-    if (isCardSetFadedIn[0]) {
-      const fadeInCardTwoInterval = setInterval(() => {
-        setIsCardSetFadedIn(() => [true, true, false]);
-        clearInterval(fadeInCardTwoInterval);
-        return;
-      }, 500);
-    }
-    if (isCardSetFadedIn[1]) {
-      const fadeInCardThreeInterval = setInterval(() => {
-        setIsCardSetFadedIn(() => [true, true, true]);
-        clearInterval(fadeInCardThreeInterval);
-        return;
-      }, 500);
-    }
-  }, [isCardSetFadedIn]);
-
   const handleLeftClick = () => {
     let currentPeriodIndex = periodIndex;
-    --currentPeriodIndex;
-    setPeriodIndex(currentPeriodIndex);
+    let currentCardIndex = cardIndex;
+
+    if (currentCardIndex === 0) {
+      --currentPeriodIndex;
+      currentCardIndex = periods[currentPeriodIndex].cards.length - 1;
+      setPeriodIndex(currentPeriodIndex);
+      setCardIndex(currentCardIndex);
+    } else {
+      --currentCardIndex;
+      setCardIndex(currentCardIndex);
+    }
   };
+
   const handleRightClick = () => {
     let currentPeriodIndex = periodIndex;
-    ++currentPeriodIndex;
-    setPeriodIndex(currentPeriodIndex);
+    let currentCardIndex = cardIndex;
+
+    if (currentCardIndex === periods[periodIndex].cards.length - 1) {
+      ++currentPeriodIndex;
+      currentCardIndex = 0;
+      setPeriodIndex(currentPeriodIndex);
+      setCardIndex(currentCardIndex);
+    } else {
+      ++currentCardIndex;
+      setCardIndex(currentCardIndex);
+    }
   };
 
   return (
-    <div className={`Coding-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
-      <div className="Coding-Content">
+    <div className="Coding-Screen Phone">
+      <div className="Coding-Content Phone">
         <div
           className={`Coding-Header-Container ${
             isHeadersFadedIn ? "Fade-In" : ""
           }`}
         >
           <div className="Coding-Header-Primary">{header.primary}</div>
-          <div className="Coding-Header-Secondary">{header.secondary}</div>
-        </div>
-        <div className="Coding-Cards-Buttons-Container">
-          <div className="Coding-Cards-Container">
-            {codingPeriods[periodIndex].cards.map((codingCard, index) => (
-              <div
-                key={index}
-                className={`Coding-Card ${index % 2 === 0 ? "Even" : "Odd"} ${
-                  isCardSetFadedIn[index] ? "Fade-In" : ""
-                }`}
-              >
-                {codingCard.websiteLinkUrl ? (
-                  <a
-                    href={codingCard.websiteLinkUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ width: "100%" }}
-                  >
-                    <img
-                      src={codingCard.mediaUrl}
-                      className="Coding-Card-Image"
-                      alt={codingCard.mediaAltText}
-                    />
-                  </a>
-                ) : (
-                  <img
-                    src={codingCard.mediaUrl}
-                    className="Coding-Card-Image"
-                    alt={codingCard.mediaAltText}
-                  />
-                )}
-                <div className="Coding-Card-Header">{codingCard.header}</div>
-                <div className="Coding-Card-Text">
-                  {codingCard.mediaCaption}
-                </div>
-              </div>
-            ))}
+          <div className="Coding-Header-Secondary Phone">
+            {header.secondary}
           </div>
+        </div>
 
-          <div className="Coding-Buttons-Container">
-            <div
-              className={`Coding-Card-Button ${
-                periodIndex === 0 ? "Disabled" : ""
-              }`}
-              onClick={handleLeftClick}
-            >
-              <Icon name="angle left" />
-            </div>
-            <div
-              className={`Coding-Card-Button ${
-                periodIndex === codingPeriods.length - 1 ? "Disabled" : ""
-              }`}
-              onClick={handleRightClick}
-            >
-              <Icon name="angle right" />
-            </div>
+        <div
+          className={`Coding-Card-Buttons-Container-Phone ${
+            isCardFadedIn ? "Fade-In" : ""
+          }`}
+        >
+          <div
+            className={`Coding-PhoneCard-Button ${
+              periodIndex === 0 && cardIndex === 0 ? "Disabled" : ""
+            }`}
+            onClick={handleLeftClick}
+          >
+            <Icon name="angle left" size="huge" />
+          </div>
+          <div className="Coding-Card Phone">
+            {card.websiteLinkUrl ? (
+              <a
+                href={card.websiteLinkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ width: "100%" }}
+              >
+                <img
+                  src={card.mediaUrl}
+                  className="Coding-Card-Image"
+                  alt={card.mediaAltText}
+                />
+              </a>
+            ) : (
+              <img
+                src={card.mediaUrl}
+                className="Coding-Card-Image"
+                alt={card.mediaAltText}
+              />
+            )}
+            <div className="Coding-Card-Header">{card.header}</div>
+            <div className="Coding-Card-Text">{card.mediaCaption}</div>
+          </div>
+          <div
+            className={`Medicine-PhoneCard-Button ${
+              periodIndex === periods.length - 1 &&
+              cardIndex === periods[periodIndex].cards.length - 1
+                ? "Disabled"
+                : ""
+            }`}
+            onClick={handleRightClick}
+          >
+            <Icon name="angle right" size="huge" />
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Coding.css";
-import { useUserContext } from "../../UserContext";
 import { Icon } from "semantic-ui-react";
 
 import moshImage from "../../Images/Home/Coding/Content/Self_Teach/Mosh_New.png";
@@ -16,8 +15,6 @@ import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle_S
 import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square.png";
 
 const Coding = (props) => {
-  const { isDesktop } = useUserContext();
-
   const [periodIndex, setPeriodIndex] = useState(0);
 
   const header = {
@@ -186,7 +183,7 @@ const Coding = (props) => {
   };
 
   return (
-    <div className={`Coding-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
+    <div className="Coding-Screen Desktop">
       <div className="Coding-Content">
         <div
           className={`Coding-Header-Container ${
