@@ -51,8 +51,8 @@
   justify-content: end;
   height: 35vh;
   width: 100vw;
-  gap: 20px;
   opacity: 0;
+  margin-bottom: 25px;
 }
 
 .Coding-Header-Container.Phone {
@@ -87,7 +87,7 @@
   padding: 10px;
   line-height: 1.2;
   width: 50%;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .Coding-Header-Secondary.Phone {
