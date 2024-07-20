@@ -8,7 +8,15 @@
 .Medicine-Screen,
 .Tutoring-Screen {
   position: relative;
-  height: 100vh; /* Fixes gap due as a result of blur filter*/
+  height: 100vh;
+}
+
+.Welcome-Screen.Phone,
+.Coding-Screen.Phone,
+.Medicine-Screen.Phone,
+.Tutoring-Screen.Phone {
+  position: relative;
+  height: 100% !important;
 }
 
 .Home-Angle-Up {
