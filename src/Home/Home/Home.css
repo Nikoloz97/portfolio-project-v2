@@ -8,7 +8,7 @@
 .Medicine-Screen,
 .Tutoring-Screen {
   position: relative;
-  height: 100vh;
+  height: 100%;
 }
 
 .Welcome-Screen.Phone,
@@ -16,7 +16,7 @@
 .Medicine-Screen.Phone,
 .Tutoring-Screen.Phone {
   position: relative;
-  height: 100% !important;
+  height: 100%;
 }
 
 .Home-Angle-Up {

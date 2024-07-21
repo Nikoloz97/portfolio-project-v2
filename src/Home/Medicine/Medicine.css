@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   z-index: 0;
   background: linear-gradient(
       to bottom,
@@ -20,6 +20,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .Medicine-Screen.Phone {
@@ -28,6 +29,7 @@
   background-size: cover;
   background-position: left 0% bottom 0%;
   background-repeat: no-repeat;
+  height: 100%;
 }
 
 .Medicine-Content {

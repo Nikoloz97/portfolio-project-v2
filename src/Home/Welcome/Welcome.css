@@ -19,7 +19,12 @@
       rgba(5, 14, 19, 0) 40%
     );
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+}
+
+.Welcome-Screen-Container {
+  display: flex;
+  flex-direction: column;
 }
 
 .Welcome-Screen.Desktop {
@@ -27,6 +32,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .Welcome-Screen.Phone {
@@ -34,6 +40,7 @@
   background-size: cover;
   background-position: left 55% bottom 0%;
   background-repeat: no-repeat;
+  height: 100%;
 }
 
 .Welcome-Page {
@@ -199,10 +206,4 @@
 .Arrow-Welcome-Scroll-Down-Container.Fade-Out {
   opacity: 0;
   transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.Welcome-Screen-Container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
 }
