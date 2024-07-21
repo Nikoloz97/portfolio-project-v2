@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Menu, MenuItem, Button, Image, Header, Icon } from "semantic-ui-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../UserContext";
+import borjgaliImage from "../../Images/Logo/Borjgali_White.png";
 import "./TopbarDesktop.css";
 
 const TopbarDesktop = () => {
+  const navigate = useNavigate();
+
   const { user, setUser, setIsUserSignedIn, isMonitor } = useUserContext();
 
   const [selectionName, setSelectionName] = useState("Home");
@@ -17,23 +20,27 @@ const TopbarDesktop = () => {
     setSelectionName("Home");
   }, [user]);
 
-  const navigate = useNavigate();
-
   const handleSignOut = () => {
     setUser(undefined);
     setIsUserSignedIn(false);
     navigate("/");
   };
 
+  const redirectToHome = () => {
+    setSelectionName("Home");
+    navigate("/");
+  };
+
   return (
     <div>
       <Menu className="Topbar-Desktop" id="Topbar-Desktop-Overrides">
-        <Menu.Menu position="left">
+        <Menu.Menu
+          position="left"
+          onClick={() => redirectToHome()}
+          style={{ cursor: "pointer" }}
+        >
           <MenuItem>
-            <Image
-              src={require("../../Images/Logo/Borjgali_White.png")}
-              style={{ height: "2rem" }}
-            />
+            <Image src={borjgaliImage} style={{ height: "2rem" }} />
           </MenuItem>
           <MenuItem>
             <Header className="Topbar-Desktop-Logo-Text">

@@ -5,7 +5,12 @@ import TopbarPhone from "../Navbars/TopbarPhone/TopbarPhone.jsx";
 
 // Lays over the topbar to that of the router screen (see AppRouter)
 
-const TopbarLayover = ({ children, toggleSidebarVisibility }) => {
+const TopbarLayover = ({
+  children,
+  toggleSidebarVisibility,
+  phonePageSelection,
+  setPhonePageSelection,
+}) => {
   const { isDesktop } = useUserContext();
 
   return (
@@ -13,7 +18,11 @@ const TopbarLayover = ({ children, toggleSidebarVisibility }) => {
       {isDesktop ? (
         <TopbarDesktop />
       ) : (
-        <TopbarPhone toggleSidebarVisibility={toggleSidebarVisibility} />
+        <TopbarPhone
+          phonePageSelection={phonePageSelection}
+          setPhonePageSelection={setPhonePageSelection}
+          toggleSidebarVisibility={toggleSidebarVisibility}
+        />
       )}
       {children}
     </div>

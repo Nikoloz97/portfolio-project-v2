@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Menu, MenuItem, Button, Icon, Image, Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import borjgaliImage from "../../Images/Logo/Borjgali_White.png";
 import "./TopbarPhone.css";
 
 const TopbarPhone = (props) => {
   const { user } = useUserContext();
+  const navigate = useNavigate();
+
   const [scrolled, setScrolled] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -36,6 +39,11 @@ const TopbarPhone = (props) => {
     }
   }, [scrolled]);
 
+  const redirectToHome = () => {
+    props.setPhonePageSelection("Home");
+    navigate("/");
+  };
+
   return (
     <div>
       <Menu
@@ -54,12 +62,9 @@ const TopbarPhone = (props) => {
           </Button>
         </MenuItem>
 
-        <Menu.Menu position="left">
+        <Menu.Menu position="left" onClick={() => redirectToHome()}>
           <MenuItem>
-            <Image
-              src={require("../../Images/Logo/Borjgali_White.png")}
-              style={{ height: "2rem" }}
-            />
+            <Image src={borjgaliImage} style={{ height: "2rem" }} />
           </MenuItem>
           <MenuItem as={Link} to="/">
             <Header className="Topbar-Phone-Logo-Text">Nick's Portfolio</Header>

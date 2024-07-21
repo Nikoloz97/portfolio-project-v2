@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Menu, MenuItem, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./SidebarPhone.css";
 
 const SidebarPhone = (props) => {
-  const [selectionName, setSelectionName] = useState("Home");
-
   const handleButtonClick = (buttonName) => {
-    setSelectionName(buttonName);
+    props.setPhonePageSelection(buttonName);
 
     setTimeout(() => {
       props.toggleSidebarVisibility();
@@ -60,7 +58,9 @@ const SidebarPhone = (props) => {
             content="Contact"
           />
         </MenuItem>
-        <div className={`Sidebar-Phone-Selection-Bar ${selectionName}`} />
+        <div
+          className={`Sidebar-Phone-Selection-Bar ${props.phonePageSelection}`}
+        />
       </Menu>
     </div>
   );

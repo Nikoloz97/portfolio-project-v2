@@ -23,6 +23,8 @@ import "./AppRouter.css";
 function AppRouter() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
+  const [phonePageSelection, setPhonePageSelection] = useState("Home");
+
   const { isDesktop } = useUserContext();
 
   const toggleSidebarVisibility = () => {
@@ -187,7 +189,11 @@ function AppRouter() {
               direction="left"
               visible={isSidebarVisible}
             >
-              <SidebarPhone toggleSidebarVisibility={toggleSidebarVisibility} />
+              <SidebarPhone
+                toggleSidebarVisibility={toggleSidebarVisibility}
+                phonePageSelection={phonePageSelection}
+                setPhonePageSelection={setPhonePageSelection}
+              />
             </Sidebar>
             <Routes>
               <Route
@@ -195,6 +201,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <Home
                       toggleSidebarVisibility={toggleSidebarVisibility}
@@ -208,6 +215,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <Blog />
                   </TopbarLayover>
@@ -218,6 +226,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <Contact />
                   </TopbarLayover>
@@ -228,6 +237,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <Projects />
                   </TopbarLayover>
@@ -238,6 +248,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <Calculator />
                   </TopbarLayover>
@@ -248,6 +259,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <Kronos />
                   </TopbarLayover>
@@ -258,6 +270,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <FantasyBasketball />
                   </TopbarLayover>
@@ -268,6 +281,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <TeamAnalyzer />
                   </TopbarLayover>
@@ -278,6 +292,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <ScheduleAnalyzer />
                   </TopbarLayover>
@@ -288,6 +303,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <GeographyGame />
                   </TopbarLayover>
@@ -298,6 +314,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <Forum />
                   </TopbarLayover>
@@ -308,6 +325,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <Login />
                   </TopbarLayover>
@@ -318,6 +336,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <SignUp />
                   </TopbarLayover>
@@ -328,6 +347,7 @@ function AppRouter() {
                 element={
                   <TopbarLayover
                     toggleSidebarVisibility={toggleSidebarVisibility}
+                    setPhonePageSelection={setPhonePageSelection}
                   >
                     <ProfilePage />
                   </TopbarLayover>

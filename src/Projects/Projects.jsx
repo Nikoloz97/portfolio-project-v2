@@ -59,7 +59,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="Default-Page">
+    <div className="Default-Page Projects">
       {/* Intro card */}
       {currentProjectIndex === 0 ? (
         <Card className="Project-Card">
