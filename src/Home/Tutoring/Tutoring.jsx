@@ -47,7 +47,7 @@ const Tutoring = (props) => {
   ];
 
   useEffect(() => {
-    if (props.windowHeightPosition >= 1800) {
+    if (props.windowHeightPosition >= 1600) {
       const fadeInInterval = setInterval(() => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);
@@ -62,7 +62,7 @@ const Tutoring = (props) => {
         setIsCardSetFadedIn(() => [true, false, false]);
         clearInterval(fadeInCardOneInterval);
         return;
-      }, 1500);
+      }, 200);
     }
   }, [isHeadersFadedIn]);
 

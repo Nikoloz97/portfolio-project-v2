@@ -55,6 +55,7 @@
   width: 100vw;
   opacity: 0;
   margin-bottom: 25px;
+  gap: 5%;
 }
 
 .Coding-Header-Container.Phone {
@@ -73,7 +74,7 @@
   justify-content: center;
   align-items: center;
   height: 30%;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 300;
   width: 30%;
 }
@@ -84,7 +85,7 @@
   align-items: center;
   text-align: center;
   height: 30%;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 200;
   padding: 10px;
   line-height: 1.2;
@@ -172,7 +173,7 @@
   align-items: center;
   justify-content: start;
   border-radius: 10px;
-  width: 15%;
+  width: 30%;
   height: fit-content;
   opacity: 0;
 }
@@ -188,11 +189,11 @@
 }
 
 .Coding-Card.Even {
-  margin-top: 0px;
+  margin-top: 2%;
 }
 
 .Coding-Card.Odd {
-  margin-top: 30px;
+  margin-top: 5%;
 }
 
 .Coding-Card-Image {
@@ -202,7 +203,7 @@
 }
 
 .Coding-Card-Header {
-  margin-top: 20px;
+  margin-top: 7%;
   font-weight: 400;
   font-size: 1.1em;
   line-height: 1;

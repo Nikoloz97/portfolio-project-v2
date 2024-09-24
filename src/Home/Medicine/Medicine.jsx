@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Medicine.css";
-import { useUserContext } from "../../UserContext";
 
 import plasmaCenterImage from "../../Images/Home/Medicine/Content/Med5.jpg";
 import presentationImage from "../../Images/Home/Medicine/Content/Med9.png";
@@ -61,7 +60,7 @@ const Medicine = (props) => {
         setIsCardSetFadedIn(() => [true, false, false]);
         clearInterval(fadeInCardOneInterval);
         return;
-      }, 1500);
+      }, 200);
     }
   }, [isHeadersFadedIn]);
 

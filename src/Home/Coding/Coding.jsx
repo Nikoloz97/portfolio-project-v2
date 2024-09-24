@@ -135,7 +135,7 @@ const Coding = (props) => {
   ];
 
   useEffect(() => {
-    if (props.windowHeightPosition >= 2700) {
+    if (props.windowHeightPosition >= 2400) {
       const fadeInInterval = setInterval(() => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);
@@ -150,7 +150,7 @@ const Coding = (props) => {
         setIsCardSetFadedIn(() => [true, false, false]);
         clearInterval(fadeInCardOneInterval);
         return;
-      }, 1500);
+      }, 200);
     }
   }, [isHeadersFadedIn]);
 
@@ -198,9 +198,9 @@ const Coding = (props) => {
             {codingPeriods[periodIndex].cards.map((codingCard, index) => (
               <div
                 key={index}
-                className={`Coding-Card ${index % 2 === 0 ? "Even" : "Odd"} ${
-                  isCardSetFadedIn[index] ? "Fade-In" : ""
-                }`}
+                className={`Coding-Card ${
+                  index === (1 || 4 || 7) ? "Odd" : "Even"
+                } ${isCardSetFadedIn[index] ? "Fade-In" : ""}`}
               >
                 {codingCard.websiteLinkUrl ? (
                   <a
