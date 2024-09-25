@@ -29,7 +29,7 @@ jobs:
 
       # Skips loading the node-modules and stores them in a build folder
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3s
+        uses: actions/upload-artifact@v3
         with:
           name: node-app
           path: build/
