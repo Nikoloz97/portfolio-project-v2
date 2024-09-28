@@ -23,33 +23,27 @@ const Blog = () => {
       category: "Travel",
       postedDate: "10/26/2023",
       title: "Trip To Barcelona",
-      description: "This is a description of the card's content",
+      description:
+        "My trip to Barcelona in early 2023. Here, I describe and show the breathtaking views of the city. In addition, it was my first time staying at a Hostel, which truly made it an unforgettable experience.",
       imageUrl:
-        "https://www.travelandleisure.com/thmb/CpgY6sTcuTzvn3AdMX8QnyaGhJs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-sagrada-familia-TODOBARCELONA0723-327cd11c9bea4f89bc800d648c39a9b3.jpg",
-    },
-    {
-      category: "Health",
-      postedDate: "10/26/2023",
-      title: "Protein Bar Review",
-      description: "This is a description of the card's content",
-      imageUrl:
-        "https://i0.wp.com/sporked.com/wp-content/uploads/2023/07/RANKING-UPDATE_PROTEIN-BAR_HEADER.jpg?resize=966%2C544&ssl=1",
+        "https://nikolozblog.azurewebsites.net/media/assets/images/Tibidabo3.jpg",
+      blogUrl: "https://nikolozblog.azurewebsites.net/post/1/",
     },
     {
       category: "Coding",
       postedDate: "10/26/2023",
-      title: "My Journey in Coding",
-      description: "This is a description of the card's content",
-      imageUrl:
-        "https://www.zdnet.com/a/img/resize/a0dcec40a8cd8d2e1b3a9e12a05c2819622d20be/2021/07/19/8a337c80-5ed6-43a1-98fb-b981d420890f/programming-languages-shutterstock-1680857539.jpg?auto=webp&fit=crop&height=1200&width=1200",
+      title: "My Bootcamp Experience (Tech Elevator)",
+      description: "This is feature bootcamp experience.",
+      imageUrl: "",
+      blogUrl: "https://nikolozblog.azurewebsites.net/post/3/",
     },
     {
-      category: "Dance",
+      category: "Health",
       postedDate: "10/26/2023",
-      title: "Basics of Georgian Dancing",
-      description: "This is a description of the card's content",
-      imageUrl:
-        "https://storage.georgia.travel/images/georgian-folklore-dance.webp",
+      title: "My Resistance Fitness Journey",
+      description: "This is feature content.",
+      imageUrl: "",
+      blogUrl: "https://nikolozblog.azurewebsites.net/post/2/",
     },
   ];
 
@@ -170,7 +164,7 @@ const Blog = () => {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button>
+              <Button onClick={() => window.open(card.blogUrl, "_blank")}>
                 <Icon name="arrow right" style={{ marginRight: "10px" }} />
                 Go to article
               </Button>
