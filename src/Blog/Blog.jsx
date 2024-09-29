@@ -145,7 +145,12 @@ const Blog = () => {
               />
             </Dimmer.Dimmable>
             <Card.Content>
-              <Card.Description style={{ color: "white" }}>
+              <Card.Description
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                }}
+              >
                 {card.title}
               </Card.Description>
               <Card.Description>
