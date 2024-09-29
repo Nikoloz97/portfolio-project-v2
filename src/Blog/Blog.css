@@ -1,24 +1,6 @@
-.Fade-In-Header {
-  opacity: 0;
-}
-
-.Fade-In-Header.Fade-In {
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
-}
-
-.Fade-In-Subheader {
-  opacity: 0;
-}
-
-.Fade-In-Subheader.Fade-In {
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
-}
-
 .Blog-Subheader {
-  font-size: 1rem;
-  font-weight: 300;
+  font-size: 1.4rem;
+  font-weight: 200;
   opacity: 0.7;
 }
 
@@ -28,7 +10,6 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
-
   font-size: calc(10px + 2vmin);
   color: white;
   display: flex;
@@ -63,6 +44,15 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  z-index: 1;
+  font-weight: 300;
+  margin-top: 90px;
+  opacity: 0;
+}
+
+.Blog-Header-Subheader-Container.Fade-In {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
 .Blog-Header-Subheader-Container.Phone {
@@ -74,6 +64,7 @@
   width: 100%;
   justify-content: center;
   gap: 10%;
+  margin-top: -60px;
 }
 
 .Blog-Container-Phone {
@@ -93,11 +84,42 @@
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
   align-items: center;
   padding: 0.5rem !important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
-  background-color: #383c43 !important;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(22, 22, 22, 0.8) !important;
   margin-top: 2rem !important;
   width: 17% !important;
   line-height: 1;
+}
+
+.Blog-Posted-Date-Container {
+  color: white !important;
+  opacity: 0.8;
+  font-size: 0.6em;
+  margin-top: 0.5em;
+  display: flex;
+  justify-content: center;
+}
+
+.Blog-Subcategories-Container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.Blog-Subcategory-Pill {
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  border-radius: 2em !important;
+  font-size: 0.5em;
+  padding: 0.5em;
+}
+
+.Blog-RF-Button {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border: 1px solid white !important;
+  border-radius: 2em !important;
 }
 
 .Blog-Card.Pop-in {

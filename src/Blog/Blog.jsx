@@ -7,7 +7,6 @@ const Blog = () => {
   const { isDesktop } = useUserContext();
 
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  const [isSubheaderVisible, setIsSubheaderVisible] = useState(false);
 
   const [isCardVisible, setIsCardVisible] = useState([
     false,
@@ -21,7 +20,8 @@ const Blog = () => {
   const cards = [
     {
       category: "Travel",
-      postedDate: "10/26/2023",
+      subCategories: ["Europe", "Hostel", "Spring Break"],
+      postedDate: "July 31st, 2024",
       title: "Trip To Barcelona",
       description:
         "My trip to Barcelona in early 2023. Here, I describe and show the breathtaking views of the city. In addition, it was my first time staying at a Hostel, which truly made it an unforgettable experience.",
@@ -31,7 +31,8 @@ const Blog = () => {
     },
     {
       category: "Coding",
-      postedDate: "10/26/2023",
+      subCategories: ["Learning", "Networking", "Career"],
+      postedDate: "July 31st, 2024",
       title: "My Bootcamp Experience (Tech Elevator)",
       description: "This is feature bootcamp experience.",
       imageUrl: "",
@@ -39,7 +40,8 @@ const Blog = () => {
     },
     {
       category: "Health",
-      postedDate: "10/26/2023",
+      subCategories: ["Exercise", "Diet", "Physical Health"],
+      postedDate: "July 31st, 2024",
       title: "My Resistance Fitness Journey",
       description: "This is feature content.",
       imageUrl: "",
@@ -51,25 +53,24 @@ const Blog = () => {
     // Delay header fade-in
     setTimeout(() => {
       setIsHeaderVisible(true);
-      setIsSubheaderVisible(true);
     }, 200);
 
     // Delay card fade-ins
     setTimeout(() => {
       setIsCardVisible(() => [true, false, false, false]);
-    }, 1000);
+    }, 1500);
 
     setTimeout(() => {
       setIsCardVisible(() => [true, true, false, false]);
-    }, 1200);
+    }, 1700);
 
     setTimeout(() => {
       setIsCardVisible(() => [true, true, true, false]);
-    }, 1400);
+    }, 1900);
 
     setTimeout(() => {
       setIsCardVisible(() => [true, true, true, true]);
-    }, 1600);
+    }, 2100);
   }, []);
 
   useEffect(() => {
@@ -107,20 +108,10 @@ const Blog = () => {
       <div
         className={`Blog-Header-Subheader-Container ${
           isDesktop ? "Desktop" : "Phone"
-        }`}
+        } ${isHeaderVisible ? "Fade-In" : ""}`}
       >
-        <div
-          className={`Default-Header Fade-In-Header ${
-            isHeaderVisible ? "Fade-In" : ""
-          }`}
-        >
-          Nick's Blog
-        </div>
-        <div
-          className={`Blog-Subheader Fade-In-Subheader ${
-            isSubheaderVisible ? "Fade-In" : ""
-          }`}
-        >
+        <div className="Default-Header">Nick's Blog</div>
+        <div className="Blog-Subheader">
           {isDesktop ? "Hover " : "Tap "}
           over each image for a short article summary
         </div>
@@ -143,13 +134,8 @@ const Blog = () => {
                 active={isHovered[index]}
                 onMouseLeave={() => handleMouseLeave(index)}
               >
-                <Card.Content>
-                  <Card.Header style={{ color: "white" }}>
-                    {card.description}
-                  </Card.Header>
-                  <Card.Meta style={{ color: "white" }}>
-                    {card.postedDate}
-                  </Card.Meta>
+                <Card.Content style={{ color: "white", fontSize: "0.7em" }}>
+                  {card.description}
                 </Card.Content>
               </Dimmer>
               <Image
@@ -162,11 +148,26 @@ const Blog = () => {
               <Card.Description style={{ color: "white" }}>
                 {card.title}
               </Card.Description>
+              <Card.Description>
+                <div className="Blog-Posted-Date-Container">
+                  {card.postedDate}
+                </div>
+                <div className="Blog-Subcategories-Container">
+                  {card.subCategories.map((subCat, index) => (
+                    <div key={index} className="Blog-Subcategory-Pill">
+                      {subCat}
+                    </div>
+                  ))}
+                </div>
+              </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button onClick={() => window.open(card.blogUrl, "_blank")}>
+              <Button
+                onClick={() => window.open(card.blogUrl, "_blank")}
+                className="Blog-RF-Button"
+              >
                 <Icon name="arrow right" style={{ marginRight: "10px" }} />
-                Go to article
+                Read Full Blog
               </Button>
             </Card.Content>
           </Card>
