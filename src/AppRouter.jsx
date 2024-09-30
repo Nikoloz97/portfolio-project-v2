@@ -7,7 +7,7 @@ import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
 import SidebarPhone from "./Navbars/SidebarPhone/SidebarPhone.jsx";
 import TopbarLayover from "./Utils/TopbarLayover.jsx";
-import Projects from "./Projects/ProjectsV2.jsx";
+import Projects from "./Projects/Projects.jsx";
 import Calculator from "./Projects/Calculator/Calculator";
 import Kronos from "./Projects/Clocks/Kronos";
 import Forum from "./Forum/Forum.jsx";
