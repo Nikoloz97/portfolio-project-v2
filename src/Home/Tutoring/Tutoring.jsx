@@ -27,7 +27,7 @@ const Tutoring = (props) => {
       mediaAltText: "Profile on the tutoring website Wyzant",
       websiteLinkUrl: null,
       mediaCaption:
-        "I began my tutoring journey with Mosh's courses on HTML, CSS, Python, and a little bit of Java (until I realized it wasn’t the same thing as JavaScript)",
+        "I began my tutoring journey through a platform called Wyzant. Since making a profile in July 2022, I'm certified in Biology, Chemistry, Biochemistry, Genetics, and Physiology",
     },
     {
       header: "Tutoring Site",

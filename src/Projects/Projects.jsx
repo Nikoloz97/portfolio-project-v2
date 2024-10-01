@@ -8,7 +8,7 @@ import clocksImage from "../Images/Projects/Kronos2.jpg";
 import calculatorImage from "../Images/Projects/Calc1.jpg";
 import geographyGameImage from "../Images/Projects/Globe1.jpg";
 
-const ProjectsV2 = (props) => {
+const Projects = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
   const projectsData = [
@@ -45,27 +45,28 @@ const ProjectsV2 = (props) => {
   ];
   return (
     <>
-      <div className="Projects2-Page">
-        <div className="Projects2-Container">
-          <div className="Projects2-Title-Description-Container">
-            <div className="Projects2-Title">Mini Projects</div>
-            <div className="Projects2-Project-Title">
+      <div className="Projects-Page">
+        <div className="Projects-Container">
+          <div className="Projects-Title-Description-Container">
+            <div className="Projects-Project-Title">
               {projectsData[currentProjectIndex].title}
             </div>
-            <div className="Projects2-Project-Description">
+            <div className="Projects-Project-Description">
               {projectsData[currentProjectIndex].description}
             </div>
-            <Button
-              as={Link}
-              to={projectsData[currentProjectIndex].linkUrl}
-              className="Projects2-Project-Button"
-            >
-              Go To Project
-              <Icon name="arrow right" />
-            </Button>
+            {currentProjectIndex !== 0 && (
+              <Button
+                as={Link}
+                to={projectsData[currentProjectIndex].linkUrl}
+                className="Projects-Project-Button"
+              >
+                Go To Project
+                <Icon name="arrow right" />
+              </Button>
+            )}
           </div>
 
-          <div className="Projects2-Images-Container">
+          <div className="Projects-Images-Container">
             {projectsData.map((project, index) => (
               <div>
                 {index > 0 && (
@@ -73,7 +74,7 @@ const ProjectsV2 = (props) => {
                     key={index}
                     alt={project.description}
                     src={project.mediaUrl}
-                    className="Projects2-Image"
+                    className="Projects-Image"
                     onClick={() => setCurrentProjectIndex(index)}
                   />
                 )}
@@ -86,4 +87,4 @@ const ProjectsV2 = (props) => {
   );
 };
 
-export default ProjectsV2;
+export default Projects;

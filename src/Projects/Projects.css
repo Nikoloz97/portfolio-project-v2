@@ -1,5 +1,5 @@
-.Projects2-Page {
-  background: url("../Images/Projects/notebook-near-measuring-tools.jpg");
+.Projects-Page {
+  background: url("../Images/Projects/MeasuringTools-Blurred.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -21,66 +21,68 @@
   background: linear-gradient(
       to top,
       rgb(13, 20, 21) 0%,
-      rgba(5, 14, 19, 0) 20%
+      rgba(5, 14, 19, 0) 50%
     ),
     linear-gradient(
       to bottom,
       rgba(13, 20, 21, 0.473) 8%,
-      rgba(5, 14, 19, 0) 40%
+      rgba(5, 14, 19, 0) 80%
     );
   width: 100vw;
   height: 100%;
 }
 
-.Projects2-Container {
+.Projects-Container {
   display: flex;
   width: 100vw;
   height: 80vh;
   justify-content: center;
   align-items: center;
   gap: 10%;
+  z-index: 1;
 }
 
-.Projects2-Title-Description-Container {
+.Projects-Title-Description-Container {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: start;
+  height: 50%;
+  justify-content: center;
   align-items: center;
+  margin-left: 5%;
   width: 40%;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-radius: 1%;
 }
 
-.Projects2-Title {
-  font-size: 3em;
-  margin-top: 1em;
-}
-
-.Projects2-Project-Title {
+.Projects-Project-Title {
   font-size: 5em;
   font-weight: 400;
-  margin-top: 3em;
 }
 
-.Projects2-Project-Description {
+.Projects-Project-Description {
+  font-size: 1.5em;
   margin-top: 4em;
 }
 
-.Projects2-Project-Button {
+.Projects-Project-Button {
   background-color: rgba(128, 128, 128, 0.2) !important;
   margin-top: 2em !important;
   font-size: 1.5em !important;
 }
 
-.Projects2-Images-Container {
+.Projects-Images-Container {
   display: flex;
   width: 60%;
   gap: 1em;
 }
 
-.Projects2-Image {
-  max-height: 200px;
+.Projects-Image {
+  height: 400px;
+  width: 200px;
+  border-radius: 4%;
+  box-shadow: 0px 0px 30px rgb(0, 0, 0) !important;
 }
 
-.Projects2-Image:hover {
+.Projects-Image:hover {
   cursor: pointer;
 }
