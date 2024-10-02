@@ -4,9 +4,9 @@ import { Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import fantasyBballImage from "../Images/Projects/Nba1.jpg";
-import clocksImage from "../Images/Projects/Kronos2.jpg";
-import calculatorImage from "../Images/Projects/Calc1.jpg";
-import geographyGameImage from "../Images/Projects/Globe1.jpg";
+import clocksImage from "../Images/Projects/clock-design-wallpaper-cropped.jpg";
+import calculatorImage from "../Images/Projects/front-view-school-supplies-table-composition-cropped.jpg";
+import geographyGameImage from "../Images/Projects/pexels-ricky-galvez-466962-1169922-cropped.jpg";
 
 const Projects = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
