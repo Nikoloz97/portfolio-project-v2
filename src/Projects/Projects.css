@@ -83,6 +83,28 @@
   box-shadow: 0px 0px 30px rgb(0, 0, 0) !important;
 }
 
+.Projects-Image-Disabled {
+  filter: grayscale(0.7) blur(0.75px);
+}
+
 .Projects-Image:hover {
   cursor: pointer;
+}
+
+.Projects-Image-Disabled:hover {
+  cursor: auto !important;
+}
+
+.Projects-CS-Overlay {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  width: 80%;
+  height: 15%;
+  font-size: 2em;
+  font-weight: 300;
+  background-color: rgba(0, 0, 0, 0.471);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -69,15 +69,26 @@ const Projects = () => {
           <div className="Projects-Images-Container">
             {projectsData.map((project, index) => (
               <div>
-                {index > 0 && (
-                  <img
-                    key={index}
-                    alt={project.description}
-                    src={project.mediaUrl}
-                    className="Projects-Image"
-                    onClick={() => setCurrentProjectIndex(index)}
-                  />
-                )}
+                {index > 0 &&
+                  (index === 4 ? (
+                    <div style={{ position: "relative" }}>
+                      <img
+                        key={index}
+                        alt={project.description}
+                        src={project.mediaUrl}
+                        className="Projects-Image Projects-Image-Disabled"
+                      />
+                      <div className="Projects-CS-Overlay">Coming Soon</div>
+                    </div>
+                  ) : (
+                    <img
+                      key={index}
+                      alt={project.description}
+                      src={project.mediaUrl}
+                      className="Projects-Image"
+                      onClick={() => setCurrentProjectIndex(index)}
+                    />
+                  ))}
               </div>
             ))}
           </div>
