@@ -21,25 +21,28 @@ const Projects = () => {
     {
       title: "Fantasy Basketball",
       mediaUrl: fantasyBballImage,
-      description: "This is a description about the fantasy basketball project",
+      description:
+        "The fantasy basketball project consists of the team analyzer, which calculates how well your team averages in nine categories relative to the league's top 150 players. It also consists of the schedule analyzer, which determines which waiver-wire players to pick up for back-to-backs or high-volume weeks",
       linkUrl: "/projects/fantasy-basketball",
     },
     {
       title: "Clocks",
       mediaUrl: clocksImage,
-      description: "This is a description about the clocks project",
+      description:
+        "The clocks project consists of a stopwatch, alarm, and a digital clock",
       linkUrl: "/projects/kronos",
     },
     {
       title: "Calculator",
       mediaUrl: calculatorImage,
-      description: "This is a description about the calculator project",
+      description:
+        "The calculator project consists of a basic arithmetic calculator",
       linkUrl: "/projects/calculator",
     },
     {
       title: "Geography Game",
       mediaUrl: geographyGameImage,
-      description: "This is a description about the geography game project",
+      description: "Coming soon",
       linkUrl: "/projects/geography-game",
     },
   ];
