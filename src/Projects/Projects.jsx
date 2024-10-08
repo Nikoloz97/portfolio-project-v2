@@ -13,7 +13,7 @@ const Projects = () => {
 
   const projectsData = [
     {
-      title: "Mini Projects",
+      title: "Projects",
       mediaUrl: null,
       description: "Click on the projects to the right to get a description",
       linkUrl: null,
@@ -68,24 +68,22 @@ const Projects = () => {
 
           <div className="Projects-Images-Container">
             {projectsData.map((project, index) => (
-              <div>
+              <div key={index}>
                 {index > 0 &&
                   (index === 4 ? (
-                    <div style={{ position: "relative" }}>
+                    <div className="Projects-Image">
                       <img
-                        key={index}
+                        className="Projects-Image-Disabled"
                         alt={project.description}
                         src={project.mediaUrl}
-                        className="Projects-Image Projects-Image-Disabled"
                       />
                       <div className="Projects-CS-Overlay">Coming Soon</div>
                     </div>
                   ) : (
                     <img
-                      key={index}
+                      className="Projects-Image"
                       alt={project.description}
                       src={project.mediaUrl}
-                      className="Projects-Image"
                       onClick={() => setCurrentProjectIndex(index)}
                     />
                   ))}
