@@ -15,7 +15,7 @@ const Projects = () => {
     {
       title: "Projects",
       mediaUrl: null,
-      description: "Click on the projects to the right to get a description",
+      description: "Click on a project to get a description",
       linkUrl: null,
     },
     {
@@ -84,7 +84,11 @@ const Projects = () => {
                     </div>
                   ) : (
                     <img
-                      className="Projects-Image"
+                      className={`${
+                        currentProjectIndex === index
+                          ? "Projects-Selected-Card"
+                          : ""
+                      } Projects-Image`}
                       alt={project.description}
                       src={project.mediaUrl}
                       onClick={() => setCurrentProjectIndex(index)}

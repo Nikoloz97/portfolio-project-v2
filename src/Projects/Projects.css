@@ -90,7 +90,8 @@
   height: 100%;
   width: 100%;
   border-radius: 4%;
-  box-shadow: 0px 0px 30px rgb(0, 0, 0) !important;
+  box-shadow: 0px 0px 30px rgb(0, 0, 0);
+  filter: grayscale(0.7);
 }
 
 .Projects-Image-Disabled {
@@ -123,4 +124,9 @@
   text-align: center;
   line-height: 0.9;
   padding: 1.2em;
+}
+
+.Projects-Selected-Card {
+  filter: grayscale(0);
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.832) !important;
 }
