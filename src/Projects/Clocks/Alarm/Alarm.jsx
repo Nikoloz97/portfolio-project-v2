@@ -4,71 +4,97 @@ import { Button, Input } from "semantic-ui-react";
 
 function Alarm() {
   const [inputTime, setInputTime] = useState("");
-  const [beginCountdown, setBeginCountdown] = useState(false);
+  const [alarmTime, setAlarmTime] = useState(new Date());
+  const [isCountdownBegun, setIsCountdownBegun] = useState(false);
+  const [isTimeSet, setIsTimeSet] = useState(false);
   const [isRinging, setIsRinging] = useState(false);
-  const [remainingTime, setRemainingTime] = useState(inputTime - new Date());
+  const [milliSecondsRemaining, setMillisecondsRemaining] = useState(0);
+
+  useEffect(() => {
+    if (inputTime) {
+      const timer = setInterval(updateRemainingTime, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [milliSecondsRemaining]);
 
   const handleTimeChange = (event) => {
+    setIsTimeSet(true);
     setInputTime(event.target.value);
   };
 
   const updateRemainingTime = () => {
-    setRemainingTime(inputTime - new Date());
+    if (inputTime) {
+      const currentTime = new Date();
+      setMillisecondsRemaining(alarmTime - currentTime);
+    }
   };
 
-  // TODO: fix the display problem - either this function, the remainingTime state (param), or both
-  const formatTime = (time) => {
-    const hours = Math.floor(time / (1000 * 60 * 60));
-    const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((time % (1000 * 60)) / 1000);
+  const formatTime = (milliSeconds) => {
+    const hours = Math.floor(milliSeconds / (1000 * 60 * 60));
+    const minutes = Math.floor((milliSeconds % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((milliSeconds % (1000 * 60)) / 1000);
 
     return `${hours.toString().padStart(2, "0")}:${minutes
       .toString()
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
 
-  const startAlarm = () => {
-    setBeginCountdown(true);
+  const handleStartAlarm = () => {
+    setIsCountdownBegun(true);
 
     const currentTime = new Date();
     const [hours, minutes] = inputTime.split(":");
-    const alarmTime = new Date();
-    alarmTime.setHours(hours);
-    alarmTime.setMinutes(minutes);
+    const tempAlarmTime = new Date();
+    tempAlarmTime.setHours(hours);
+    tempAlarmTime.setMinutes(minutes);
 
     // If alarmTime = earlier than currentTime, push it for next day
-    if (alarmTime < currentTime) {
-      alarmTime.setDate(currentTime.getDate() + 1);
+    if (tempAlarmTime < currentTime) {
+      setAlarmTime(tempAlarmTime.setDate(currentTime.getDate() + 1));
+    } else {
+      setAlarmTime(tempAlarmTime);
     }
 
-    const timeUntilAlarm = alarmTime - currentTime;
+    const millisecondsUntilAlarm = tempAlarmTime - currentTime;
 
-    // Should this timer variable be used somewhere?
-    const timer = setTimeout(() => {
-      setIsRinging(true);
-    }, timeUntilAlarm);
+    setMillisecondsRemaining(millisecondsUntilAlarm);
   };
 
-  useEffect(() => {
-    const timer = setInterval(updateRemainingTime, 1000);
-    return () => clearInterval(timer);
-  }, []);
+  const handleReset = () => {
+    setIsCountdownBegun(false);
+    setInputTime("");
+    setIsRinging(false);
+    setIsTimeSet(false);
+  };
 
   return (
     <div className="Alarm-Container">
-      <h1 style={{ textAlign: "center" }}>Alarm</h1>
-
       <div className="Alarm-Display-Container">
-        {beginCountdown ? (
+        {isCountdownBegun ? (
           <div className="Alarm-Time-Display">
-            {isRinging ? <h2>Alarm is ringing!</h2> : formatTime(remainingTime)}
-          </div>
-        ) : (
-          <div className="Alarm-Input-Start-Container">
             <Button
               style={{ marginTop: "0.2em" }}
               color="red"
-              onClick={startAlarm}
+              onClick={handleReset}
+            >
+              Reset
+            </Button>
+            <div style={{ marginTop: "1.5em" }}>
+              {isRinging ? (
+                <div>Alarm is ringing!</div>
+              ) : (
+                <div>{formatTime(milliSecondsRemaining)}</div>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="Alarm-Input-Start-Container">
+            <h1 style={{ textAlign: "center" }}>Alarm</h1>
+            <Button
+              style={{ marginTop: "0.2em" }}
+              color="red"
+              disabled={!isTimeSet}
+              onClick={handleStartAlarm}
             >
               Start
             </Button>
