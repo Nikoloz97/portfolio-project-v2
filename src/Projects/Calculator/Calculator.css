@@ -1,10 +1,12 @@
 .Calc-Display {
   border: 1px solid white;
-  height: 2em;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 3em;
   width: 10em;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 3%;
 }
 
 .Calc-Display-Buttons-Container {
@@ -14,15 +16,50 @@
   gap: 1em;
   border: 1px solid white;
   padding: 1em;
+  height: 20em;
+  border-radius: 5%;
 }
 
 .Calc-Buttons-Container {
   display: flex;
+  gap: 0.5em;
+}
+
+.Calc-Circular-Buttons-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Calc-Number-Buttons-Container {
+  display: flex;
   flex-direction: column;
   gap: 1em;
+  height: 100%;
+}
+
+.Calc-Number-Buttons-Row {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .Calc-Section-Container {
   display: flex;
   justify-content: space-between;
+  margin-top: 0.5em;
+}
+
+.Calc-Circular-Button {
+  border-radius: 100% !important;
+  background-color: white !important;
+  width: 3em;
+  height: 3em;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.Calc-Equals-Button {
+  background-color: white !important;
+  width: 10em;
 }
