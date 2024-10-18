@@ -1,0 +1,31 @@
+.Alarm-Container {
+}
+
+.Alarm-Input-Start-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.Alarm-Display-Container {
+  height: 7em;
+  width: 14em;
+  border: 1px solid rgba(255, 255, 255, 0.473);
+  border-radius: 4em;
+  display: flex;
+  justify-content: center;
+}
+
+.Alarm-Input {
+  margin-top: 0.6em;
+  border: 1px solid white;
+}
+
+.Alarm-Input > input {
+  background: rgba(255, 255, 255, 0.13) !important;
+  color: white !important;
+}
+
+.Alarm-Time-Display {
+  margin-top: 3em;
+}

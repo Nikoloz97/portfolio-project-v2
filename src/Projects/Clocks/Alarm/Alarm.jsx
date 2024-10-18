@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "./Alarm.css";
+import { Button, Input } from "semantic-ui-react";
 
 function Alarm() {
   const [inputTime, setInputTime] = useState("");
@@ -14,6 +16,7 @@ function Alarm() {
     setRemainingTime(inputTime - new Date());
   };
 
+  // TODO: fix the display problem - either this function, the remainingTime state (param), or both
   const formatTime = (time) => {
     const hours = Math.floor(time / (1000 * 60 * 60));
     const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
@@ -40,6 +43,7 @@ function Alarm() {
 
     const timeUntilAlarm = alarmTime - currentTime;
 
+    // Should this timer variable be used somewhere?
     const timer = setTimeout(() => {
       setIsRinging(true);
     }, timeUntilAlarm);
@@ -51,12 +55,32 @@ function Alarm() {
   }, []);
 
   return (
-    <div>
-      <h1>Alarm</h1>
-      {beginCountdown ? <p>{formatTime(remainingTime)}</p> : null}
-      <input type="time" value={inputTime} onChange={handleTimeChange} />
-      {isRinging ? <p>Alarm is ringing!</p> : null}
-      <button onClick={startAlarm}>Start</button>
+    <div className="Alarm-Container">
+      <h1 style={{ textAlign: "center" }}>Alarm</h1>
+
+      <div className="Alarm-Display-Container">
+        {beginCountdown ? (
+          <div className="Alarm-Time-Display">
+            {isRinging ? <h2>Alarm is ringing!</h2> : formatTime(remainingTime)}
+          </div>
+        ) : (
+          <div className="Alarm-Input-Start-Container">
+            <Button
+              style={{ marginTop: "0.2em" }}
+              color="red"
+              onClick={startAlarm}
+            >
+              Start
+            </Button>
+            <Input
+              className="Alarm-Input"
+              type="time"
+              value={inputTime}
+              onChange={handleTimeChange}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
