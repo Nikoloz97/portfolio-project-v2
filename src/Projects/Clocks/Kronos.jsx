@@ -47,7 +47,9 @@ function Kronos() {
         </div>
       </div>
 
-      {renderTool()}
+      <div style={{ width: "33%", display: "flex", justifyContent: "center" }}>
+        {renderTool()}
+      </div>
 
       <div className="Kronos-Prev-Next-Container">
         <div style={{ width: "4em" }}>

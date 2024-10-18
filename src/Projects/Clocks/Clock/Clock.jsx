@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "semantic-ui-react";
+import "./Clock.css";
 
 function ClockDisplay() {
   const [time, setTime] = useState(new Date());
+  const [ButtonDisplay, setButtonDisplay] = useState("24 hr");
 
-  const [startTracking, setStartTracking] = useState(false);
-
-  const [ButtonDisplay, setButtonDisplay] = useState("Show");
+  const [isTwelveHour, setIsTwelveHour] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -16,35 +16,34 @@ function ClockDisplay() {
     return () => {
       clearInterval(timer);
     };
-  }, [startTracking]);
+  }, []);
 
-  const handleClick = () => {
-    if (ButtonDisplay === "Show") {
-      setStartTracking(true);
-      setButtonDisplay("Hide");
+  const handleClockTypeConversion = () => {
+    if (ButtonDisplay === "24 hr") {
+      setButtonDisplay("12 hr");
     } else {
-      setStartTracking(false);
-      setButtonDisplay("Show");
+      setButtonDisplay("24 hr");
     }
+    const tempIsTwelveHour = isTwelveHour;
+    setIsTwelveHour(!tempIsTwelveHour);
   };
 
   const options = {
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
-    hour12: true,
+    hour12: isTwelveHour,
   };
 
-  // TODO: Figure out why first div's curly = updating even though second
-  // startTracking isn't changed yet (see useEffect's 2nd param)
   return (
     <div>
-      <h1>Clock</h1>
-      <div>{time.toLocaleTimeString("en-US", options)}</div>
-      <div>
-        {startTracking ? time.toLocaleTimeString("en-US", options) : null}
+      <h1 style={{ textAlign: "center", marginBottom: "4em" }}>Clock</h1>
+      <div className="Clock-Button-Container">
+        <Button onClick={handleClockTypeConversion}>{ButtonDisplay}</Button>
+        <div className="Clock-Container">
+          {time.toLocaleTimeString("en-US", options)}
+        </div>
       </div>
-      <Button onClick={handleClick}>{ButtonDisplay}</Button>
     </div>
   );
 }
