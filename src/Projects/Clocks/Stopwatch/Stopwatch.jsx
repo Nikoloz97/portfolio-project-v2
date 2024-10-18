@@ -1,33 +1,34 @@
 import React, { useState, useRef } from "react";
 import { Button } from "semantic-ui-react";
+import "./Stopwatch.css";
 
 function Stopwatch() {
-  const [running, setRunning] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
   const intervalRef = useRef();
 
   const start = () => {
-    if (!running) {
+    if (!isRunning) {
       const startTime = Date.now() - elapsedTime;
       intervalRef.current = setInterval(() => {
         setElapsedTime(Date.now() - startTime);
       }, 10);
 
-      setRunning(true);
+      setIsRunning(true);
     }
   };
 
   const stop = () => {
-    if (running) {
+    if (isRunning) {
       clearInterval(intervalRef.current);
-      setRunning(false);
+      setIsRunning(false);
     }
   };
 
   const reset = () => {
     clearInterval(intervalRef.current);
     setElapsedTime(0);
-    setRunning(false);
+    setIsRunning(false);
   };
 
   // Custom function by react
@@ -41,13 +42,22 @@ function Stopwatch() {
   };
 
   return (
-    <div className="countUp">
-      <h1>Stopwatch</h1>
-      <div className="display"> {formatTime(elapsedTime)}</div>
-      <div className="controls" style={{ marginTop: "10px" }}>
-        {!running && <Button onClick={start}>Start</Button>}
-        {running && <Button onClick={stop}>Stop</Button>}
-        <Button onClick={reset}>Reset</Button>
+    <div className="Stopwatch-Container">
+      <h1 style={{ textAlign: "center" }}>Stopwatch</h1>
+      <div className="Stopwatch-Display">{formatTime(elapsedTime)}</div>
+      <div className="Stopwatch-Button-Container">
+        {isRunning ? (
+          <Button className="Stopwatch-Button" onClick={stop}>
+            Stop
+          </Button>
+        ) : (
+          <Button className="Stopwatch-Button" onClick={start}>
+            Start
+          </Button>
+        )}
+        <Button className="Stopwatch-Button" onClick={reset}>
+          Reset
+        </Button>
       </div>
     </div>
   );
