@@ -12,6 +12,9 @@ function Alarm() {
 
   useEffect(() => {
     if (inputTime) {
+      if (milliSecondsRemaining < 1000) {
+        setIsRinging(true);
+      }
       const timer = setInterval(updateRemainingTime, 1000);
       return () => clearInterval(timer);
     }
