@@ -37,19 +37,22 @@ const FantasyBasketball = () => {
             />
           </div>
 
-          <div
-            className={`Hub-Schedule-Analyzer ${
-              isScheduleHovered ? "Hovered" : ""
-            }`}
-            onMouseEnter={() => setIsScheduleHovered(true)}
-            onMouseLeave={() => setIsScheduleHovered(false)}
-          >
-            <InvertableButton
-              link="/projects/fantasy-basketball/schedule-analyzer"
-              className="FB-Button"
-              isInversionCustom={true}
-              name="Schedule Analyzer"
-            />
+          <div className="Hub-Coming-Soon-Container">
+            <div
+              className={`Hub-Schedule-Analyzer Hub-Coming-Soon-Background ${
+                isScheduleHovered ? "Hovered" : ""
+              }`}
+              onMouseEnter={() => setIsScheduleHovered(true)}
+              onMouseLeave={() => setIsScheduleHovered(false)}
+            >
+              <InvertableButton
+                link="/projects/fantasy-basketball/schedule-analyzer"
+                className="FB-Button"
+                isInversionCustom={true}
+                name="Schedule Analyzer"
+              />
+            </div>
+            <div className="Hub-Coming-Soon-Overlay">Coming Soon</div>
           </div>
         </div>
       </div>

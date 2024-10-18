@@ -64,7 +64,9 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 600px;
-  width: 40%;
+  width: 100%;
+  /* TODO: uncomment once coming-soon is removed */
+  /* width: 40%; */
   filter: brightness(80%) blur(0.5px);
   display: flex;
   justify-content: center;
@@ -74,4 +76,35 @@
 
 .Hub-Schedule-Analyzer.Hovered {
   filter: brightness(100%);
+}
+
+/* TODO: remove once schedule analyzer is built  */
+
+.Hub-Coming-Soon-Container {
+  height: 600px;
+  width: 40%;
+  position: relative;
+}
+
+.Hub-Coming-Soon-Background {
+  filter: grayscale(0.9) blur(3px) !important;
+  z-index: 1;
+}
+
+.Hub-Coming-Soon-Overlay {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  width: 80%;
+  height: 15%;
+  font-size: 2em;
+  font-weight: 300;
+  background-color: rgba(0, 0, 0, 0.471);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 0.9;
+  padding: 1.2em;
+  filter: none !important;
 }
