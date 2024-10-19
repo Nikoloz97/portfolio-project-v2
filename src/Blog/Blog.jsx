@@ -48,7 +48,7 @@ const Blog = () => {
       description:
         "Beginning summer of 2021, I began working on my health. Here, I will describe how I shifted my diet and how I made resistance exercise a daily routine.",
       imageUrl:
-        "https://nikolozblog.azurewebsites.net/media/assets/images/before-after.jpg",
+        "https://nikolozblog.azurewebsites.net/media/assets/images/before-after-v2.jpg",
       blogUrl: "https://nikolozblog.azurewebsites.net/post/2/",
     },
   ];
