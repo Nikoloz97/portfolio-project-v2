@@ -91,6 +91,13 @@
   line-height: 1;
 }
 
+.Blog-Title-Date-Pills-Container {
+  padding: 1em 0em !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .Blog-Posted-Date-Container {
   color: white !important;
   opacity: 0.8;
@@ -113,6 +120,10 @@
   border-radius: 2em !important;
   font-size: 0.5em;
   padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .Blog-RF-Button {
@@ -125,4 +136,10 @@
 .Blog-Card.Pop-in {
   opacity: 1;
   transform: scale(1);
+}
+
+.Blog-Card-Image {
+  cursor: pointer;
+  height: 11.5em !important;
+  width: 9.2em !important;
 }

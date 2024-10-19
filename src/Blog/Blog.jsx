@@ -33,7 +33,7 @@ const Blog = () => {
       category: "Coding",
       subCategories: ["Learning", "Networking", "Career"],
       postedDate: "July 31st, 2024",
-      title: "My Bootcamp Experience at Tech Elevator",
+      title: "My Bootcamp Experience",
       description:
         "A retrospective of a 3-month bootcamp experience in 2022. As corny as it sounds, it was more than just a curriculum, it was an experience. I never thought learning something could be enjoyable (at most times). Here, I describe how I ended up in the program, what the curriculum was like, and all the fun in the process.",
       imageUrl:
@@ -44,7 +44,7 @@ const Blog = () => {
       category: "Health",
       subCategories: ["Exercise", "Diet", "Physical Health"],
       postedDate: "July 31st, 2024",
-      title: "My Resistance Fitness Journey",
+      title: "My Fitness Journey",
       description:
         "Beginning summer of 2021, I began working on my health. Here, I will describe how I shifted my diet and how I made resistance exercise a daily routine.",
       imageUrl:
@@ -144,15 +144,16 @@ const Blog = () => {
               </Dimmer>
               <Image
                 src={card.imageUrl}
-                style={{ cursor: "pointer" }}
+                className="Blog-Card-Image"
                 onMouseEnter={() => handleMouseEnter(index)}
               />
             </Dimmer.Dimmable>
-            <Card.Content>
+            <Card.Content className="Blog-Title-Date-Pills-Container">
               <Card.Description
                 style={{
                   color: "white",
                   textAlign: "center",
+                  fontSize: "0.75em",
                 }}
               >
                 {card.title}
