@@ -48,7 +48,7 @@ const Contact = () => {
 
   return (
     <div className="Contact-Page">
-      <header>Lets get in Contact</header>
+      <header>Lets get in Contact Test</header>
 
       <Form
         onSubmit={handleContactSubmit}
