@@ -188,7 +188,8 @@ const SignUp = () => {
 
               <Grid textAlign="center" style={{ marginTop: "1rem" }}>
                 <Grid.Row>
-                  <Button className="SignUp-Button" content="Preview" />
+                  {/* TODO: uncomment once implement functionality */}
+                  {/* <Button className="SignUp-Button" content="Preview" /> */}
                   <Button
                     style={{ marginLeft: "1rem" }}
                     className="SignUp-Button"
@@ -207,6 +208,7 @@ const SignUp = () => {
         </Grid>
       </Container>
 
+      {/* TODO: uncomment once implement functionality */}
       {/* Preview modal */}
 
       {/* <p>Preview</p>

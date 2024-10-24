@@ -94,7 +94,8 @@ const Login = () => {
                   setError(() => ({ ...prevError, isErrorShowing: false }))
                 }
               />
-              <div>
+              {/* TODO: uncomment once implement functionality */}
+              {/* <div>
                 <Grid columns={isDesktop ? 2 : 1}>
                   <Grid.Column
                     textAlign="left"
@@ -106,7 +107,7 @@ const Login = () => {
                     <div>Forgot Password?</div>
                   </Grid.Column>
                 </Grid>
-              </div>
+              </div> */}
               <Button
                 style={{ marginTop: "1rem" }}
                 className="Login-Button"

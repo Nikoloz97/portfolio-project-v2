@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form } from "semantic-ui-react";
+import { Button, Form, Header } from "semantic-ui-react";
 import { useUserContext } from "../UserContext";
 import { apiContactRoot } from "../Utils/ApiRoutes";
 import "./Contact.css";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
+  const [isDelivered, setIsDelivered] = useState(false);
+  const [isErrorInDelivery, setIsErrorInDelivery] = useState(false);
   const { isUserSignedIn, isDesktop } = useUserContext();
 
   const subjectOptions = [
@@ -39,79 +42,108 @@ const Contact = () => {
         },
       })
       .then((response) => {
-        console.log(response);
+        if (response.status === 200) {
+          setIsDelivered(true);
+        } else {
+          setIsErrorInDelivery(true);
+        }
       })
       .catch((error) => {
         console.error("Error:", error.message);
+        setIsErrorInDelivery(true);
       });
   };
 
   return (
     <div className="Contact-Page">
-      <header>Lets get in Contact Test</header>
+      <Header style={{ color: "white" }}>Lets get in Contact</Header>
 
-      <Form
-        onSubmit={handleContactSubmit}
-        className="Contact-Form"
-        style={{ width: isDesktop ? "40%" : "80%" }}
-      >
-        {/* Require firstName/lastName if user isn't signed in */}
-        {isUserSignedIn ? null : (
-          <div>
-            <Form.Group widths="equal" style={{ marginTop: "10px" }}>
-              <Form.Input
-                fluid
-                label="First name"
-                placeholder="First name"
-                onChange={(e) =>
-                  setEmailInfo({ ...emailInfo, FirstName: e.target.value })
-                }
-              />
-              <Form.Input
-                fluid
-                label="Last name"
-                placeholder="Last name"
-                onChange={(e) =>
-                  setEmailInfo({ ...emailInfo, LastName: e.target.value })
-                }
-              />
-            </Form.Group>
-          </div>
-        )}
-
-        <Form.Group widths="equal">
+      {!isDelivered && !isErrorInDelivery ? (
+        <Form
+          onSubmit={handleContactSubmit}
+          className="Contact-Form"
+          style={{ width: isDesktop ? "40%" : "80%" }}
+        >
+          {/* Require firstName/lastName if user isn't signed in */}
           {isUserSignedIn ? null : (
-            <Form.Input
+            <div>
+              <Form.Group widths="equal" style={{ marginTop: "10px" }}>
+                <Form.Input
+                  fluid
+                  label="First name"
+                  placeholder="First name"
+                  onChange={(e) =>
+                    setEmailInfo({ ...emailInfo, FirstName: e.target.value })
+                  }
+                />
+                <Form.Input
+                  fluid
+                  label="Last name"
+                  placeholder="Last name"
+                  onChange={(e) =>
+                    setEmailInfo({ ...emailInfo, LastName: e.target.value })
+                  }
+                />
+              </Form.Group>
+            </div>
+          )}
+
+          <Form.Group widths="equal">
+            {isUserSignedIn ? null : (
+              <Form.Input
+                fluid
+                label="Email"
+                placeholder="Your email"
+                onChange={(e) =>
+                  setEmailInfo({ ...emailInfo, EmailAddress: e.target.value })
+                }
+              />
+            )}
+            <Form.Select
               fluid
-              label="Email"
-              placeholder="Your email"
-              onChange={(e) =>
-                setEmailInfo({ ...emailInfo, EmailAddress: e.target.value })
+              label="Subject"
+              options={subjectOptions}
+              onChange={(e, { value }) =>
+                setEmailInfo({ ...emailInfo, Subject: value })
               }
             />
-          )}
-          <Form.Select
-            fluid
-            label="Subject"
-            options={subjectOptions}
-            onChange={(e, { value }) =>
-              setEmailInfo({ ...emailInfo, Subject: value })
+          </Form.Group>
+
+          <Form.TextArea
+            label="Body"
+            placeholder="A few sentences would be appreciated..."
+            onChange={(e) =>
+              setEmailInfo({ ...emailInfo, Body: e.target.value })
             }
           />
-        </Form.Group>
 
-        <Form.TextArea
-          label="Body"
-          placeholder="A few sentences would be appreciated..."
-          onChange={(e) => setEmailInfo({ ...emailInfo, Body: e.target.value })}
-        />
-
-        <div
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-        >
-          <Form.Button>Submit</Form.Button>
+          <div
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
+            <Form.Button className="Contact-Submit-Button">Submit</Form.Button>
+          </div>
+        </Form>
+      ) : isDelivered ? (
+        <div className="Contact-Response-Container">
+          <div>Your message was delivered, thanks!</div>
+          <Button
+            as={Link}
+            to="/"
+            className="Login-Button"
+            content="Back to Home"
+          />
         </div>
-      </Form>
+      ) : (
+        <div className="Contact-Response-Container">
+          <div>There was an error in your message delivery, sorry</div>
+          <Button
+            as={Link}
+            to="/"
+            className="Login-Button"
+            content="Back to Home"
+          />
+        </div>
+      )}
     </div>
   );
 };
