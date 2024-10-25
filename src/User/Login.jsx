@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Button,
@@ -21,6 +21,8 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   const [error, setError] = useState({
     isErrorShowing: false,
@@ -69,6 +71,11 @@ const Login = () => {
       });
   };
 
+  useEffect(() => {
+    const areFieldsFilledIn = username !== "" && password !== "";
+    setIsSubmitDisabled(!areFieldsFilledIn);
+  }, [username, password]);
+
   return (
     <div className="Default-Page">
       <Container fluid className="Login-SignUp-Container">
@@ -110,6 +117,7 @@ const Login = () => {
               </div> */}
               <Button
                 style={{ marginTop: "1rem" }}
+                disabled={isSubmitDisabled}
                 className="Login-Button"
                 content="Login"
                 onClick={handleLogin}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Form, Header } from "semantic-ui-react";
 import { useUserContext } from "../UserContext";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [isDelivered, setIsDelivered] = useState(false);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isErrorInDelivery, setIsErrorInDelivery] = useState(false);
   const { isUserSignedIn, isDesktop } = useUserContext();
 
@@ -54,9 +55,26 @@ const Contact = () => {
       });
   };
 
+  useEffect(() => {
+    let areAllFieldsFilled;
+    if (isUserSignedIn) {
+      const { FirstName, LastName, EmailAddress, ...requiredInfo } = emailInfo;
+      areAllFieldsFilled = Object.values(requiredInfo).every(
+        (value) => value !== null && value !== ""
+      );
+    } else {
+      areAllFieldsFilled = Object.values(emailInfo).every(
+        (value) => value !== null && value !== ""
+      );
+    }
+    setIsSubmitDisabled(!areAllFieldsFilled);
+  }, [emailInfo]);
+
   return (
     <div className="Contact-Page">
-      <Header style={{ color: "white" }}>Lets get in Contact</Header>
+      {!isDelivered && (
+        <Header style={{ color: "white" }}>Lets get in Contact</Header>
+      )}
 
       {!isDelivered && !isErrorInDelivery ? (
         <Form
@@ -89,7 +107,7 @@ const Contact = () => {
           )}
 
           <Form.Group widths="equal">
-            {isUserSignedIn ? null : (
+            {!isUserSignedIn && (
               <Form.Input
                 fluid
                 label="Email"
@@ -120,12 +138,19 @@ const Contact = () => {
           <div
             style={{ width: "100%", display: "flex", justifyContent: "center" }}
           >
-            <Form.Button className="Contact-Submit-Button">Submit</Form.Button>
+            <Form.Button
+              disabled={isSubmitDisabled}
+              className="Contact-Submit-Button"
+            >
+              Submit
+            </Form.Button>
           </div>
         </Form>
       ) : isDelivered ? (
         <div className="Contact-Response-Container">
-          <div>Your message was delivered, thanks!</div>
+          <Header style={{ color: "white" }}>
+            Your message was delivered, thanks!
+          </Header>
           <Button
             as={Link}
             to="/"
@@ -135,7 +160,9 @@ const Contact = () => {
         </div>
       ) : (
         <div className="Contact-Response-Container">
-          <div>There was an error in your message delivery, sorry</div>
+          <Header style={{ color: "white" }}>
+            There was an error in your message delivery, sorry
+          </Header>
           <Button
             as={Link}
             to="/"

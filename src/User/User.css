@@ -170,3 +170,8 @@ p {
 }
 
 /* Sign Up */
+
+/* TODO: Fix loading problem */
+/* .ui.loader {
+  display: flex !important;
+} */
