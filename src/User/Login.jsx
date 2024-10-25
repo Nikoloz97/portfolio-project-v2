@@ -7,6 +7,7 @@ import {
   Checkbox,
   Header,
   Container,
+  Loader,
 } from "semantic-ui-react";
 import { UserErrorMessage } from "../Utils/Error/Error";
 import { Link, useNavigate } from "react-router-dom";
@@ -22,6 +23,8 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   const [error, setError] = useState({
@@ -33,12 +36,14 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
+    setIsLoading(true);
     axios
       .post(apiUserRoot + "/login", { Username: username, Password: password })
       .then((response) => {
         console.log(response.data);
         setUser(response.data);
         setIsUserSignedIn(true);
+        setIsLoading(false);
 
         const token = response.data.token;
 
@@ -52,6 +57,7 @@ const Login = () => {
         }
       })
       .catch((error) => {
+        setIsLoading(false);
         if (error.response) {
           // ExceptionMiddleware-specific error
           setError((prevError) => ({
@@ -79,7 +85,12 @@ const Login = () => {
   return (
     <div className="Default-Page">
       <Container fluid className="Login-SignUp-Container">
-        <Grid className={isDesktop ? "Login-Width-Desktop" : ""}>
+        <Loader content="Loading" active={isLoading} />
+        <Grid
+          className={`${isDesktop ? "Login-Width-Desktop" : ""} ${
+            isLoading ? "Loading-State" : ""
+          }`}
+        >
           <Grid.Column textAlign="center">
             <Header style={{ color: "white" }}>Login</Header>
             <Form>

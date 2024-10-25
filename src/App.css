@@ -57,3 +57,7 @@ body::-webkit-scrollbar-track {
     sans-serif;
   color: white !important;
 }
+
+.Loading-State {
+  filter: blur(3px) brightness(75%) !important;
+}

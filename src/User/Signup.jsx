@@ -19,6 +19,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { isDesktop } = useUserContext();
 
+  const [isLoading, setIsLoading] = useState(false);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isSignupSuccessful, setIsSignupSuccessful] = useState(false);
   const [signUpInfo, setSignUpInfo] = useState({
@@ -68,6 +69,7 @@ const SignUp = () => {
   };
 
   const handleSignUp = () => {
+    setIsLoading(true);
     setIsSubmitDisabled(true);
     // Formdata = needed to save profileImage on backend
     let formData = new FormData();
@@ -91,6 +93,7 @@ const SignUp = () => {
       .then((response) => {
         // console.log(response.data);
         if (response.data) {
+          setIsLoading(false);
           setIsSignupSuccessful(true);
           setTimeout(() => {
             navigate("/login");
@@ -98,6 +101,7 @@ const SignUp = () => {
         }
       })
       .catch((error) => {
+        setIsLoading(false);
         if (error.response) {
           // ExceptionMiddleware-specific error
           setError((prevError) => ({
@@ -129,10 +133,13 @@ const SignUp = () => {
   return (
     <div className="Default-Page">
       {!isSignupSuccessful ? (
-        /* TODO: fix loading setup (see User.css) */
-        /* <Loader content="Loading" isActive={isLoading} /> */
         <Container fluid className="Login-SignUp-Container">
-          <Grid className={isDesktop ? "Signup-Width-Desktop" : ""}>
+          <Loader content="Loading" active={isLoading} />
+          <Grid
+            className={`${isDesktop ? "Signup-Width-Desktop" : ""} ${
+              isLoading ? "Loading-State" : ""
+            }`}
+          >
             <Grid.Column textAlign="center">
               <Header style={{ color: "white" }}>Sign Up</Header>
               <Form>
