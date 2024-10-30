@@ -38,7 +38,7 @@ const Blog = () => {
         "A retrospective of a 3-month bootcamp experience in 2022. As corny as it sounds, it was more than just a curriculum, it was an experience. I never thought learning something could be enjoyable (at most times). Here, I describe how I ended up in the program, what the curriculum was like, and all the fun in the process.",
       imageUrl:
         "https://nikolozblog.azurewebsites.net/media/assets/images/Sam-Kev-Tori.jpg",
-      blogUrl: "https://nikolozblog.azurewebsites.net/post/3/",
+      blogUrl: "https://nikolozblog.azurewebsites.net/post/2/",
     },
     {
       category: "Health",
@@ -49,7 +49,7 @@ const Blog = () => {
         "Beginning summer of 2021, I began working on my health. Here, I will describe how I shifted my diet and how I made resistance exercise a daily routine.",
       imageUrl:
         "https://nikolozblog.azurewebsites.net/media/assets/images/before-after-v2.jpg",
-      blogUrl: "https://nikolozblog.azurewebsites.net/post/2/",
+      blogUrl: "https://nikolozblog.azurewebsites.net/post/3/",
     },
   ];
 

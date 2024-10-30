@@ -21,7 +21,8 @@ const SignUp = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
-  const [isSignupSuccessful, setIsSignupSuccessful] = useState(false);
+  const [isSignupSuccessfullySubmitted, setIsSignupSuccessfullySubmitted] =
+    useState(false);
   const [signUpInfo, setSignUpInfo] = useState({
     Username: null,
     Password: null,
@@ -94,7 +95,7 @@ const SignUp = () => {
         // console.log(response.data);
         if (response.data) {
           setIsLoading(false);
-          setIsSignupSuccessful(true);
+          setIsSignupSuccessfullySubmitted(true);
           setTimeout(() => {
             navigate("/login");
           }, 4000);
@@ -132,7 +133,7 @@ const SignUp = () => {
 
   return (
     <div className="Default-Page">
-      {!isSignupSuccessful ? (
+      {!isSignupSuccessfullySubmitted ? (
         <Container fluid className="Login-SignUp-Container">
           <Loader content="Loading" active={isLoading} />
           <Grid

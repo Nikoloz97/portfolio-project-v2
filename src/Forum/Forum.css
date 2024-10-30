@@ -151,7 +151,7 @@
 .Forum-Grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 100px;
+  gap: 5em;
 }
 
 /* ProfileCard */
@@ -159,9 +159,11 @@
 .Forum-Card {
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2);
-  width: 400px;
-  height: 300px;
+  width: 12em;
+  height: 20em;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .Forum-Card-Image {
@@ -218,24 +220,33 @@
 /* Post */
 .Post-Buttons-Container {
   display: flex;
-  height: 200px;
+  height: 100%;
   justify-content: center;
   align-items: center;
 }
 
 .Post-Container {
   width: 75%;
-  height: 80%;
-  border: 0.5px solid rgba(255, 255, 255, 0.26);
-  color: white;
+  height: 100%;
   font-size: 1rem;
-  padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .Post-Title-Text-Image-Container {
   display: flex;
   flex-direction: column;
+  color: white;
+}
+
+.Post-Text-Image-Container {
   justify-content: flex-start;
+  border: 0.5px solid rgba(255, 255, 255, 0.26);
+  padding: 0.5em;
+}
+
+.Post-Text-Container {
+  overflow-y: scroll;
 }
 
 .Post-Image {
@@ -246,20 +257,14 @@
   background: none !important;
   color: white !important;
 }
-.Post-Likes-Comments-Container-Container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  margin-top: -10px;
-}
 
 .Post-Likes-Comments-Container {
   display: flex;
-  justify-content: center;
-  gap: 75px;
-  flex: row;
-  width: 75%;
+  justify-content: space-between;
+  width: 100%;
   font-size: 1.2rem;
+  padding: 1em;
+  margin-top: auto;
 }
 
 .Placeholder-Overlay {

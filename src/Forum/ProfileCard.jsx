@@ -83,22 +83,20 @@ const ProfileCard = (props) => {
           <Icon name="arrow right" />
         </Button>
       </div>
-      <div className="Post-Likes-Comments-Container-Container">
-        <div className="Post-Likes-Comments-Container">
-          <div>
-            <Icon
-              name={isPostLiked ? "heart" : "heart outline"}
-              color={isPostLiked ? "red" : null}
-              onClick={handlePostLike}
-            />
-            {currentPost.likes} Likes
-          </div>
-          <Button className="Comments-Button" onClick={handleCommentClick}>
-            <div className="Comments-Button-Text">
-              {currentPost.commentCount} Comments
-            </div>
-          </Button>
+      <div className="Post-Likes-Comments-Container">
+        <div>
+          <Icon
+            name={isPostLiked ? "heart" : "heart outline"}
+            color={isPostLiked ? "red" : null}
+            onClick={handlePostLike}
+          />
+          {currentPost.likes} Likes
         </div>
+        <Button className="Comments-Button" onClick={handleCommentClick}>
+          <div className="Comments-Button-Text">
+            {currentPost.commentCount} Comments
+          </div>
+        </Button>
       </div>
     </div>
   );

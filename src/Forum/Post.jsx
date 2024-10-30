@@ -18,12 +18,18 @@ const Post = (props) => {
   return (
     <div>
       <div className="Post-Title-Text-Image-Container">
-        <div style={{ fontWeight: "bold" }}>{props.post.title}</div>
-        <div>{props.post.text}</div>
-        <div>
-          {props.post.photoURL && (
-            <img className="Post-Image" src={props.post.photoURL} alt="post" />
-          )}
+        <h3 style={{ textAlign: "center" }}>{props.post.title}</h3>
+        <div className="Post-Text-Image-Container">
+          <div className="Post-Text-Container">{props.post.text}</div>
+          <div>
+            {props.post.photoURL && (
+              <img
+                className="Post-Image"
+                src={props.post.photoURL}
+                alt="post"
+              />
+            )}
+          </div>
         </div>
       </div>
 
