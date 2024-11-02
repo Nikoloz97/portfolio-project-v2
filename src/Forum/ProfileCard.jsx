@@ -41,11 +41,18 @@ const ProfileCard = (props) => {
     <div className="Forum-Card">
       <div className="Forum-Card-Top-Container">
         <div className="Forum-Card-Image-Header-Container">
-          <img
-            className="Forum-Card-Image"
-            src={props.forumProfile.profileURL}
-            alt="profile-image"
-          />
+          {props.forumProfile.profileURL ? (
+            <img
+              className="Forum-Card-Image"
+              src={props.forumProfile.profileURL}
+              alt="profile-image"
+            />
+          ) : (
+            <div className="Forum-Card-Image">
+              <Icon name="user circle" size="large" />
+            </div>
+          )}
+
           <h3 style={{ marginTop: "25px" }}>
             {props.forumProfile.displayName}
           </h3>

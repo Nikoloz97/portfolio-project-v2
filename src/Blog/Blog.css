@@ -83,11 +83,10 @@
   transform: scale(0.2);
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
   align-items: center;
-  padding: 0.5rem !important;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
   background-color: rgba(22, 22, 22, 0.8) !important;
   margin-top: 2rem !important;
-  width: 17% !important;
+  width: 13.5% !important;
   line-height: 1;
 }
 

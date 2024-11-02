@@ -624,12 +624,18 @@ export const populateCurrentPlayer = (
   setSelectedPlayers(updatedSelectedPlayers);
 };
 
-const calculateCategoryAverage = (playerCollection, statIndex) => {
+const calculateCategoryAverage = (
+  playerCollection,
+  statIndex,
+  isPercentage = false
+) => {
   return (
-    playerCollection.reduce(
+    (playerCollection.reduce(
       (acc, player) => acc + parseFloat(player.stats[statIndex].value),
       0
-    ) / 13
+    ) /
+      13) *
+    (isPercentage ? 100 : 1)
   ).toFixed(2);
 };
 
@@ -641,11 +647,11 @@ export const populateAverageUserCategories = (playerCollection) => {
     },
     {
       category: "FG%",
-      value: calculateCategoryAverage(playerCollection, 1),
+      value: calculateCategoryAverage(playerCollection, 1, true),
     },
     {
       category: "FT%",
-      value: parseFloat(calculateCategoryAverage(playerCollection, 2)),
+      value: calculateCategoryAverage(playerCollection, 2, true),
     },
     {
       category: "3PM",
@@ -674,6 +680,7 @@ export const populateAverageUserCategories = (playerCollection) => {
   ];
 };
 
+// TODO: make these not hard-coded
 export const populateTop150Cats = () => {
   return [
     {
@@ -756,7 +763,12 @@ let percentiles = [
   },
 ];
 
-const handlePercentileCalculation = (array, userCategoryValue) => {
+const handlePercentileCalculation = (
+  array,
+  userCategoryValue,
+  isPercentage = false
+) => {
+  if (isPercentage) userCategoryValue /= 100;
   // Binary search
   let startIndex = 0;
   let endIndex = array.length - 1;
@@ -807,14 +819,16 @@ export const populatePercentiles = (userCats) => {
       case "FG%":
         const fgPercentile = handlePercentileCalculation(
           sortedFgArray,
-          userCats[1].value
+          userCats[1].value,
+          true
         );
         percObj.percentile = fgPercentile;
         break;
       case "FT%":
         const ftPercentile = handlePercentileCalculation(
           sortedFtArray,
-          userCats[2].value
+          userCats[2].value,
+          true
         );
         percObj.percentile = ftPercentile;
         break;
@@ -860,6 +874,9 @@ export const populatePercentiles = (userCats) => {
           userCats[8].value
         );
         percObj.percentile = stealsPercentile;
+        break;
+      default:
+        console.error("Didn't receive a proper percentile category");
         break;
     }
   });
