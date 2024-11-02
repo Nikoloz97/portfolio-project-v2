@@ -22,6 +22,17 @@ function TeamAnalyzer() {
 
   const [hasPlayerChoosingBegun, setHasPlayerChoosingBegun] = useState(false);
 
+  const [isPlayersCollectionFilled, setIsPlayersCollectionFilled] =
+    useState(false);
+
+  useEffect(() => {
+    const isEveryPlayerChosen = selectedPlayers.every(
+      (player) => player.isPlayerChosen
+    );
+
+    setIsPlayersCollectionFilled(isEveryPlayerChosen);
+  }, [selectedPlayers]);
+
   useEffect(() => {
     const fetchPlayerOptions = async () => {
       try {
@@ -67,7 +78,7 @@ function TeamAnalyzer() {
 
         const fetchedData = response.data.body[0];
 
-        console.log(fetchedData);
+        // console.log(fetchedData);
 
         populateCurrentPlayer(
           updatedSelectedPlayers,
@@ -126,6 +137,7 @@ function TeamAnalyzer() {
                 selectedPlayers={selectedPlayers}
                 selectedPlayer={selectedPlayers[playerIndex]}
                 playerIndex={playerIndex}
+                isPlayersCollectionFilled={isPlayersCollectionFilled}
               />
             </div>
           </Form>

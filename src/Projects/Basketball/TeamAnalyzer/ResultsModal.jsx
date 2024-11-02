@@ -44,15 +44,17 @@ export default function ResultsModal(props) {
         props.playerIndex === props.selectedPlayers.length - 1 &&
         props.selectedPlayer.isPlayerChosen
           ? "Unhide"
-          : // : ""
-            // TODO: remove (+ uncomment above)
-            "Unhide"
+          : "Unhide"
       }`}
     >
       <Modal
         onOpen={() => setIsModalOpen(true)}
         open={isModalOpen}
-        trigger={<Form.Button>Show Results</Form.Button>}
+        trigger={
+          <Form.Button disabled={!props.isPlayersCollectionFilled}>
+            Show Results
+          </Form.Button>
+        }
       >
         <h1 style={{ textAlign: "center" }}>Results</h1>
 
