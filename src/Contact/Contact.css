@@ -21,11 +21,17 @@
   height: 100vh !important;
 }
 
+.Contact-Submit-Button {
+  width: 66%;
+}
+
 .Contact-Submit-Button > button {
   background-color: white !important;
   height: 3rem;
+  width: 100%;
   border-radius: 2rem !important;
   color: black !important;
+  margin-top: 2rem !important;
 }
 
 .Contact-Response-Container {
