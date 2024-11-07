@@ -20,7 +20,6 @@ const Post = (props) => {
       <div className="Post-Title-Text-Image-Container">
         <h3 style={{ textAlign: "center" }}>{props.post.title}</h3>
         <div className="Post-Text-Image-Container">
-          <div className="Post-Text-Container">{props.post.text}</div>
           <div>
             {props.post.photoURL && (
               <img
@@ -30,6 +29,7 @@ const Post = (props) => {
               />
             )}
           </div>
+          <div className="Post-Text-Container">{props.post.text}</div>
         </div>
       </div>
 
