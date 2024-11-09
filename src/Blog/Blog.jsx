@@ -20,7 +20,7 @@ const Blog = () => {
   const cards = [
     {
       category: "Travel",
-      subCategories: ["Europe", "Hostel", "Spring Break"],
+      subCategories: ["Europe", "Hostel", "Vacation"],
       postedDate: "July 31st, 2024",
       title: "Trip To Barcelona",
       description:
@@ -31,7 +31,7 @@ const Blog = () => {
     },
     {
       category: "Coding",
-      subCategories: ["Learning", "Networking", "Career"],
+      subCategories: ["Learning", "Network", "Career"],
       postedDate: "July 31st, 2024",
       title: "My Bootcamp Experience",
       description:
@@ -42,7 +42,7 @@ const Blog = () => {
     },
     {
       category: "Health",
-      subCategories: ["Exercise", "Diet", "Physical Health"],
+      subCategories: ["Exercise", "Diet", "Health"],
       postedDate: "July 31st, 2024",
       title: "My Fitness Journey",
       description:
@@ -138,7 +138,7 @@ const Blog = () => {
                 active={isHovered[index]}
                 onMouseLeave={() => handleMouseLeave(index)}
               >
-                <Card.Content style={{ color: "white", fontSize: "0.7em" }}>
+                <Card.Content style={{ color: "white", fontSize: "0.6em" }}>
                   {card.description}
                 </Card.Content>
               </Dimmer>
@@ -153,7 +153,7 @@ const Blog = () => {
                 style={{
                   color: "white",
                   textAlign: "center",
-                  fontSize: "0.75em",
+                  fontSize: "0.7em",
                 }}
               >
                 {card.title}

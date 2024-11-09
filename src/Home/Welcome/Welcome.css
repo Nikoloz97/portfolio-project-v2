@@ -25,6 +25,7 @@
 .Welcome-Screen-Container {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .Welcome-Screen.Desktop {
@@ -32,7 +33,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100%;
 }
 
 .Welcome-Screen.Phone {
@@ -61,11 +62,11 @@
 
 .Welcome-Text-And-Carousel-Container.Desktop {
   display: flex;
-  flex-direction: row;
-  margin-top: 400px;
-  margin-bottom: 100px;
+  align-items: center;
+  margin-top: 10%;
   justify-content: space-between;
   width: 100vw;
+  height: 100%;
 }
 
 .Welcome-Text-Container.Desktop {
@@ -123,8 +124,8 @@
 }
 
 .Welcome-VC-Header {
-  padding: 20px;
-  margin-right: 75px;
+  padding: 0.6em;
+  margin-right: 3em;
   color: rgba(255, 255, 255, 0.6);
   border-bottom: 1px solid rgba(255, 255, 255, 0.507);
 }
@@ -166,44 +167,50 @@
   margin-right: 0px;
 }
 
-.Arrow-Welcome-Scroll-Down-Container {
+.Welcome-Begin-Or-VC-Header-Container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   z-index: 1;
   gap: 20px;
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.25);
-  height: 60px;
   color: rgba(255, 255, 255, 0.75);
+  opacity: 0;
 }
 
-.Arrow-Welcome-Scroll-Down-Container.Monitor {
-  margin-top: 140px;
-  align-items: flex-end;
-}
-
-.Arrow-Welcome-Scroll-Down-Container.Phone {
-  margin-top: 250px;
-  align-items: center;
-}
-
-.Arrow-Welcome-Scroll-Down-Container:hover {
-  transform: scale(1.1) translateY(-10px);
-  cursor: pointer;
-}
-
-.Arrow-Welcome-Scroll-Down-Container.Strictly-Desktop {
-  margin-top: 25px;
-}
-
-.Arrow-Welcome-Scroll-Down-Container.Fade-In {
+.Welcome-Begin-Or-VC-Header-Container.Fade-In {
   opacity: 1;
   transition: opacity 2s ease-in-out, transform 0.5s ease-in-out;
 }
 
-.Arrow-Welcome-Scroll-Down-Container.Fade-Out {
-  opacity: 0;
-  transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
+.Welcome-Begin-Or-VC-Header-Container.Monitor {
+  margin-top: 140px;
+  align-items: flex-end;
+}
+
+.Welcome-Begin-Or-VC-Header-Container.Phone {
+  margin-top: 250px;
+  align-items: center;
+}
+
+.Welcome-Begin-Or-VC-Header-Container.Strictly-Desktop {
+  margin-top: 25px;
+}
+
+.Welcome-Journey-Button {
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+  border: 0.5px solid white;
+  padding: 0.3em 0.5em;
+  border-radius: 2em;
+  font-size: 0.9em;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 200;
+  opacity: 0.7;
+  margin-right: 3em;
+}
+
+.Welcome-Journey-Button:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header, Icon } from "semantic-ui-react";
+import { Button, Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarouselDesktop from "../../Utils/VerticalCarousel/VerticalCarouselDesktop";
 import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarouselPhone";
@@ -155,10 +155,17 @@ const Welcome = (props) => {
             {/* Vertical carousel */}
             {isDesktop ? (
               <div
-                className={`Welcome-VC-Header-Container ${
+                className={`Welcome-Begin-Or-VC-Header-Container ${
                   isSecondLineComplete ? "Fade-In" : ""
                 }`}
               >
+                <button
+                  onClick={props.handleDownClick}
+                  className="Welcome-Journey-Button"
+                >
+                  Begin Autobiography Journey
+                </button>
+                <div style={{ marginRight: "3em" }}>Or</div>
                 <div className="Welcome-VC-Header">Jump to Section</div>
                 <div className="Welcome-Vertical-Carousel-Buttons-Ticker-Container">
                   <div className="Welcome-Vertical-Carousel-Buttons-Container">
@@ -209,6 +216,20 @@ const Welcome = (props) => {
                   isSecondLineComplete ? "Fade-In" : ""
                 }`}
               >
+                <div
+                  onClick={props.handleDownClick}
+                  className={`Arrow-Welcome-Scroll-Down-Container ${
+                    isStrictlyDesktop ? "Strictly-Desktop" : ""
+                  } ${isMonitor ? "Monitor" : ""} ${isPhone ? "Phone" : ""} ${
+                    isJumpToSectionFadedIn && props.isTopOfPage
+                      ? "Fade-In"
+                      : !props.isTopOfPage
+                      ? "Fade-Out"
+                      : ""
+                  }`}
+                >
+                  <Button>Begin Journey</Button>
+                </div>
                 <div className="Welcome-VC-Header-Phone">Jump to Section</div>
                 {/* TODO: Make onTouchStart trigger all throughout div (not just Vertical Carousel Phone)*/}
                 <div
@@ -245,24 +266,6 @@ const Welcome = (props) => {
                 </div>
               </div>
             )}
-          </div>
-          <div
-            onClick={props.handleDownClick}
-            className={`Arrow-Welcome-Scroll-Down-Container ${
-              isStrictlyDesktop ? "Strictly-Desktop" : ""
-            } ${isMonitor ? "Monitor" : ""} ${isPhone ? "Phone" : ""} ${
-              isJumpToSectionFadedIn && props.isTopOfPage
-                ? "Fade-In"
-                : !props.isTopOfPage
-                ? "Fade-Out"
-                : ""
-            }`}
-          >
-            <Icon name="arrow down" />
-            <div style={{ marginBottom: isDesktop ? "15px" : "5px" }}>
-              Begin Journey
-            </div>
-            <Icon name="arrow down" />
           </div>
         </div>
       </div>
