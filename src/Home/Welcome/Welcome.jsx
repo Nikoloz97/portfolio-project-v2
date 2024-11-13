@@ -216,20 +216,13 @@ const Welcome = (props) => {
                   isSecondLineComplete ? "Fade-In" : ""
                 }`}
               >
-                <div
+                <button
                   onClick={props.handleDownClick}
-                  className={`Arrow-Welcome-Scroll-Down-Container ${
-                    isStrictlyDesktop ? "Strictly-Desktop" : ""
-                  } ${isMonitor ? "Monitor" : ""} ${isPhone ? "Phone" : ""} ${
-                    isJumpToSectionFadedIn && props.isTopOfPage
-                      ? "Fade-In"
-                      : !props.isTopOfPage
-                      ? "Fade-Out"
-                      : ""
-                  }`}
+                  className={`Welcome-Journey-Button ${isPhone ? "Phone" : ""}`}
                 >
-                  <Button>Begin Journey</Button>
-                </div>
+                  Begin Journey
+                </button>
+                <div style={{ marginTop: "5%" }}>Or</div>
                 <div className="Welcome-VC-Header-Phone">Jump to Section</div>
                 {/* TODO: Make onTouchStart trigger all throughout div (not just Vertical Carousel Phone)*/}
                 <div
