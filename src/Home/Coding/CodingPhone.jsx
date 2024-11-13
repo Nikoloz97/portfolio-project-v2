@@ -135,7 +135,7 @@ const Coding = (props) => {
   const card = periods[periodIndex].cards[cardIndex];
 
   useEffect(() => {
-    if (props.windowHeightPosition >= 2500) {
+    if (props.windowHeightPosition >= 2100) {
       const fadeInInterval = setInterval(() => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);

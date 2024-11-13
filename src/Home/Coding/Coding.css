@@ -37,12 +37,8 @@
   flex-direction: column;
   z-index: 1;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   align-items: center;
-}
-
-.Coding-Content.Phone {
-  gap: 50px;
 }
 
 .Coding-Header-Container {
@@ -103,7 +99,7 @@
   padding: 10px;
   line-height: 1.2;
   opacity: 0.75;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   width: 85%;
 }
 
@@ -128,7 +124,7 @@
 
 .Coding-Card-Buttons-Container-Phone {
   display: flex;
-  height: 60vh;
+  height: 55vh;
   flex-direction: row;
   justify-content: center;
   align-items: top;

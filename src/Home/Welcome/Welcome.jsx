@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Header } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarouselDesktop from "../../Utils/VerticalCarousel/VerticalCarouselDesktop";
 import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarouselPhone";
@@ -7,14 +7,7 @@ import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarous
 import "./Welcome.css";
 
 const Welcome = (props) => {
-  const {
-    user,
-    isUserSignedIn,
-    isDesktop,
-    isMonitor,
-    isStrictlyDesktop,
-    isPhone,
-  } = useUserContext();
+  const { user, isUserSignedIn, isDesktop, isPhone } = useUserContext();
 
   const [displayedWelcomeTextLineOne, setDisplayedWelcomeTextLineOne] =
     useState("");

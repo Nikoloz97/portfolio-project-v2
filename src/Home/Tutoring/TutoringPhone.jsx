@@ -58,7 +58,7 @@ const Tutoring = (props) => {
   };
 
   useEffect(() => {
-    if (props.windowHeightPosition >= 1650) {
+    if (props.windowHeightPosition >= 1300) {
       const fadeInInterval = setInterval(() => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);
@@ -85,7 +85,7 @@ const Tutoring = (props) => {
             isHeadersFadedIn ? "Fade-In" : ""
           } Phone`}
         >
-          <div className="Tutoring-Header-Primary">{header.primary}</div>
+          <div className="Tutoring-Header-Primary-Phone">{header.primary}</div>
           <div className="Tutoring-Header-Secondary Phone">
             {header.secondary}
           </div>
@@ -113,7 +113,7 @@ const Tutoring = (props) => {
             <div className="Tutoring-Card-Header">
               {cards[cardIndex].header}
             </div>
-            <div className="Tutoring-Card-Text">
+            <div className="Tutoring-Card-Text Phone">
               {cards[cardIndex].mediaCaption}
             </div>
           </div>

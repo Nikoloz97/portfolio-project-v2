@@ -44,7 +44,7 @@
 }
 
 .Medicine-Content.Phone {
-  gap: 20px;
+  /* gap: 20px; */
 }
 
 .Medicine-Header-Container {
@@ -123,7 +123,7 @@
 
 .Medicine-Card-Buttons-Container-Phone {
   display: flex;
-  height: 60vh;
+  height: 57vh;
   flex-direction: row;
   justify-content: center;
   align-items: top;
