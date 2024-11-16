@@ -107,7 +107,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="Blog-Page">
+    <div className={`Blog-Page ${isDesktop ? "Desktop" : "Phone"}`}>
       {/* Header/Subheader */}
       <div
         className={`Blog-Header-Subheader-Container ${
@@ -131,7 +131,9 @@ const Blog = () => {
         {cards.map((card, index) => (
           <Card
             key={index}
-            className={`Blog-Card ${isCardVisible[index] ? "Pop-in" : ""}`}
+            className={`Blog-Card ${isDesktop ? "Desktop" : "Phone"}  ${
+              isCardVisible[index] ? "Pop-in" : ""
+            }`}
           >
             <Dimmer.Dimmable as={Image} dimmed={isHovered[index]}>
               <Dimmer
@@ -174,7 +176,7 @@ const Blog = () => {
             <Card.Content extra>
               <Button
                 onClick={() => window.open(card.blogUrl, "_blank")}
-                className="Blog-RF-Button"
+                className={`Blog-RF-Button ${isDesktop ? "" : "Phone"}`}
               >
                 <Icon name="arrow right" style={{ marginRight: "10px" }} />
                 Read Full Blog
