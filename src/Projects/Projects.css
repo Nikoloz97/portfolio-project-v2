@@ -7,10 +7,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   width: 100vw;
   filter: brightness(0.8);
   color: white;
+  height: 100vh;
 }
 
 .Projects-Page::before {
@@ -35,40 +35,62 @@
 .Projects-Container {
   display: flex;
   width: 100%;
-  height: 80%;
-  justify-content: center;
   align-items: center;
   gap: 5%;
   z-index: 1;
+  height: 80%;
+  justify-content: center;
+}
+
+.Projects-Container.Phone {
+  height: 100%;
+  flex-direction: column;
+  justify-content: start;
+  margin-top: 20%;
 }
 
 .Projects-Title-Description-Container {
   display: flex;
   flex-direction: column;
-  height: 50%;
   justify-content: space-evenly;
   align-items: center;
   margin-left: 2.5%;
   background-color: rgba(0, 0, 0, 0.35);
   border-radius: 1%;
   text-align: center;
+  height: 50%;
   width: 50%;
+}
+
+.Projects-Title-Description-Container.Phone {
+  height: 45%;
+  width: 90%;
 }
 
 .Projects-Project-Title {
   font-size: 5em;
   font-weight: 400;
-  height: 30%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 30%;
+}
+
+.Projects-Project-Title.Phone {
+  font-size: 2.5em;
+  font-weight: 300;
+  height: 20%;
 }
 
 .Projects-Project-Description {
   font-size: 1.5em;
   line-height: 1.2;
   padding: 1em;
+  height: 7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Projects-Project-Button {
@@ -76,13 +98,21 @@
   font-size: 1.5em !important;
 }
 
-.Projects-Images-Container {
+.Projects-Images-Container-Desktop {
   display: flex;
   justify-content: space-between;
   height: 50%;
   gap: 1em;
   margin-right: 2%;
   width: 50%;
+}
+
+.Projects-Images-Container-Phone {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 50%;
+  gap: 1em;
 }
 
 .Projects-Image {

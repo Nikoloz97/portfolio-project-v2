@@ -116,8 +116,8 @@ const Blog = () => {
       >
         <div className="Default-Header">Nick's Blog</div>
         <div className="Blog-Subheader">
-          {isDesktop ? "Hover " : "Tap "}
-          over each image for a short article summary
+          {isDesktop ? "Hover over " : "Tap on "}
+          each image for a short article summary
         </div>
       </div>
 

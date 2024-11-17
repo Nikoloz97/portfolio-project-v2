@@ -7,22 +7,25 @@ import fantasyBballImage from "../Images/Projects/Nba1.jpg";
 import clocksImage from "../Images/Projects/clock-design-wallpaper-cropped.jpg";
 import calculatorImage from "../Images/Projects/front-view-school-supplies-table-composition-cropped.jpg";
 import geographyGameImage from "../Images/Projects/pexels-ricky-galvez-466962-1169922-cropped.jpg";
+import { useUserContext } from "../UserContext";
 
 const Projects = () => {
+  const { isDesktop } = useUserContext();
+
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
+  const [isCardClicked, setIsCardClicked] = useState(false);
+
+  const projectsIntro = {
+    title: "Projects",
+    description: "Click on a project below for a description",
+  };
   const projectsData = [
-    {
-      title: "Projects",
-      mediaUrl: null,
-      description: "Click on a project to get a description",
-      linkUrl: null,
-    },
     {
       title: "Fantasy Basketball",
       mediaUrl: fantasyBballImage,
       description:
-        "The fantasy basketball project consists of the team analyzer, which calculates how well your team averages in nine categories relative to the league's top 150 players. It also consists of the schedule analyzer, which determines which waiver-wire players to pick up for back-to-backs or high-volume weeks",
+        "Consisting of the team analyzer, it calculates your team averages in nine categories relative to the league's top 150 players",
       linkUrl: "/projects/fantasy-basketball",
     },
     {
@@ -46,54 +49,90 @@ const Projects = () => {
       linkUrl: "/projects/geography-game",
     },
   ];
+
+  const handleCardClick = (index) => {
+    if (!isCardClicked) {
+      setIsCardClicked(true);
+    }
+    setCurrentProjectIndex(index);
+  };
+
   return (
     <>
       <div className="Projects-Page">
-        <div className="Projects-Container">
-          <div className="Projects-Title-Description-Container">
-            <div className="Projects-Project-Title">
-              {projectsData[currentProjectIndex].title}
-            </div>
-            <div className="Projects-Project-Description">
-              {projectsData[currentProjectIndex].description}
-            </div>
-            {currentProjectIndex !== 0 && (
-              <Button
-                as={Link}
-                to={projectsData[currentProjectIndex].linkUrl}
-                className="Projects-Project-Button"
-              >
-                Go To Project
-                <Icon name="arrow right" />
-              </Button>
+        <div className={`Projects-Container ${isDesktop ? "" : "Phone"}`}>
+          <div
+            className={`Projects-Title-Description-Container ${
+              isDesktop ? "" : "Phone"
+            }`}
+          >
+            {isCardClicked ? (
+              <div>
+                <div
+                  className={`Projects-Project-Title ${
+                    isDesktop ? "" : "Phone"
+                  }`}
+                >
+                  {projectsData[currentProjectIndex].title}
+                </div>
+                <div className="Projects-Project-Description">
+                  {projectsData[currentProjectIndex].description}
+                </div>
+                <Button
+                  as={Link}
+                  to={projectsData[currentProjectIndex].linkUrl}
+                  className="Projects-Project-Button"
+                >
+                  Go To Project
+                  <Icon name="arrow right" />
+                </Button>
+              </div>
+            ) : (
+              <div>
+                <div
+                  className={`Projects-Project-Title ${
+                    isDesktop ? "" : "Phone"
+                  }`}
+                >
+                  {projectsIntro.title}
+                </div>
+                <div className="Projects-Project-Description">
+                  {projectsIntro.description}
+                </div>
+              </div>
             )}
           </div>
 
-          <div className="Projects-Images-Container">
+          <div
+            className={`${
+              isDesktop
+                ? "Projects-Images-Container-Desktop"
+                : "Projects-Images-Container-Phone"
+            }`}
+          >
             {projectsData.map((project, index) => (
               <div key={index}>
-                {index > 0 &&
-                  (index === 4 ? (
-                    <div className="Projects-Image">
-                      <img
-                        className="Projects-Image-Disabled"
-                        alt={project.description}
-                        src={project.mediaUrl}
-                      />
-                      <div className="Projects-CS-Overlay">Coming Soon</div>
-                    </div>
-                  ) : (
+                {index === 3 ? (
+                  <div className="Projects-Image">
                     <img
-                      className={`${
-                        currentProjectIndex === index
-                          ? "Projects-Selected-Card"
-                          : ""
-                      } Projects-Image`}
+                      className="Projects-Image-Disabled"
                       alt={project.description}
                       src={project.mediaUrl}
-                      onClick={() => setCurrentProjectIndex(index)}
                     />
-                  ))}
+                    <div className="Projects-CS-Overlay">Coming Soon</div>
+                  </div>
+                ) : (
+                  <img
+                    className={`${
+                      isCardClicked && currentProjectIndex === index
+                        ? "Projects-Selected-Card"
+                        : ""
+                    } Projects-Image`}
+                    alt={project.description}
+                    src={project.mediaUrl}
+                    onClick={() => handleCardClick(index)}
+                  />
+                )}
               </div>
             ))}
           </div>
