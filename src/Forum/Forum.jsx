@@ -112,13 +112,13 @@ function Forum() {
           }`}
         >
           {!isLoading && (
-            <div>
+            <div className="ForumPage-Headers-Container-Container">
               {isFetchSuccessful ? (
-                <div>
-                  <div className="ForumPage-Display-Text">
+                <div className="ForumPage-Headers-Container">
+                  <div className="ForumPage-Display-Header">
                     Welcome to the Forum
                   </div>
-                  <div className="ForumPage-Display-Subtext">
+                  <div className="ForumPage-Display-Subheader">
                     Express and Discuss
                   </div>
                 </div>
