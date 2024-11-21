@@ -38,7 +38,7 @@ const UserProfileCard = (props) => {
           <img
             className="Forum-Card-Image"
             src={props.userProfile.profileURL}
-            alt="profile-image"
+            alt="profile of user"
           />
           <h3 style={{ marginTop: "25px" }}>{props.userProfile.displayName}</h3>
         </div>

@@ -40,6 +40,7 @@
 
 .ForumPage-Headers-Container-Container {
   height: 80%;
+  margin-top: 4em;
 }
 
 .ForumPage-Headers-Container {
@@ -168,6 +169,7 @@
 
 .Forum-Container {
   height: 1fr;
+  margin-bottom: 2em;
 }
 
 .Forum-Grid-Desktop {
@@ -187,18 +189,19 @@
 .Forum-Card {
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2);
-  width: 12em;
-  height: 20em;
+  border-radius: 6%;
+  width: 17em;
+  height: 30em;
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .Forum-Card-Image {
-  height: 70px;
-  width: 70px;
+  height: 2.5em;
+  width: 2.5em;
   border-radius: 50%;
-  padding: 10px;
 }
 
 .Prompt-Forum-Card-Image {
@@ -222,27 +225,16 @@
   margin-left: 10px;
 }
 
-.Forum-Card-Bars-Icon {
+.Forum-Card-ProfileImage-Name-Date-ReadMore-Container {
   display: flex;
-  margin: 25px 20px 0 0;
+  height: 15%;
+  padding: 0.5em;
   gap: 10px;
 }
 
-.Forum-Card-Left-Arrow-Button {
-  position: absolute;
-  width: 20px;
-  top: 0;
-  left: 0;
-  bottom: 0;
-}
-
-.Forum-Card-Right-Arrow-Button {
-  position: absolute;
-  width: 20px;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  transform: translateX(591%);
+.Forum-Card-Name-Date-Container {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Post */
@@ -253,46 +245,40 @@
   align-items: center;
 }
 
-.Post-Container {
-  width: 75%;
-  height: 100%;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-}
-
 .Post-Title-Text-Image-Container {
   display: flex;
   flex-direction: column;
   color: white;
+  height: 100%;
 }
 
 .Post-Text-Image-Container {
+  display: flex;
   justify-content: flex-start;
   border: 0.5px solid rgba(255, 255, 255, 0.26);
   padding: 0.5em;
 }
 
-.Post-Text-Container {
-  overflow-y: scroll;
+.Post-Title-Text-Container {
+  padding: 1em;
+  height: 100%;
+}
+
+.Post-Description-Container {
+  overflow-y: hidden;
+  font-size: 0.8em;
+  line-height: 1.1;
+  padding: 0.5em;
 }
 
 .Post-Image {
-  height: 80px;
+  width: 100%;
+  border-radius: 6% 6% 0% 0%;
 }
 
 .Post-Arrow-Button {
   background: none !important;
   color: white !important;
-}
-
-.Post-Likes-Comments-Container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  font-size: 1.2rem;
-  padding: 1em;
-  margin-top: auto;
 }
 
 .Placeholder-Overlay {
@@ -311,6 +297,18 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border-radius: 6%;
+}
+
+.Read-More-Button-Container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Read-More-Button {
+  width: 90%;
+  padding: 0.5em;
 }
 
 .Comments-Button {

@@ -1,54 +1,18 @@
-import { React, useState } from "react";
-import { Form, Button } from "semantic-ui-react";
-import Comment from "./Comment";
+import { React } from "react";
 import "./Forum.css";
 
 const Post = (props) => {
-  const [isPostLiked, setIsPostLiked] = useState(false);
-  const [areCommentsShown, setAreCommentsShown] = useState(false);
-
-  const handlePostLike = () => {
-    setIsPostLiked(!isPostLiked);
-  };
-
-  const handleCommentDisplay = () => {
-    setAreCommentsShown(!areCommentsShown);
-  };
-
   return (
-    <div>
-      <div className="Post-Title-Text-Image-Container">
-        <h3 style={{ textAlign: "center" }}>{props.post.title}</h3>
-        <div className="Post-Text-Image-Container">
-          <div>
-            {props.post.photoURL && (
-              <img
-                className="Post-Image"
-                src={props.post.photoURL}
-                alt="post"
-              />
-            )}
-          </div>
-          <div className="Post-Text-Container">{props.post.text}</div>
-        </div>
+    <div className="Post-Title-Text-Image-Container">
+      <div>
+        {props.post.photoURL && (
+          <img className="Post-Image" src={props.post.photoURL} alt="post" />
+        )}
       </div>
-
-      {areCommentsShown ? (
-        <>
-          {props.post.comments.map((eachComment) => (
-            <Comment comment={eachComment} key={eachComment.commentId} />
-          ))}
-          <Form reply>
-            <Form.TextArea />
-            <Button
-              content="Add Reply"
-              labelPosition="left"
-              icon="edit"
-              primary
-            />
-          </Form>
-        </>
-      ) : null}
+      <div className="Post-Title-Text-Container">
+        <h1 style={{ textAlign: "center" }}>{props.post.title}</h1>
+        <div className="Post-Description-Container">{props.post.text}</div>
+      </div>
     </div>
   );
 };
