@@ -115,10 +115,18 @@ function Forum() {
             <div className="ForumPage-Headers-Container-Container">
               {isFetchSuccessful ? (
                 <div className="ForumPage-Headers-Container">
-                  <div className="ForumPage-Display-Header">
-                    Welcome to the Forum
+                  <div
+                    className={`ForumPage-Display-Header ${
+                      isDesktop ? "" : "Phone"
+                    }`}
+                  >
+                    {isDesktop ? "Welcome to the Forum" : "Forum"}
                   </div>
-                  <div className="ForumPage-Display-Subheader">
+                  <div
+                    className={`ForumPage-Display-Subheader ${
+                      isDesktop ? "" : "Phone"
+                    }`}
+                  >
                     Express and Discuss
                   </div>
                 </div>
