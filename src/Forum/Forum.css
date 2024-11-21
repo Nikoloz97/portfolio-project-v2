@@ -170,10 +170,16 @@
   height: 1fr;
 }
 
-.Forum-Grid {
+.Forum-Grid-Desktop {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5em;
+}
+
+.Forum-Grid-Phone {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
 
 /* ProfileCard */

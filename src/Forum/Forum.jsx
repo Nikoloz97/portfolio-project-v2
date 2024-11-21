@@ -7,6 +7,7 @@ import UserProfileCard from "./UserProfileCard";
 import PlaceholderCard from "./PlaceholderCard";
 import axios from "axios";
 import "./Forum.css";
+import { Link } from "react-router-dom";
 
 function Forum() {
   const { isDesktop, user, isUserSignedIn } = useUserContext();
@@ -159,7 +160,11 @@ function Forum() {
           )}
         </div>
         <div className="Forum-Container">
-          <div className="Forum-Grid">
+          <div
+            className={`${
+              isDesktop ? "Forum-Grid-Desktop" : "Forum-Grid-Phone"
+            }`}
+          >
             {isFetchSuccessful &&
               (isUserSignedIn ? (
                 userProfileData.postsCount > 0 ? (
@@ -172,8 +177,23 @@ function Forum() {
                     userProfile={userProfileData}
                   />
                 )
-              ) : (
+              ) : isDesktop ? (
                 <PlaceholderCard isUserSignedIn={false} />
+              ) : (
+                <div
+                  style={{
+                    zIndex: "1",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Button
+                    color="black"
+                    as={Link}
+                    to="/login"
+                    content="Login to Post"
+                  />
+                </div>
               ))}
 
             {forumProfileData.map((forumProfile) => (
