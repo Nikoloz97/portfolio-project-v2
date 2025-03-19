@@ -14,26 +14,41 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js version
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: "18.x"
+          cache: "npm"
 
-      - name: npm install, build, and test
+      - name: npm install and build
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present -- --passWithNoTests
+
+      - name: Run tests (if present)
+        run: npm run test --if-present -- --passWithNoTests
         continue-on-error: true
 
-      # Skips loading the node-modules and stores them in a build folder
+      # Ensure the build directory exists before uploading
+      - name: Check build directory
+        run: |
+          if (Test-Path -Path "build") {
+            Write-Host "Build directory exists"
+            Get-ChildItem -Path "build" -Recurse | Measure-Object | Select-Object -ExpandProperty Count
+          } else {
+            Write-Error "Build directory does not exist!"
+            exit 1
+          }
+
+      # Upload artifact for deployment job
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: node-app
           path: build/
+          retention-days: 1
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,13 +59,15 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: node-app
+          path: build/
 
       - name: List Contents of Downloaded Artifact
         run: |
-          ls -R $GITHUB_WORKSPACE
+          ls -la
+          echo "Current directory: $(pwd)"
 
       - name: "Deploy to Azure Web App"
         uses: azure/webapps-deploy@v2
