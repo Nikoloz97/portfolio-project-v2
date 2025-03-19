@@ -26,7 +26,7 @@ const Blog = () => {
       description:
         "My trip to Barcelona in early 2023. Here, I describe and show the breathtaking views of the city. In addition, it was my first time staying at a Hostel, which truly made it an unforgettable experience.",
       imageUrl:
-        "https://nikolozblog.azurewebsites.net/media/assets/images/Tibidabo3.jpg",
+        "https://nikoloz-blog.azurewebsites.net/media/assets/images/Tibidabo3.jpg",
       blogUrl: "https://nikolozblog.azurewebsites.net/post/1/",
     },
     {

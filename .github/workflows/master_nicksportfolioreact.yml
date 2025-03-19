@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: "18.x"
 
-      - name: npm install, build, and test
+      - name: npm install amd build
         run: |
           npm install
           npm run build --if-present
@@ -53,7 +53,7 @@ jobs:
           ls -R $GITHUB_WORKSPACE
 
       - name: "Deploy to Azure Web App"
-        uses: azure/webapps-deploy@v4
+        uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: "NicksPortfolioReact"
