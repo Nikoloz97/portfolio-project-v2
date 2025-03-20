@@ -26,8 +26,8 @@ const Blog = () => {
       description:
         "My trip to Barcelona in early 2023. Here, I describe and show the breathtaking views of the city. In addition, it was my first time staying at a Hostel, which truly made it an unforgettable experience.",
       imageUrl:
-        "https://nikoloz-blog.azurewebsites.net/media/assets/images/Tibidabo3.jpg",
-      blogUrl: "https://nikolozblog.azurewebsites.net/post/1/",
+        "https://nikoloz-blog.azurewebsites.net/media/assets/images/tibidabo_n6fC3Et.jpg",
+      blogUrl: "https://nikoloz-blog.azurewebsites.net/post/1/",
     },
     {
       category: "Coding",
@@ -37,8 +37,8 @@ const Blog = () => {
       description:
         "A retrospective of a 3-month bootcamp experience in 2022. As corny as it sounds, it was more than just a curriculum, it was an experience. I never thought learning something could be enjoyable (at most times). Here, I describe how I ended up in the program, what the curriculum was like, and all the fun in the process.",
       imageUrl:
-        "https://nikolozblog.azurewebsites.net/media/assets/images/Sam-Kev-Tori.jpg",
-      blogUrl: "https://nikolozblog.azurewebsites.net/post/2/",
+        "https://nikoloz-blog.azurewebsites.net/media/assets/images/Sam-Kev-Tori.jpg",
+      blogUrl: "https://nikoloz-blog.azurewebsites.net/post/2/",
     },
     {
       category: "Health",
@@ -48,8 +48,8 @@ const Blog = () => {
       description:
         "Beginning summer of 2021, I began working on my health. Here, I will describe how I shifted my diet and how I made resistance exercise a daily routine.",
       imageUrl:
-        "https://nikolozblog.azurewebsites.net/media/assets/images/before-after-v2.jpg",
-      blogUrl: "https://nikolozblog.azurewebsites.net/post/3/",
+        "https://nikoloz-blog.azurewebsites.net/media/assets/images/before-after-2.jpg",
+      blogUrl: "https://nikoloz-blog.azurewebsites.net/post/3/",
     },
   ];
 
