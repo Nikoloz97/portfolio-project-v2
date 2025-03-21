@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Card, Image, Icon, Button, Dimmer } from "semantic-ui-react";
 import { useUserContext } from "../UserContext";
+import backgroundImage from "../Images/Blog/Bricks.jpg";
 import "./Blog.css";
+import lazyLoadBackgroundImage from "../Utils/LazyLoader";
 
 const Blog = () => {
   const { isDesktop } = useUserContext();
@@ -77,22 +79,11 @@ const Blog = () => {
     }, 2100);
   }, []);
 
-  useEffect(() => {
-    getBlogPosts();
-  }, []);
+  const blogPageRef = useRef(null);
 
-  const getBlogPosts = () => {
-    // TODO: create blog post fetch
-    // axios
-    //   .get(apiForumRoot)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     setForumProfileData(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching data:", error);
-    //   });
-  };
+  useEffect(() => {
+    return lazyLoadBackgroundImage(blogPageRef.current, backgroundImage);
+  }, []);
 
   const handleMouseLeave = (index) => {
     const newHoverState = [...isHovered];
@@ -107,7 +98,10 @@ const Blog = () => {
   };
 
   return (
-    <div className={`Blog-Page ${isDesktop ? "Desktop" : "Phone"}`}>
+    <div
+      className={`Blog-Page ${isDesktop ? "Desktop" : "Phone"}`}
+      ref={blogPageRef}
+    >
       {/* Header/Subheader */}
       <div
         className={`Blog-Header-Subheader-Container ${

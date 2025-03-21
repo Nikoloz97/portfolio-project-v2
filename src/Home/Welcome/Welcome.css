@@ -29,7 +29,7 @@
 }
 
 .Welcome-Screen.Desktop {
-  background: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
+  background: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2-Placeholder.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -37,7 +37,7 @@
 }
 
 .Welcome-Screen.Phone {
-  background: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg");
+  background: url("../../Images/Home/Welcome/Welcome_Georgia_Mountains2-Placeholder.jpg");
   background-size: cover;
   background-position: left 55% bottom 0%;
   background-repeat: no-repeat;

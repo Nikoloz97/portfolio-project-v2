@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Header } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarouselDesktop from "../../Utils/VerticalCarousel/VerticalCarouselDesktop";
 import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarouselPhone";
 import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarouselButtons";
+import welcomeImage from "../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg";
 import "./Welcome.css";
+import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
 
 const Welcome = (props) => {
   const { user, isUserSignedIn, isDesktop, isPhone } = useUserContext();
@@ -25,6 +27,8 @@ const Welcome = (props) => {
 
   const carouselContent = ["Medicine", "Tutoring", "Coding"];
 
+  const welcomeRef = useRef(null);
+
   useEffect(() => {
     const completeWelcomeTextLineOne = "Welcome,";
 
@@ -42,6 +46,8 @@ const Welcome = (props) => {
         return;
       }
     }, 120);
+
+    return lazyLoadBackgroundImage(welcomeRef.current, welcomeImage);
   }, []);
 
   useEffect(() => {
@@ -99,7 +105,10 @@ const Welcome = (props) => {
     <div className="Welcome-Page">
       {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
       {/* <Loader content="Loading" active={true} /> */}
-      <div className={`Welcome-Screen ${isDesktop ? "Desktop" : "Phone"}`}>
+      <div
+        className={`Welcome-Screen ${isDesktop ? "Desktop" : "Phone"}`}
+        ref={welcomeRef}
+      >
         <div className="Welcome-Screen-Container">
           <div
             className={`Welcome-Text-And-Carousel-Container ${
