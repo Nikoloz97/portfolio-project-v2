@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Tutoring.css";
 import { Icon } from "semantic-ui-react";
 
 import wyzantImage from "../../Images/Home/Tutoring/Content/Wyzant_Square.png";
 import websiteImage from "../../Images/Home/Tutoring/Content/Tutoring_Square.png";
 import socialMediaImage from "../../Images/Home/Tutoring/Content/TikTok_Square.png";
+
+import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
+import tutoringImage from "../../Images/Home/Tutoring/Background/Tutoring9.jpeg";
 
 const Tutoring = (props) => {
   const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
@@ -77,8 +80,14 @@ const Tutoring = (props) => {
     }
   }, [isHeadersFadedIn]);
 
+  const tutoringPageRef = useRef(null);
+
+  useEffect(() => {
+    return lazyLoadBackgroundImage(tutoringPageRef.current, tutoringImage);
+  }, []);
+
   return (
-    <div className="Tutoring-Screen Phone">
+    <div className="Tutoring-Screen Phone" ref={tutoringPageRef}>
       <div className="Tutoring-Content Phone">
         <div
           className={`Tutoring-Header-Container ${

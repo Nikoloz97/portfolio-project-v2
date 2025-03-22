@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Medicine.css";
 import { Icon } from "semantic-ui-react";
 
 import plasmaCenterImage from "../../Images/Home/Medicine/Content/Med5.jpg";
 import presentationImage from "../../Images/Home/Medicine/Content/Med9.png";
 import whiteCoatImage from "../../Images/Home/Medicine/Content/Medicine1.png";
+
+import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
+import medicineImage from "../../Images/Home/Medicine/Background/Medicine26.jpeg";
 
 const Medicine = (props) => {
   const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
@@ -75,8 +78,14 @@ const Medicine = (props) => {
     setCardIndex(incCardIndex);
   };
 
+  const medicinePageRef = useRef(null);
+
+  useEffect(() => {
+    return lazyLoadBackgroundImage(medicinePageRef.current, medicineImage);
+  }, []);
+
   return (
-    <div className="Medicine-Screen Phone">
+    <div className="Medicine-Screen Phone" ref={medicinePageRef}>
       <div className="Medicine-Content Phone">
         <div
           className={`Medicine-Header-Container ${

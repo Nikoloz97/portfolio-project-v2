@@ -15,7 +15,7 @@
 }
 
 .Medicine-Screen.Desktop {
-  background: url("../../Images/Home/Medicine/Background/Medicine26.jpeg");
+  background: url("../../Images/Home/Medicine/Background/Medicine26-Mini.jpeg");
   filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
   background-size: cover;
   background-position: center;
@@ -24,7 +24,7 @@
 }
 
 .Medicine-Screen.Phone {
-  background: url("../../Images/Home/Medicine/Background/Medicine26.jpeg");
+  background: url("../../Images/Home/Medicine/Background/Medicine26-Mini.jpeg");
   filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
   background-size: cover;
   background-position: left 0% bottom 0%;

@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Tutoring.css";
 
 import wyzantImage from "../../Images/Home/Tutoring/Content/Wyzant_Square.png";
 import websiteImage from "../../Images/Home/Tutoring/Content/Tutoring_Square.png";
 import socialMediaImage from "../../Images/Home/Tutoring/Content/TikTok_Square.png";
+
+import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
+import tutoringImage from "../../Images/Home/Tutoring/Background/Tutoring9.jpeg";
 
 const Tutoring = (props) => {
   const header = {
@@ -83,8 +86,14 @@ const Tutoring = (props) => {
     }
   }, [isCardSetFadedIn]);
 
+  const tutoringPageRef = useRef(null);
+
+  useEffect(() => {
+    return lazyLoadBackgroundImage(tutoringPageRef.current, tutoringImage);
+  }, []);
+
   return (
-    <div className="Tutoring-Screen Desktop">
+    <div className="Tutoring-Screen Desktop" ref={tutoringPageRef}>
       <div className="Tutoring-Content">
         <div
           className={`Tutoring-Header-Container ${

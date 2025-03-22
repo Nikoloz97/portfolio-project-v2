@@ -15,7 +15,7 @@
 }
 
 .Coding-Screen.Desktop {
-  background: url("../../Images/Home/Coding/Background/Coding12.jpeg");
+  background: url("../../Images/Home/Coding/Background/Coding12-Mini.jpeg");
   filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
   background-size: cover;
   background-position: center;
@@ -24,7 +24,7 @@
 }
 
 .Coding-Screen.Phone {
-  background: url("../../Images/Home/Coding/Background/Coding12.jpeg");
+  background: url("../../Images/Home/Coding/Background/Coding12-Mini.jpeg");
   filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
   background-size: cover;
   background-position: left 30% bottom 0%;

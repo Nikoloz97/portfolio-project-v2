@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Coding.css";
 import { Icon } from "semantic-ui-react";
 
@@ -6,13 +6,15 @@ import moshImage from "../../Images/Home/Coding/Content/Self_Teach/Mosh_New.png"
 import pythonImage from "../../Images/Home/Coding/Content/Self_Teach/PythonDoc2_New.png";
 import georgiaImage from "../../Images/Home/Coding/Content/Self_Teach/Georgia1_New.png";
 
-import biochemImage from "../../Images/Home/Coding/Content/Bootcamp/BiochemSite2_Square.png";
+import biochemImage from "../../Images/Home/Coding/Content/Bootcamp/BiochemSite.png";
 import nickJsImage from "../../Images/Home/Coding/Content/Bootcamp/NickJS_Square.png";
 import restaurantTinderImage from "../../Images/Home/Coding/Content/Bootcamp/RT_Square.png";
 
 import portalImage from "../../Images/Home/Coding/Content/Work/ClaimGenPortal_Square.png";
 import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle_Square.png";
 import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square.png";
+import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
+import codingImage from "../../Images/Home/Coding/Background/Coding12.jpeg";
 
 const Coding = (props) => {
   const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
@@ -134,6 +136,12 @@ const Coding = (props) => {
 
   const card = periods[periodIndex].cards[cardIndex];
 
+  const codingPageRef = useRef(null);
+
+  useEffect(() => {
+    return lazyLoadBackgroundImage(codingPageRef.current, codingImage);
+  }, []);
+
   useEffect(() => {
     if (props.windowHeightPosition >= 2100) {
       const fadeInInterval = setInterval(() => {
@@ -185,7 +193,7 @@ const Coding = (props) => {
   };
 
   return (
-    <div className="Coding-Screen Phone">
+    <div className="Coding-Screen Phone" ref={codingPageRef}>
       <div className="Coding-Content Phone">
         <div
           className={`Coding-Header-Container ${
