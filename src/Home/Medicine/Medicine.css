@@ -193,6 +193,10 @@
   max-height: 300px;
 }
 
+.Medicine-Card-Image.Placeholder {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
 .Medicine-Card-Header {
   margin-top: 20px;
   font-weight: 400;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import LazyLoad from "react-lazyload";
 import "./Tutoring.css";
 
 import wyzantImage from "../../Images/Home/Tutoring/Content/Wyzant_Square.png";
@@ -114,11 +115,20 @@ const Tutoring = (props) => {
                 isCardSetFadedIn[index] ? "Fade-In" : ""
               }`}
             >
-              <img
-                src={card.mediaUrl}
-                className="Tutoring-Card-Image"
-                alt={card.mediaAltText}
-              />
+              <LazyLoad
+                height={300}
+                offset={100}
+                once
+                placeholder={
+                  <div className="Tutoring-Card-Image Placeholder"></div>
+                }
+              >
+                <img
+                  src={card.mediaUrl}
+                  className="Tutoring-Card-Image"
+                  alt={card.mediaAltText}
+                />
+              </LazyLoad>
               <div className="Tutoring-Card-Header">{card.header}</div>
               <div className="Tutoring-Card-Text">{card.mediaCaption}</div>
             </div>

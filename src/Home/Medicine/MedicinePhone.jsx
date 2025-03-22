@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Medicine.css";
 import { Icon } from "semantic-ui-react";
+import LazyLoad from "react-lazyload";
 
 import plasmaCenterImage from "../../Images/Home/Medicine/Content/Med5.jpg";
 import presentationImage from "../../Images/Home/Medicine/Content/Med9.png";
@@ -112,11 +113,20 @@ const Medicine = (props) => {
             <Icon name="angle left" size="huge" />
           </div>
           <div className="Medicine-Card Phone">
-            <img
-              src={cards[cardIndex].mediaUrl}
-              className="Medicine-Card-Image"
-              alt={cards[cardIndex].mediaAltText}
-            />
+            <LazyLoad
+              height={300}
+              offset={100}
+              once
+              placeholder={
+                <div className="Medicine-Card-Image Placeholder"></div>
+              }
+            >
+              <img
+                src={cards[cardIndex].mediaUrl}
+                className="Medicine-Card-Image"
+                alt={cards[cardIndex].mediaAltText}
+              />
+            </LazyLoad>
             <div className="Medicine-Card-Header">
               {cards[cardIndex].header}
             </div>

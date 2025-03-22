@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import LazyLoad from "react-lazyload";
 import "./Coding.css";
 import { Icon } from "semantic-ui-react";
 
@@ -227,11 +228,20 @@ const Coding = (props) => {
                 rel="noopener noreferrer"
                 style={{ width: "100%" }}
               >
-                <img
-                  src={card.mediaUrl}
-                  className="Coding-Card-Image"
-                  alt={card.mediaAltText}
-                />
+                <LazyLoad
+                  height={300}
+                  offset={100}
+                  once
+                  placeholder={
+                    <div className="Coding-Card-Image Placeholder"></div>
+                  }
+                >
+                  <img
+                    src={card.mediaUrl}
+                    className="Coding-Card-Image"
+                    alt={card.mediaAltText}
+                  />
+                </LazyLoad>
               </a>
             ) : (
               <img

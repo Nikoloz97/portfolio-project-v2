@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import LazyLoad from "react-lazyload";
 import "./Medicine.css";
 
 import plasmaCenterImage from "../../Images/Home/Medicine/Content/Med5.jpg";
@@ -112,11 +113,20 @@ const Medicine = (props) => {
                 isCardSetFadedIn[index] ? "Fade-In" : ""
               }`}
             >
-              <img
-                src={card.mediaUrl}
-                className="Medicine-Card-Image"
-                alt={card.mediaAltText}
-              />
+              <LazyLoad
+                height={300}
+                offset={100}
+                once
+                placeholder={
+                  <div className="Medicine-Card-Image Placeholder"></div>
+                }
+              >
+                <img
+                  src={card.mediaUrl}
+                  className="Medicine-Card-Image"
+                  alt={card.mediaAltText}
+                />
+              </LazyLoad>
               <div className="Medicine-Card-Header">{card.header}</div>
               <div className="Medicine-Card-Text">{card.mediaCaption}</div>
             </div>

@@ -169,7 +169,7 @@
   align-items: center;
   justify-content: start;
   border-radius: 10px;
-  width: 30%;
+  width: 19%;
   height: fit-content;
   opacity: 0;
 }
@@ -196,6 +196,11 @@
   width: 100%;
   max-height: 300px;
   border-radius: 10px;
+}
+
+.Coding-Card-Image.Placeholder {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
 }
 
 .Coding-Card-Header {

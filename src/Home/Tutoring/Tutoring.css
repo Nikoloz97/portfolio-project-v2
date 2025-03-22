@@ -201,6 +201,10 @@
   max-height: 300px;
 }
 
+.Tutoring-Card-Image.Placeholder {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
 .Tutoring-Card-Header {
   margin-top: 20px;
   font-weight: 400;

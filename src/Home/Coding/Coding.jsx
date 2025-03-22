@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import LazyLoad from "react-lazyload";
 import "./Coding.css";
 import { Icon } from "semantic-ui-react";
 
@@ -13,8 +14,8 @@ import restaurantTinderImage from "../../Images/Home/Coding/Content/Bootcamp/RT_
 import portalImage from "../../Images/Home/Coding/Content/Work/ClaimGenPortal_Square.png";
 import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle_Square.png";
 import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square.png";
-import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
 import codingImage from "../../Images/Home/Coding/Background/Coding12.jpeg";
+import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
 
 const Coding = (props) => {
   const [periodIndex, setPeriodIndex] = useState(0);
@@ -217,18 +218,36 @@ const Coding = (props) => {
                     rel="noopener noreferrer"
                     style={{ width: "100%" }}
                   >
+                    <LazyLoad
+                      height={300}
+                      offset={100}
+                      once
+                      placeholder={
+                        <div className="Coding-Card-Image Placeholder"></div>
+                      }
+                    >
+                      <img
+                        src={codingCard.mediaUrl}
+                        className="Coding-Card-Image"
+                        alt={codingCard.mediaAltText}
+                      />
+                    </LazyLoad>
+                  </a>
+                ) : (
+                  <LazyLoad
+                    height={300}
+                    offset={100}
+                    once
+                    placeholder={
+                      <div className="Coding-Card-Image Placeholder"></div>
+                    }
+                  >
                     <img
                       src={codingCard.mediaUrl}
                       className="Coding-Card-Image"
                       alt={codingCard.mediaAltText}
                     />
-                  </a>
-                ) : (
-                  <img
-                    src={codingCard.mediaUrl}
-                    className="Coding-Card-Image"
-                    alt={codingCard.mediaAltText}
-                  />
+                  </LazyLoad>
                 )}
                 <div className="Coding-Card-Header">{codingCard.header}</div>
                 <div className="Coding-Card-Text">

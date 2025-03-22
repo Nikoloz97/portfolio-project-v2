@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import LazyLoad from "react-lazyload";
 import "./Tutoring.css";
 import { Icon } from "semantic-ui-react";
 
@@ -114,11 +115,20 @@ const Tutoring = (props) => {
             <Icon name="angle left" size="huge" />
           </div>
           <div className="Tutoring-Card Phone">
-            <img
-              src={cards[cardIndex].mediaUrl}
-              className="Tutoring-Card-Image"
-              alt={cards[cardIndex].mediaAltText}
-            />
+            <LazyLoad
+              height={300}
+              offset={100}
+              once
+              placeholder={
+                <div className="Tutoring-Card-Image Placeholder"></div>
+              }
+            >
+              <img
+                src={cards[cardIndex].mediaUrl}
+                className="Tutoring-Card-Image"
+                alt={cards[cardIndex].mediaAltText}
+              />
+            </LazyLoad>
             <div className="Tutoring-Card-Header">
               {cards[cardIndex].header}
             </div>
