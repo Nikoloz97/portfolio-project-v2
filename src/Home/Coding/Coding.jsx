@@ -254,7 +254,6 @@ const Coding = (props) => {
                   </a>
                 ) : (
                   <ProgressiveImage
-                    // TODO: set up smallMediaUrl
                     smallSrc={codingCard.smallMediaUrl}
                     largeSrc={codingCard.mediaUrl}
                     alt={codingCard.description}

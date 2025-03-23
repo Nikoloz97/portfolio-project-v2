@@ -6,11 +6,20 @@ import { Link } from "react-router-dom";
 import projectsImage from "../Images/Projects/MeasuringTools-Blurred.jpg";
 
 import fantasyBballImage from "../Images/Projects/Nba1.jpg";
+import fantasyBballImageMini from "../Images/Projects/Nba1-Mini.jpg";
+
 import clocksImage from "../Images/Projects/clock-design-wallpaper-cropped.jpg";
+import clocksImageMini from "../Images/Projects/clock-design-wallpaper-cropped-mini.jpg";
+
 import calculatorImage from "../Images/Projects/front-view-school-supplies-table-composition-cropped.jpg";
-import geographyGameImage from "../Images/Projects/pexels-ricky-galvez-466962-1169922-cropped.jpg";
+import calculatorImageMini from "../Images/Projects/front-view-school-supplies-table-composition-cropped-mini.jpg";
+
+import geographyGameImage from "../Images/Projects/Globe.jpg";
+import geographyGameImageMini from "../Images/Projects/Globe-Mini.jpg";
+
 import { useUserContext } from "../UserContext";
 import { progressiveBackgroundImageLoader } from "../Utils/ProgressiveLoaders";
+import ProgressiveImage from "../Utils/ProgressiveImage";
 
 const Projects = () => {
   const { isDesktop } = useUserContext();
@@ -26,6 +35,7 @@ const Projects = () => {
   const projectsData = [
     {
       title: "Fantasy Basketball",
+      miniMediaUrl: fantasyBballImageMini,
       mediaUrl: fantasyBballImage,
       description:
         "Consisting of the team analyzer, it calculates your team averages in nine categories relative to the league's top 150 players",
@@ -33,6 +43,7 @@ const Projects = () => {
     },
     {
       title: "Clocks",
+      miniMediaUrl: clocksImageMini,
       mediaUrl: clocksImage,
       description:
         "The clocks project consists of a stopwatch, alarm, and a digital clock",
@@ -40,6 +51,7 @@ const Projects = () => {
     },
     {
       title: "Calculator",
+      miniMediaUrl: calculatorImageMini,
       mediaUrl: calculatorImage,
       description:
         "The calculator project consists of a basic arithmetic calculator",
@@ -47,6 +59,7 @@ const Projects = () => {
     },
     {
       title: "Geography Game",
+      miniMediaUrl: geographyGameImageMini,
       mediaUrl: geographyGameImage,
       description: "Coming soon",
       linkUrl: "/projects/geography-game",
@@ -126,22 +139,24 @@ const Projects = () => {
               <div key={index}>
                 {index === 3 ? (
                   <div className="Projects-Image">
-                    <img
-                      className="Projects-Image-Disabled"
+                    <ProgressiveImage
+                      smallSrc={project.miniMediaUrl}
+                      largeSrc={project.mediaUrl}
                       alt={project.description}
-                      src={project.mediaUrl}
+                      className="Projects-Image-Disabled"
                     />
                     <div className="Projects-CS-Overlay">Coming Soon</div>
                   </div>
                 ) : (
-                  <img
+                  <ProgressiveImage
+                    smallSrc={project.miniMediaUrl}
+                    largeSrc={project.mediaUrl}
+                    alt={project.description}
                     className={`${
                       isCardClicked && currentProjectIndex === index
                         ? "Projects-Selected-Card"
                         : ""
                     } Projects-Image`}
-                    alt={project.description}
-                    src={project.mediaUrl}
                     onClick={() => handleCardClick(index)}
                   />
                 )}
