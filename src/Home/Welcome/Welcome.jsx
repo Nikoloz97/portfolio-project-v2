@@ -6,7 +6,7 @@ import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarousel
 import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarouselButtons";
 import welcomeImage from "../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg";
 import "./Welcome.css";
-import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
+import { progressiveBackgroundImageLoader } from "../../Utils/ProgressiveLoaders.js";
 
 const Welcome = (props) => {
   const { user, isUserSignedIn, isDesktop, isPhone } = useUserContext();
@@ -47,7 +47,7 @@ const Welcome = (props) => {
       }
     }, 120);
 
-    return lazyLoadBackgroundImage(welcomeRef.current, welcomeImage);
+    return progressiveBackgroundImageLoader(welcomeRef.current, welcomeImage);
   }, []);
 
   useEffect(() => {

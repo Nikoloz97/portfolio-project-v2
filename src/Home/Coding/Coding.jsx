@@ -1,21 +1,39 @@
 import React, { useState, useEffect, useRef } from "react";
-import LazyLoad from "react-lazyload";
 import "./Coding.css";
 import { Icon } from "semantic-ui-react";
 
 import moshImage from "../../Images/Home/Coding/Content/Self_Teach/Mosh_New.png";
+import moshImageMini from "../../Images/Home/Coding/Content/Self_Teach/Mosh_New-Mini.png";
+
 import pythonImage from "../../Images/Home/Coding/Content/Self_Teach/PythonDoc2_New.png";
+import pythonImageMini from "../../Images/Home/Coding/Content/Self_Teach/PythonDoc2_New-Mini.png";
+
 import georgiaImage from "../../Images/Home/Coding/Content/Self_Teach/Georgia1_New.png";
+import georgiaImageMini from "../../Images/Home/Coding/Content/Self_Teach/Georgia1_New-Mini.png";
 
 import biochemImage from "../../Images/Home/Coding/Content/Bootcamp/BiochemSite.png";
+import biochemImageMini from "../../Images/Home/Coding/Content/Bootcamp/BiochemSite-Mini.png";
+
 import nickJsImage from "../../Images/Home/Coding/Content/Bootcamp/NickJS_Square.png";
+import nickJsImageMini from "../../Images/Home/Coding/Content/Bootcamp/NickJS_Square-Mini.png";
+
 import restaurantTinderImage from "../../Images/Home/Coding/Content/Bootcamp/RT_Square.png";
+import restaurantTinderImageMini from "../../Images/Home/Coding/Content/Bootcamp/RT_Square-Mini.png";
 
 import portalImage from "../../Images/Home/Coding/Content/Work/ClaimGenPortal_Square.png";
+import portalImageMini from "../../Images/Home/Coding/Content/Work/ClaimGenPortal_Square-Mini.png";
+
 import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle_Square.png";
+import cookiesImageMini from "../../Images/Home/Coding/Content/Work/CookiesArticle_Square-Mini.png";
+
 import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square.png";
+import financeImageMini from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square-Mini.png";
+
 import codingImage from "../../Images/Home/Coding/Background/Coding12.jpeg";
-import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
+import codingImageMini from "../../Images/Home/Coding/Background/Coding12-Mini.jpeg";
+
+import { progressiveBackgroundImageLoader } from "../../Utils/ProgressiveLoaders";
+import ProgressiveImage from "../../Utils/ProgressiveImage";
 
 const Coding = (props) => {
   const [periodIndex, setPeriodIndex] = useState(0);
@@ -42,6 +60,7 @@ const Coding = (props) => {
         {
           header: "Tutorials",
           techStack: null,
+          miniMediaUrl: moshImageMini,
           mediaUrl: moshImage,
           mediaAltText: "Mosh logo",
           websiteLinkUrl: null,
@@ -51,6 +70,7 @@ const Coding = (props) => {
         {
           header: "Note Taking",
           techStack: null,
+          miniMediaUrl: pythonImageMini,
           mediaUrl: pythonImage,
           mediaAltText: "Google docs Python notes",
           websiteLinkUrl: null,
@@ -60,6 +80,7 @@ const Coding = (props) => {
         {
           header: "First Website",
           techStack: "HTML, CSS",
+          miniMediaUrl: georgiaImageMini,
           mediaUrl: georgiaImage,
           mediaAltText: "Website showing my trip in Georgia from 2021",
           websiteLinkUrl: "https://nickgeorgiatrip2021.netlify.app/",
@@ -75,6 +96,7 @@ const Coding = (props) => {
         {
           header: "Restaurant Tinder",
           techStack: "Vue.js, C#, SQL",
+          miniMediaUrl: restaurantTinderImageMini,
           mediaUrl: restaurantTinderImage,
           mediaAltText: "Github for capstone project",
           websiteLinkUrl: null,
@@ -84,6 +106,7 @@ const Coding = (props) => {
         {
           header: "First Portfolio Page",
           techStack: "JavaScript",
+          miniMediaUrl: nickJsImageMini,
           mediaUrl: nickJsImage,
           mediaAltText: "Intro screen to my portfolio page",
           websiteLinkUrl: "https://nikoloz97.github.io/",
@@ -93,6 +116,7 @@ const Coding = (props) => {
         {
           header: "First Passion Project",
           techStack: "Vue, C#, SQLite",
+          miniMediaUrl: biochemImageMini,
           mediaUrl: biochemImage,
           mediaAltText: "Intro screen to my biochemistry site",
           websiteLinkUrl: null,
@@ -108,6 +132,7 @@ const Coding = (props) => {
         {
           header: "ClaimGen Website",
           techStack: "React, ASP.NET, SQL",
+          miniMediaUrl: portalImageMini,
           mediaUrl: portalImage,
           mediaAltText: "One of the screens of the ClaimGen Portal website",
           websiteLinkUrl: null,
@@ -117,6 +142,7 @@ const Coding = (props) => {
         {
           header: "Technical Doc",
           techStack: null,
+          miniMediaUrl: cookiesImageMini,
           mediaUrl: cookiesImage,
           mediaAltText:
             "One of the technical documents written regarding implementation of website Cookies",
@@ -127,6 +153,7 @@ const Coding = (props) => {
         {
           header: "Finance Side Project",
           techStack: "TypeScript, React, Express, MongoDB",
+          miniMediaUrl: financeImageMini,
           mediaUrl: financeImage,
           mediaAltText: "Home screen of my finance side project",
           websiteLinkUrl: null,
@@ -140,7 +167,7 @@ const Coding = (props) => {
   const codingPageRef = useRef(null);
 
   useEffect(() => {
-    return lazyLoadBackgroundImage(codingPageRef.current, codingImage);
+    return progressiveBackgroundImageLoader(codingPageRef.current, codingImage);
   }, []);
 
   useEffect(() => {
@@ -218,36 +245,21 @@ const Coding = (props) => {
                     rel="noopener noreferrer"
                     style={{ width: "100%" }}
                   >
-                    <LazyLoad
-                      height={300}
-                      offset={100}
-                      once
-                      placeholder={
-                        <div className="Coding-Card-Image Placeholder"></div>
-                      }
-                    >
-                      <img
-                        src={codingCard.mediaUrl}
-                        className="Coding-Card-Image"
-                        alt={codingCard.mediaAltText}
-                      />
-                    </LazyLoad>
+                    <ProgressiveImage
+                      smallSrc={codingCard.miniMediaUrl}
+                      largeSrc={codingCard.mediaUrl}
+                      alt={codingCard.description}
+                      className="Coding-Card-Image"
+                    />
                   </a>
                 ) : (
-                  <LazyLoad
-                    height={300}
-                    offset={100}
-                    once
-                    placeholder={
-                      <div className="Coding-Card-Image Placeholder"></div>
-                    }
-                  >
-                    <img
-                      src={codingCard.mediaUrl}
-                      className="Coding-Card-Image"
-                      alt={codingCard.mediaAltText}
-                    />
-                  </LazyLoad>
+                  <ProgressiveImage
+                    // TODO: set up smallMediaUrl
+                    smallSrc={codingCard.smallMediaUrl}
+                    largeSrc={codingCard.mediaUrl}
+                    alt={codingCard.description}
+                    className="Coding-Card-Image"
+                  />
                 )}
                 <div className="Coding-Card-Header">{codingCard.header}</div>
                 <div className="Coding-Card-Text">

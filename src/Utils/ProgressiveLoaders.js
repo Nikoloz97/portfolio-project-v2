@@ -4,7 +4,7 @@
  * @param {string} imageUrl - URL of the image to lazy load
  * @returns {function} - Cleanup function to disconnect the observer
  */
-const lazyLoadBackgroundImage = (element, imageUrl) => {
+export const progressiveBackgroundImageLoader = (element, imageUrl) => {
   if (!element) return () => {};
 
   const observer = new IntersectionObserver((entries) => {
@@ -28,5 +28,3 @@ const lazyLoadBackgroundImage = (element, imageUrl) => {
     if (observer) observer.disconnect();
   };
 };
-
-export default lazyLoadBackgroundImage;

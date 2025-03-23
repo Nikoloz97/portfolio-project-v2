@@ -7,7 +7,7 @@ import plasmaCenterImage from "../../Images/Home/Medicine/Content/Med5.jpg";
 import presentationImage from "../../Images/Home/Medicine/Content/Med9.png";
 import whiteCoatImage from "../../Images/Home/Medicine/Content/Medicine1.png";
 
-import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
+import { progressiveBackgroundImageLoader } from "../../Utils/ProgressiveLoaders.js";
 import medicineImage from "../../Images/Home/Medicine/Background/Medicine26.jpeg";
 
 const Medicine = (props) => {
@@ -82,7 +82,10 @@ const Medicine = (props) => {
   const medicinePageRef = useRef(null);
 
   useEffect(() => {
-    return lazyLoadBackgroundImage(medicinePageRef.current, medicineImage);
+    return progressiveBackgroundImageLoader(
+      medicinePageRef.current,
+      medicineImage
+    );
   }, []);
 
   return (

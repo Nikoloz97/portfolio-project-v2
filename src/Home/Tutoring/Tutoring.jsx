@@ -6,7 +6,7 @@ import wyzantImage from "../../Images/Home/Tutoring/Content/Wyzant_Square.png";
 import websiteImage from "../../Images/Home/Tutoring/Content/Tutoring_Square.png";
 import socialMediaImage from "../../Images/Home/Tutoring/Content/TikTok_Square.png";
 
-import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
+import { progressiveBackgroundImageLoader } from "../../Utils/ProgressiveLoaders.js";
 import tutoringImage from "../../Images/Home/Tutoring/Background/Tutoring9.jpeg";
 
 const Tutoring = (props) => {
@@ -90,7 +90,10 @@ const Tutoring = (props) => {
   const tutoringPageRef = useRef(null);
 
   useEffect(() => {
-    return lazyLoadBackgroundImage(tutoringPageRef.current, tutoringImage);
+    return progressiveBackgroundImageLoader(
+      tutoringPageRef.current,
+      tutoringImage
+    );
   }, []);
 
   return (

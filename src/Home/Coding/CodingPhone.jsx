@@ -14,7 +14,7 @@ import restaurantTinderImage from "../../Images/Home/Coding/Content/Bootcamp/RT_
 import portalImage from "../../Images/Home/Coding/Content/Work/ClaimGenPortal_Square.png";
 import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle_Square.png";
 import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square.png";
-import lazyLoadBackgroundImage from "../../Utils/LazyLoader";
+import { progressiveBackgroundImageLoader } from "../../Utils/ProgressiveLoaders.js";
 import codingImage from "../../Images/Home/Coding/Background/Coding12.jpeg";
 
 const Coding = (props) => {
@@ -140,7 +140,7 @@ const Coding = (props) => {
   const codingPageRef = useRef(null);
 
   useEffect(() => {
-    return lazyLoadBackgroundImage(codingPageRef.current, codingImage);
+    return progressiveBackgroundImageLoader(codingPageRef.current, codingImage);
   }, []);
 
   useEffect(() => {

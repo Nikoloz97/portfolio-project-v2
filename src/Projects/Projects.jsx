@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Projects.css";
 import { Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+
+import projectsImage from "../Images/Projects/MeasuringTools-Blurred.jpg";
 
 import fantasyBballImage from "../Images/Projects/Nba1.jpg";
 import clocksImage from "../Images/Projects/clock-design-wallpaper-cropped.jpg";
 import calculatorImage from "../Images/Projects/front-view-school-supplies-table-composition-cropped.jpg";
 import geographyGameImage from "../Images/Projects/pexels-ricky-galvez-466962-1169922-cropped.jpg";
 import { useUserContext } from "../UserContext";
+import { progressiveBackgroundImageLoader } from "../Utils/ProgressiveLoaders";
 
 const Projects = () => {
   const { isDesktop } = useUserContext();
@@ -57,9 +60,18 @@ const Projects = () => {
     setCurrentProjectIndex(index);
   };
 
+  const projectsPageRef = useRef(null);
+
+  useEffect(() => {
+    return progressiveBackgroundImageLoader(
+      projectsPageRef.current,
+      projectsImage
+    );
+  }, []);
+
   return (
     <>
-      <div className="Projects-Page">
+      <div className="Projects-Page" ref={projectsPageRef}>
         <div className={`Projects-Container ${isDesktop ? "" : "Phone"}`}>
           <div
             className={`Projects-Title-Description-Container ${

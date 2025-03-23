@@ -3,7 +3,7 @@ import { Card, Image, Icon, Button, Dimmer } from "semantic-ui-react";
 import { useUserContext } from "../UserContext";
 import backgroundImage from "../Images/Blog/Bricks.jpg";
 import "./Blog.css";
-import lazyLoadBackgroundImage from "../Utils/LazyLoader";
+import { progressiveBackgroundImageLoader } from "../Utils/ProgressiveLoaders";
 
 const Blog = () => {
   const { isDesktop } = useUserContext();
@@ -82,7 +82,10 @@ const Blog = () => {
   const blogPageRef = useRef(null);
 
   useEffect(() => {
-    return lazyLoadBackgroundImage(blogPageRef.current, backgroundImage);
+    return progressiveBackgroundImageLoader(
+      blogPageRef.current,
+      backgroundImage
+    );
   }, []);
 
   const handleMouseLeave = (index) => {
