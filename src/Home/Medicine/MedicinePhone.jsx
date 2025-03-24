@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Medicine.css";
 import { Icon } from "semantic-ui-react";
-import LazyLoad from "react-lazyload";
 
 import plasmaCenterImage from "../../Images/Home/Medicine/Content/Med5.jpg";
+import plasmaCenterImageMini from "../../Images/Home/Medicine/Content/Med5-Mini.jpg";
+
 import presentationImage from "../../Images/Home/Medicine/Content/Med9.png";
+import presentationImageMini from "../../Images/Home/Medicine/Content/Med9-Mini.png";
+
 import whiteCoatImage from "../../Images/Home/Medicine/Content/Medicine1.png";
+import whiteCoatImageMini from "../../Images/Home/Medicine/Content/Medicine1-Mini.png";
 
 import { progressiveBackgroundImageLoader } from "../../Utils/ProgressiveLoaders.js";
 import medicineImage from "../../Images/Home/Medicine/Background/Medicine26.jpeg";
+import ProgressiveImage from "../../Utils/ProgressiveImage.js";
 
 const Medicine = (props) => {
   const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
@@ -26,6 +31,7 @@ const Medicine = (props) => {
   const cards = [
     {
       header: "Plasma Center",
+      miniMediaUrl: plasmaCenterImageMini,
       mediaUrl: plasmaCenterImage,
       mediaAltText: "Plasma Center",
       mediaCaption:
@@ -33,6 +39,7 @@ const Medicine = (props) => {
     },
     {
       header: "Research",
+      miniMediaUrl: presentationImageMini,
       mediaUrl: presentationImage,
       mediaAltText: "My research presentation in the sociology department",
       mediaCaption:
@@ -40,6 +47,7 @@ const Medicine = (props) => {
     },
     {
       header: "Medical School",
+      miniMediaUrl: whiteCoatImageMini,
       mediaUrl: whiteCoatImage,
       mediaAltText: "In my white coat on campus at Ohio University",
       mediaCaption:
@@ -116,20 +124,12 @@ const Medicine = (props) => {
             <Icon name="angle left" size="huge" />
           </div>
           <div className="Medicine-Card Phone">
-            <LazyLoad
-              height={300}
-              offset={100}
-              once
-              placeholder={
-                <div className="Medicine-Card-Image Placeholder"></div>
-              }
-            >
-              <img
-                src={cards[cardIndex].mediaUrl}
-                className="Medicine-Card-Image"
-                alt={cards[cardIndex].mediaAltText}
-              />
-            </LazyLoad>
+            <ProgressiveImage
+              smallSrc={cards[cardIndex].miniMediaUrl}
+              largeSrc={cards[cardIndex].mediaUrl}
+              alt={cards[cardIndex].mediaAltText}
+              className="Medicine-Card-Image"
+            />
             <div className="Medicine-Card-Header">
               {cards[cardIndex].header}
             </div>

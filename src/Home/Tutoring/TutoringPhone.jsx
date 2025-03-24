@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import LazyLoad from "react-lazyload";
 import "./Tutoring.css";
 import { Icon } from "semantic-ui-react";
 
 import wyzantImage from "../../Images/Home/Tutoring/Content/Wyzant_Square.png";
+import wyzantImageMini from "../../Images/Home/Tutoring/Content/Wyzant_Square-Mini.png";
+
 import websiteImage from "../../Images/Home/Tutoring/Content/Tutoring_Square.png";
+import websiteImageMini from "../../Images/Home/Tutoring/Content/Tutoring_Square-Mini.png";
+
 import socialMediaImage from "../../Images/Home/Tutoring/Content/TikTok_Square.png";
+import socialMediaImageMini from "../../Images/Home/Tutoring/Content/TikTok_Square-Mini.png";
 
 import { progressiveBackgroundImageLoader } from "../../Utils/ProgressiveLoaders.js";
 import tutoringImage from "../../Images/Home/Tutoring/Background/Tutoring9.jpeg";
+import ProgressiveImage from "../../Utils/ProgressiveImage.js";
 
 const Tutoring = (props) => {
   const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
@@ -27,6 +32,7 @@ const Tutoring = (props) => {
     {
       header: "Wyzant",
       mediaUrl: wyzantImage,
+      miniMediaUrl: wyzantImageMini,
       mediaAltText: "Profile on the tutoring website Wyzant",
       websiteLinkUrl: null,
       mediaCaption:
@@ -35,6 +41,7 @@ const Tutoring = (props) => {
     {
       header: "Tutoring Site",
       mediaUrl: websiteImage,
+      miniMediaUrl: websiteImageMini,
       mediaAltText: "Intro screen to my tutoring website called NikoScience",
       websiteLinkUrl: null,
       mediaCaption: "I made a personal website through Wix called NikoScience",
@@ -42,6 +49,7 @@ const Tutoring = (props) => {
     {
       header: "Social Media Outreach",
       mediaUrl: socialMediaImage,
+      miniMediaUrl: socialMediaImageMini,
       mediaAltText: "Website showing my trip in Georgia from 2021",
       websiteLinkUrl: null,
       mediaCaption:
@@ -118,20 +126,12 @@ const Tutoring = (props) => {
             <Icon name="angle left" size="huge" />
           </div>
           <div className="Tutoring-Card Phone">
-            <LazyLoad
-              height={300}
-              offset={100}
-              once
-              placeholder={
-                <div className="Tutoring-Card-Image Placeholder"></div>
-              }
-            >
-              <img
-                src={cards[cardIndex].mediaUrl}
-                className="Tutoring-Card-Image"
-                alt={cards[cardIndex].mediaAltText}
-              />
-            </LazyLoad>
+            <ProgressiveImage
+              smallSrc={cards[cardIndex].miniMediaUrl}
+              largeSrc={cards[cardIndex].mediaUrl}
+              alt={cards[cardIndex].mediaAltText}
+              className="Tutoring-Card-Image"
+            />
             <div className="Tutoring-Card-Header">
               {cards[cardIndex].header}
             </div>
