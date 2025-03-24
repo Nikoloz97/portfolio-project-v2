@@ -30,7 +30,6 @@ import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_S
 import financeImageMini from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square-Mini.png";
 
 import codingImage from "../../Images/Home/Coding/Background/Coding12.jpeg";
-import codingImageMini from "../../Images/Home/Coding/Background/Coding12-Mini.jpeg";
 
 import { progressiveBackgroundImageLoader } from "../../Utils/ProgressiveLoaders";
 import ProgressiveImage from "../../Utils/ProgressiveImage";
@@ -248,7 +247,7 @@ const Coding = (props) => {
                     <ProgressiveImage
                       smallSrc={codingCard.miniMediaUrl}
                       largeSrc={codingCard.mediaUrl}
-                      alt={codingCard.description}
+                      alt={codingCard.mediaAltText}
                       className="Coding-Card-Image"
                     />
                   </a>
@@ -256,7 +255,7 @@ const Coding = (props) => {
                   <ProgressiveImage
                     smallSrc={codingCard.smallMediaUrl}
                     largeSrc={codingCard.mediaUrl}
-                    alt={codingCard.description}
+                    alt={codingCard.mediaAltText}
                     className="Coding-Card-Image"
                   />
                 )}
