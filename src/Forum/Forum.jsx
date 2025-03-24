@@ -18,6 +18,7 @@ function Forum() {
   const [forumProfileData, setForumProfileData] = useState([]);
   const [userProfileData, setUserProfileData] = useState({});
   const [isDisplayToBeginFadein, setIsDisplayToBeginFadein] = useState(false);
+  const [customLoadingMessage, setCustomLoadingMessage] = useState("Loading");
 
   useEffect(() => {
     if (isUserSignedIn) {
@@ -53,44 +54,65 @@ function Forum() {
 
   const getForumProfilesWithPostsExceptUser = (userId) => {
     setIsLoading(true);
+    const timeoutId = setTimeout(() => {
+      setCustomLoadingMessage(
+        "Sorry, I chose the cheapest cloud option to store this data... Please explore a different tab while your content is getting ready"
+      );
+    }, 5000);
     axios
       .get(apiForumRoot + "/ForumProfilesWithPosts/" + userId)
       .then((response) => {
         setForumProfileData(response.data);
+        clearTimeout(timeoutId);
       })
       .catch((error) => {
         setIsLoading(false);
         setIsFetchSuccessful(false);
+        clearTimeout(timeoutId);
       });
   };
 
   const getForumProfilesWithPosts = () => {
     setIsLoading(true);
+    const timeoutId = setTimeout(() => {
+      setCustomLoadingMessage(
+        "Sorry, I chose the cheapest cloud option to store this data... Please explore a different tab while your content is getting ready"
+      );
+    }, 5000);
     axios
       .get(apiForumRoot + "/ForumProfilesWithPosts")
       .then((response) => {
         setForumProfileData(response.data);
         setIsLoading(false);
         setIsFetchSuccessful(true);
+        clearTimeout(timeoutId);
       })
       .catch((error) => {
         setIsLoading(false);
         setIsFetchSuccessful(false);
+        clearTimeout(timeoutId);
       });
   };
 
   const getUserProfile = (userId) => {
     setIsLoading(true);
+    const timeoutId = setTimeout(() => {
+      setCustomLoadingMessage(
+        "Sorry, I chose the cheapest cloud option to store this data... Please explore a different tab while your content is getting ready"
+      );
+    }, 5000);
     axios
       .get(apiForumRoot + "/UserProfile/" + userId)
       .then((response) => {
         setUserProfileData(response.data);
         setIsLoading(false);
         setIsFetchSuccessful(true);
+        clearTimeout(timeoutId);
       })
       .catch((error) => {
         setIsLoading(false);
         setIsFetchSuccessful(false);
+        clearTimeout(timeoutId);
       });
   };
 
@@ -101,7 +123,7 @@ function Forum() {
 
   return (
     <div className="Loading-Display-Container">
-      <Loader content="Loading" active={isLoading} />
+      <Loader content={customLoadingMessage} active={isLoading} />
       <div
         className={`Display-Page ${isDesktop ? "" : "Phone"} ${
           isDisplayToBeginFadein ? "Fade-In" : ""
