@@ -4,28 +4,35 @@
 }
 
 .Loading-Display-Container {
-  background: #282c34;
+  background: #292d35;
   color: white;
-  overflow: auto !important;
+  height: 100vh;
 }
 
 /* Display */
 
 /* Some properties on here = important for loading screen */
 .Display-Page {
-  background: url("../Images/ForumDisplay/Travel5.jpg");
-  background-size: cover;
-  background-position: 10% 0%;
-  background-repeat: no-repeat;
-  height: 200vh;
+  background: #161a20;
+  background-repeat: repeat-y;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: calc(10px + 2vmin);
   color: white;
   opacity: 0;
-  overflow: auto;
   gap: 2em;
+}
+
+.Forum-Card {
+  background: #20252d;
+  width: 30em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 1em 1em 1em;
+  overflow-y: hidden;
+  border-radius: 5%;
 }
 
 .Display-Page-Overflow {
@@ -40,7 +47,7 @@
 
 .ForumPage-Headers-Container-Container {
   height: 80%;
-  margin-top: 4em;
+  margin-top: 8em;
 }
 
 .ForumPage-Headers-Container {
@@ -63,7 +70,6 @@
   font-weight: bold;
   text-align: center;
   height: 1.5em;
-  opacity: 0.8;
   z-index: 1;
   font-size: 4rem;
 }
@@ -146,25 +152,6 @@
   text-align: center;
 }
 
-.ForumPage-Display::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(
-      to top,
-      rgb(13, 20, 21) 8%,
-      rgba(5, 14, 19, 0) 40%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(13, 20, 21, 0.473) 8%,
-      rgba(5, 14, 19, 0) 40%
-    );
-  width: 100vw;
-  height: 200vh;
-}
-
 /* Forum  */
 
 .Forum-Container {
@@ -174,8 +161,8 @@
 
 .Forum-Grid-Desktop {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5em;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5em;
 }
 
 .Forum-Grid-Phone {
@@ -186,21 +173,20 @@
 
 /* ProfileCard */
 
-.Forum-Card {
+/* .Forum-Card {
   background-color: rgba(0, 0, 0, 0.6);
-  box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2);
-  border-radius: 6%;
-  width: 17em;
-  height: 30em;
+  width: 30em;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
+  padding: 0 1em 1em 1em;
+  overflow-y: scroll;
+} */
 
 .Forum-Card-Image {
-  height: 2.5em;
-  width: 2.5em;
+  height: 4em;
+  width: 4em;
   border-radius: 50%;
 }
 
@@ -225,9 +211,17 @@
   margin-left: 10px;
 }
 
+.Forum-Card-ProfileImage-Name-Container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
 .Forum-Card-ProfileImage-Name-Date-ReadMore-Container {
   display: flex;
-  height: 15%;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
   padding: 0.5em;
   gap: 10px;
 }
@@ -262,18 +256,23 @@
 .Post-Title-Text-Container {
   padding: 1em;
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .Post-Description-Container {
-  overflow-y: hidden;
-  font-size: 0.8em;
-  line-height: 1.1;
+  line-height: 1.4;
   padding: 0.5em;
+}
+
+.Post-Image-Container {
+  display: flex;
+  justify-content: center;
 }
 
 .Post-Image {
   width: 100%;
-  border-radius: 6% 6% 0% 0%;
+  border-radius: 5%;
 }
 
 .Post-Arrow-Button {
