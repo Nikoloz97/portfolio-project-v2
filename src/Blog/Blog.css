@@ -157,6 +157,11 @@
   border-radius: 2em !important;
 }
 
+.Blog-RF-Button:hover {
+  color: rgba(0, 0, 0, 0.726) !important;
+  background: white !important;
+}
+
 .Blog-RF-Button.Phone {
   font-size: 0.55em !important;
 }

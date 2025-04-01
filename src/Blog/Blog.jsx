@@ -100,6 +100,38 @@ const Blog = () => {
     setIsHovered(newHoverState);
   };
 
+  const [loadingImages, setLoadingImages] = useState({});
+
+  useEffect(() => {
+    const initialLoadingState = {};
+    cards.forEach((card, index) => {
+      initialLoadingState[index] = true;
+    });
+
+    setLoadingImages(initialLoadingState);
+
+    cards.forEach((card, index) => {
+      const imgElement = document.createElement("img");
+
+      imgElement.onload = () => {
+        setLoadingImages((prev) => ({
+          ...prev,
+          [index]: false,
+        }));
+      };
+
+      imgElement.onerror = () => {
+        setLoadingImages((prev) => ({
+          ...prev,
+          [index]: false,
+        }));
+        console.error(`Failed to load image for card ${card.title}`);
+      };
+
+      imgElement.src = card.imageUrl; // this loads the image
+    });
+  }, []);
+
   return (
     <div
       className={`Blog-Page ${isDesktop ? "Desktop" : "Phone"}`}
@@ -141,6 +173,11 @@ const Blog = () => {
                   {card.description}
                 </Card.Content>
               </Dimmer>
+
+              <Dimmer active={loadingImages[index] === true}>
+                <Icon name="spinner" size="large" loading />
+              </Dimmer>
+
               <Image
                 src={card.imageUrl}
                 className="Blog-Card-Image"
