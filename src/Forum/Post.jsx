@@ -1,16 +1,26 @@
-import { React } from "react";
+import { React, useState } from "react";
 import "./Forum.css";
 
 const Post = (props) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <div className="Post-Title-Text-Image-Container">
       <div className="Post-Title-Text-Container">
-        {/* <h1 style={{ textAlign: "center" }}>{props.post.title}</h1> */}
         <div className="Post-Description-Container">{props.post.text}</div>
       </div>
       <div className="Post-Image-Container">
         {props.post.photoURL && (
-          <img className="Post-Image" src={props.post.photoURL} alt="post" />
+          <>
+            {!imageLoaded && <div className="Post-Image-Skeleton"></div>}
+            <img
+              className={`Post-Image ${imageLoaded ? "loaded" : "loading"}`}
+              src={props.post.photoURL}
+              alt={props.post.title}
+              style={{ opacity: imageLoaded ? 1 : 0 }}
+              onLoad={() => setImageLoaded(true)}
+            />
+          </>
         )}
       </div>
     </div>

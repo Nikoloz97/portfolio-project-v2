@@ -1,23 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Card, Image, Icon, Button, Dimmer } from "semantic-ui-react";
 import { useUserContext } from "../UserContext";
 import backgroundImage from "../Images/Blog/Bricks.jpg";
 import "./Blog.css";
 import { progressiveBackgroundImageLoader } from "../Utils/ProgressiveLoaders";
+import BlogCard from "./BlogCard";
 
 const Blog = () => {
   const { isDesktop } = useUserContext();
 
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-
-  const [isCardVisible, setIsCardVisible] = useState([
-    false,
-    false,
-    false,
-    false,
-  ]);
-
-  const [isHovered, setIsHovered] = useState([false, false, false, false]);
 
   const cards = [
     {
@@ -60,23 +51,6 @@ const Blog = () => {
     setTimeout(() => {
       setIsHeaderVisible(true);
     }, 200);
-
-    // Delay card fade-ins
-    setTimeout(() => {
-      setIsCardVisible(() => [true, false, false, false]);
-    }, 1500);
-
-    setTimeout(() => {
-      setIsCardVisible(() => [true, true, false, false]);
-    }, 1700);
-
-    setTimeout(() => {
-      setIsCardVisible(() => [true, true, true, false]);
-    }, 1900);
-
-    setTimeout(() => {
-      setIsCardVisible(() => [true, true, true, true]);
-    }, 2100);
   }, []);
 
   const blogPageRef = useRef(null);
@@ -88,56 +62,11 @@ const Blog = () => {
     );
   }, []);
 
-  const handleMouseLeave = (index) => {
-    const newHoverState = [...isHovered];
-    newHoverState[index] = false;
-    setIsHovered(newHoverState);
-  };
-
-  const handleMouseEnter = (index) => {
-    const newHoverState = [...isHovered];
-    newHoverState[index] = true;
-    setIsHovered(newHoverState);
-  };
-
-  const [loadingImages, setLoadingImages] = useState({});
-
-  useEffect(() => {
-    const initialLoadingState = {};
-    cards.forEach((card, index) => {
-      initialLoadingState[index] = true;
-    });
-
-    setLoadingImages(initialLoadingState);
-
-    cards.forEach((card, index) => {
-      const imgElement = document.createElement("img");
-
-      imgElement.onload = () => {
-        setLoadingImages((prev) => ({
-          ...prev,
-          [index]: false,
-        }));
-      };
-
-      imgElement.onerror = () => {
-        setLoadingImages((prev) => ({
-          ...prev,
-          [index]: false,
-        }));
-        console.error(`Failed to load image for card ${card.title}`);
-      };
-
-      imgElement.src = card.imageUrl; // this loads the image
-    });
-  }, []);
-
   return (
     <div
       className={`Blog-Page ${isDesktop ? "Desktop" : "Phone"}`}
       ref={blogPageRef}
     >
-      {/* Header/Subheader */}
       <div
         className={`Blog-Header-Subheader-Container ${
           isDesktop ? "Desktop" : "Phone"
@@ -150,73 +79,13 @@ const Blog = () => {
         </div>
       </div>
 
-      {/* Cards */}
-
       <div
         className={
           isDesktop ? "Blog-Container-Desktop" : "Blog-Container-Phone"
         }
       >
         {cards.map((card, index) => (
-          <Card
-            key={index}
-            className={`Blog-Card ${isDesktop ? "Desktop" : "Phone"}  ${
-              isCardVisible[index] ? "Pop-in" : ""
-            }`}
-          >
-            <Dimmer.Dimmable as={Image} dimmed={isHovered[index]}>
-              <Dimmer
-                active={isHovered[index]}
-                onMouseLeave={() => handleMouseLeave(index)}
-              >
-                <Card.Content style={{ color: "white", fontSize: "0.6em" }}>
-                  {card.description}
-                </Card.Content>
-              </Dimmer>
-
-              <Dimmer active={loadingImages[index] === true}>
-                <Icon name="spinner" size="large" loading />
-              </Dimmer>
-
-              <Image
-                src={card.imageUrl}
-                className="Blog-Card-Image"
-                onMouseEnter={() => handleMouseEnter(index)}
-              />
-            </Dimmer.Dimmable>
-            <Card.Content className="Blog-Title-Date-Pills-Container">
-              <Card.Description
-                style={{
-                  color: "white",
-                  textAlign: "center",
-                  fontSize: "0.7em",
-                }}
-              >
-                {card.title}
-              </Card.Description>
-              <Card.Description>
-                <div className="Blog-Posted-Date-Container">
-                  {card.postedDate}
-                </div>
-                <div className="Blog-Subcategories-Container">
-                  {card.subCategories.map((subCat, index) => (
-                    <div key={index} className="Blog-Subcategory-Pill">
-                      {subCat}
-                    </div>
-                  ))}
-                </div>
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Button
-                onClick={() => window.open(card.blogUrl, "_blank")}
-                className={`Blog-RF-Button ${isDesktop ? "" : "Phone"}`}
-              >
-                <Icon name="arrow right" style={{ marginRight: "10px" }} />
-                Read Full Blog
-              </Button>
-            </Card.Content>
-          </Card>
+          <BlogCard key={index} index={index} card={card} />
         ))}
       </div>
     </div>

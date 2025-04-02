@@ -105,6 +105,7 @@
   margin-top: 2rem !important;
   line-height: 1;
   width: 13.5% !important;
+  position: relative;
 }
 
 .Blog-Card.Desktop {
@@ -175,4 +176,38 @@
   cursor: pointer;
   height: 11.5em !important;
   width: 9.2em !important;
+}
+
+/* Skeleton loader animation */
+@keyframes fade-blog {
+  0% {
+    background-color: rgba(173, 173, 173, 0);
+  }
+  50% {
+    background-color: rgba(173, 173, 173, 0.05);
+  }
+  100% {
+    background-color: rgba(173, 173, 173, 0);
+  }
+}
+
+.Blog-Card-Image-Skeleton {
+  width: 9em;
+  height: 11.5em;
+  background-color: #ff0000;
+  animation: fade-blog 1.8s infinite ease-in-out;
+}
+
+.Blog-Card-Image.loading {
+  opacity: 0;
+  position: absolute; /* prevents image from taking space while invisible */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Blog-Card-Image.loaded {
+  opacity: 1;
+  transition: opacity 0.5s ease-in; /* Increase the duration for a gentler fade */
 }

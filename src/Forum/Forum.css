@@ -268,11 +268,47 @@
 .Post-Image-Container {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .Post-Image {
   width: 100%;
   border-radius: 5%;
+}
+
+/* Skeleton loader animation */
+@keyframes fade {
+  0% {
+    background-color: #161a20;
+  }
+  50% {
+    background-color: #161a207e;
+  }
+  100% {
+    background-color: #161a20fc;
+  }
+}
+
+.Post-Image-Skeleton {
+  width: 100%;
+  height: 250px;
+  background-color: #e0e0e0;
+  animation: fade 1.8s infinite ease-in-out;
+  border-radius: 5%;
+}
+
+.Post-Image.loading {
+  opacity: 0;
+  position: absolute; /* prevents image from taking space while invisible */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Post-Image.loaded {
+  opacity: 1;
+  transition: opacity 0.5s ease-in; /* Increase the duration for a gentler fade */
 }
 
 .Post-Arrow-Button {
