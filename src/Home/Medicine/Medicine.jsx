@@ -66,7 +66,7 @@ const Medicine = (props) => {
   }, []);
 
   useEffect(() => {
-    if (props.windowHeightPosition >= 800) {
+    if (props.windowHeightPosition >= 600) {
       const fadeInInterval = setInterval(() => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);

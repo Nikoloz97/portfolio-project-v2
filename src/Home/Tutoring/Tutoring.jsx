@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import LazyLoad from "react-lazyload";
 import "./Tutoring.css";
 
 import wyzantImage from "../../Images/Home/Tutoring/Content/Wyzant_Square.png";
@@ -60,7 +59,7 @@ const Tutoring = (props) => {
   ];
 
   useEffect(() => {
-    if (props.windowHeightPosition >= 1600) {
+    if (props.windowHeightPosition >= 1200) {
       const fadeInInterval = setInterval(() => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);

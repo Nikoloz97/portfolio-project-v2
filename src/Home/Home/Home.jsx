@@ -44,15 +44,14 @@ const Home = () => {
     } else {
       setIsHomeArrowsVisible(false);
     }
-    if (windowHeightPosition > 2300) setIsBottomArrowVisible(false);
+    if (windowHeightPosition > 1800) setIsBottomArrowVisible(false);
     else {
       setIsBottomArrowVisible(true);
     }
   }, [windowHeightPosition]);
 
   const handleScrollEffect = ({ currPos }) => {
-    // Check if the user has scrolled back to the top
-    setIsTopOfPage(currPos.y === 0);
+    setIsTopOfPage(currPos.y === 0); // Check if the user has scrolled back to the top
   };
 
   useScrollPosition(handleScrollEffect, [], null, true, 100);
@@ -74,11 +73,9 @@ const Home = () => {
     // Creates the gradual speed up -> slow down effect
     const ease = (te, sp, dis, dur) => {
       te /= dur / 2;
-      // Ease in (accelerate)
-      if (te < 1) return (dis / 2) * te * te + sp;
+      if (te < 1) return (dis / 2) * te * te + sp; // Ease in (accelerate)
       te--;
-      // Ease out (decelerate)
-      return (-dis / 2) * (te * (te - 2) - 1) + sp;
+      return (-dis / 2) * (te * (te - 2) - 1) + sp; // Ease out (decelerate)
     };
 
     requestAnimationFrame(animation);

@@ -170,7 +170,7 @@ const Coding = (props) => {
   }, []);
 
   useEffect(() => {
-    if (props.windowHeightPosition >= 2400) {
+    if (props.windowHeightPosition >= 1800) {
       const fadeInInterval = setInterval(() => {
         setIsHeadersFadeIn(true);
         clearInterval(fadeInInterval);

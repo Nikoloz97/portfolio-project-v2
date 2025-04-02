@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 
 // Check if the code is running in a browser context
 const isBrowser = typeof window !== "undefined";
