@@ -35,34 +35,47 @@
 .Coding-Content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   z-index: 1;
   width: 100%;
-  height: 100vh;
-  align-items: center;
+  height: 100%;
 }
 
-.Coding-Header-Container {
+.Coding-Horizontal-Layout {
   display: flex;
-  flex-direction: column;
-  z-index: inherit;
-  align-items: center;
-  justify-content: end;
-  height: 35vh;
-  width: 100vw;
+  width: 90%;
+  max-width: 1400px;
+  height: 70vh;
+  max-height: 700px;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   opacity: 0;
-  margin-bottom: 25px;
-  gap: 5%;
 }
 
-.Coding-Header-Container.Phone {
-  gap: 15px;
-  width: 100vw;
-  height: 40vh;
-}
-
-.Coding-Header-Container.Fade-In {
+.Coding-Horizontal-Layout.Fade-In {
   opacity: 1;
   transition: opacity 2s ease-in-out;
+}
+
+.Coding-Info-Section {
+  flex: 0 0 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+}
+
+.Coding-Header-Container.Horizontal {
+  height: auto;
+  width: 100%;
+  margin-bottom: 0;
+  justify-content: center;
+  opacity: 1;
 }
 
 .Coding-Header-Primary {
@@ -70,166 +83,225 @@
   justify-content: center;
   align-items: center;
   height: 30%;
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 300;
-  width: 30%;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.Coding-Header-Secondary {
+.Coding-Header-Secondary.Desktop {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 30%;
+  height: auto;
   font-size: 1.5rem;
   font-weight: 200;
   padding: 10px;
-  line-height: 1.2;
-  width: 50%;
-  opacity: 0.8;
-}
-
-.Coding-Header-Secondary.Phone {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 40%;
-  font-weight: 200;
-  padding: 10px;
-  line-height: 1.2;
-  opacity: 0.75;
-  font-size: 1.3rem;
-  width: 85%;
-}
-
-.Coding-Cards-Buttons-Container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: auto;
+  line-height: 1.4;
   width: 100%;
-  z-index: inherit;
-  background-color: none;
-  gap: 60px;
+  opacity: 0.75;
 }
 
-.Coding-Cards-Container {
+.Coding-Carousel-Section {
+  flex: 0 0 65%;
   display: flex;
-  width: 80%;
   justify-content: center;
-  gap: 200px;
+  align-items: center;
+  position: relative;
 }
 
-.Coding-Card-Buttons-Container-Phone {
-  display: flex;
-  height: 55vh;
-  flex-direction: row;
-  justify-content: center;
-  align-items: top;
-  width: 100vw;
-  z-index: inherit;
-  background-color: none;
+.Coding-Carousel-Container {
+  width: 100%;
+  height: 100%;
   opacity: 0;
-  gap: 5px;
 }
 
-.Coding-Card-Buttons-Container-Phone.Fade-In {
+.Coding-Carousel-Container.Fade-In {
   opacity: 1;
   transition: opacity 2s ease-in-out;
 }
 
-.Coding-PhoneCard-Button {
-  margin-top: 35%;
-  height: 100px;
-  width: 20%;
-  z-index: 1;
+/* Important: width is 50% (unlike medicine, tutoring's 100% due to having more carousel content) */
+
+.Coding-Carousel {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.Coding-PhoneCard-Button:hover {
-  cursor: pointer;
-}
-
-.Coding-PhoneCard-Button.Disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.Coding-Buttons-Container {
+.Coding-Carousel-Slides {
   display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
 }
 
-.Coding-Card {
-  background-color: rgba(0, 0, 0, 0.85);
-  z-index: 1;
-  text-align: center;
+.Coding-Carousel-Slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 2rem;
+}
+
+.Coding-Card.Carousel {
+  background-color: transparent;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  opacity: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  border-radius: 10px;
-  width: 19%;
-  height: fit-content;
-  opacity: 0;
-}
-
-.Coding-Card.Phone {
-  width: 50%;
-  opacity: 1;
-}
-
-.Coding-Card.Fade-In {
-  opacity: 1;
-  transition: opacity 2s ease-in-out;
-}
-
-.Coding-Card.Even {
-  margin-top: 2%;
-}
-
-.Coding-Card.Odd {
-  margin-top: 5%;
+  justify-content: flex-start;
 }
 
 .Coding-Card-Image {
   width: 100%;
-  max-height: 300px;
   border-radius: 10px;
-}
-
-.Coding-Card-Image.Placeholder {
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  max-height: 300px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .Coding-Card-Header {
-  margin-top: 7%;
+  margin-top: 20px;
   font-weight: 400;
-  font-size: 1.1em;
-  line-height: 1;
-}
-
-.Coding-Card-Button {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.75);
-  z-index: 1;
-}
-
-.Coding-Card-Button:hover {
-  cursor: pointer;
-}
-
-.Coding-Card-Button.Disabled {
-  background-color: rgba(128, 128, 128, 0.25);
-  opacity: 0.5;
-  pointer-events: none;
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
 .Coding-Card-Text {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.85);
   padding: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.Coding-Carousel-Controls {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.Coding-Carousel-Arrow {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Coding-Carousel-Arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.Coding-Carousel-Dots {
+  display: flex;
+  gap: 10px;
+}
+
+.Coding-Carousel-Dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Coding-Carousel-Dot.Active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .Coding-Horizontal-Layout {
+    width: 95%;
+  }
+
+  .Coding-Header-Primary {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .Coding-Horizontal-Layout {
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+  }
+
+  .Coding-Info-Section,
+  .Coding-Carousel-Section {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .Coding-Info-Section {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 2rem 1rem 2rem;
+  }
+
+  .Coding-Header-Primary {
+    font-size: 3.5rem;
+  }
+
+  .Coding-Carousel-Section {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Coding-Header-Primary {
+    font-size: 3rem;
+  }
+
+  .Coding-Carousel-Section {
+    height: 450px;
+  }
+
+  .Coding-Card-Text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .Coding-Horizontal-Layout {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .Coding-Header-Primary {
+    font-size: 2.5rem;
+  }
+
+  .Coding-Header-Secondary.Desktop {
+    font-size: 1.2rem;
+  }
+
+  .Coding-Carousel-Section {
+    height: 400px;
+  }
+
+  .Coding-Card-Header {
+    font-size: 1.5rem;
+  }
 }

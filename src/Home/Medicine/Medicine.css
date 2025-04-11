@@ -43,32 +43,39 @@
   height: 100%;
 }
 
-.Medicine-Content.Phone {
-  /* gap: 20px; */
-}
-
-.Medicine-Header-Container {
+.Medicine-Horizontal-Layout {
   display: flex;
-  flex-direction: column;
-  z-index: inherit;
-  align-items: center;
-  justify-content: end;
-  height: 35vh;
-  width: 100vw;
-  gap: 10px;
+  width: 90%;
+  max-width: 1400px;
+  height: 70vh;
+  max-height: 700px;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   opacity: 0;
-  margin-bottom: 25px;
 }
 
-.Medicine-Header-Container.Phone {
-  gap: 15px;
-  width: 100vw;
-  height: 40vh;
-}
-
-.Medicine-Header-Container.Fade-In {
+.Medicine-Horizontal-Layout.Fade-In {
   opacity: 1;
   transition: opacity 2s ease-in-out;
+}
+
+.Medicine-Info-Section {
+  flex: 0 0 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+}
+
+.Medicine-Header-Container.Horizontal {
+  height: auto;
+  width: 100%;
+  margin-bottom: 0;
+  justify-content: center;
+  opacity: 1;
 }
 
 .Medicine-Header-Primary {
@@ -78,7 +85,8 @@
   height: 30%;
   font-size: 5rem;
   font-weight: 300;
-  width: 30%;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .Medicine-Header-Secondary.Desktop {
@@ -86,126 +94,212 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 30%;
-  font-size: 1.75rem;
+  height: auto;
+  font-size: 1.5rem;
   font-weight: 200;
   padding: 10px;
-  line-height: 1.2;
-  width: 50%;
+  line-height: 1.4;
+  width: 100%;
   opacity: 0.75;
 }
 
-.Medicine-Header-Secondary.Phone {
+.Medicine-Carousel-Section {
+  flex: 0 0 65%;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  height: 40%;
-  font-weight: 200;
-  padding: 10px;
-  line-height: 1.2;
-  opacity: 0.75;
-  font-size: 1.5rem;
-  width: 75%;
+  position: relative;
 }
 
-.Medicine-Cards-Container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 200px;
-  height: 90vh;
-  width: 100vw;
-  z-index: inherit;
-  background-color: none;
-}
-
-.Medicine-Card-Buttons-Container-Phone {
-  display: flex;
-  height: 57vh;
-  flex-direction: row;
-  justify-content: center;
-  align-items: top;
-  width: 100vw;
-  z-index: inherit;
-  background-color: none;
+.Medicine-Carousel-Container {
+  width: 100%;
+  height: 100%;
   opacity: 0;
-  gap: 5px;
 }
 
-.Medicine-Card-Buttons-Container-Phone.Fade-In {
+.Medicine-Carousel-Container.Fade-In {
   opacity: 1;
   transition: opacity 2s ease-in-out;
 }
 
-.Medicine-PhoneCard-Button {
-  margin-top: 35%;
-  height: 100px;
-  width: 20%;
-  z-index: 1;
+.Medicine-Carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.Medicine-PhoneCard-Button:hover {
-  cursor: pointer;
+.Medicine-Carousel-Slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
 }
 
-.Medicine-PhoneCard-Button.Disabled {
-  opacity: 0.5;
-  pointer-events: none;
+.Medicine-Carousel-Slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 2rem;
 }
 
-.Medicine-Card {
-  background-color: rgba(0, 0, 0, 0.85);
-  z-index: 1;
-  text-align: center;
+.Medicine-Card.Carousel {
+  background-color: transparent;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  opacity: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  border-radius: 10px;
-  width: 15%;
-  height: fit-content;
-  opacity: 0;
-}
-
-.Medicine-Card.Phone {
-  width: 50%;
-  opacity: 1;
-}
-
-.Medicine-Card.Fade-In {
-  opacity: 1;
-  transition: opacity 2s ease-in-out;
-}
-
-.Medicine-Card.Even {
-  margin-top: 0px;
-}
-
-.Medicine-Card.Odd {
-  margin-top: 30px;
+  justify-content: flex-start;
 }
 
 .Medicine-Card-Image {
   width: 100%;
   border-radius: 10px;
   max-height: 300px;
-}
-
-.Medicine-Card-Image.Placeholder {
-  background-color: rgba(0, 0, 0, 0.85);
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .Medicine-Card-Header {
   margin-top: 20px;
   font-weight: 400;
-  font-size: 1.2em;
-  line-height: 1;
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
 .Medicine-Card-Text {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.85);
   padding: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.Medicine-Carousel-Controls {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.Medicine-Carousel-Arrow {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Medicine-Carousel-Arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.Medicine-Carousel-Dots {
+  display: flex;
+  gap: 10px;
+}
+
+.Medicine-Carousel-Dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Medicine-Carousel-Dot.Active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .Medicine-Horizontal-Layout {
+    width: 95%;
+  }
+
+  .Medicine-Header-Primary {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .Medicine-Horizontal-Layout {
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+  }
+
+  .Medicine-Info-Section,
+  .Medicine-Carousel-Section {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .Medicine-Info-Section {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 2rem 1rem 2rem;
+  }
+
+  .Medicine-Header-Primary {
+    font-size: 3.5rem;
+  }
+
+  .Medicine-Carousel-Section {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Medicine-Header-Primary {
+    font-size: 3rem;
+  }
+
+  .Medicine-Carousel-Section {
+    height: 450px;
+  }
+
+  .Medicine-Card-Text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .Medicine-Horizontal-Layout {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .Medicine-Header-Primary {
+    font-size: 2.5rem;
+  }
+
+  .Medicine-Header-Secondary.Desktop {
+    font-size: 1.2rem;
+  }
+
+  .Medicine-Carousel-Section {
+    height: 400px;
+  }
+
+  .Medicine-Card-Header {
+    font-size: 1.5rem;
+  }
 }

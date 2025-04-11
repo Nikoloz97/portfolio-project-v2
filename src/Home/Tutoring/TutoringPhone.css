@@ -1,0 +1,196 @@
+.Tutoring-Screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.05) 80%
+    ),
+    linear-gradient(to top, rgb(7.5, 15, 26) 2%, rgba(8, 20, 27, 0) 40%);
+}
+
+.Tutoring-Screen.Desktop {
+  background: url("../../Images/Home/Tutoring/Background/Tutoring9-Mini.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.Tutoring-Screen.Phone {
+  background: url("../../Images/Home/Tutoring/Background/Tutoring9-Mini.jpeg");
+  filter: blur(0px) grayscale(20%) hue-rotate(-10deg) brightness(90%) sepia(0.4);
+  background-size: cover;
+  background-position: left 8% bottom 0%;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.Tutoring-Content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.Tutoring-Content.Phone {
+  gap: 20px;
+}
+
+.Tutoring-Header-Container-Phone {
+  display: flex;
+  flex-direction: column;
+  z-index: inherit;
+  align-items: center;
+  justify-content: end;
+  height: 35vh;
+  width: 100vw;
+  margin-bottom: 25px;
+  opacity: 0;
+  width: 100vw;
+  height: 30vh;
+}
+
+.Tutoring-Header-Container-Phone.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+.Tutoring-Header-Primary-Phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  font-size: 3rem;
+  font-weight: 300;
+  width: 30%;
+}
+
+.Tutoring-Header-Secondary.Phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 40%;
+  font-weight: 200;
+  padding: 0;
+  line-height: 1.2;
+  opacity: 0.75;
+  font-size: 1.2rem;
+  width: 75%;
+}
+
+.Tutoring-Cards-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 200px;
+  height: 90vh;
+  width: 100vw;
+  z-index: inherit;
+  background-color: none;
+}
+
+.Tutoring-Card-Buttons-Container-Phone {
+  display: flex;
+  height: 64.1vh;
+  flex-direction: row;
+  justify-content: center;
+  align-items: top;
+  width: 100vw;
+  z-index: inherit;
+  background-color: none;
+  opacity: 0;
+  gap: 5px;
+}
+
+.Tutoring-Card-Buttons-Container-Phone.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+.Tutoring-PhoneCard-Button {
+  margin-top: 35%;
+  height: 100px;
+  width: 20%;
+  z-index: 1;
+}
+
+.Tutoring-PhoneCard-Button:hover {
+  cursor: pointer;
+}
+
+.Tutoring-PhoneCard-Button.Disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.Tutoring-Card {
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  border-radius: 10px;
+  width: 15%;
+  height: fit-content;
+  opacity: 0;
+}
+
+.Tutoring-Card.Phone {
+  width: 50%;
+  opacity: 1;
+}
+
+.Tutoring-Card.Fade-In {
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+.Tutoring-Card.Even {
+  margin-top: 0px;
+}
+
+.Tutoring-Card.Odd {
+  margin-top: 30px;
+}
+
+.Tutoring-Card-Image {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 300px;
+}
+
+.Tutoring-Card-Image.Placeholder {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.Tutoring-Card-Header {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.Tutoring-Card-Text {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+}
+
+.Tutoring-Card-Text.Phone {
+  font-size: 1.1rem;
+}

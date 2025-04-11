@@ -3,10 +3,8 @@ import "./Medicine.css";
 
 import plasmaCenterImage from "../../Images/Home/Medicine/Content/Med5.jpg";
 import plasmaCenterImageMini from "../../Images/Home/Medicine/Content/Med5-Mini.jpg";
-
 import presentationImage from "../../Images/Home/Medicine/Content/Med9.png";
 import presentationImageMini from "../../Images/Home/Medicine/Content/Med9-Mini.png";
-
 import whiteCoatImage from "../../Images/Home/Medicine/Content/Medicine1.png";
 import whiteCoatImageMini from "../../Images/Home/Medicine/Content/Medicine1-Mini.png";
 
@@ -15,13 +13,11 @@ import medicineImage from "../../Images/Home/Medicine/Background/Medicine26.jpeg
 import ProgressiveImage from "../../Utils/ProgressiveImage.js";
 
 const Medicine = (props) => {
-  const [isHeadersFadedIn, setIsHeadersFadeIn] = useState(false);
+  const [isHeaderFadedIn, setIsHeaderFadedIn] = useState(false);
+  const [isCarouselFadedIn, setIsCarouselFadedIn] = useState(false);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
 
-  const [isCardSetFadedIn, setIsCardSetFadedIn] = useState([
-    false,
-    false,
-    false,
-  ]);
+  const medicinePageRef = useRef(null);
 
   const header = {
     primary: "Medicine",
@@ -56,8 +52,6 @@ const Medicine = (props) => {
     },
   ];
 
-  const medicinePageRef = useRef(null);
-
   useEffect(() => {
     return progressiveBackgroundImageLoader(
       medicinePageRef.current,
@@ -67,73 +61,146 @@ const Medicine = (props) => {
 
   useEffect(() => {
     if (props.windowHeightPosition >= 600) {
-      const fadeInInterval = setInterval(() => {
-        setIsHeadersFadeIn(true);
-        clearInterval(fadeInInterval);
-        return;
+      const fadeInHeaderInterval = setTimeout(() => {
+        setIsHeaderFadedIn(true);
       }, 100);
+
+      const fadeInCarouselInterval = setTimeout(() => {
+        setIsCarouselFadedIn(true);
+      }, 600);
+
+      return () => {
+        clearTimeout(fadeInHeaderInterval);
+        clearTimeout(fadeInCarouselInterval);
+      };
     }
   }, [props.windowHeightPosition]);
 
-  useEffect(() => {
-    if (isHeadersFadedIn) {
-      const fadeInCardOneInterval = setInterval(() => {
-        setIsCardSetFadedIn(() => [true, false, false]);
-        clearInterval(fadeInCardOneInterval);
-        return;
-      }, 200);
-    }
-  }, [isHeadersFadedIn]);
+  const nextCard = () => {
+    setActiveCardIndex((prevIndex) => (prevIndex + 1) % cards.length);
+  };
 
-  useEffect(() => {
-    if (isCardSetFadedIn[0]) {
-      const fadeInCardTwoInterval = setInterval(() => {
-        setIsCardSetFadedIn(() => [true, true, false]);
-        clearInterval(fadeInCardTwoInterval);
-        return;
-      }, 500);
-    }
-    if (isCardSetFadedIn[1]) {
-      const fadeInCardThreeInterval = setInterval(() => {
-        setIsCardSetFadedIn(() => [true, true, true]);
-        clearInterval(fadeInCardThreeInterval);
-        return;
-      }, 500);
-    }
-  }, [isCardSetFadedIn]);
+  const prevCard = () => {
+    setActiveCardIndex((prevIndex) =>
+      prevIndex === 0 ? cards.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToCard = (index) => {
+    setActiveCardIndex(index);
+  };
 
   return (
     <div className="Medicine-Screen Desktop" ref={medicinePageRef}>
-      <div className="Medicine-Content">
+      <div className="Medicine-Content Horizontal">
         <div
-          className={`Medicine-Header-Container ${
-            isHeadersFadedIn ? "Fade-In" : ""
-          } Desktop`}
+          className={`Medicine-Horizontal-Layout ${
+            isHeaderFadedIn ? "Fade-In" : ""
+          }`}
         >
-          <div className="Medicine-Header-Primary">{header.primary}</div>
-          <div className="Medicine-Header-Secondary Desktop">
-            {header.secondary}
+          <div className="Medicine-Info-Section">
+            <div className="Medicine-Header-Container Desktop Horizontal">
+              <div className="Medicine-Header-Primary">{header.primary}</div>
+              <div className="Medicine-Header-Secondary Desktop">
+                {header.secondary}
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="Medicine-Cards-Container">
-          {cards.map((card, index) => (
+          <div className="Medicine-Carousel-Section">
             <div
-              key={index}
-              className={`Medicine-Card ${index % 2 === 0 ? "Even" : "Odd"} ${
-                isCardSetFadedIn[index] ? "Fade-In" : ""
+              className={`Medicine-Carousel-Container ${
+                isCarouselFadedIn ? "Fade-In" : ""
               }`}
             >
-              <ProgressiveImage
-                smallSrc={card.miniMediaUrl}
-                largeSrc={card.mediaUrl}
-                alt={card.mediaAltText}
-                className="Medicine-Card-Image"
-              />
-              <div className="Medicine-Card-Header">{card.header}</div>
-              <div className="Medicine-Card-Text">{card.mediaCaption}</div>
+              <div className="Medicine-Carousel">
+                <div
+                  className="Medicine-Carousel-Slides"
+                  style={{
+                    transform: `translateX(-${activeCardIndex * 100}%)`,
+                  }}
+                >
+                  {cards.map((card, index) => (
+                    <div key={index} className="Medicine-Carousel-Slide">
+                      <div className="Medicine-Card Carousel">
+                        <ProgressiveImage
+                          smallSrc={card.miniMediaUrl}
+                          largeSrc={card.mediaUrl}
+                          alt={card.mediaAltText}
+                          className="Medicine-Card-Image"
+                        />
+                        <div className="Medicine-Card-Header">
+                          {card.header}
+                        </div>
+                        <div className="Medicine-Card-Text">
+                          {card.mediaCaption}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="Medicine-Carousel-Controls">
+                  <button
+                    className="Medicine-Carousel-Arrow Prev"
+                    onClick={prevCard}
+                    aria-label="Previous slide"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15 6L9 12L15 18"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+
+                  <div className="Medicine-Carousel-Dots">
+                    {cards.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`Medicine-Carousel-Dot ${
+                          index === activeCardIndex ? "Active" : ""
+                        }`}
+                        onClick={() => goToCard(index)}
+                        aria-label={`Go to slide ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+
+                  <button
+                    className="Medicine-Carousel-Arrow Next"
+                    onClick={nextCard}
+                    aria-label="Next slide"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9 6L15 12L9 18"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 
-// UserContext = allows state to persist/change among various routes
-
 const UserContext = createContext();
 
 export const useUserContext = () => useContext(UserContext);
@@ -12,11 +10,11 @@ export const UserProvider = ({ children }) => {
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
 
   const isPhone = useMediaQuery({
-    query: "(max-width: 1443px)",
+    query: "(max-width: 800px)",
   });
 
   const isDesktop = useMediaQuery({
-    query: "(min-width: 1444px)",
+    query: "(min-width: 800px)",
   });
 
   const isStrictlyDesktop = useMediaQuery({

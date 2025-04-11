@@ -43,30 +43,39 @@
   height: 100%;
 }
 
-.Tutoring-Content.Phone {
-  gap: 20px;
-}
-
-.Tutoring-Header-Container {
+.Tutoring-Horizontal-Layout {
   display: flex;
-  flex-direction: column;
-  z-index: inherit;
-  align-items: center;
-  justify-content: end;
-  height: 35vh;
-  width: 100vw;
-  margin-bottom: 25px;
+  width: 90%;
+  max-width: 1400px;
+  height: 70vh;
+  max-height: 700px;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   opacity: 0;
 }
 
-.Tutoring-Header-Container.Phone {
-  width: 100vw;
-  height: 30vh;
-}
-
-.Tutoring-Header-Container.Fade-In {
+.Tutoring-Horizontal-Layout.Fade-In {
   opacity: 1;
   transition: opacity 2s ease-in-out;
+}
+
+.Tutoring-Info-Section {
+  flex: 0 0 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+}
+
+.Tutoring-Header-Container.Horizontal {
+  height: auto;
+  width: 100%;
+  margin-bottom: 0;
+  justify-content: center;
+  opacity: 1;
 }
 
 .Tutoring-Header-Primary {
@@ -76,17 +85,8 @@
   height: 30%;
   font-size: 5rem;
   font-weight: 300;
-  width: 30%;
-}
-
-.Tutoring-Header-Primary-Phone {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30%;
-  font-size: 4rem;
-  font-weight: 300;
-  width: 30%;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .Tutoring-Header-Secondary.Desktop {
@@ -94,130 +94,212 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 30%;
-  font-size: 1.75rem;
+  height: auto;
+  font-size: 1.5rem;
   font-weight: 200;
   padding: 10px;
-  line-height: 1.2;
-  width: 50%;
+  line-height: 1.4;
+  width: 100%;
   opacity: 0.75;
 }
 
-.Tutoring-Header-Secondary.Phone {
+.Tutoring-Carousel-Section {
+  flex: 0 0 65%;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  height: 40%;
-  font-weight: 200;
-  padding: 0;
-  line-height: 1.2;
-  opacity: 0.75;
-  font-size: 1.2rem;
-  width: 75%;
+  position: relative;
 }
 
-.Tutoring-Cards-Container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 200px;
-  height: 90vh;
-  width: 100vw;
-  z-index: inherit;
-  background-color: none;
-}
-
-.Tutoring-Card-Buttons-Container-Phone {
-  display: flex;
-  height: 64.1vh;
-  flex-direction: row;
-  justify-content: center;
-  align-items: top;
-  width: 100vw;
-  z-index: inherit;
-  background-color: none;
+.Tutoring-Carousel-Container {
+  width: 100%;
+  height: 100%;
   opacity: 0;
-  gap: 5px;
 }
 
-.Tutoring-Card-Buttons-Container-Phone.Fade-In {
+.Tutoring-Carousel-Container.Fade-In {
   opacity: 1;
   transition: opacity 2s ease-in-out;
 }
 
-.Tutoring-PhoneCard-Button {
-  margin-top: 35%;
-  height: 100px;
-  width: 20%;
-  z-index: 1;
+.Tutoring-Carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.Tutoring-PhoneCard-Button:hover {
-  cursor: pointer;
+.Tutoring-Carousel-Slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
 }
 
-.Tutoring-PhoneCard-Button.Disabled {
-  opacity: 0.5;
-  pointer-events: none;
+.Tutoring-Carousel-Slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 2rem;
 }
 
-.Tutoring-Card {
-  background-color: rgba(0, 0, 0, 0.85);
-  z-index: 1;
-  text-align: center;
+.Tutoring-Card.Carousel {
+  background-color: transparent;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  opacity: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  border-radius: 10px;
-  width: 15%;
-  height: fit-content;
-  opacity: 0;
-}
-
-.Tutoring-Card.Phone {
-  width: 50%;
-  opacity: 1;
-}
-
-.Tutoring-Card.Fade-In {
-  opacity: 1;
-  transition: opacity 2s ease-in-out;
-}
-
-.Tutoring-Card.Even {
-  margin-top: 0px;
-}
-
-.Tutoring-Card.Odd {
-  margin-top: 30px;
+  justify-content: flex-start;
 }
 
 .Tutoring-Card-Image {
   width: 100%;
   border-radius: 10px;
   max-height: 300px;
-}
-
-.Tutoring-Card-Image.Placeholder {
-  background-color: rgba(0, 0, 0, 0.85);
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .Tutoring-Card-Header {
   margin-top: 20px;
   font-weight: 400;
-  font-size: 1.2em;
-  line-height: 1;
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
 .Tutoring-Card-Text {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.85);
   padding: 20px;
+  line-height: 1.5;
+  text-align: center;
 }
 
-.Tutoring-Card-Text.Phone {
-  font-size: 1.1rem;
+.Tutoring-Carousel-Controls {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.Tutoring-Carousel-Arrow {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Tutoring-Carousel-Arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.Tutoring-Carousel-Dots {
+  display: flex;
+  gap: 10px;
+}
+
+.Tutoring-Carousel-Dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Tutoring-Carousel-Dot.Active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .Tutoring-Horizontal-Layout {
+    width: 95%;
+  }
+
+  .Tutoring-Header-Primary {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .Tutoring-Horizontal-Layout {
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+  }
+
+  .Tutoring-Info-Section,
+  .Tutoring-Carousel-Section {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .Tutoring-Info-Section {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 2rem 1rem 2rem;
+  }
+
+  .Tutoring-Header-Primary {
+    font-size: 3.5rem;
+  }
+
+  .Tutoring-Carousel-Section {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Tutoring-Header-Primary {
+    font-size: 3rem;
+  }
+
+  .Tutoring-Carousel-Section {
+    height: 450px;
+  }
+
+  .Tutoring-Card-Text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .Tutoring-Horizontal-Layout {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .Tutoring-Header-Primary {
+    font-size: 2.5rem;
+  }
+
+  .Tutoring-Header-Secondary.Desktop {
+    font-size: 1.2rem;
+  }
+
+  .Tutoring-Carousel-Section {
+    height: 400px;
+  }
+
+  .Tutoring-Card-Header {
+    font-size: 1.5rem;
+  }
 }

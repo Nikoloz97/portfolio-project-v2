@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Coding.css";
+import "./CodingPhone.css";
 import { Icon } from "semantic-ui-react";
 
 import moshImage from "../../Images/Home/Coding/Content/Self_Teach/Mosh_New.png";
@@ -222,7 +222,7 @@ const Coding = (props) => {
     <div className="Coding-Screen Phone" ref={codingPageRef}>
       <div className="Coding-Content Phone">
         <div
-          className={`Coding-Header-Container ${
+          className={`Coding-Header-Container-Phone ${
             isHeadersFadedIn ? "Fade-In" : ""
           }`}
         >

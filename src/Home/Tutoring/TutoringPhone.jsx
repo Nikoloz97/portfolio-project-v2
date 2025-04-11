@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Tutoring.css";
+import "./TutoringPhone.css";
 import { Icon } from "semantic-ui-react";
 
 import wyzantImage from "../../Images/Home/Tutoring/Content/Wyzant_Square.png";
@@ -102,7 +102,7 @@ const Tutoring = (props) => {
     <div className="Tutoring-Screen Phone" ref={tutoringPageRef}>
       <div className="Tutoring-Content Phone">
         <div
-          className={`Tutoring-Header-Container ${
+          className={`Tutoring-Header-Container-Phone ${
             isHeadersFadedIn ? "Fade-In" : ""
           } Phone`}
         >
