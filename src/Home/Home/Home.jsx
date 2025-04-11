@@ -44,7 +44,7 @@ const Home = () => {
     } else {
       setIsHomeArrowsVisible(false);
     }
-    if (windowHeightPosition > 1800) setIsBottomArrowVisible(false);
+    if (windowHeightPosition > 2000) setIsBottomArrowVisible(false);
     else {
       setIsBottomArrowVisible(true);
     }

@@ -103,8 +103,6 @@ const Welcome = (props) => {
 
   return (
     <div className="Welcome-Page">
-      {/* TODO: Display loading screen until Image finishes fetching (navbar still overlayed). Then, image fades in, and then welcome text typing begins (test via throttling) */}
-      {/* <Loader content="Loading" active={true} /> */}
       <div
         className={`Welcome-Screen ${isDesktop ? "Desktop" : "Phone"}`}
         ref={welcomeRef}
@@ -155,7 +153,7 @@ const Welcome = (props) => {
               </Header>
             </div>
             {/* Vertical carousel */}
-            {isDesktop ? (
+            {isDesktop && (
               <div
                 className={`Welcome-Begin-Or-VC-Header-Container ${
                   isSecondLineComplete ? "Fade-In" : ""
@@ -210,54 +208,6 @@ const Welcome = (props) => {
                     />
                   </div>
                   <div className="Welcome-Vertical-Carousel-Ticker" />
-                </div>
-              </div>
-            ) : (
-              <div
-                className={`Welcome-VC-Header-Container-Phone ${
-                  isSecondLineComplete ? "Fade-In" : ""
-                }`}
-              >
-                <button
-                  onClick={props.handleDownClick}
-                  className={`Welcome-Journey-Button ${isPhone ? "Phone" : ""}`}
-                >
-                  Begin Journey
-                </button>
-                <div style={{ marginTop: "5%" }}>Or</div>
-                <div className="Welcome-VC-Header-Phone">Jump to Section</div>
-                {/* TODO: Make onTouchStart trigger all throughout div (not just Vertical Carousel Phone)*/}
-                <div
-                  className={`Welcome-Vertical-Carousel-Container ${
-                    isDesktop ? "Desktop" : "Phone"
-                  }`}
-                  onTouchStart={(e) => {
-                    setTouchStartY(e.touches[0].clientY);
-                    setIsTouchingCarousel(true);
-                  }}
-                  onTouchEnd={(e) => {
-                    setTouchEndY(e.changedTouches[0].clientY);
-                    setIsTouchingCarousel(false);
-                  }}
-                  onTouchMove={(e) => {
-                    setTouchMove(e.touches[0].clientY);
-                  }}
-                >
-                  <VerticalCarouselPhone
-                    carouselIndex={carouselIndex}
-                    setCarouselIndex={setCarouselIndex}
-                    carouselContent={carouselContent}
-                    isTouchingCarousel={isTouchingCarousel}
-                    setIsTouchingCarousel={setIsTouchingCarousel}
-                    touchStartY={touchStartY}
-                    setTouchStartY={setTouchStartY}
-                    touchEndY={touchEndY}
-                    setTouchEndY={setTouchEndY}
-                    touchMove={touchMove}
-                    setTouchMove={setTouchMove}
-                    content={carouselContent}
-                    handleCardClick={props.handleCardClick}
-                  />
                 </div>
               </div>
             )}

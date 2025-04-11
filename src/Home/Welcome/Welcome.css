@@ -56,8 +56,10 @@
 
 .Welcome-Text-And-Carousel-Container.Phone {
   display: flex;
-  flex-direction: column;
-  margin-top: 160px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .Welcome-Text-And-Carousel-Container.Desktop {
@@ -76,7 +78,7 @@
 
 .Welcome-Text-Container.Phone {
   height: 40%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .Welcome-Text {
