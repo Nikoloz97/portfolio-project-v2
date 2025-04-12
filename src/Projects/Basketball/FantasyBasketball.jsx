@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import teamAnalyzerImage from "../../Images/FantasyBball/NbaPlayers.avif";
+import teamAnalyzerImage from "../../Images/FantasyBball/NbaPlayers.jpg";
 import schedAnalyzerImage from "../../Images/FantasyBball/NbaSchedule.jpg";
 import "./FantasyBasketball.css";
 import InvertableButton from "../../Utils/Projects/FantasyBball/InvertableButton";
