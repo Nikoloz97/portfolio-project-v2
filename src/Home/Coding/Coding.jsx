@@ -25,7 +25,7 @@ import portalImageMini from "../../Images/Home/Coding/Content/Work/ClaimGenPorta
 import cookiesImage from "../../Images/Home/Coding/Content/Work/CookiesArticle_Square.png";
 import cookiesImageMini from "../../Images/Home/Coding/Content/Work/CookiesArticle_Square-Mini.png";
 
-import financeImage from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square.png";
+import financeImage from "../../Images/Home/Coding/Content/Work/finance-viewer.png";
 import financeImageMini from "../../Images/Home/Coding/Content/Work/FinanceWebsite_Square-Mini.png";
 
 import codingImage from "../../Images/Home/Coding/Background/Coding12.jpeg";

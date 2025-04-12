@@ -3,15 +3,27 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100%;
-  z-index: 0;
+  width: 100vw; /* Changed from 100vw to avoid potential overflow issues */
+  height: 100vh;
+  z-index: 0 !important; /* Increased z-index */
+  pointer-events: none; /* Ensures clicks pass through to content */
   background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0.05) 80%
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.7) 3%,
+      rgba(0, 0, 0, 0.5) 8%,
+      rgba(0, 0, 0, 0.3) 15%,
+      rgba(0, 0, 0, 0.1) 30%,
+      rgba(0, 0, 0, 0.05) 60%
     ),
-    linear-gradient(to top, rgb(7.5, 15, 26) 2%, rgba(8, 20, 27, 0) 40%);
+    linear-gradient(
+      to top,
+      rgba(7.5, 15, 26, 0.8) 0%,
+      rgba(7.5, 15, 26, 0.6) 3%,
+      rgba(7.5, 15, 26, 0.4) 8%,
+      rgba(7.5, 15, 26, 0.2) 15%,
+      rgba(8, 20, 27, 0) 30%
+    );
 }
 
 .Medicine-Screen.Desktop {
@@ -148,7 +160,7 @@
 .Medicine-Card.Carousel {
   background-color: transparent;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   height: auto;
   opacity: 1;
   display: flex;
@@ -160,7 +172,7 @@
 .Medicine-Card-Image {
   width: 100%;
   border-radius: 10px;
-  max-height: 300px;
+  max-height: 400px;
   object-fit: cover;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }

@@ -150,7 +150,7 @@
 .Coding-Card.Carousel {
   background-color: transparent;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   height: auto;
   opacity: 1;
   display: flex;
@@ -162,7 +162,7 @@
 .Coding-Card-Image {
   width: 100%;
   border-radius: 10px;
-  max-height: 300px;
+  max-height: 400px;
   object-fit: cover;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
