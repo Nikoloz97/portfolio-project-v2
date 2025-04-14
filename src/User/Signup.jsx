@@ -155,6 +155,7 @@ const SignUp = () => {
                     }
                   />
                   <Form.Input
+                    type="Password"
                     label="*Password"
                     onChange={(e) =>
                       setSignUpInfo({

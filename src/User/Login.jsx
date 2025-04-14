@@ -4,7 +4,6 @@ import {
   Button,
   Grid,
   Form,
-  Checkbox,
   Header,
   Container,
   Loader,
@@ -17,8 +16,7 @@ import "./User.css";
 import Cookies from "js-cookie";
 
 const Login = () => {
-  const { setUser, setIsUserSignedIn, isDesktop, isDefaultBlog } =
-    useUserContext();
+  const { setUser, setIsUserSignedIn, isDesktop } = useUserContext();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
