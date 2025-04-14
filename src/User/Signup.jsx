@@ -91,15 +91,12 @@ const SignUp = () => {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((response) => {
-        // console.log(response.data);
-        if (response.data) {
-          setIsLoading(false);
-          setIsSignupSuccessfullySubmitted(true);
-          setTimeout(() => {
-            navigate("/login");
-          }, 4000);
-        }
+      .then(() => {
+        setIsLoading(false);
+        setIsSignupSuccessfullySubmitted(true);
+        setTimeout(() => {
+          navigate("/login");
+        }, 4000);
       })
       .catch((error) => {
         setIsLoading(false);
