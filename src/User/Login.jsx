@@ -36,16 +36,15 @@ const Login = () => {
   const handleLogin = () => {
     setIsLoading(true);
     axios
-      .post(apiUserRoot + "/login", { Username: username, Password: password })
+      .post(
+        apiUserRoot + "/login",
+        { Username: username, Password: password },
+        { withCredentials: true } // Enable cookies)
+      )
       .then((response) => {
-        console.log(response.data);
         setUser(response.data);
         setIsUserSignedIn(true);
         setIsLoading(false);
-
-        const token = response.data.token;
-
-        localStorage.setItem("token", token);
 
         // Upon login, navigate to specific page based on preferences (otherwise, default to home)
         if (Cookies.get("isBlogDefault") === "true") {

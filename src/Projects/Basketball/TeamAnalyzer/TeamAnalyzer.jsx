@@ -78,8 +78,6 @@ function TeamAnalyzer() {
 
         const fetchedData = response.data.body[0];
 
-        // console.log(fetchedData);
-
         populateCurrentPlayer(
           updatedSelectedPlayers,
           currentPlayer,
