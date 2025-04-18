@@ -1,165 +1,409 @@
-.TA-Intro-Container {
+.ta-intro-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.TA-Intro-Card {
-  background-color: rgba(0, 0, 0, 0.253) !important;
-  width: 700px !important;
-  height: 200px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-.TA-Intro-Card-Header {
-  margin-top: 10px !important;
-  font-size: 1.5rem !important;
+.ta-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #f5f5f5;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
-.TA-Intro-Card-Description {
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 10px;
-  font-size: 1.5rem !important;
-  height: fit-content;
+.ta-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 30px;
 }
 
-/* Player Card */
-.Player-Card-Component-Container {
+.ta-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+}
+
+.ta-card-content {
+  padding: 32px;
+}
+
+.ta-card-header {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #e0e0e0;
+}
+
+.ta-card-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #bdbdbd;
+  text-align: center;
+}
+
+.ta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ta-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ta-button:active {
+  transform: translateY(1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ta-title {
+    font-size: 2rem;
+  }
+
+  .ta-card-content {
+    padding: 24px;
+  }
+
+  .ta-card-description {
+    font-size: 1rem;
+  }
+
+  .ta-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* Main container layout for vertical columns */
+.ta-main-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 600px;
-  height: 500px;
-  font-family: "Anta", sans-serif !important;
+  gap: 100px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* The header content does not work without explicitly styling this */
-
-h1 {
-  font-family: "Anta", sans-serif !important;
-}
-
-.Player-Card-Container {
+/* Player Display Section */
+.ta-player-display {
   display: flex;
   flex-direction: column;
-}
-
-.Player-Card-Buttons-Row {
-  display: flex;
-  flex-direction: row;
   align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+  width: 20%;
 }
 
-.Player-Card {
-  background-color: #23354d !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.ui.card {
-  margin: 0 !important;
-}
-
-.Player-Header-Team-Container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.Player-Card-Contents-Container {
+.ta-player-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.ta-player-image-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.ta-player-image-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.ta-player-image {
+  width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
-.Headshot-Header-Container {
+.ta-player-name {
+  margin-top: 8px;
+  font-size: 0.85rem !important;
+  text-align: center !important;
+  color: #e0e0e0 !important;
+  font-weight: 500 !important;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+/* Player Card Section */
+.ta-form {
+  flex: 1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
-.Player-Card-Headshot-Container {
+.ta-player-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ta-nav-button-container {
   display: flex;
   align-items: center;
-  width: 50%;
-  height: 230px;
-  margin: 10px;
-  border: 1px solid white;
-  box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.438);
+  width: 100%;
+  gap: 15px;
 }
 
-.Player-Card-Input-Container {
+.ta-nav-button {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
   display: flex;
-  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
 }
 
-.Player-Stats-Grid {
+.ta-nav-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.ta-nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.ta-player-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: transform 0.3s ease;
+}
+
+.ta-card-content {
+  padding: 20px;
+}
+
+.ta-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.ta-headshot-container {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.ta-headshot-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ta-player-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.ta-player-card-name {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #f5f5f5;
+  text-align: center;
+  width: 100%;
+}
+
+.ta-team-name {
+  font-size: 1.2rem;
+  color: #bbbbbb;
+  font-weight: 400;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.ta-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  padding: 10px;
+  gap: 10px;
+  margin-top: 15px;
 }
 
-.Player-Stat-Card {
-  background-color: #293b53 !important;
+.ta-stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px 15px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 200px;
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  height: 30px;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.ta-stat-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ta-stat-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #bbbbbb;
+}
+
+.ta-stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+
+/* AutoComplete Input */
+.ta-input-container {
+  width: 100%;
   margin-top: 20px;
-  border-radius: 2%;
-  box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.567);
 }
 
-.Player-Card-Button {
-  background: transparent !important;
-  color: white !important;
+.ta-autocomplete {
+  position: relative;
+  width: 100%;
 }
 
-.Team-Analyzer-Container {
-  width: 100% !important;
-  height: 650px;
+.ta-suggestion-input,
+.ta-user-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.ta-suggestion-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.ta-user-input {
+  position: relative;
+  background: transparent;
+  z-index: 2;
+}
+
+.ta-user-input:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Results Button Container */
+.ta-results-button-container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.Player-Display-Container {
-  border: 1px solid white;
-  width: 90%;
-  height: 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.Player-Box {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 80%;
+  margin-top: 20px;
 }
 
-.Player-Box-Image {
-  width: 80px;
-  height: 60px;
-  border: 1px solid white;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ta-main-container {
+    flex-direction: column;
+  }
+
+  .ta-player-display {
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+    max-height: unset;
+  }
+
+  .ta-player-item {
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .ta-card-header {
+    flex-direction: column;
+  }
+
+  .ta-headshot-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .ta-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.Team-Analyzer-Results-Modal-Container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  opacity: 0;
-}
+@media (max-width: 576px) {
+  .ta-player-display {
+    gap: 5px;
+  }
 
-.Team-Analyzer-Results-Modal-Container.Unhide {
-  opacity: 1;
+  .ta-player-item {
+    width: 70px;
+  }
+
+  .ta-stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Results Modal */

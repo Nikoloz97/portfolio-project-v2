@@ -152,6 +152,7 @@
 .PostSignedIn-Container-Topbar {
   display: flex;
   width: 240px;
+  height: 50px;
 }
 
 .Topbar-Desktop-Button-UserProfile {

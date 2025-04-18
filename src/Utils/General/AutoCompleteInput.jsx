@@ -36,12 +36,12 @@ const AutoCompleteInput = (props) => {
   };
 
   return (
-    <div style={{ width: "800px" }}>
+    <div className="ta-autocomplete">
       <input
         type="text"
         value={matchedSuggestion}
         disabled
-        className="Suggestion-Input"
+        className="ta-suggestion-input"
       />
       <input
         type="text"
@@ -49,7 +49,7 @@ const AutoCompleteInput = (props) => {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         placeholder="Type your player here..."
-        className="User-Input"
+        className="ta-user-input"
       />
     </div>
   );

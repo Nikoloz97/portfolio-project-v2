@@ -1,16 +1,40 @@
-.User-Input {
-  position: absolute !important;
-  left: 24.8%;
-  width: 50% !important;
-  background-color: transparent !important;
-  color: white !important;
-  border: 1px solid white !important;
+.ta-input-container {
+  width: 100%;
+  margin-top: 20px;
 }
 
-.Suggestion-Input {
-  position: absolute !important;
-  left: 24.8%;
-  width: 50% !important;
-  color: rgba(255, 255, 255, 0.5) !important;
-  background-color: transparent !important;
+.ta-autocomplete {
+  position: relative;
+  width: 100%;
+}
+
+.ta-suggestion-input,
+.ta-user-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.134) !important;
+  color: rgb(255, 255, 255) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.ta-suggestion-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(253, 253, 253, 0.488) !important;
+  z-index: 1;
+}
+
+.ta-user-input {
+  position: relative;
+  background: transparent;
+  z-index: 2;
+}
+
+.ta-user-input:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
 }

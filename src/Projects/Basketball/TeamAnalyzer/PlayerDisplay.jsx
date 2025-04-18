@@ -1,25 +1,24 @@
 import React from "react";
-import { Header, Image } from "semantic-ui-react";
-import "./TeamAnalyzer.css";
 
 const PlayerDisplay = (props) => {
   return (
-    <div className="Player-Display-Container">
-      {props.selectedPlayers.map((player, index) => {
-        return (
-          <div className="Player-Box" key={index}>
-            <Image
+    <div className="ta-player-display">
+      {props.selectedPlayers.map((player, index) => (
+        <div className="ta-player-item" key={index}>
+          <div className="ta-player-image-container">
+            <img
               src={
                 player.playerURL === ""
-                  ? require("../../../Images/General/avatar-icon.jpg")
+                  ? require("../../../Images/General/avatar-icon-v2.png")
                   : player.playerURL
               }
-              className="Player-Box-Image"
+              className="ta-player-image"
+              alt={player.playerName}
             />
-            <h4 style={{ marginTop: "5px" }}>{player.playerName}</h4>
           </div>
-        );
-      })}
+          <span className="ta-player-name">{player.playerName}</span>
+        </div>
+      ))}
     </div>
   );
 };

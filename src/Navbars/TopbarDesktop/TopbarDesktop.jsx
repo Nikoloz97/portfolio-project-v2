@@ -125,14 +125,16 @@ const TopbarDesktop = () => {
                 {user.profileURL ? (
                   <Button
                     className="Topbar-Desktop-Button"
-                    onClick={() => handleButtonClick("UserProfile")}
+                    // TODO: uncomment once page created
+                    // onClick={() => handleButtonClick("UserProfile")}
                   >
                     <Image src={user.profileURL} avatar />
                   </Button>
                 ) : (
                   <Button
                     className="Topbar-Desktop-Button-UserProfile"
-                    onClick={() => handleButtonClick("UserProfile")}
+                    // TODO: uncomment once page created
+                    // onClick={() => handleButtonClick("UserProfile")}
                   >
                     <Icon
                       style={{ color: "white" }}

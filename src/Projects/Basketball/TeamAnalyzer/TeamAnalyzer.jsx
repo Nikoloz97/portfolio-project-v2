@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Card } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import axios from "axios";
 
 import PlayerDisplay from "./PlayerDisplay";
@@ -98,30 +98,49 @@ function TeamAnalyzer() {
   return (
     <div className="Default-Page">
       {!hasPlayerChoosingBegun && (
-        <div className="TA-Intro-Container">
-          <header style={{ marginBottom: "10px" }}>
-            Welcome to the Team Analyzer
-          </header>
-          <Card className="TA-Intro-Card">
-            <Card.Header className="TA-Intro-Card-Header" textAlign="center">
-              Instructions
-            </Card.Header>
-            <Card.Description className="TA-Intro-Card-Description">
-              Choose players that are on your 12-Team fantasy league from the
-              dropdowns. Then, select 'View Results' to see how the average of
-              your team stats compare with that of the top 132 players in the
-              league
-            </Card.Description>
-          </Card>
-          <Button onClick={() => setHasPlayerChoosingBegun(true)}>Start</Button>
+        <div className="ta-intro-container">
+          <h1 className="ta-title">Welcome to the Team Analyzer</h1>
+
+          <div className="ta-card">
+            <div className="ta-card-content">
+              <h2 className="ta-card-header">Instructions</h2>
+              <p className="ta-card-description">
+                Choose players that are on your 12-Team fantasy league from the
+                dropdowns. Then, select 'View Results' to see how the average of
+                your team stats compare with that of the top 132 players in the
+                league.
+              </p>
+            </div>
+          </div>
+
+          <button
+            className="ta-button"
+            onClick={() => setHasPlayerChoosingBegun(true)}
+          >
+            <span>Get Started</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
       )}
 
       {hasPlayerChoosingBegun && (
-        <div className="Team-Analyzer-Container">
+        <div className="ta-main-container">
           <PlayerDisplay selectedPlayers={selectedPlayers} />
 
-          <Form className="Default-Form">
+          <Form className="ta-form">
             <PlayerCard
               selectedPlayer={selectedPlayers[playerIndex]}
               playerOptions={playerOptions}
@@ -130,7 +149,7 @@ function TeamAnalyzer() {
               selectedPlayers={selectedPlayers}
               setPlayerNameInput={setPlayerNameInput}
             />
-            <div style={{ marginTop: "10px" }}>
+            <div className="ta-results-button-container">
               <ResultsModal
                 selectedPlayers={selectedPlayers}
                 selectedPlayer={selectedPlayers[playerIndex]}
