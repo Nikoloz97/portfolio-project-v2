@@ -1,6 +1,8 @@
 import React from "react";
 
 const PlayerDisplay = (props) => {
+  const defaultAvatarUrl =
+    "https://portfolioappmedia.blob.core.windows.net/fantasybasketballimages/avatar-icon-v2.png";
   return (
     <div className="ta-player-display">
       {props.selectedPlayers.map((player, index) => (
@@ -8,9 +10,7 @@ const PlayerDisplay = (props) => {
           <div className="ta-player-image-container">
             <img
               src={
-                player.playerURL === ""
-                  ? require("../../../Images/General/avatar-icon-v2.png")
-                  : player.playerURL
+                player.playerURL === "" ? defaultAvatarUrl : player.playerURL
               }
               className="ta-player-image"
               alt={player.playerName}

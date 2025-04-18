@@ -3,6 +3,9 @@ import { Icon } from "semantic-ui-react";
 import AutoCompleteInput from "../../../Utils/General/AutoCompleteInput";
 
 const PlayerCard = (props) => {
+  const defaultAvatarUrl =
+    "https://portfolioappmedia.blob.core.windows.net/fantasybasketballimages/avatar-icon-v2.png";
+
   return (
     <div className="ta-player-card-container">
       <div className="ta-nav-button-container">
@@ -21,7 +24,7 @@ const PlayerCard = (props) => {
                 <img
                   src={
                     props.selectedPlayer.playerURL === ""
-                      ? require("../../../Images/General/avatar-icon-v2.png")
+                      ? defaultAvatarUrl
                       : props.selectedPlayer.playerURL
                   }
                   className="ta-headshot-image"

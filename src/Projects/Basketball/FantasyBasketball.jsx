@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import teamAnalyzerImage from "../../Images/FantasyBball/NbaPlayers.jpg";
 import schedAnalyzerImage from "../../Images/FantasyBball/NbaSchedule.jpg";
 import "./FantasyBasketball.css";
 import InvertableButton from "../../Utils/Projects/FantasyBball/InvertableButton";
@@ -10,15 +9,7 @@ const FantasyBasketball = () => {
   const [isTeamHovered, setIsTeamHovered] = useState(false);
   const [isHeaderToFadeIn, setIsHeaderToFadeIn] = useState(false);
 
-  const teamAnalyzerRef = useRef(null);
   const schedAnalyzerRef = useRef(null);
-
-  useEffect(() => {
-    return progressiveBackgroundImageLoader(
-      teamAnalyzerRef.current,
-      teamAnalyzerImage
-    );
-  }, []);
 
   useEffect(() => {
     return progressiveBackgroundImageLoader(
@@ -45,7 +36,6 @@ const FantasyBasketball = () => {
         </div>
         <div className="FB-Button-Container">
           <div
-            ref={teamAnalyzerRef}
             className={`Hub-Team-Analyzer ${isTeamHovered ? "Hovered" : ""}`}
             onMouseEnter={() => setIsTeamHovered(true)}
             onMouseLeave={() => setIsTeamHovered(false)}
