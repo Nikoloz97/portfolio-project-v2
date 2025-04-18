@@ -71,7 +71,10 @@ const TopbarPhone = (props) => {
           </MenuItem>
         </Menu.Menu>
 
-        <Menu.Menu position="right">
+        <Menu.Menu
+          style={{ display: "flex", alignItems: "center", margin: "1em" }}
+          position="right"
+        >
           {user == undefined && user == null ? (
             <div style={{ display: "flex" }}>
               <MenuItem as={Link} to="/login">

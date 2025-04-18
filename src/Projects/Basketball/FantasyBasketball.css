@@ -35,6 +35,7 @@
   font-size: 1.75rem !important;
   border: 0.1px solid white !important;
   box-shadow: 1px 1px 20px 10px rgb(0, 0, 0) !important;
+  color: white !important;
 }
 
 .FB-Button.Inverted {
