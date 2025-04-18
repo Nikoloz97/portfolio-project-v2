@@ -61,18 +61,18 @@ const Coding = (props) => {
           mediaAltText: "Mosh logo",
           websiteLinkUrl: null,
           mediaCaption:
-            "I began my coding journey with Mosh's courses on HTML, CSS, Python, and a little bit of Java (until I realized it wasn’t the same thing as JavaScript)",
+            "Started my coding journey with Mosh's courses covering HTML, CSS, Python, and Java",
         },
-        {
-          header: "Note Taking",
-          techStack: null,
-          miniMediaUrl: pythonImageMini,
-          mediaUrl: pythonImage,
-          mediaAltText: "Google docs Python notes",
-          websiteLinkUrl: null,
-          mediaCaption:
-            "I took thorough notes. In addition to python above, I made notes to an Intro to Programming video by FreeCodeCamp and HTML/CSS by mosh",
-        },
+        // {
+        //   header: "Note Taking",
+        //   techStack: null,
+        //   miniMediaUrl: pythonImageMini,
+        //   mediaUrl: pythonImage,
+        //   mediaAltText: "Google docs Python notes",
+        //   websiteLinkUrl: null,
+        //   mediaCaption:
+        //     "Created comprehensive notes from Python tutorials and FreeCodeCamp's Intro to Programming to reinforce my learning.",
+        // },
         {
           header: "First Website",
           techStack: "HTML, CSS",
@@ -81,7 +81,7 @@ const Coding = (props) => {
           mediaAltText: "Website showing my trip in Georgia from 2021",
           websiteLinkUrl: "https://nickgeorgiatrip2021.netlify.app/",
           mediaCaption:
-            "Using my HTML & CSS notes, I created my first website with the help of bootstrap. It was my first instance of putting my front-end skills to practice. Click on the image above to see the website",
+            "Built my first website using HTML, CSS, and Bootstrap, applying front-end skills from my studies",
         },
       ],
     },
@@ -89,16 +89,16 @@ const Coding = (props) => {
       title: "Tech Elevator (Coding Bootcamp)",
       period: "Sept - Dec 2022",
       cards: [
-        {
-          header: "Restaurant Tinder",
-          techStack: "Vue.js, C#, SQL",
-          miniMediaUrl: restaurantTinderImageMini,
-          mediaUrl: restaurantTinderImage,
-          mediaAltText: "Github for capstone project",
-          websiteLinkUrl: null,
-          mediaCaption:
-            "My bootcamp's curriculum involved 3 group coding projects. The last one involved a restaurant match-making system called Restaurant Tinder. It consists of the following tech stack: Vue.js, C#, and SQL",
-        },
+        // {
+        //   header: "Restaurant Tinder",
+        //   techStack: "Vue.js, C#, SQL",
+        //   miniMediaUrl: restaurantTinderImageMini,
+        //   mediaUrl: restaurantTinderImage,
+        //   mediaAltText: "Github for capstone project",
+        //   websiteLinkUrl: null,
+        //   mediaCaption:
+        //     "Developed Restaurant Tinder as my final bootcamp group project, creating a restaurant matchmaking system using Vue.js, C#, and SQL",
+        // },
         {
           header: "First Portfolio Page",
           techStack: "JavaScript",
@@ -107,7 +107,7 @@ const Coding = (props) => {
           mediaAltText: "Intro screen to my portfolio page",
           websiteLinkUrl: "https://nikoloz97.github.io/",
           mediaCaption:
-            "During my downtime, I made a portfolio page using Vanilla JavaScript",
+            "Created my first portfolio page using vanilla JavaScript during bootcamp downtime to showcase my growing development skills",
         },
         {
           header: "First Passion Project",
@@ -117,7 +117,7 @@ const Coding = (props) => {
           mediaAltText: "Intro screen to my biochemistry site",
           websiteLinkUrl: null,
           mediaCaption:
-            "Before beginning my bootcamp journey, I worked as an online tutor. A problem I wanted to solve was being able to share the notes I collected in a convenient way",
+            "Developed a biochemistry website to efficiently share tutoring notes with students, applying my Vue, C#, and SQLite skills",
         },
       ],
     },
@@ -125,27 +125,27 @@ const Coding = (props) => {
       title: "AccumTech (Work)",
       period: "April 2023 - Present",
       cards: [
-        {
-          header: "ClaimGen Website",
-          techStack: "React, ASP.NET, SQL",
-          miniMediaUrl: portalImageMini,
-          mediaUrl: portalImage,
-          mediaAltText: "One of the screens of the ClaimGen Portal website",
-          websiteLinkUrl: null,
-          mediaCaption:
-            "As a full-stack developer at AccumTech, I work on maintaining our website called ClaimGen Portal. It is a place where Health Insurance Vendors interact with patient records",
-        },
-        {
-          header: "Technical Doc",
-          techStack: null,
-          miniMediaUrl: cookiesImageMini,
-          mediaUrl: cookiesImage,
-          mediaAltText:
-            "One of the technical documents written regarding implementation of website Cookies",
-          websiteLinkUrl: null,
-          mediaCaption:
-            "Through every new project, I document my process for other developers to follow accordingly. If novel enough, I conduct presentations in front of my whole developer team",
-        },
+        // {
+        //   header: "ClaimGen Website",
+        //   techStack: "React, ASP.NET, SQL",
+        //   miniMediaUrl: portalImageMini,
+        //   mediaUrl: portalImage,
+        //   mediaAltText: "One of the screens of the ClaimGen Portal website",
+        //   websiteLinkUrl: null,
+        //   mediaCaption:
+        //     "Maintained ClaimGen Portal as a full-stack developer, providing a platform where health insurance vendors manage patient records",
+        // },
+        // {
+        //   header: "Technical Doc",
+        //   techStack: null,
+        //   miniMediaUrl: cookiesImageMini,
+        //   mediaUrl: cookiesImage,
+        //   mediaAltText:
+        //     "One of the technical documents written regarding implementation of website Cookies",
+        //   websiteLinkUrl: null,
+        //   mediaCaption:
+        //     "Documented technical processes for team knowledge sharing and presented innovative solutions to the development team",
+        // },
         {
           header: "Finance Side Project",
           techStack: "TypeScript, React, Express, MongoDB",
@@ -154,7 +154,7 @@ const Coding = (props) => {
           mediaAltText: "Home screen of my finance side project",
           websiteLinkUrl: null,
           mediaCaption:
-            "Finance Viewer is a side project I have been working on beginning in April 2024. As the name implies, my goal is create a place where users can view all their finances in one location",
+            "Currently developing Finance Viewer since April 2024, a platform that consolidates users' financial information into accessible dashboards",
         },
       ],
     },

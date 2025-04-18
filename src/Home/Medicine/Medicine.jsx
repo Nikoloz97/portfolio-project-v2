@@ -32,7 +32,7 @@ const Medicine = (props) => {
       mediaUrl: plasmaCenterImage,
       mediaAltText: "Plasma Center",
       mediaCaption:
-        "I worked at a plasma center during my first year of undergrad",
+        "Served at a plasma donation center during my freshman year of undergraduate studies",
     },
     {
       header: "Research",
@@ -40,7 +40,7 @@ const Medicine = (props) => {
       mediaUrl: presentationImage,
       mediaAltText: "My research presentation in the sociology department",
       mediaCaption:
-        "Throughout my undergrad, I volunteered at various research labs in biochemistry and sociology. For sociology, I interviewed post-incarcerated individuals on their health status",
+        "Conducted research in biochemistry and sociology labs, interviewing formerly incarcerated individuals about health outcomes",
     },
     {
       header: "Medical School",
@@ -48,7 +48,7 @@ const Medicine = (props) => {
       mediaUrl: whiteCoatImage,
       mediaAltText: "In my white coat on campus at Ohio University",
       mediaCaption:
-        "I went to medical school for a year at Ohio University Heritage College of Osteopathic Medicine (OUHCOM)",
+        "Attended Ohio University Heritage College of Osteopathic Medicine (OUHCOM) for one year",
     },
   ];
 

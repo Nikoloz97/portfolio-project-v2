@@ -35,7 +35,7 @@ const Tutoring = (props) => {
       mediaAltText: "Profile on the tutoring website Wyzant",
       websiteLinkUrl: null,
       mediaCaption:
-        "I began my tutoring journey through a platform called Wyzant. Since making a profile in July 2022, I'm certified in Biology, Chemistry, Biochemistry, Genetics, and Physiology",
+        "Started tutoring on Wyzant in July 2022, earning certifications in Biology, Chemistry, Biochemistry, Genetics, and Physiology.",
     },
     {
       header: "Tutoring Site",
@@ -43,7 +43,8 @@ const Tutoring = (props) => {
       miniMediaUrl: websiteImageMini,
       mediaAltText: "Intro screen to my tutoring website called NikoScience",
       websiteLinkUrl: null,
-      mediaCaption: "I made a personal website through Wix called NikoScience",
+      mediaCaption:
+        "Created NikoScience, a personal tutoring website through Wix to expand my teaching presence online.",
     },
     {
       header: "Social Media Outreach",
@@ -52,7 +53,7 @@ const Tutoring = (props) => {
       mediaAltText: "Website showing my trip in Georgia from 2021",
       websiteLinkUrl: null,
       mediaCaption:
-        "As a way for public outreach, I created short form content in various science subjects",
+        "Developed short-form educational content across various science subjects to enhance public engagement and outreach",
     },
   ];
 
