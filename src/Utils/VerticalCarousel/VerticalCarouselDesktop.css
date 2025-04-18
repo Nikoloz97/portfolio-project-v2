@@ -1,5 +1,5 @@
 .ui.card {
-  margin: 0.5rem !important;
+  margin: 0.3rem !important;
 }
 
 #Carousel-Card-Desktop {
@@ -14,6 +14,7 @@
   align-items: center !important;
   justify-content: center !important;
   transition: opacity 0.5s, transform 0.5s !important;
+  color: white !important;
 }
 
 .Carousel-Card.Hide {
