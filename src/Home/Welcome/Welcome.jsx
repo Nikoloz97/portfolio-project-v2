@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Header } from "semantic-ui-react";
+import { Header, Icon } from "semantic-ui-react";
 import { useUserContext } from "../../UserContext";
 import VerticalCarouselDesktop from "../../Utils/VerticalCarousel/VerticalCarouselDesktop";
-import VerticalCarouselPhone from "../../Utils/VerticalCarousel/VerticalCarouselPhone";
 import VerticalCarouselButtons from "../../Utils/VerticalCarousel/VerticalCarouselButtons";
 import welcomeImage from "../../Images/Home/Welcome/Welcome_Georgia_Mountains2.jpg";
 import "./Welcome.css";
 import { progressiveBackgroundImageLoader } from "../../Utils/ProgressiveLoaders.js";
 
 const Welcome = (props) => {
-  const { user, isUserSignedIn, isDesktop, isPhone } = useUserContext();
+  const { user, isUserSignedIn, isDesktop } = useUserContext();
 
   const [displayedWelcomeTextLineOne, setDisplayedWelcomeTextLineOne] =
     useState("");
@@ -153,7 +152,7 @@ const Welcome = (props) => {
               </Header>
             </div>
             {/* Vertical carousel */}
-            {isDesktop && (
+            {isDesktop ? (
               <div
                 className={`Welcome-Begin-Or-VC-Header-Container ${
                   isSecondLineComplete ? "Fade-In" : ""
@@ -209,6 +208,17 @@ const Welcome = (props) => {
                   </div>
                   <div className="Welcome-Vertical-Carousel-Ticker" />
                 </div>
+              </div>
+            ) : (
+              <div
+                className={`welcome-scroll-down-phone ${
+                  isSecondLineComplete ? "fade-in" : ""
+                }`}
+              >
+                <div style={{ fontSize: "1.2em" }}>
+                  Scroll Down to Begin Journey
+                </div>
+                <Icon name="arrow down" />
               </div>
             )}
           </div>
