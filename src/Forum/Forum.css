@@ -3,6 +3,12 @@
   opacity: 0.95 !important;
 }
 
+.ui.loader {
+  font-size: 2em !important;
+  max-width: 33%;
+  line-height: 1.2em;
+}
+
 .Loading-Display-Container {
   background: #292d35;
   color: white;
